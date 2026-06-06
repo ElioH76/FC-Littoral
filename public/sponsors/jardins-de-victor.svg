@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Les Jardins de Victor">
+  <rect width="280" height="140" rx="14" fill="#ffffff"/>
+  <circle cx="140" cy="58" r="34" fill="none" stroke="#1F7A3D" stroke-width="3"/>
+  <path d="M140 40 c-6 8-10 12-10 18 a10 10 0 0 0 20 0 c0-6-4-10-10-18z" fill="#1F7A3D"/>
+  <rect x="138" y="58" width="4" height="16" fill="#1F7A3D"/>
+  <text x="140" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#0B0B0B">Les Jardins de Victor</text>
+  <text x="140" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#1F7A3D">CRÉATION · ENTRETIEN</text>
+</svg>

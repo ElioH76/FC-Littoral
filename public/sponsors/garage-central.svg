@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Garage Central Auto">
+  <rect width="280" height="140" rx="14" fill="#0B0B0B"/>
+  <g transform="translate(140 56)">
+    <circle r="22" fill="none" stroke="#F5C518" stroke-width="3"/>
+    <circle r="6" fill="#F5C518"/>
+    <g stroke="#F5C518" stroke-width="3">
+      <line x1="0" y1="-22" x2="0" y2="-10"/>
+      <line x1="0" y1="22" x2="0" y2="10"/>
+      <line x1="-22" y1="0" x2="-10" y2="0"/>
+      <line x1="22" y1="0" x2="10" y2="0"/>
+    </g>
+  </g>
+  <text x="140" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#ffffff">GARAGE CENTRAL</text>
+  <text x="140" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="4" fill="#F5C518">TOUTES MARQUES</text>
+</svg>

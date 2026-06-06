@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="MAKI9SPORT">
+  <rect width="280" height="140" rx="14" fill="#0B0B0B"/>
+  <!-- petit chevron / swoosh -->
+  <path d="M118 44 l22 -10 l22 10 l-22 8 z" fill="#F5C518"/>
+  <path d="M118 44 l22 8 l0 10 l-22 -8 z" fill="#1F7A3D"/>
+  <path d="M162 44 l-22 8 l0 10 l22 -8 z" fill="#E0B000"/>
+  <!-- wordmark -->
+  <text x="140" y="92" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-style="italic" font-weight="900" font-size="30" fill="#ffffff" letter-spacing="1">
+    MAKI<tspan fill="#F5C518">9</tspan>SPORT
+  </text>
+  <text x="140" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="5" fill="#1F7A3D">ÉQUIPEMENTIER OFFICIEL</text>
+</svg>

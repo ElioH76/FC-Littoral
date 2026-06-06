@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Le Café des Sports">
+  <rect width="280" height="140" rx="14" fill="#ffffff"/>
+  <g transform="translate(140 52)">
+    <path d="M-18 -10 h30 v12 a15 15 0 0 1 -30 0 z" fill="#1F7A3D"/>
+    <path d="M12 -6 h8 a7 7 0 0 1 0 14 h-8" fill="none" stroke="#1F7A3D" stroke-width="3"/>
+    <path d="M-10 -18 q3 -5 0 -8 M-2 -18 q3 -5 0 -8 M6 -18 q3 -5 0 -8" stroke="#E0B000" stroke-width="2" fill="none"/>
+  </g>
+  <text x="140" y="106" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#0B0B0B">Le Café des Sports</text>
+  <text x="140" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#1F7A3D">QG DES SUPPORTERS</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Boulangerie du Port">
+  <rect width="280" height="140" rx="14" fill="#ffffff"/>
+  <path d="M110 60 q30-22 60 0 q8 6 4 16 l-68 0 q-4-10 4-16z" fill="#E0B000"/>
+  <path d="M120 64 l0 12 M140 62 l0 14 M160 64 l0 12" stroke="#0B0B0B" stroke-width="2"/>
+  <text x="140" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#0B0B0B">Boulangerie du Port</text>
+  <text x="140" y="127" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#B88E00">ARTISAN · FAIT MAISON</text>
+</svg>

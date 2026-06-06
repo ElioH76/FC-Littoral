@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" width="280" height="140" role="img" aria-label="Assurances du Littoral">
+  <rect width="280" height="140" rx="14" fill="#ffffff"/>
+  <path d="M140 30 l22 8 v16 c0 16-10 26-22 32 c-12-6-22-16-22-32 v-16z" fill="none" stroke="#1F7A3D" stroke-width="3"/>
+  <path d="M130 58 l7 7 l14 -16" fill="none" stroke="#E0B000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="140" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0B0B0B">ASSURANCES DU LITTORAL</text>
+  <text x="140" y="128" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" letter-spacing="3" fill="#1F7A3D">COURTIER DE PROXIMITÉ</text>
+</svg>
