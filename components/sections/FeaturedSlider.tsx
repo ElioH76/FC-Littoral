@@ -150,22 +150,22 @@ function Slide({ article, active }: { article: Article; active: boolean }) {
       <Link
         href={`/actualites/${article.slug}`}
         tabIndex={active ? 0 : -1}
-        className="relative flex shrink-0 gap-3"
+        className="relative flex shrink-0 items-center justify-center gap-3 sm:gap-4"
         aria-label={article.title}
       >
         {isGallery ? (
           images.map((img, i) => (
             <span
               key={img.src}
-              className="overflow-hidden rounded-xl border border-white/10 bg-white/5 shadow-md transition-transform duration-300 hover:scale-105"
+              className="overflow-hidden rounded-xl border border-white/15 bg-white shadow-lg transition-transform duration-300 hover:scale-105"
               style={{ rotate: i === 0 ? "-3deg" : "3deg" }}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={170}
-                height={170}
-                className="h-28 w-28 object-cover sm:h-36 sm:w-36 md:h-40 md:w-40"
+                width={260}
+                height={260}
+                className="h-36 w-36 object-contain sm:h-44 sm:w-44 md:h-52 md:w-52"
               />
             </span>
           ))
