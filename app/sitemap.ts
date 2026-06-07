@@ -7,7 +7,14 @@ const BASE_URL = "https://fclittoral.fr";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getArticleSlugs();
 
-  const staticRoutes = ["", "/equipes", "/sponsors", "/actualites"].map(
+  const staticRoutes = [
+    "",
+    "/club",
+    "/equipes",
+    "/saison",
+    "/actualites",
+    "/sponsors",
+  ].map(
     (route) => ({
       url: `${BASE_URL}${route}`,
       lastModified: new Date(),

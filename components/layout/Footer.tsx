@@ -6,9 +6,11 @@ import { Logo } from "@/components/brand/Logo";
 
 const nav = [
   { href: "/", label: "Accueil" },
+  { href: "/club", label: "Le club" },
   { href: "/equipes", label: "Nos équipes" },
-  { href: "/sponsors", label: "Sponsors" },
+  { href: "/saison", label: "Saison" },
   { href: "/actualites", label: "Actualités" },
+  { href: "/sponsors", label: "Partenaires" },
 ];
 
 export function Footer() {

@@ -95,3 +95,15 @@ export interface Fixture {
   awayScore?: number;
   venue?: string;
 }
+
+/** Données de saison agrégées pour une équipe (classement + matchs). */
+export interface TeamSeason {
+  slug: TeamSlug;
+  name: string;
+  /** Vide si l'équipe n'a pas de classement officiel (ex. loisir/vétérans). */
+  standings: Standing[];
+  results: Fixture[];
+  upcoming: Fixture[];
+  /** Message affiché à la place du classement quand il n'y en a pas. */
+  noStandingsNote?: string;
+}

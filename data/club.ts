@@ -31,6 +31,26 @@ export const club = {
     { value: "120+", label: "Licenciés" },
     { value: "1", label: "Stade municipal" },
   ],
+  // Histoire du club (paragraphes) — page "Le club"
+  history: [
+    "Né en 2002 de la passion de quelques bénévoles, le F.C. Littoral s'est construit saison après saison autour d'un noyau de joueurs et de familles fidèles.",
+    "D'abord une simple équipe de copains, le club a grandi pour accueillir aujourd'hui les jeunes (U15), une équipe fanion ambitieuse (Seniors Après-Midi) et une équipe Vétérans conviviale.",
+    "Plus de vingt ans plus tard, l'esprit reste le même : un club familial, ancré dans son territoire, où l'on vient autant pour le foot que pour les liens qui s'y créent.",
+  ],
+  // Bureau / dirigeants — page "Le club"
+  bureau: [
+    { name: "Jean-Marc Lemoine", role: "Président" },
+    { name: "Sophie Renaud", role: "Vice-présidente" },
+    { name: "Antoine Faure", role: "Secrétaire" },
+    { name: "Karine Dubois", role: "Trésorière" },
+    { name: "David Mercier", role: "Responsable sportif" },
+  ],
+  // Infos pratiques — page "Le club"
+  pratique: [
+    { label: "Permanence", value: "Mercredi & samedi, 10h – 12h (club-house)" },
+    { label: "Stade", value: "Stade Municipal, Avenue du Littoral" },
+    { label: "Saison", value: "Septembre à juin" },
+  ],
   contact: {
     email: "contact@fclittoral.fr",
     phone: "06 12 34 56 78",
