@@ -10,6 +10,10 @@ export interface Player {
   name: string;
   number?: number;
   position: string;
+  /** Buts marqués sur la saison (sert au "meilleur buteur"). */
+  goals?: number;
+  /** Photo détourée du joueur, ex. "/players/elio-hardouin.png". */
+  photo?: string;
 }
 
 export interface StaffMember {

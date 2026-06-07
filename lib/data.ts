@@ -16,6 +16,9 @@
  *   }
  */
 
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import { news } from "@/data/news";
 import { sponsors } from "@/data/sponsors";
 import { teams } from "@/data/teams";
@@ -23,6 +26,7 @@ import { resolveFixtures, resolveStandings } from "@/lib/sources";
 import type {
   Article,
   Fixture,
+  Player,
   Sponsor,
   Standing,
   Team,
@@ -42,6 +46,27 @@ export async function getTeam(slug: TeamSlug): Promise<Team | undefined> {
 
 export async function getFlagshipTeam(): Promise<Team | undefined> {
   return teams.find((t) => t.flagship);
+}
+
+/** Meilleur buteur d'une équipe (joueur ayant le plus de buts), avec le nom de l'équipe. */
+export async function getTopScorer(
+  slug?: TeamSlug,
+): Promise<(Player & { teamName: string }) | undefined> {
+  const team = slug
+    ? await getTeam(slug)
+    : await getFlagshipTeam();
+  const scorers = (team?.players ?? []).filter((p) => (p.goals ?? 0) > 0);
+  if (!team || scorers.length === 0) return undefined;
+  const top = scorers.reduce((best, p) =>
+    (p.goals ?? 0) > (best.goals ?? 0) ? p : best,
+  );
+  // La photo n'est affichée que si le fichier existe réellement dans /public
+  // (évite une image cassée tant qu'elle n'a pas été déposée).
+  const photo =
+    top.photo && existsSync(join(process.cwd(), "public", top.photo))
+      ? top.photo
+      : undefined;
+  return { ...top, photo, teamName: team.name };
 }
 
 /* ---------------------------- ACTUALITÉS --------------------------- */
