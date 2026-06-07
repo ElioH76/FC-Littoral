@@ -4,7 +4,15 @@
       "PowerShell(node --version; npm --version; Write-Output \"---\"; \\(Get-Command npx\\).Source)",
       "PowerShell(npm install 2>&1)",
       "mcp__Claude_Preview__preview_start",
-      "PowerShell($conn = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($conn\\) { $conn | Select-Object -First 1 | ForEach-Object { Get-Process -Id $_.OwningProcess } | Select-Object Id, ProcessName } else { Write-Output \"Rien sur le port 3000\" })"
+      "PowerShell($conn = Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue; if \\($conn\\) { $conn | Select-Object -First 1 | ForEach-Object { Get-Process -Id $_.OwningProcess } | Select-Object Id, ProcessName } else { Write-Output \"Rien sur le port 3000\" })",
+      "WebSearch",
+      "WebFetch(domain:chromewebstore.google.com)",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "mcp__Claude_in_Chrome__select_browser",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__read_network_requests",
+      "mcp__Claude_in_Chrome__javascript_tool"
     ]
   }
 }

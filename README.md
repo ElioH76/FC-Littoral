@@ -73,11 +73,22 @@ Déposer le vrai logo dans `public/logo.png`, puis adapter `components/brand/Log
 
 Le site est conçu pour accueillir facilement les prochaines phases **sans refonte** :
 
-- **Données temps réel (classements / calendriers)** : les composants ne lisent jamais
-  les fichiers `data/` directement, ils passent par la couche async `lib/data.ts`.
-  Pour brancher une API foot, il suffit de remplacer l'intérieur des fonctions
-  (`getStandings`, `getFixtures`, etc.) par un `fetch` — aucun composant à modifier.
-  Les emplacements sont déjà réservés (`components/sections/ComingSoon.tsx`).
+- **Données temps réel (classements / calendriers)** — *squelette déjà en place* :
+  - Les composants passent par `lib/data.ts` (`getStandings`, `getFixtures`, `getSeasonBoards`),
+    qui passe par la **couche de sources** `lib/sources/`.
+  - Source active définie dans **`lib/season-config.ts`** (`ACTIVE_SOURCE`) : `"mock"` aujourd'hui.
+  - Pour brancher la vraie donnée (API FFF/DOFA) :
+    1. remplir les ids de poule/club dans `teamSourceConfig` (`lib/season-config.ts`),
+    2. compléter les `fetch` + mappers dans `lib/sources/fff-dofa-source.ts`,
+    3. passer `ACTIVE_SOURCE = "fff-dofa"`.
+  - **Repli automatique** sur les données de démo si la source externe échoue → le site ne casse jamais.
+  - Aucun composant à modifier.
 - **Back-end actualités** : même principe — `getNews()` / `getArticle()` pourront
   pointer vers un CMS ou une base de données.
-- Les modèles `Standing` et `Fixture` sont déjà définis dans `types/`.
+- Les modèles `Standing`, `Fixture` et `TeamSeason` sont définis dans `types/`.
+
+## 🚀 Déploiement
+
+- Code hébergé sur **GitHub** ; push via **GitHub Desktop**.
+- Mise en ligne sur **Vercel** (gratuit) : connecté au repo → chaque push redéploie
+  automatiquement. Custom domain ajoutable dans *Vercel → Settings → Domains*.

@@ -16,11 +16,10 @@
  *   }
  */
 
-import { fixturesByTeam } from "@/data/fixtures";
 import { news } from "@/data/news";
 import { sponsors } from "@/data/sponsors";
-import { standingsByTeam } from "@/data/standings";
 import { teams } from "@/data/teams";
+import { resolveFixtures, resolveStandings } from "@/lib/sources";
 import type {
   Article,
   Fixture,
@@ -81,15 +80,16 @@ export async function getMainSponsors(): Promise<Sponsor[]> {
 }
 
 /* ----------------------------- PHASE 2 ----------------------------- */
-/* Données aujourd'hui mock, PAR ÉQUIPE — remplacer l'intérieur par un  */
-/* fetch d'API foot le moment venu (revalidation ISR recommandée).      */
+/* Ces fonctions passent par la couche `lib/sources` : source mock        */
+/* aujourd'hui, API FFF/DOFA demain — sans toucher aux composants.        */
 
 export async function getStandings(team: TeamSlug = "seniors"): Promise<Standing[]> {
-  return standingsByTeam[team] ?? [];
+  return resolveStandings(team);
 }
 
 export async function getFixtures(team: TeamSlug = "seniors"): Promise<Fixture[]> {
-  return [...(fixturesByTeam[team] ?? [])].sort(
+  const all = await resolveFixtures(team);
+  return [...all].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
   );
 }
@@ -112,8 +112,10 @@ export async function getSeasonBoards(): Promise<TeamSeason[]> {
   const all = await getTeams();
   return Promise.all(
     all.map(async (t) => {
-      const { results, upcoming } = await getSplitFixtures(t.slug);
-      const standings = standingsByTeam[t.slug] ?? [];
+      const [standings, { results, upcoming }] = await Promise.all([
+        getStandings(t.slug),
+        getSplitFixtures(t.slug),
+      ]);
       return {
         slug: t.slug,
         name: t.name,
