@@ -36,37 +36,68 @@ import type {
 
 /* ----------------------------- ÉQUIPES ----------------------------- */
 
+/** Ne garde la photo que si le fichier existe vraiment dans /public (sinon undefined). */
+function resolvePhoto(photo?: string): string | undefined {
+  return photo && existsSync(join(process.cwd(), "public", photo))
+    ? photo
+    : undefined;
+}
+
+/** Renvoie une copie de l'équipe avec les photos joueurs résolues. */
+function withResolvedPhotos(team: Team): Team {
+  if (!team.players) return team;
+  return {
+    ...team,
+    players: team.players.map((p) => ({ ...p, photo: resolvePhoto(p.photo) })),
+  };
+}
+
 export async function getTeams(): Promise<Team[]> {
-  return teams;
+  return teams.map(withResolvedPhotos);
 }
 
 export async function getTeam(slug: TeamSlug): Promise<Team | undefined> {
-  return teams.find((t) => t.slug === slug);
+  const team = teams.find((t) => t.slug === slug);
+  return team ? withResolvedPhotos(team) : undefined;
 }
 
 export async function getFlagshipTeam(): Promise<Team | undefined> {
-  return teams.find((t) => t.flagship);
+  const team = teams.find((t) => t.flagship);
+  return team ? withResolvedPhotos(team) : undefined;
+}
+
+/** Statistiques rapides d'une équipe (effectif, total de buts). */
+export async function getTeamStats(
+  slug: TeamSlug,
+): Promise<{ squad: number; goals: number } | undefined> {
+  const team = await getTeam(slug);
+  if (!team) return undefined;
+  const players = team.players ?? [];
+  return {
+    squad: players.length,
+    goals: players.reduce((sum, p) => sum + (p.goals ?? 0), 0),
+  };
 }
 
 /** Meilleur buteur d'une équipe (joueur ayant le plus de buts), avec le nom de l'équipe. */
 export async function getTopScorer(
   slug?: TeamSlug,
 ): Promise<(Player & { teamName: string }) | undefined> {
-  const team = slug
-    ? await getTeam(slug)
-    : await getFlagshipTeam();
+  const team = slug ? await getTeam(slug) : await getFlagshipTeam();
   const scorers = (team?.players ?? []).filter((p) => (p.goals ?? 0) > 0);
   if (!team || scorers.length === 0) return undefined;
   const top = scorers.reduce((best, p) =>
     (p.goals ?? 0) > (best.goals ?? 0) ? p : best,
   );
-  // La photo n'est affichée que si le fichier existe réellement dans /public
-  // (évite une image cassée tant qu'elle n'a pas été déposée).
-  const photo =
-    top.photo && existsSync(join(process.cwd(), "public", top.photo))
-      ? top.photo
-      : undefined;
-  return { ...top, photo, teamName: team.name };
+  // `top.photo` est déjà résolue par getTeam/getFlagshipTeam.
+  return { ...top, teamName: team.name };
+}
+
+/** Aperçu de saison (classement + matchs) d'une seule équipe. */
+export async function getSeasonBoard(
+  slug: TeamSlug,
+): Promise<TeamSeason | undefined> {
+  return (await getSeasonBoards()).find((b) => b.slug === slug);
 }
 
 /* ---------------------------- ACTUALITÉS --------------------------- */

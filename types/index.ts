@@ -14,6 +14,8 @@ export interface Player {
   goals?: number;
   /** Photo détourée du joueur, ex. "/players/elio-hardouin.png". */
   photo?: string;
+  /** Capitaine de l'équipe. */
+  captain?: boolean;
 }
 
 export interface StaffMember {
@@ -40,6 +42,8 @@ export interface Team {
   objectives?: string[];
   image: string;
   imageAlt: string;
+  /** Photo d'équipe utilisée en bannière sur la page dédiée (sinon `image`). */
+  banner?: string;
   trainings: TrainingSlot[];
   staff: StaffMember[];
   players?: Player[];

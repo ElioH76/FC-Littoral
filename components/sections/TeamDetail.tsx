@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { CalendarClock, MapPin, Star, Target, Users } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CalendarClock, MapPin, Star, Target, Users } from "lucide-react";
 
 import type { Team } from "@/types";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 
 /**
@@ -194,6 +196,17 @@ export function TeamDetail({
                 </div>
               </div>
             )}
+
+            <Button
+              asChild
+              variant={flagship ? "default" : "forest"}
+              className="mt-8"
+            >
+              <Link href={`/equipes/${team.slug}`}>
+                Voir la page de l&apos;équipe
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </Reveal>
         </div>
       </div>

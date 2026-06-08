@@ -27,11 +27,11 @@ export function SeasonBoard({
 
   return (
     <div>
-      {/* Onglets équipes */}
+      {/* Onglets équipes (masqués s'il n'y a qu'une équipe) */}
       <div
         role="tablist"
         aria-label="Choisir une équipe"
-        className="flex flex-wrap gap-2"
+        className={cn("flex flex-wrap gap-2", teams.length <= 1 && "hidden")}
       >
         {teams.map((t, i) => (
           <button

@@ -22,9 +22,9 @@ const links: NavItem[] = [
     href: "/equipes",
     label: "Équipes",
     children: [
-      { href: "/equipes#u15", label: "U15" },
-      { href: "/equipes#seniors", label: "Seniors Après-Midi" },
-      { href: "/equipes#veterans", label: "Vétérans" },
+      { href: "/equipes/u15", label: "U15" },
+      { href: "/equipes/seniors", label: "Seniors Après-Midi" },
+      { href: "/equipes/veterans", label: "Vétérans" },
       { href: "/equipes", label: "Toutes les équipes" },
     ],
   },
