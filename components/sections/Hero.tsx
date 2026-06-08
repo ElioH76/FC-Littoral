@@ -41,7 +41,7 @@ export async function Hero() {
             </h1>
 
             <p className="reveal mt-6 max-w-xl text-base text-white/80 md:text-lg">
-              Club de football amateur fondé en {club.founded}. Du U15 aux
+              Club de football amateur fondé en {club.founded}. Du U13 aux
               Vétérans, nous faisons vivre la passion du ballon rond au cœur de
               notre territoire.
             </p>

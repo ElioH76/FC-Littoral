@@ -1,23 +1,23 @@
 import type { Fixture, Standing, TeamSlug } from "@/types";
 
 /**
- * Identifiants nécessaires pour interroger une source externe (FFF, etc.)
- * pour une équipe donnée. À remplir dans `lib/season-config.ts` le jour où
- * on connaît les ids de la poule/du club côté source.
+ * Identifiants pour interroger l'API FFF (DOFA) pour une équipe.
+ * L'équipe est résolue dynamiquement : club (cl_no DOFA) + catégorie + numéro
+ * → l'adaptateur retrouve l'engagement championnat (cp/phase/poule) tout seul,
+ * donc ça suit automatiquement les changements de poule d'une saison à l'autre.
  */
 export interface TeamSourceConfig {
-  /** Id de la poule/compétition côté source (ex. FFF/DOFA). */
-  pouleId?: string;
-  /** Id du club côté source. */
-  clubId?: string;
-  /** Nom de l'équipe tel qu'il apparaît dans la source (pour repérer "nous"). */
-  sourceTeamName?: string;
+  /** Identifiant interne DOFA du club (cl_no), ex. 1030 pour FC Rollevillais. */
+  clubId?: number;
+  /** Code catégorie DOFA, ex. "SEM" (senior masculin). */
+  category?: string;
+  /** Numéro de l'équipe dans cette catégorie, ex. 5. */
+  teamNumber?: number;
 }
 
 /**
  * Contrat d'une source de données de saison.
- * Implémentations : `mockSource` (données de démo) et `fffDofaSource` (FFF, à brancher).
- * Pour ajouter une source : créer un objet conforme à cette interface.
+ * Implémentations : `mockSource` (démo) et `fffDofaSource` (API FFF).
  */
 export interface SeasonSource {
   readonly name: string;

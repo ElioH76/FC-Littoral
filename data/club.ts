@@ -10,7 +10,7 @@ export const club = {
   slogan: "Notre club, notre fierté",
   subSlogan: "Ensemble, plus forts",
   description:
-    "Club de football amateur fondé en 2002, le F.C. Littoral réunit passionnés de tous âges autour de valeurs simples : le respect, la convivialité et le goût de l'effort. Du U15 aux Vétérans, en passant par notre équipe fanion des Seniors Après-Midi, nous faisons vivre le football au cœur de notre territoire.",
+    "Club de football amateur fondé en 2002, le F.C. Littoral réunit passionnés de tous âges autour de valeurs simples : le respect, la convivialité et le goût de l'effort. Du U13 aux Vétérans, en passant par notre équipe fanion des Seniors Après-Midi, nous faisons vivre le football au cœur de notre territoire.",
   values: [
     {
       title: "Esprit de club",
@@ -34,7 +34,7 @@ export const club = {
   // Histoire du club (paragraphes) — page "Le club"
   history: [
     "Né en 2002 de la passion de quelques bénévoles, le F.C. Littoral s'est construit saison après saison autour d'un noyau de joueurs et de familles fidèles.",
-    "D'abord une simple équipe de copains, le club a grandi pour accueillir aujourd'hui les jeunes (U15), une équipe fanion ambitieuse (Seniors Après-Midi) et une équipe Vétérans conviviale.",
+    "D'abord une simple équipe de copains, le club a grandi pour accueillir aujourd'hui les jeunes (U13), une équipe fanion ambitieuse (Seniors Après-Midi) et une équipe Vétérans conviviale.",
     "Plus de vingt ans plus tard, l'esprit reste le même : un club familial, ancré dans son territoire, où l'on vient autant pour le foot que pour les liens qui s'y créent.",
   ],
   // Bureau / dirigeants — page "Le club"

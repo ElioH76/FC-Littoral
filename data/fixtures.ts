@@ -12,11 +12,11 @@ export const fixturesByTeam: Record<TeamSlug, Fixture[]> = {
     { id: "s-4", date: "2024-06-09", home: "Étoile du Port", away: "F.C. Littoral", competition: "Championnat • J20", venue: "Stade du Port" },
     { id: "s-5", date: "2024-06-16", home: "F.C. Littoral", away: "AS Bord de Mer", competition: "Championnat • J21", venue: "Stade Municipal" },
   ],
-  u15: [
-    { id: "u-1", date: "2024-05-25", home: "F.C. Littoral", away: "AC Falaises", competition: "Championnat U15 • J12", homeScore: 4, awayScore: 1, venue: "Stade Municipal" },
-    { id: "u-2", date: "2024-05-18", home: "US Rivière", away: "F.C. Littoral", competition: "Championnat U15 • J11", homeScore: 1, awayScore: 3, venue: "Stade de la Rivière" },
-    { id: "u-3", date: "2024-06-01", home: "F.C. Littoral", away: "Olympique Vallée", competition: "Championnat U15 • J13", venue: "Stade Municipal" },
-    { id: "u-4", date: "2024-06-08", home: "US Marais", away: "F.C. Littoral", competition: "Championnat U15 • J14", venue: "Stade du Marais" },
+  u13: [
+    { id: "u-1", date: "2024-05-25", home: "F.C. Littoral", away: "AC Falaises", competition: "Championnat U13 • J12", homeScore: 4, awayScore: 1, venue: "Stade Municipal" },
+    { id: "u-2", date: "2024-05-18", home: "US Rivière", away: "F.C. Littoral", competition: "Championnat U13 • J11", homeScore: 1, awayScore: 3, venue: "Stade de la Rivière" },
+    { id: "u-3", date: "2024-06-01", home: "F.C. Littoral", away: "Olympique Vallée", competition: "Championnat U13 • J13", venue: "Stade Municipal" },
+    { id: "u-4", date: "2024-06-08", home: "US Marais", away: "F.C. Littoral", competition: "Championnat U13 • J14", venue: "Stade du Marais" },
   ],
   veterans: [
     { id: "v-1", date: "2024-05-24", home: "F.C. Littoral", away: "Anciens du Port", competition: "Match amical", homeScore: 3, awayScore: 3, venue: "Terrain annexe" },

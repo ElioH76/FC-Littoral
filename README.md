@@ -40,7 +40,7 @@ Tout le contenu est centralisé dans le dossier **`data/`** :
 | Fichier            | Contenu                                   |
 | ------------------ | ----------------------------------------- |
 | `data/club.ts`     | Nom, slogans, contact, réseaux, stats     |
-| `data/teams.ts`    | Les 3 équipes (U15, Seniors, Vétérans)    |
+| `data/teams.ts`    | Les 3 équipes (U13, Seniors, Vétérans)    |
 | `data/sponsors.ts` | Les partenaires                           |
 | `data/news.ts`     | Les actualités                            |
 | `data/standings.ts`| Classement (démo, futur temps réel)       |
@@ -73,16 +73,12 @@ Déposer le vrai logo dans `public/logo.png`, puis adapter `components/brand/Log
 
 Le site est conçu pour accueillir facilement les prochaines phases **sans refonte** :
 
-- **Données temps réel (classements / calendriers)** — *squelette déjà en place* :
-  - Les composants passent par `lib/data.ts` (`getStandings`, `getFixtures`, `getSeasonBoards`),
-    qui passe par la **couche de sources** `lib/sources/`.
-  - Source active définie dans **`lib/season-config.ts`** (`ACTIVE_SOURCE`) : `"mock"` aujourd'hui.
-  - Pour brancher la vraie donnée (API FFF/DOFA) :
-    1. remplir les ids de poule/club dans `teamSourceConfig` (`lib/season-config.ts`),
-    2. compléter les `fetch` + mappers dans `lib/sources/fff-dofa-source.ts`,
-    3. passer `ACTIVE_SOURCE = "fff-dofa"`.
-  - **Repli automatique** sur les données de démo si la source externe échoue → le site ne casse jamais.
-  - Aucun composant à modifier.
+- **Données temps réel (classements / calendriers)** — ✅ *branché sur l'API FFF (DOFA)* :
+  - Les composants passent par `lib/data.ts` → couche **`lib/sources/`** (source active dans `lib/season-config.ts`).
+  - `ACTIVE_SOURCE = "fff-dofa"` : données réelles via `api-dofa.fff.fr` (adaptateur `lib/sources/fff-dofa-source.ts`), revalidées 1×/jour.
+  - **Config par équipe** dans `lib/season-config.ts` → `{ clubId, category, teamNumber }` (clubId = cl_no DOFA, ex. 1030 = FC Rollevillais). L'adaptateur retrouve cp/phase/poule tout seul.
+  - **Repli automatique** sur les données de démo (`data/standingsByTeam`, `data/fixturesByTeam`) si l'API échoue ou si une équipe n'a pas de config.
+  - Pour repasser en démo : `ACTIVE_SOURCE = "mock"`. Aucun composant à modifier.
 - **Back-end actualités** : même principe — `getNews()` / `getArticle()` pourront
   pointer vers un CMS ou une base de données.
 - Les modèles `Standing`, `Fixture` et `TeamSeason` sont définis dans `types/`.

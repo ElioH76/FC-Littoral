@@ -20,7 +20,7 @@ export const standingsByTeam: Partial<Record<TeamSlug, Standing[]>> = {
     { rank: 9, team: "US Marais", played: 18, won: 3, drawn: 4, lost: 11, goalsFor: 16, goalsAgainst: 36, points: 13 },
     { rank: 10, team: "FC Estuaire", played: 18, won: 2, drawn: 4, lost: 12, goalsFor: 14, goalsAgainst: 42, points: 10 },
   ],
-  u15: [
+  u13: [
     { rank: 1, team: "F.C. Littoral", played: 12, won: 9, drawn: 2, lost: 1, goalsFor: 34, goalsAgainst: 12, points: 29 },
     { rank: 2, team: "Olympique Vallée", played: 12, won: 8, drawn: 2, lost: 2, goalsFor: 30, goalsAgainst: 15, points: 26 },
     { rank: 3, team: "AS Bord de Mer", played: 12, won: 7, drawn: 3, lost: 2, goalsFor: 28, goalsAgainst: 16, points: 24 },

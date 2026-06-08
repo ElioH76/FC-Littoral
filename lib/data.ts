@@ -150,6 +150,27 @@ export async function getFixtures(team: TeamSlug = "seniors"): Promise<Fixture[]
   );
 }
 
+/** Un match précis d'une équipe (par identifiant). */
+export async function getFixture(
+  team: TeamSlug,
+  id: string,
+): Promise<Fixture | undefined> {
+  return (await getFixtures(team)).find((f) => f.id === id);
+}
+
+/** Tous les matchs (toutes équipes) — pour la génération des pages match. */
+export async function getAllFixtureRefs(): Promise<
+  { slug: TeamSlug; id: string }[]
+> {
+  const all = await getTeams();
+  const lists = await Promise.all(
+    all.map(async (t) =>
+      (await getFixtures(t.slug)).map((f) => ({ slug: t.slug, id: f.id })),
+    ),
+  );
+  return lists.flat();
+}
+
 /** Sépare résultats passés et matchs à venir pour une équipe. */
 export async function getSplitFixtures(team: TeamSlug = "seniors"): Promise<{
   results: Fixture[];

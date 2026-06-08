@@ -4,7 +4,7 @@
  * Garder ces structures stables facilite le branchement d'une API plus tard.
  */
 
-export type TeamSlug = "u15" | "seniors" | "veterans";
+export type TeamSlug = "u13" | "seniors" | "veterans";
 
 export interface Player {
   name: string;
@@ -96,8 +96,13 @@ export interface Standing {
 export interface Fixture {
   id: string;
   date: string;
+  /** Heure du coup d'envoi, ex. "15H00" (optionnel). */
+  time?: string;
   home: string;
   away: string;
+  /** Logos (URL FFF ou /logo.png pour notre club). */
+  homeLogo?: string;
+  awayLogo?: string;
   competition: string;
   homeScore?: number;
   awayScore?: number;

@@ -9,7 +9,7 @@ import { JoinCTA } from "@/components/sections/JoinCTA";
 export const metadata: Metadata = {
   title: "Nos équipes",
   description:
-    "Découvrez les 3 équipes du F.C. Littoral : U15, Seniors Après-Midi (équipe fanion) et Vétérans. Présentation, entraînements et encadrement.",
+    "Découvrez les 3 équipes du F.C. Littoral : U13, Seniors Après-Midi (équipe fanion) et Vétérans. Présentation, entraînements et encadrement.",
 };
 
 export default async function TeamsPage() {

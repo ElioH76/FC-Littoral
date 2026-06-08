@@ -50,16 +50,16 @@ export const news: Article[] = [
     ],
   },
   {
-    slug: "tournoi-jeunes-u15",
-    title: "Belle performance des U15 au tournoi de printemps",
+    slug: "tournoi-jeunes-u13",
+    title: "Belle performance des U13 au tournoi de printemps",
     excerpt:
-      "Nos jeunes ont brillé par leur état d'esprit et leur jeu collectif lors du tournoi régional des U15.",
+      "Nos jeunes ont brillé par leur état d'esprit et leur jeu collectif lors du tournoi régional des U13.",
     date: "2024-05-12",
     category: "Jeunes",
-    cover: "/images/news-u15.jpg",
+    cover: "/images/news-u13.jpg",
     coverAlt: "Jeunes footballeurs lors d'un tournoi",
     content: [
-      "Le tournoi de printemps a été l'occasion pour nos U15 de montrer tous leurs progrès. Engagement, fair-play et beau jeu étaient au rendez-vous.",
+      "Le tournoi de printemps a été l'occasion pour nos U13 de montrer tous leurs progrès. Engagement, fair-play et beau jeu étaient au rendez-vous.",
       "Au-delà du résultat, c'est l'attitude exemplaire de nos jeunes qui a marqué les esprits. Un grand bravo aux joueurs et au staff éducatif.",
       "La formation reste au cœur du projet du F.C. Littoral : faire grandir nos talents dans le plaisir et le respect.",
     ],

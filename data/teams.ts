@@ -7,12 +7,12 @@ import type { Team } from "@/types";
  */
 export const teams: Team[] = [
   {
-    slug: "u15",
-    name: "U15",
-    shortName: "U15",
-    category: "Jeunes • Catégorie U15",
+    slug: "u13",
+    name: "U13",
+    shortName: "U13",
+    category: "Jeunes • Catégorie U13",
     description:
-      "Notre équipe U15 rassemble les jeunes pousses du club. L'objectif : apprendre, progresser et prendre du plaisir, tout en développant les fondamentaux techniques et l'esprit collectif.",
+      "Notre équipe U13 rassemble les jeunes pousses du club. L'objectif : apprendre, progresser et prendre du plaisir, tout en développant les fondamentaux techniques et l'esprit collectif.",
     highlight:
       "Une catégorie tournée vers la formation, où chaque joueur trouve sa place et grandit avec le club.",
     objectives: [
@@ -20,8 +20,8 @@ export const teams: Team[] = [
       "Développer l'intelligence de jeu",
       "Prendre du plaisir et progresser ensemble",
     ],
-    image: "/images/team-u15.jpg",
-    imageAlt: "Jeunes joueurs U15 à l'entraînement",
+    image: "/images/team-u13.jpg",
+    imageAlt: "Jeunes joueurs U13 à l'entraînement",
     trainings: [
       { day: "Mardi", time: "18h00 – 19h30", location: "Stade Municipal" },
       { day: "Jeudi", time: "18h00 – 19h30", location: "Stade Municipal" },

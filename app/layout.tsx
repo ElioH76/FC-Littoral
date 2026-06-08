@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "F.C. Littoral",
     "football amateur",
     "club de football",
-    "U15",
+    "U13",
     "seniors",
     "vétérans",
   ],

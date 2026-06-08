@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { CalendarDays, MapPin, PartyPopper, Trophy } from "lucide-react";
 
-import type { Fixture, Standing, TeamSeason } from "@/types";
+import type { Fixture, Standing, TeamSeason, TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { TeamCrest } from "@/components/match/TeamCrest";
 
 /**
- * Tableau de saison multi-équipes (onglets U15 / Seniors / Vétérans).
+ * Tableau de saison multi-équipes (onglets U13 / Seniors / Vétérans).
  * - `compact` : version réduite pour l'accueil (top 5 + quelques matchs).
  * - sinon : version complète pour la page /saison (avec ancres #classement / #calendrier).
  */
@@ -89,7 +91,7 @@ export function SeasonBoard({
           >
             {team.upcoming.length > 0 ? (
               (compact ? team.upcoming.slice(0, 3) : team.upcoming).map((f) => (
-                <FixtureRow key={f.id} fixture={f} clubName={clubName} />
+                <FixtureRow key={f.id} fixture={f} slug={team.slug} clubName={clubName} />
               ))
             ) : (
               <Empty>Aucun match à venir pour le moment.</Empty>
@@ -103,7 +105,7 @@ export function SeasonBoard({
           >
             {team.results.length > 0 ? (
               (compact ? team.results.slice(0, 2) : team.results).map((f) => (
-                <FixtureRow key={f.id} fixture={f} clubName={clubName} showScore />
+                <FixtureRow key={f.id} fixture={f} slug={team.slug} clubName={clubName} showScore />
               ))
             ) : (
               <Empty>Aucun résultat disponible.</Empty>
@@ -272,52 +274,61 @@ function Empty({ children }: { children: React.ReactNode }) {
 
 function FixtureRow({
   fixture,
+  slug,
   clubName,
   showScore = false,
 }: {
   fixture: Fixture;
+  slug: TeamSlug;
   clubName: string;
   showScore?: boolean;
 }) {
   const isClubHome = fixture.home === clubName;
   return (
-    <li className="px-5 py-4">
-      <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-        <span>{fixture.competition}</span>
-        <span>{formatDate(fixture.date)}</span>
-      </div>
-      <div className="mt-2 flex items-center justify-between gap-3">
-        <span
-          className={cn(
-            "flex-1 truncate text-sm",
-            isClubHome && "font-semibold text-ink",
-          )}
-        >
-          {fixture.home}
-        </span>
-        {showScore ? (
-          <span className="rounded-md bg-ink px-2.5 py-1 font-display text-sm text-white">
-            {fixture.homeScore} – {fixture.awayScore}
-          </span>
-        ) : (
-          <span className="rounded-md border px-2.5 py-1 font-display text-xs text-muted-foreground">
-            VS
-          </span>
-        )}
-        <span
-          className={cn(
-            "flex-1 truncate text-right text-sm",
-            !isClubHome && "font-semibold text-ink",
-          )}
-        >
-          {fixture.away}
-        </span>
-      </div>
-      {fixture.venue && (
-        <div className="mt-1.5 flex items-center gap-1 text-[11px] text-muted-foreground">
-          <MapPin className="h-3 w-3" /> {fixture.venue}
+    <li>
+      <Link
+        href={`/match/${slug}/${fixture.id}`}
+        className="block px-5 py-4 transition-colors hover:bg-muted/50"
+      >
+        <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+          <span>{fixture.competition}</span>
+          <span>{formatDate(fixture.date)}</span>
         </div>
-      )}
+        <div className="mt-2 flex items-center justify-between gap-3">
+          <span
+            className={cn(
+              "flex min-w-0 flex-1 items-center gap-2 text-sm",
+              isClubHome && "font-semibold text-ink",
+            )}
+          >
+            <TeamCrest src={fixture.homeLogo} name={fixture.home} size={22} className="shrink-0" />
+            <span className="truncate">{fixture.home}</span>
+          </span>
+          {showScore ? (
+            <span className="shrink-0 rounded-md bg-ink px-2.5 py-1 font-display text-sm text-white">
+              {fixture.homeScore} – {fixture.awayScore}
+            </span>
+          ) : (
+            <span className="shrink-0 rounded-md border px-2.5 py-1 font-display text-xs text-muted-foreground">
+              VS
+            </span>
+          )}
+          <span
+            className={cn(
+              "flex min-w-0 flex-1 items-center justify-end gap-2 text-right text-sm",
+              !isClubHome && "font-semibold text-ink",
+            )}
+          >
+            <span className="truncate">{fixture.away}</span>
+            <TeamCrest src={fixture.awayLogo} name={fixture.away} size={22} className="shrink-0" />
+          </span>
+        </div>
+        {fixture.venue && (
+          <div className="mt-1.5 flex items-center gap-1 text-[11px] text-muted-foreground">
+            <MapPin className="h-3 w-3" /> {fixture.venue}
+          </div>
+        )}
+      </Link>
     </li>
   );
 }
