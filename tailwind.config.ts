@@ -105,6 +105,16 @@ const config: Config = {
         "gold-grain":
           "radial-gradient(circle at 20% 20%, rgba(245,197,24,0.18), transparent 40%), radial-gradient(circle at 80% 0%, rgba(31,122,61,0.18), transparent 45%)",
       },
+      boxShadow: {
+        sm: "0 1px 2px 0 rgba(11,11,11,0.05)",
+        DEFAULT:
+          "0 1px 3px 0 rgba(11,11,11,0.08), 0 1px 2px -1px rgba(11,11,11,0.06)",
+        md: "0 6px 16px -4px rgba(11,11,11,0.10), 0 2px 6px -2px rgba(11,11,11,0.06)",
+        lg: "0 14px 32px -8px rgba(11,11,11,0.14), 0 6px 14px -8px rgba(11,11,11,0.08)",
+        xl: "0 26px 50px -14px rgba(11,11,11,0.18)",
+        "2xl": "0 36px 70px -18px rgba(11,11,11,0.22)",
+        gold: "0 10px 34px -8px rgba(245,197,24,0.40)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

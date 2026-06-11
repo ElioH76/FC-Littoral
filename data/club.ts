@@ -29,7 +29,7 @@ export const club = {
     { value: "2002", label: "Année de création" },
     { value: "3", label: "Équipes engagées" },
     { value: "120+", label: "Licenciés" },
-    { value: "1", label: "Stade municipal" },
+    { value: "Heuqueville", label: "Notre stade" },
   ],
   // Histoire du club (paragraphes) — page "Le club"
   history: [
@@ -48,13 +48,13 @@ export const club = {
   // Infos pratiques — page "Le club"
   pratique: [
     { label: "Permanence", value: "Mercredi & samedi, 10h – 12h (club-house)" },
-    { label: "Stade", value: "Stade Municipal, Avenue du Littoral" },
+    { label: "Stade", value: "Stade François Maillot, Heuqueville" },
     { label: "Saison", value: "Septembre à juin" },
   ],
   contact: {
     email: "contact@fclittoral.fr",
     phone: "06 12 34 56 78",
-    address: "Stade Municipal, Avenue du Littoral, 00000 Ville",
+    address: "Stade François Maillot, 76280 Heuqueville",
   },
   socials: {
     facebook: "https://facebook.com",

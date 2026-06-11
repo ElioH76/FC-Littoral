@@ -23,8 +23,8 @@ export const teams: Team[] = [
     image: "/images/team-u13.jpg",
     imageAlt: "Jeunes joueurs U13 à l'entraînement",
     trainings: [
-      { day: "Mardi", time: "18h00 – 19h30", location: "Stade Municipal" },
-      { day: "Jeudi", time: "18h00 – 19h30", location: "Stade Municipal" },
+      { day: "Mardi", time: "18h00 – 19h30", location: "Stade François Maillot" },
+      { day: "Jeudi", time: "18h00 – 19h30", location: "Stade François Maillot" },
     ],
     staff: [
       { name: "Karim Benali", role: "Éducateur principal" },
@@ -54,18 +54,17 @@ export const teams: Team[] = [
     objectives: [
       "Jouer le haut de tableau du championnat",
       "S'appuyer sur un collectif solide et discipliné",
-      "Faire du Stade Municipal une forteresse",
+      "Faire du Stade François Maillot une forteresse",
     ],
     image: "/images/team-seniors.jpg",
     imageAlt: "Équipe seniors du F.C. Littoral avant un match",
     trainings: [
-      { day: "Mercredi", time: "19h30 – 21h00", location: "Stade Municipal" },
-      { day: "Vendredi", time: "19h30 – 21h00", location: "Stade Municipal" },
+      { day: "Mardi", time: "19h00 – 21h00", location: "Stade François Maillot" },
+      { day: "Jeudi", time: "19h00 – 21h00", location: "Stade François Maillot" },
     ],
     staff: [
-      { name: "David Mercier", role: "Entraîneur principal" },
-      { name: "Antoine Faure", role: "Entraîneur adjoint" },
-      { name: "Sophie Renaud", role: "Préparatrice physique" },
+      { name: "Fabrice", role: "Coach" },
+      { name: "Vincent", role: "Coach" },
     ],
     players: [
       { name: "Vincent Malandain", number: 1, position: "Gardien", goals: 0, photo: "/players/vincent-malandain.png" },
@@ -105,7 +104,7 @@ export const teams: Team[] = [
     image: "/images/team-veterans.jpg",
     imageAlt: "Joueurs vétérans réunis sur le terrain",
     trainings: [
-      { day: "Vendredi", time: "20h00 – 21h30", location: "Stade Municipal" },
+      { day: "Vendredi", time: "20h00 – 21h30", location: "Stade François Maillot" },
       { day: "Dimanche", time: "10h00 (matchs)", location: "Terrain annexe" },
     ],
     staff: [

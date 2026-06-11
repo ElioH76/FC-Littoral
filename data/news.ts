@@ -37,7 +37,7 @@ export const news: Article[] = [
     slug: "victoire-derby-us-riviere",
     title: "Les Seniors s'imposent dans le derby face à l'US Rivière",
     excerpt:
-      "Portée par un Stade Municipal en fusion, l'équipe fanion a décroché une victoire précieuse dans le derby de la saison.",
+      "Porté par un Stade François Maillot en fusion, l'équipe fanion a décroché une victoire précieuse dans le derby de la saison.",
     date: "2024-05-26",
     category: "Compte-rendu",
     featured: true,

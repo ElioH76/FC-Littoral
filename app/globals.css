@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 40 30% 99%;
     --foreground: 0 0% 4%;
 
     --card: 0 0% 100%;
@@ -16,17 +16,17 @@
     --secondary: 140 60% 30%; /* vert sapin #1F7A3D */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 20% 96%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 40 24% 95%;
+    --muted-foreground: 0 0% 38%;
 
     --accent: 47 91% 53%;
     --accent-foreground: 0 0% 4%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 40 14% 90%;
+    --input: 40 14% 90%;
     --ring: 47 91% 53%;
 
-    --radius: 0.75rem;
+    --radius: 0.85rem;
   }
 }
 
@@ -35,9 +35,14 @@
     @apply border-border;
   }
 
+  html {
+    scrollbar-color: rgba(184, 142, 0, 0.5) transparent;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
+    font-feature-settings: "kern", "liga", "calt";
   }
 
   h1,
@@ -45,6 +50,11 @@
   h3,
   h4 {
     @apply font-display uppercase tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   /* Focus visible accessible et cohérent avec la marque */
@@ -54,6 +64,24 @@
 
   ::selection {
     @apply bg-gold text-ink;
+  }
+
+  /* Scrollbar discrète aux couleurs du club */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(11, 11, 11, 0.18);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(184, 142, 0, 0.7);
   }
 }
 
@@ -65,12 +93,72 @@
 
   /* Étiquette / eyebrow au-dessus des titres de section */
   .eyebrow {
-    @apply inline-flex items-center gap-2 font-display text-sm uppercase tracking-[0.2em] text-forest;
+    @apply inline-flex items-center gap-2 font-display text-sm uppercase tracking-[0.22em] text-forest;
   }
 
   /* Liseré doré décoratif */
   .gold-rule {
-    @apply h-1 w-16 rounded-full bg-gold;
+    @apply h-1 w-16 rounded-full;
+    background: linear-gradient(90deg, #f5c518, #b88e00);
+  }
+
+  /* Titre avec dégradé or (accents premium) */
+  .text-gradient-gold {
+    background: linear-gradient(170deg, #fbe187 0%, #f5c518 50%, #d4ab00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Kicker éditorial façon sites de clubs pros (// LABEL) */
+  .kicker {
+    @apply inline-flex items-center gap-2.5 font-display text-xs uppercase tracking-[0.3em] text-forest;
+  }
+  .kicker::before {
+    content: "//";
+    @apply font-display tracking-normal text-gold;
+  }
+  .kicker-light {
+    @apply text-white/75;
+  }
+
+  /* Étiquette inclinée (parallélogramme) — signature visuelle des clubs pros */
+  .clip-tag {
+    clip-path: polygon(0.5rem 0, 100% 0, calc(100% - 0.5rem) 100%, 0 100%);
+  }
+
+  /* Bloc sombre immersif au bord inférieur biseauté */
+  .edge-slant-b {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.75rem));
+  }
+
+  /* Mot filigrane géant en fond de section (contour) */
+  .watermark {
+    @apply pointer-events-none absolute select-none font-display uppercase leading-none;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(11, 11, 11, 0.05);
+  }
+  .watermark-light {
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.07);
+  }
+
+  /* Fines rayures diagonales pour panneaux d'accent (esprit maillot) */
+  .bg-pinstripe {
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgba(245, 197, 24, 0.05) 0,
+      rgba(245, 197, 24, 0.05) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+
+  /* Barre d'accent or qui se déploie au survol d'une carte */
+  .accent-bar {
+    @apply absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-600 transition-transform duration-300;
+  }
+  .group:hover .accent-bar {
+    @apply scale-x-100;
   }
 }
 
@@ -81,7 +169,6 @@
   }
 }
 
-/* Désactive le défilement fluide si l'utilisateur préfère moins d'animations */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

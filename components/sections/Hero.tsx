@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Target } from "lucide-react";
+import { ChevronDown, Target } from "lucide-react";
 
 import { club } from "@/data/club";
 import { getTopScorer } from "@/lib/data";
@@ -23,6 +23,12 @@ export async function Hero() {
       {/* Dégradés / poussière dorée façon visuels Instagram */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
       <div className="absolute inset-0 bg-gold-grain" aria-hidden />
+      <div className="absolute inset-0 bg-pinstripe opacity-40" aria-hidden />
+
+      {/* Étiquette verticale façon club pro */}
+      <span className="pointer-events-none absolute left-6 top-1/2 hidden -translate-y-1/2 -rotate-90 font-display text-xs uppercase tracking-[0.4em] text-white/40 xl:block">
+        Saison 2025 — 2026
+      </span>
 
       <div className="container relative flex min-h-[88vh] items-center py-20">
         <div className="grid w-full items-center gap-12 lg:grid-cols-2">
@@ -34,7 +40,7 @@ export async function Hero() {
             </span>
 
             <h1 className="reveal mt-4 text-5xl leading-[0.92] sm:text-6xl md:text-7xl">
-              F.C. <span className="text-gold">Littoral</span>
+              F.C. <span className="text-gradient-gold">Littoral</span>
               <span className="mt-2 block font-script text-3xl normal-case tracking-normal text-white/90 sm:text-4xl">
                 {club.subSlogan}
               </span>
@@ -63,6 +69,14 @@ export async function Hero() {
             </div>
           )}
         </div>
+      </div>
+
+      {/* Indice de défilement */}
+      <div className="pointer-events-none absolute bottom-28 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1.5 text-white/45 md:flex">
+        <span className="font-display text-[0.65rem] uppercase tracking-[0.3em]">
+          Découvrir
+        </span>
+        <ChevronDown className="h-4 w-4" />
       </div>
 
       {/* Bandeau stats en bas du hero */}

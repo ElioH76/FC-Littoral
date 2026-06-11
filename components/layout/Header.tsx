@@ -59,8 +59,9 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full text-white transition-all duration-300",
-        "bg-gradient-to-b from-forest-600 to-forest-700",
-        scrolled ? "shadow-xl shadow-black/30" : "shadow-md shadow-black/10",
+        scrolled
+          ? "bg-forest-700/85 shadow-xl shadow-black/40 backdrop-blur-md supports-[backdrop-filter]:bg-forest-700/75"
+          : "bg-gradient-to-b from-forest-600 to-forest-700 shadow-md shadow-black/10",
       )}
     >
       <div
@@ -77,7 +78,7 @@ export function Header() {
         >
           <Logo size={48} className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
           <span className="font-display text-lg uppercase leading-none tracking-tight md:text-xl">
-            F.C. <span className="text-gold">Littoral</span>
+            F.C. <span className="text-gradient-gold">Littoral</span>
           </span>
         </Link>
 

@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gold text-ink shadow-sm hover:bg-gold-300 active:scale-[0.98]",
+          "bg-gold text-ink shadow-sm hover:bg-gold-300 hover:shadow-gold active:scale-[0.98]",
         forest:
           "bg-forest text-white shadow-sm hover:bg-forest-400 active:scale-[0.98]",
         outline:

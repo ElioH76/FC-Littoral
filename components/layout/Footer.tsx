@@ -15,8 +15,21 @@ const nav = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-ink text-white/80">
-      <div className="container grid gap-10 py-14 md:grid-cols-4">
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-ink text-white/80">
+      {/* Accent or en tête de footer */}
+      <div
+        className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent"
+        aria-hidden
+      />
+      {/* Filigrane géant */}
+      <span
+        className="watermark watermark-light -bottom-6 left-1/2 -translate-x-1/2 text-[7rem] sm:text-[12rem] md:text-[16rem]"
+        aria-hidden
+      >
+        LITTORAL
+      </span>
+
+      <div className="container relative grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <Link href="/" className="flex items-center gap-3">
             <Logo size={56} />

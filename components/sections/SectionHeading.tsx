@@ -9,7 +9,7 @@ interface SectionHeadingProps {
   className?: string;
 }
 
-/** En-tête de section réutilisable : eyebrow + liseré + titre + description. */
+/** En-tête de section réutilisable : kicker éditorial + titre + description. */
 export function SectionHeading({
   eyebrow,
   title,
@@ -27,16 +27,11 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <span
-          className={cn("eyebrow", light && "text-gold")}
-        >
-          <span className="gold-rule !w-8" aria-hidden />
-          {eyebrow}
-        </span>
+        <span className={cn("kicker", light && "kicker-light")}>{eyebrow}</span>
       )}
       <h2
         className={cn(
-          "mt-3 text-3xl leading-[1.05] md:text-4xl lg:text-5xl",
+          "mt-4 text-[2rem] leading-[0.98] md:text-5xl lg:text-[3.25rem]",
           light ? "text-white" : "text-ink",
         )}
       >
@@ -45,7 +40,7 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            "mt-4 text-base leading-relaxed md:text-lg",
+            "mt-5 text-base leading-relaxed md:text-lg",
             light ? "text-white/70" : "text-muted-foreground",
           )}
         >
