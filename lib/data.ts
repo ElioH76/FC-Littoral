@@ -52,8 +52,30 @@ function withResolvedPhotos(team: Team): Team {
   };
 }
 
+/**
+ * Rang de catégorie (du plus senior au plus jeune) pour l'ordre d'affichage.
+ * Plus le nombre est élevé, plus la catégorie est « haute ».
+ */
+const CATEGORY_RANK: Record<TeamSlug, number> = {
+  seniors: 3,
+  veterans: 2,
+  u13: 1,
+};
+
+/**
+ * Ordre canonique d'affichage des équipes, appliqué partout où l'on liste
+ * « toutes les équipes » : l'équipe fanion TOUJOURS en premier, puis les
+ * autres par catégorie décroissante.
+ */
+function orderTeams(list: Team[]): Team[] {
+  return [...list].sort((a, b) => {
+    if (Boolean(a.flagship) !== Boolean(b.flagship)) return a.flagship ? -1 : 1;
+    return (CATEGORY_RANK[b.slug] ?? 0) - (CATEGORY_RANK[a.slug] ?? 0);
+  });
+}
+
 export async function getTeams(): Promise<Team[]> {
-  return teams.map(withResolvedPhotos);
+  return orderTeams(teams.map(withResolvedPhotos));
 }
 
 export async function getTeam(slug: TeamSlug): Promise<Team | undefined> {
