@@ -13,7 +13,9 @@
       "mcp__Claude_in_Chrome__navigate",
       "mcp__Claude_in_Chrome__read_network_requests",
       "mcp__Claude_in_Chrome__javascript_tool",
-      "PowerShell($env:CI=\"1\"; npx --yes create-expo-app@latest \"C:\\\\Users\\\\eliod\\\\Desktop\\\\APP-EQUIPE\\\\app\" --template default 2>&1 | Select-Object -Last 20)"
+      "PowerShell($env:CI=\"1\"; npx --yes create-expo-app@latest \"C:\\\\Users\\\\eliod\\\\Desktop\\\\APP-EQUIPE\\\\app\" --template default 2>&1 | Select-Object -Last 20)",
+      "Read(//c/Users/eliod/Desktop/APP-EQUIPE/app/**)",
+      "Bash(npx tsc *)"
     ]
   }
 }

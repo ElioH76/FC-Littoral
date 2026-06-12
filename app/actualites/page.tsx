@@ -34,7 +34,7 @@ export default async function NewsPage() {
           {featured && (
             <Link
               href={`/actualites/${featured.slug}`}
-              className="group grid overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:shadow-lg md:grid-cols-2"
+              className="group grid overflow-hidden rounded-2xl border border-white/10 bg-ink-800 transition-all hover:border-white/20 md:grid-cols-2"
             >
               <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto">
                 <Image
@@ -56,11 +56,11 @@ export default async function NewsPage() {
                 >
                   {formatDate(featured.date)}
                 </time>
-                <h2 className="mt-2 text-2xl leading-tight text-ink md:text-3xl">
+                <h2 className="mt-2 text-2xl leading-tight text-bone md:text-3xl">
                   {featured.title}
                 </h2>
-                <p className="mt-3 text-muted-foreground">{featured.excerpt}</p>
-                <span className="mt-6 inline-flex items-center gap-1 font-display text-sm uppercase tracking-wide text-forest transition-colors group-hover:text-gold-600">
+                <p className="mt-3 text-bone-dim">{featured.excerpt}</p>
+                <span className="mt-6 inline-flex items-center gap-1 font-heading text-sm font-extrabold uppercase tracking-wide text-gold transition-colors group-hover:text-gold-bright">
                   Lire l&apos;article
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>

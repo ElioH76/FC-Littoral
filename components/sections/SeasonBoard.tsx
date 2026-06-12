@@ -126,7 +126,7 @@ function StandingsTable({
   clubName: string;
   compact: boolean;
 }) {
-  const rows = compact ? standings.slice(0, 5) : standings;
+  const rows = standings;
   return (
     <div className="overflow-hidden rounded-2xl border bg-card shadow-sm">
       <div className="flex items-center gap-2 border-b bg-ink px-5 py-4 text-white">

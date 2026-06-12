@@ -12,10 +12,7 @@ export function JoinCTA() {
           <div className="absolute inset-0 bg-gold-grain opacity-60" aria-hidden />
           <div className="relative grid items-center gap-10 md:grid-cols-2">
             <div>
-              <span className="eyebrow text-gold">
-                <span className="gold-rule !w-8" aria-hidden />
-                Ensemble, plus forts
-              </span>
+              <span className="eyebrow">Ensemble, plus forts</span>
               <h2 className="mt-3 text-3xl text-white md:text-4xl lg:text-5xl">
                 Envie de rejoindre le club&nbsp;?
               </h2>

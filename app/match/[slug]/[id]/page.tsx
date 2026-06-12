@@ -121,6 +121,7 @@ export default async function MatchPage({
         </div>
       </section>
 
+      <div className="section-light">
       {/* Détails */}
       <section className="section">
         <div className="container max-w-3xl">
@@ -160,6 +161,7 @@ export default async function MatchPage({
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

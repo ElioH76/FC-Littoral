@@ -96,10 +96,10 @@ export default async function ArticlePage({ params }: Params) {
       {/* Contenu */}
       <div className="section">
         <div className="container max-w-3xl">
-          <p className="text-lg font-medium leading-relaxed text-ink">
+          <p className="text-lg font-medium leading-relaxed text-bone">
             {article.excerpt}
           </p>
-          <div className="mt-6 space-y-5 leading-relaxed text-ink/80">
+          <div className="mt-6 space-y-5 leading-relaxed text-bone-dim">
             {article.content.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
@@ -136,9 +136,9 @@ export default async function ArticlePage({ params }: Params) {
 
       {/* Articles liés */}
       {related.length > 0 && (
-        <section className="section bg-muted/40">
+        <section className="section border-t border-white/10 bg-ink-800">
           <div className="container">
-            <h2 className="text-2xl text-ink md:text-3xl">À lire aussi</h2>
+            <h2 className="text-2xl text-bone md:text-3xl">À lire aussi</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {related.slice(0, 3).map((a) => (
                 <NewsCard key={a.slug} article={a} />

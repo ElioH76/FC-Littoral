@@ -23,27 +23,29 @@ export default async function TeamsPage() {
         description="Du plus jeune au plus expérimenté, trois équipes font vivre les couleurs or et vert du F.C. Littoral."
       />
 
-      {/* Navigation rapide entre équipes */}
-      <nav
-        className="sticky top-16 z-30 border-b bg-background/95 backdrop-blur md:top-20"
-        aria-label="Navigation entre les équipes"
-      >
-        <div className="container flex gap-2 overflow-x-auto py-3">
-          {teams.map((team) => (
-            <Link
-              key={team.slug}
-              href={`#${team.slug}`}
-              className="whitespace-nowrap rounded-full border px-4 py-1.5 font-display text-sm uppercase tracking-wide text-ink/80 transition-colors hover:border-gold hover:text-forest"
-            >
-              {team.name}
-            </Link>
-          ))}
-        </div>
-      </nav>
+      <div className="section-light">
+        {/* Navigation rapide entre équipes */}
+        <nav
+          className="sticky top-16 z-30 border-b border-border bg-background/95 backdrop-blur md:top-20"
+          aria-label="Navigation entre les équipes"
+        >
+          <div className="container flex gap-2 overflow-x-auto py-3">
+            {teams.map((team) => (
+              <Link
+                key={team.slug}
+                href={`#${team.slug}`}
+                className="whitespace-nowrap rounded-full border border-border px-4 py-1.5 font-heading text-sm font-bold uppercase tracking-wide text-foreground/80 transition-colors hover:border-gold hover:text-forest"
+              >
+                {team.name}
+              </Link>
+            ))}
+          </div>
+        </nav>
 
-      {teams.map((team, i) => (
-        <TeamDetail key={team.slug} team={team} reverse={i % 2 === 1} />
-      ))}
+        {teams.map((team, i) => (
+          <TeamDetail key={team.slug} team={team} reverse={i % 2 === 1} />
+        ))}
+      </div>
 
       <JoinCTA />
     </>

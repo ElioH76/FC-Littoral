@@ -15,7 +15,7 @@ export async function SeasonPreview() {
   const boards = await getSeasonBoards();
 
   return (
-    <section className="section bg-muted/40">
+    <section className="section section-light border-y border-border">
       <div className="container">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
@@ -24,7 +24,7 @@ export async function SeasonPreview() {
             description="Toutes nos équipes, classements et résultats au même endroit."
           />
           <Badge variant="forest" className="mb-2 gap-1.5">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
             Bientôt en direct
           </Badge>
         </div>

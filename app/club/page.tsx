@@ -23,6 +23,7 @@ export default function ClubPage() {
         description="Une grande famille du football amateur, ancrée dans son territoire et fière de ses couleurs."
       />
 
+      <div className="section-light">
       {/* Histoire */}
       <section className="section">
         <div className="container grid items-center gap-12 lg:grid-cols-2">
@@ -129,6 +130,8 @@ export default function ClubPage() {
           </div>
         </div>
       </section>
+
+      </div>
 
       {/* Contact / rejoindre */}
       <JoinCTA />

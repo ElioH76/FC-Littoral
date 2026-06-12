@@ -7,7 +7,6 @@ import { ChevronDown, Menu, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/Logo";
-import { Button } from "@/components/ui/button";
 
 type NavItem = {
   href: string;
@@ -55,36 +54,33 @@ export function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  const linkBase =
+    "flex items-center gap-1.5 rounded-lg px-3.5 py-2.5 font-heading text-[0.82rem] font-bold uppercase tracking-wide transition-colors";
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full text-white transition-all duration-300",
-        scrolled
-          ? "bg-forest-700/85 shadow-xl shadow-black/40 backdrop-blur-md supports-[backdrop-filter]:bg-forest-700/75"
-          : "bg-gradient-to-b from-forest-600 to-forest-700 shadow-md shadow-black/10",
+        "sticky top-0 z-50 w-full text-bone backdrop-blur-xl transition-shadow duration-300",
+        "border-b border-white/10 bg-ink/75 supports-[backdrop-filter]:bg-ink/65",
+        scrolled && "shadow-lg shadow-black/40",
       )}
     >
-      <div
-        className={cn(
-          "container flex items-center justify-between transition-all duration-300",
-          scrolled ? "h-14 md:h-16" : "h-16 md:h-20",
-        )}
-      >
-        {/* Logo */}
+      <div className="container flex h-[68px] items-center gap-8 md:h-[74px]">
+        {/* Marque */}
         <Link
           href="/"
           className="flex items-center gap-3"
           onClick={() => setOpen(false)}
         >
-          <Logo size={48} className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.35)]" />
-          <span className="font-display text-lg uppercase leading-none tracking-tight md:text-xl">
-            F.C. <span className="text-gradient-gold">Littoral</span>
+          <Logo size={38} className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
+          <span className="font-heading text-base font-black uppercase tracking-wide">
+            F.C. <span className="text-gold">Littoral</span>
           </span>
         </Link>
 
         {/* Navigation desktop */}
         <nav
-          className="hidden items-center gap-1 lg:flex"
+          className="ml-auto hidden items-center gap-1 lg:flex"
           aria-label="Navigation principale"
         >
           {links.map((link) =>
@@ -93,22 +89,23 @@ export function Header() {
                 <Link
                   href={link.href}
                   className={cn(
-                    "relative flex items-center gap-1 px-3 py-2 font-display text-sm uppercase tracking-wide transition-colors",
-                    isActive(link.href) ? "text-gold" : "text-white hover:text-gold",
+                    linkBase,
+                    isActive(link.href)
+                      ? "text-gold-bright"
+                      : "text-bone hover:bg-white/5 hover:text-gold-bright",
                   )}
                 >
                   {link.label}
-                  <ChevronDown className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
-                  <NavUnderline active={isActive(link.href)} group />
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
                 </Link>
                 {/* Panneau déroulant */}
-                <div className="invisible absolute left-0 top-full pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="min-w-[240px] overflow-hidden rounded-xl border-t-2 border-gold bg-white p-2 text-ink shadow-2xl">
+                <div className="invisible absolute left-0 top-full pt-2.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="min-w-[230px] rounded-2xl border border-white/15 bg-ink-800 p-2 shadow-xl shadow-black/50">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-forest-50 hover:text-forest"
+                        className="block rounded-xl px-3.5 py-2.5 text-sm font-semibold text-bone-dim transition-colors hover:bg-gold/10 hover:text-gold-bright"
                       >
                         {child.label}
                       </Link>
@@ -121,46 +118,40 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "group/item relative px-3 py-2 font-display text-sm uppercase tracking-wide transition-colors",
-                  isActive(link.href) ? "text-gold" : "text-white hover:text-gold",
+                  linkBase,
+                  isActive(link.href)
+                    ? "text-gold-bright"
+                    : "text-bone hover:bg-white/5 hover:text-gold-bright",
                 )}
               >
                 {link.label}
-                <NavUnderline active={isActive(link.href)} />
               </Link>
             ),
           )}
-          <Button
-            asChild
-            size="sm"
-            className="ml-3 shadow-md transition-transform hover:scale-105"
+          <Link
+            href="/#rejoindre"
+            className="ml-2 rounded-lg bg-gold px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-ink transition-colors hover:bg-gold-bright"
           >
-            <Link href="/#rejoindre">Nous rejoindre</Link>
-          </Button>
+            Nous rejoindre
+          </Link>
         </nav>
 
         {/* Bouton menu mobile */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
+          className="ml-auto inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-bone transition-colors hover:border-gold hover:text-gold-bright lg:hidden"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
-
-      {/* Liseré or décoratif en bas du header */}
-      <div
-        className="h-0.5 w-full bg-gradient-to-r from-transparent via-gold to-transparent"
-        aria-hidden
-      />
 
       {/* Menu mobile */}
       {open && (
         <nav
-          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/10 bg-forest-700 lg:hidden"
+          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-white/10 bg-ink-800 lg:hidden"
           aria-label="Navigation mobile"
         >
           <div className="container flex flex-col gap-1 py-4">
@@ -170,10 +161,10 @@ export function Header() {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "block rounded-md px-4 py-3 font-display text-base uppercase tracking-wide transition-colors",
+                    "block rounded-lg px-4 py-3 font-heading text-base font-bold uppercase tracking-wide transition-colors",
                     isActive(link.href)
-                      ? "bg-white/10 text-gold"
-                      : "text-white/90 hover:bg-white/10 hover:text-white",
+                      ? "bg-white/5 text-gold-bright"
+                      : "text-bone hover:bg-white/5 hover:text-gold-bright",
                   )}
                 >
                   {link.label}
@@ -185,7 +176,7 @@ export function Header() {
                         key={child.href}
                         href={child.href}
                         onClick={() => setOpen(false)}
-                        className="rounded-md px-3 py-2 text-sm text-white/75 transition-colors hover:text-gold"
+                        className="rounded-md px-3 py-2 text-sm font-semibold text-bone-dim transition-colors hover:text-gold-bright"
                       >
                         {child.label}
                       </Link>
@@ -194,37 +185,16 @@ export function Header() {
                 )}
               </div>
             ))}
-            <Button asChild className="mt-2">
-              <Link href="/#rejoindre" onClick={() => setOpen(false)}>
-                Nous rejoindre
-              </Link>
-            </Button>
+            <Link
+              href="/#rejoindre"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-lg bg-gold px-4 py-3 text-center font-heading text-base font-extrabold uppercase tracking-wide text-ink"
+            >
+              Nous rejoindre
+            </Link>
           </div>
         </nav>
       )}
     </header>
-  );
-}
-
-/** Soulignement or animé sous un lien de navigation. */
-function NavUnderline({
-  active,
-  group = false,
-}: {
-  active: boolean;
-  group?: boolean;
-}) {
-  return (
-    <span
-      aria-hidden
-      className={cn(
-        "pointer-events-none absolute inset-x-3 bottom-1 h-0.5 origin-left rounded-full bg-gold transition-transform duration-300",
-        active
-          ? "scale-x-100"
-          : group
-            ? "scale-x-0 group-hover:scale-x-100"
-            : "scale-x-0 group-hover/item:scale-x-100",
-      )}
-    />
   );
 }

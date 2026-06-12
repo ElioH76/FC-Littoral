@@ -12,7 +12,7 @@ const config: Config = {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "1280px",
+        "2xl": "1240px",
       },
     },
     extend: {
@@ -42,40 +42,59 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Couleurs de marque FC Littoral
+        // ── Marque FC Littoral — refonte sombre cinématographique ──
+        ink: {
+          DEFAULT: "#070A07", // fond principal
+          800: "#0C120C", // surface (ink-2)
+          700: "#0B1E12", // field (vert très sombre)
+        },
+        bone: {
+          DEFAULT: "#F4F2EA", // texte clair principal
+          dim: "#B9BBB3", // texte clair atténué
+        },
+        paper: {
+          DEFAULT: "#F4F1E9", // sections claires
+          card: "#FFFFFF",
+        },
         gold: {
-          DEFAULT: "#F5C518",
-          50: "#FEF9E6",
-          100: "#FDF0BF",
-          200: "#FBE187",
-          300: "#F9D24F",
-          400: "#F5C518",
-          500: "#E0B000",
-          600: "#B88E00",
-          700: "#8F6E00",
+          DEFAULT: "#C9A227",
+          bright: "#EAC451",
+          50: "#FBF7E9",
+          100: "#F3E8C4",
+          200: "#E7D08A",
+          300: "#D9B856",
+          400: "#C9A227",
+          500: "#A9871C",
+          600: "#876A14",
+          700: "#5F4B0E",
         },
         forest: {
-          DEFAULT: "#1F7A3D",
-          50: "#E8F5ED",
-          100: "#C6E6D1",
-          200: "#8FCBA4",
-          300: "#52AE74",
-          400: "#2E8F51",
-          500: "#1F7A3D",
-          600: "#176030",
-          700: "#0F4521",
+          DEFAULT: "#16923F",
+          bright: "#2BD06B",
+          50: "#E7F7EC",
+          100: "#C2EBCF",
+          200: "#84D6A1",
+          300: "#43BD72",
+          400: "#1FA050",
+          500: "#16923F",
+          600: "#0F6E2F",
+          700: "#0A4D21",
         },
-        ink: "#0B0B0B",
+        violet: {
+          DEFAULT: "#7E3FF2",
+          bright: "#9D6BF7",
+        },
       },
       fontFamily: {
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        script: ["var(--font-script)", "cursive"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"], // Anton
+        heading: ["var(--font-heading)", "system-ui", "sans-serif"], // Archivo
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"], // Manrope
+        script: ["var(--font-script)", "cursive"], // Caveat
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       keyframes: {
         "accordion-down": {
@@ -87,7 +106,7 @@ const config: Config = {
           to: { height: "0" },
         },
         "fade-up": {
-          from: { opacity: "0", transform: "translateY(16px)" },
+          from: { opacity: "0", transform: "translateY(24px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
         "fade-in": {
@@ -98,22 +117,22 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.6s ease-out forwards",
+        "fade-up": "fade-up 0.7s cubic-bezier(.22,.61,.36,1) forwards",
         "fade-in": "fade-in 0.8s ease-out forwards",
       },
       backgroundImage: {
+        "kit-stripe":
+          "linear-gradient(100deg,#C9A227 0 33.3%,#16923F 33.3% 66.6%,#7E3FF2 66.6% 100%)",
         "gold-grain":
-          "radial-gradient(circle at 20% 20%, rgba(245,197,24,0.18), transparent 40%), radial-gradient(circle at 80% 0%, rgba(31,122,61,0.18), transparent 45%)",
+          "radial-gradient(circle at 20% 20%, rgba(201,162,39,0.16), transparent 42%), radial-gradient(circle at 80% 0%, rgba(22,146,63,0.18), transparent 46%)",
       },
       boxShadow: {
-        sm: "0 1px 2px 0 rgba(11,11,11,0.05)",
-        DEFAULT:
-          "0 1px 3px 0 rgba(11,11,11,0.08), 0 1px 2px -1px rgba(11,11,11,0.06)",
-        md: "0 6px 16px -4px rgba(11,11,11,0.10), 0 2px 6px -2px rgba(11,11,11,0.06)",
-        lg: "0 14px 32px -8px rgba(11,11,11,0.14), 0 6px 14px -8px rgba(11,11,11,0.08)",
-        xl: "0 26px 50px -14px rgba(11,11,11,0.18)",
-        "2xl": "0 36px 70px -18px rgba(11,11,11,0.22)",
-        gold: "0 10px 34px -8px rgba(245,197,24,0.40)",
+        sm: "0 1px 2px 0 rgba(0,0,0,0.30)",
+        DEFAULT: "0 2px 8px -2px rgba(0,0,0,0.45)",
+        md: "0 10px 24px -8px rgba(0,0,0,0.55)",
+        lg: "0 24px 60px -18px rgba(0,0,0,0.65)",
+        xl: "0 34px 70px -22px rgba(0,0,0,0.7)",
+        gold: "0 14px 40px -10px rgba(201,162,39,0.45)",
       },
     },
   },

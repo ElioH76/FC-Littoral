@@ -24,10 +24,10 @@ export default async function SaisonPage() {
       />
 
       {/* Bandeau d'information phase 2 */}
-      <div className="border-b bg-forest-50/60">
-        <div className="container flex flex-wrap items-center justify-center gap-3 py-3 text-center text-sm text-forest-700">
+      <div className="border-b border-white/10 bg-ink-800">
+        <div className="container flex flex-wrap items-center justify-center gap-3 py-3 text-center text-sm text-bone-dim">
           <Badge variant="forest" className="gap-1.5">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
             Bientôt en direct
           </Badge>
           <span>
@@ -37,7 +37,7 @@ export default async function SaisonPage() {
         </div>
       </div>
 
-      <section className="section">
+      <section className="section section-light">
         <div className="container">
           <SeasonBoard teams={boards} clubName={club.name} />
         </div>

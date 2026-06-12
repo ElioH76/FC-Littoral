@@ -32,6 +32,7 @@ export default async function SponsorsPage() {
         description="Sans nos partenaires, rien ne serait possible. Merci aux entreprises qui font vivre le club et le football amateur sur notre territoire."
       />
 
+      <div className="section-light">
       {/* Partenaire principal — bloc vedette */}
       {principal.length > 0 && (
         <section className="section">
@@ -88,6 +89,8 @@ export default async function SponsorsPage() {
           </div>
         </section>
       )}
+
+      </div>
 
       {/* Devenir partenaire */}
       <section className="bg-ink text-white">

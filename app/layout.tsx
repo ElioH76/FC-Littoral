@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Inter, Caveat } from "next/font/google";
+import { Anton, Archivo, Manrope, Caveat } from "next/font/google";
 
 import "./globals.css";
 import { club } from "@/data/club";
@@ -13,7 +13,14 @@ const display = Anton({
   display: "swap",
 });
 
-const sans = Inter({
+const heading = Archivo({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800", "900"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const sans = Manrope({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -63,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${display.variable} ${sans.variable} ${script.variable} scroll-smooth`}
+      className={`${display.variable} ${heading.variable} ${sans.variable} ${script.variable} scroll-smooth`}
     >
       <body className="flex min-h-screen flex-col">
         <Header />

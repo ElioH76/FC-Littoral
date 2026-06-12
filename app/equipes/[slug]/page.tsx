@@ -130,6 +130,7 @@ export default async function TeamPage({
         </div>
       </section>
 
+      <div className="section-light">
       {/* Détail en onglets (Classement · Calendrier · Stats · Effectif) */}
       <section className="section">
         <div className="container">
@@ -203,6 +204,7 @@ export default async function TeamPage({
           </Reveal>
         </div>
       </section>
+      </div>
 
       <JoinCTA />
     </>
