@@ -26,7 +26,8 @@
       "Bash(cp \"visuels instagram/Joueurs convoqués.png\" social/joueurs-convoques.png)",
       "Bash(cp \"visuels instagram/Full Time/Résultat.png\" social/resultat.png)",
       "Bash(cp \"visuels instagram/Homme du Match.png\" social/homme-du-match.png)",
-      "Bash(curl -s -o /dev/null -w \"accueil -> %{http_code}\\\\n\" http://localhost:3000/)"
+      "Bash(curl -s -o /dev/null -w \"accueil -> %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"/club -> %{http_code}\\\\n\" http://localhost:3000/club)"
     ]
   }
 }
