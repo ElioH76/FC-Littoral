@@ -13,8 +13,8 @@ export async function Hero() {
     <section className="relative isolate flex min-h-[clamp(600px,90vh,880px)] items-end overflow-hidden border-b border-white/10 bg-ink text-bone">
       {/* Image de fond */}
       <Image
-        src="/images/hero.jpg"
-        alt="Stade de football au coucher du soleil"
+        src="/images/photos/stade.jpeg"
+        alt="Le stade du F.C. Littoral à Heuqueville au coucher du soleil"
         fill
         priority
         sizes="100vw"

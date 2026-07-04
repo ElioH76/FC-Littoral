@@ -56,8 +56,8 @@ export const teams: Team[] = [
       "S'appuyer sur un collectif solide et discipliné",
       "Faire du Stade François Maillot une forteresse",
     ],
-    image: "/images/team-seniors.jpg",
-    imageAlt: "Équipe seniors du F.C. Littoral avant un match",
+    image: "/teams/groupe-02-06-26.jpeg",
+    imageAlt: "L'équipe Seniors du F.C. Littoral posant en maillots or et vert",
     trainings: [
       { day: "Mardi", time: "19h00 – 21h00", location: "Stade François Maillot" },
       { day: "Jeudi", time: "19h00 – 21h00", location: "Stade François Maillot" },

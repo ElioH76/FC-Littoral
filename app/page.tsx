@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight, Instagram, Users } from "lucide-react";
 
 import { club } from "@/data/club";
 import { getFlagshipTeam, getLatestNews, getSponsors } from "@/lib/data";
@@ -165,8 +165,8 @@ export default async function HomePage() {
           <div className="relative overflow-hidden rounded-3xl border border-border">
             <div className="relative aspect-[4/5]">
               <Image
-                src="/images/club-about.jpg"
-                alt="Joueurs du F.C. Littoral à l'entraînement"
+                src="/images/photos/vestaire.jpeg"
+                alt="Le club-house du F.C. Littoral, « depuis 2002 », aux couleurs or et vert"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -232,6 +232,57 @@ export default async function HomePage() {
 
       {/* ===== SAISON (clair, données réelles) ===== */}
       <SeasonPreview />
+
+      {/* ===== SUIVEZ-NOUS (feed Instagram, sombre) ===== */}
+      <section className="section border-t border-white/10 bg-ink">
+        <div className="container">
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading
+              eyebrow="Sur les réseaux"
+              title="Suivez-nous"
+            />
+            <a
+              href={club.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
+            >
+              <Instagram className="h-4 w-4" />
+              @fclittoral
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-6">
+            {[
+              { src: "/images/social/match-day.png", alt: "Affiche du match FC Littoral contre AS Cauville, journée 12" },
+              { src: "/images/social/joueurs-convoques.png", alt: "Le groupe convoqué pour le match contre AS Cauville" },
+              { src: "/images/social/resultat.png", alt: "Résultat : victoire du FC Littoral 3-1 contre AS Cauville" },
+              { src: "/images/social/homme-du-match.png", alt: "Homme du match : Elio Hardouin" },
+              { src: "/images/social/calendrier.png", alt: "Calendrier du FC Littoral pour le mois d'octobre" },
+              { src: "/images/social/sponsors.png", alt: "Un club, une famille — merci à nos partenaires" },
+            ].map((post) => (
+              <a
+                key={post.src}
+                href={club.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block aspect-square overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-gold"
+              >
+                <Image
+                  src={post.src}
+                  alt={post.alt}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute inset-0 flex items-center justify-center bg-ink/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <Instagram className="h-7 w-7 text-bone" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ===== PARTENAIRES (sombre) ===== */}
       <section className="section border-t border-white/10 bg-ink-800">

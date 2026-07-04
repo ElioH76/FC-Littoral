@@ -16,7 +16,17 @@
       "PowerShell($env:CI=\"1\"; npx --yes create-expo-app@latest \"C:\\\\Users\\\\eliod\\\\Desktop\\\\APP-EQUIPE\\\\app\" --template default 2>&1 | Select-Object -Last 20)",
       "Read(//c/Users/eliod/Desktop/APP-EQUIPE/app/**)",
       "Bash(npx tsc *)",
-      "PowerShell($p = Get-NetTCPConnection -LocalPort 8081 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess; if \\($p\\) { Write-Output \"Arrêt du process $p sur 8081\"; Stop-Process -Id $p -Force } else { Write-Output \"Aucun process sur 8081\" })"
+      "PowerShell($p = Get-NetTCPConnection -LocalPort 8081 -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess; if \\($p\\) { Write-Output \"Arrêt du process $p sur 8081\"; Stop-Process -Id $p -Force } else { Write-Output \"Aucun process sur 8081\" })",
+      "Bash(git -C \"C:/Users/eliod/Desktop/SITE FC LITTORAL\" rev-parse --show-toplevel)",
+      "Bash(git -C \"C:/Users/eliod/Desktop/SITE FC LITTORAL\" status --porcelain=v1)",
+      "Bash(git -C \"C:/Users/eliod/Desktop/SITE FC LITTORAL\" log --oneline -3)",
+      "Bash(git check-ignore *)",
+      "Bash(mkdir -p social)",
+      "Bash(cp \"visuels instagram/Next Match/Match Day.png\" social/match-day.png)",
+      "Bash(cp \"visuels instagram/Joueurs convoqués.png\" social/joueurs-convoques.png)",
+      "Bash(cp \"visuels instagram/Full Time/Résultat.png\" social/resultat.png)",
+      "Bash(cp \"visuels instagram/Homme du Match.png\" social/homme-du-match.png)",
+      "Bash(curl -s -o /dev/null -w \"accueil -> %{http_code}\\\\n\" http://localhost:3000/)"
     ]
   }
 }

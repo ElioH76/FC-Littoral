@@ -41,8 +41,8 @@ export const news: Article[] = [
     date: "2024-05-26",
     category: "Compte-rendu",
     featured: true,
-    cover: "/images/news-derby.jpg",
-    coverAlt: "Joueurs célébrant un but au stade",
+    cover: "/teams/groupe-02-06-26.jpeg",
+    coverAlt: "L'équipe Seniors du F.C. Littoral en maillots or et vert",
     content: [
       "Devant un public venu en nombre, les Seniors Après-Midi ont livré une prestation pleine de caractère pour s'imposer dans le derby face à l'US Rivière.",
       "Solide défensivement et appliquée dans le jeu, l'équipe fanion a su faire la différence en seconde période grâce à un collectif soudé et une envie de fer.",
@@ -71,8 +71,8 @@ export const news: Article[] = [
       "Football plaisir et troisième mi-temps mémorable : retour sur la belle saison de nos Vétérans.",
     date: "2024-04-28",
     category: "Vie du club",
-    cover: "/images/news-veterans.jpg",
-    coverAlt: "Ambiance conviviale autour du club",
+    cover: "/images/photos/banc-de-touche.jpeg",
+    coverAlt: "Les bancs de touche du F.C. Littoral au coucher du soleil",
     content: [
       "Nos Vétérans ont bouclé leur saison comme ils l'aiment : avec le sourire, l'esprit d'équipe et une troisième mi-temps à la hauteur.",
       "Au F.C. Littoral, le football loisir est une institution. Merci à tous nos vétérans pour leur fidélité et leur bonne humeur.",
@@ -86,8 +86,8 @@ export const news: Article[] = [
       "Rejoignez l'aventure ! Le F.C. Littoral a besoin de vous pour faire vivre le club au quotidien.",
     date: "2024-04-10",
     category: "Vie du club",
-    cover: "/images/news-benevoles.jpg",
-    coverAlt: "Bénévoles d'un club de football",
+    cover: "/images/photos/vestaire.jpeg",
+    coverAlt: "Le club-house du F.C. Littoral, « depuis 2002 »",
     content: [
       "Un club amateur, c'est avant tout une équipe de bénévoles passionnés. Pour la saison à venir, le F.C. Littoral recherche des bonnes volontés.",
       "Encadrement, organisation des matchs, buvette, communication : il y a une place pour chacun, selon vos envies et votre disponibilité.",

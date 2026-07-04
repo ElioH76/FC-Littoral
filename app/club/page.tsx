@@ -51,8 +51,8 @@ export default function ClubPage() {
           <Reveal direction="left">
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
               <Image
-                src="/images/team-seniors.jpg"
-                alt="L'équipe du F.C. Littoral"
+                src="/teams/groupe-02-06-26.jpeg"
+                alt="L'équipe du F.C. Littoral au grand complet"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

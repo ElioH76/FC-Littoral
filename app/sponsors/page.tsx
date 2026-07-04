@@ -32,6 +32,26 @@ export default async function SponsorsPage() {
         description="Sans nos partenaires, rien ne serait possible. Merci aux entreprises qui font vivre le club et le football amateur sur notre territoire."
       />
 
+      {/* Banderole au stade */}
+      <div className="border-b border-white/10 bg-ink">
+        <div className="container py-10 md:py-14">
+          <figure className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10">
+            <div className="relative aspect-[16/9]">
+              <Image
+                src="/images/photos/banderole-sponsor-mk19.jpeg"
+                alt="La banderole F.C. Littoral × MAK Sport au bord du terrain"
+                fill
+                sizes="(max-width: 1024px) 100vw, 56rem"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/90 to-transparent px-6 py-5 font-heading text-sm font-bold uppercase tracking-wide text-bone">
+              Nos partenaires affichés fièrement au bord du terrain
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
       <div className="section-light">
       {/* Partenaire principal — bloc vedette */}
       {principal.length > 0 && (
