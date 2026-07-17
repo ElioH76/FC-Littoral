@@ -10,6 +10,7 @@ const nav = [
   { href: "/equipes", label: "Nos équipes" },
   { href: "/saison", label: "Saison" },
   { href: "/actualites", label: "Actualités" },
+  { href: "/boutique", label: "Boutique" },
   { href: "/sponsors", label: "Partenaires" },
 ];
 

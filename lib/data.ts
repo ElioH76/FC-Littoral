@@ -20,6 +20,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { news } from "@/data/news";
+import { products } from "@/data/products";
 import { sponsors } from "@/data/sponsors";
 import { teams } from "@/data/teams";
 import { resolveFixtures, resolveStandings } from "@/lib/sources";
@@ -27,6 +28,7 @@ import type {
   Article,
   Fixture,
   Player,
+  Product,
   Sponsor,
   Standing,
   Team,
@@ -155,6 +157,16 @@ export async function getSponsors(): Promise<Sponsor[]> {
 
 export async function getMainSponsors(): Promise<Sponsor[]> {
   return sponsors.filter((s) => s.tier === "principal" || s.tier === "officiel");
+}
+
+/* ----------------------------- BOUTIQUE ---------------------------- */
+
+export async function getProducts(): Promise<Product[]> {
+  return products;
+}
+
+export async function getProduct(slug: string): Promise<Product | undefined> {
+  return products.find((p) => p.slug === slug);
 }
 
 /* ----------------------------- PHASE 2 ----------------------------- */

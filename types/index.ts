@@ -77,6 +77,56 @@ export interface Article {
 }
 
 /* ------------------------------------------------------------------ */
+/* BOUTIQUE                                                           */
+/* ------------------------------------------------------------------ */
+
+export type ProductCategory = "Maillots" | "Textile" | "Accessoires";
+
+export interface Product {
+  slug: string;
+  name: string;
+  category: ProductCategory;
+  description: string;
+  image: string;
+  imageAlt: string;
+  /** Prix TTC en euros. `null` = tarif à confirmer au club. */
+  price: number | null;
+  /** Tailles proposées. Tableau vide = taille unique. */
+  sizes: string[];
+  /** Propose la personnalisation par initiales (flocage). */
+  flocage: boolean;
+  /** Mis en avant en tête de boutique. */
+  featured?: boolean;
+}
+
+/** Une ligne de commande = un exemplaire configuré (taille + initiales). */
+export interface OrderLine {
+  slug: string;
+  name: string;
+  size: string;
+  /** Initiales de flocage (optionnel). */
+  initials: string;
+}
+
+export interface OrderCustomer {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  /** Équipe / catégorie (optionnel). */
+  team?: string;
+  /** Remarque libre (optionnel). */
+  note?: string;
+}
+
+export interface Order {
+  items: OrderLine[];
+  customer: OrderCustomer;
+  /** ISO datetime côté client. */
+  submittedAt: string;
+}
+
+/* ------------------------------------------------------------------ */
 /* Modèles prévus pour la PHASE 2 (API temps réel) — non utilisés     */
 /* aujourd'hui, mais définis ici pour stabiliser le contrat de données.*/
 /* ------------------------------------------------------------------ */

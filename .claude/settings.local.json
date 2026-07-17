@@ -27,7 +27,30 @@
       "Bash(cp \"visuels instagram/Full Time/Résultat.png\" social/resultat.png)",
       "Bash(cp \"visuels instagram/Homme du Match.png\" social/homme-du-match.png)",
       "Bash(curl -s -o /dev/null -w \"accueil -> %{http_code}\\\\n\" http://localhost:3000/)",
-      "Bash(curl -s -o /dev/null -w \"/club -> %{http_code}\\\\n\" http://localhost:3000/club)"
+      "Bash(curl -s -o /dev/null -w \"/club -> %{http_code}\\\\n\" http://localhost:3000/club)",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__video_models_list",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__account_balance",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__simulate_cost",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__creations_request_upload",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__creations_finalize_upload",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__video_generate",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__creations_show",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__creations_wait",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__video_concatenate",
+      "mcp__23a3283c-3c56-4000-b327-da125eefe3c8__audio_music_generate",
+      "Read(//c/Users/eliod/Desktop/FC LITTORAL/DA INSTAGRAM/maillots/Kit FC Littoral/**)",
+      "Read(//c/Users/eliod/Desktop/FC LITTORAL/DA INSTAGRAM/maillots/**)",
+      "Bash(node -e \"try{require.resolve\\('sharp'\\);console.log\\('sharp: OK'\\)}catch\\(e\\){console.log\\('sharp: ABSENT'\\)}\")",
+      "Bash(magick -version)",
+      "Bash(convert -version)",
+      "Bash(ffmpeg -version)",
+      "Bash(npm install *)",
+      "Bash(node \"C:/Users/eliod/AppData/Local/Temp/claude/C--Users-eliod-Desktop-SITE-FC-LITTORAL/fe60edf7-6bc3-455e-98f4-0fc89aa8be03/scratchpad/optimize-boutique.mjs\")",
+      "Bash(node _optimize-boutique.mjs)",
+      "Bash(rm _optimize-boutique.mjs)",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -o /dev/null -w \"boutique -> %{http_code}\\\\n\" \"http://localhost:3000/boutique\")",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -X POST \"http://localhost:3000/api/order\" -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"maillot-domicile\",\"name\":\"Maillot domicile\",\"size\":\"L\",\"initials\":\"EH\"}],\"customer\":{\"firstName\":\"Elio\",\"lastName\":\"Hardouin\",\"phone\":\"0612345678\",\"email\":\"\"},\"submittedAt\":\"2026-07-17T12:00:00Z\"}' -w \"\\\\n-> %{http_code}\\\\n\")",
+      "Bash(npm run *)"
     ]
   }
 }

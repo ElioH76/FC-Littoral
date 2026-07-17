@@ -36,6 +36,7 @@ const links: NavItem[] = [
     ],
   },
   { href: "/actualites", label: "Actualités" },
+  { href: "/boutique", label: "Boutique" },
   { href: "/sponsors", label: "Partenaires" },
 ];
 
