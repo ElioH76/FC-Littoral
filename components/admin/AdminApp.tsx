@@ -17,6 +17,22 @@ import { Button } from "@/components/ui/button";
 
 type Phase = "loading" | "login" | "ready";
 
+/** Formate la date renvoyée par le Sheet en français lisible. */
+function formatDate(raw: string): string {
+  const d = new Date(raw);
+  if (Number.isNaN(d.getTime())) return raw;
+  const date = d.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+  const time = d.toLocaleTimeString("fr-FR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  return `${date} à ${time}`;
+}
+
 const STATUS_STYLES: Record<OrderStatus, string> = {
   "En attente": "bg-amber-500/15 text-amber-300 border-amber-500/30",
   Commandée: "bg-sky-500/15 text-sky-300 border-sky-500/30",
@@ -190,7 +206,7 @@ function OrderCard({
             {order.firstName} {order.lastName}
           </div>
           <div className="mt-0.5 text-xs text-bone-dim">
-            {order.date} · #{order.orderId}
+            {formatDate(order.date)} · #{order.orderId}
           </div>
         </div>
         <span
