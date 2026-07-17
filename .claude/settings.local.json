@@ -50,7 +50,21 @@
       "Bash(rm _optimize-boutique.mjs)",
       "Bash(MSYS_NO_PATHCONV=1 curl -s -o /dev/null -w \"boutique -> %{http_code}\\\\n\" \"http://localhost:3000/boutique\")",
       "Bash(MSYS_NO_PATHCONV=1 curl -s -X POST \"http://localhost:3000/api/order\" -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"maillot-domicile\",\"name\":\"Maillot domicile\",\"size\":\"L\",\"initials\":\"EH\"}],\"customer\":{\"firstName\":\"Elio\",\"lastName\":\"Hardouin\",\"phone\":\"0612345678\",\"email\":\"\"},\"submittedAt\":\"2026-07-17T12:00:00Z\"}' -w \"\\\\n-> %{http_code}\\\\n\")",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -L -o /dev/null -w \"code final: %{http_code}\\\\nURL finale: %{url_effective}\\\\nredirections: %{num_redirects}\\\\n\" -X POST \"https://script.google.com/macros/s/AKfycbyQ-j-l9ChDJ8LgLw1_rsqulvRDW_ktkg5LUeIDBZ4/dev\" -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"test\",\"name\":\"Test\",\"size\":\"L\",\"initials\":\"EH\"}],\"customer\":{\"firstName\":\"Test\",\"lastName\":\"Debug\",\"phone\":\"0600000000\"}}')",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -L -w \"\\\\n---\\\\ncode final: %{http_code}\\\\nredirections: %{num_redirects}\\\\n\" -X POST \"https://script.google.com/macros/s/AKfycbwn8vBa0UH-Q3ZfvidKarjy_rHkyHVDnJlhR9S5MF2I97LcyI7iuml2xho8lmng6uvY/exec\" -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"maillot-domicile\",\"name\":\"Maillot domicile\",\"size\":\"L\",\"initials\":\"EH\"},{\"slug\":\"casquette\",\"name\":\"Casquette\",\"size\":\"Taille unique\",\"initials\":\"\"}],\"customer\":{\"firstName\":\"Test\",\"lastName\":\"CLAUDE\",\"phone\":\"0600000000\",\"email\":\"test@example.com\",\"team\":\"Seniors\",\"note\":\"Commande de test automatique - ignore\"}}')",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -L -w \"\\\\n---\\\\ncode final: %{http_code}\\\\n\" \"https://script.google.com/macros/s/AKfycbwn8vBa0UH-Q3ZfvidKarjy_rHkyHVDnJlhR9S5MF2I97LcyI7iuml2xho8lmng6uvY/exec\")",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -L --post302 --post301 -w \"\\\\n---\\\\ncode final: %{http_code}\\\\n\" -X POST \"https://script.google.com/macros/s/AKfycbwn8vBa0UH-Q3ZfvidKarjy_rHkyHVDnJlhR9S5MF2I97LcyI7iuml2xho8lmng6uvY/exec\" -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"maillot-domicile\",\"name\":\"Maillot domicile\",\"size\":\"M\",\"initials\":\"CC\"},{\"slug\":\"casquette\",\"name\":\"Casquette\",\"size\":\"Taille unique\",\"initials\":\"\"}],\"customer\":{\"firstName\":\"Test\",\"lastName\":\"CLAUDE-2\",\"phone\":\"0600000000\",\"email\":\"test@example.com\",\"team\":\"Seniors\",\"note\":\"Test automatique - a supprimer\"}}')",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -i -o - -X POST \"https://script.google.com/macros/s/AKfycbwn8vBa0UH-Q3ZfvidKarjy_rHkyHVDnJlhR9S5MF2I97LcyI7iuml2xho8lmng6uvY/exec\" -H \"Content-Type: application/json\" -d '{\"items\":[{\"slug\":\"casquette\",\"name\":\"Casquette\",\"size\":\"Taille unique\",\"initials\":\"\"}],\"customer\":{\"firstName\":\"Ping\",\"lastName\":\"CLAUDE-3\",\"phone\":\"0600000000\"}}')",
+      "Bash(node -e ' *)",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/api/admin/orders)",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -o /dev/null -w \"%{http_code}\\\\n\" -X POST http://localhost:3000/api/admin/login -H \"Content-Type: application/json\" -d '{\"password\":\"wrong\"}')",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -c cookies.txt -o /dev/null -w \"%{http_code}\\\\n\" -X POST http://localhost:3000/api/admin/login -H \"Content-Type: application/json\" -d '{\"password\":\"test1234\"}')",
+      "Bash(MSYS_NO_PATHCONV=1 curl -s -b cookies.txt -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/api/admin/orders)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git commit -q -m ' *)"
     ]
   }
 }
