@@ -20,8 +20,9 @@ type Phase = "loading" | "login" | "ready";
 const STATUS_STYLES: Record<OrderStatus, string> = {
   "En attente": "bg-amber-500/15 text-amber-300 border-amber-500/30",
   Commandée: "bg-sky-500/15 text-sky-300 border-sky-500/30",
+  Reçu: "bg-violet-500/15 text-violet-300 border-violet-500/30",
   "En attente de paiement": "bg-orange-500/15 text-orange-300 border-orange-500/30",
-  "Payée / récupérée": "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
+  Payée: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
   Annulée: "bg-red-500/15 text-red-300 border-red-500/30",
 };
 

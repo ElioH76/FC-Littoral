@@ -130,8 +130,9 @@ export interface Order {
 export const ORDER_STATUSES = [
   "En attente",
   "Commandée",
+  "Reçu",
   "En attente de paiement",
-  "Payée / récupérée",
+  "Payée",
   "Annulée",
 ] as const;
 

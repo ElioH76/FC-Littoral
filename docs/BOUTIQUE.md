@@ -8,7 +8,7 @@ commande est transmise à un script Google (Apps Script) qui :
 - expose la liste des commandes et la mise à jour des statuts à la **page /admin**.
 
 Tu passes les commandes groupées une fois par mois, et tu suis leur statut
-(En attente → Commandée → En attente de paiement → Payée / récupérée → Annulée)
+(En attente → Commandée → Reçu → En attente de paiement → Payée → Annulée)
 depuis l'espace admin du site (ou directement dans le Sheet).
 
 ---
