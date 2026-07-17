@@ -126,6 +126,31 @@ export interface Order {
   submittedAt: string;
 }
 
+/** Statuts de suivi d'une commande (côté admin). Le 1er est le défaut. */
+export const ORDER_STATUSES = [
+  "En attente",
+  "Commandée",
+  "En attente de paiement",
+  "Payée / récupérée",
+  "Annulée",
+] as const;
+
+export type OrderStatus = (typeof ORDER_STATUSES)[number];
+
+/** Une commande telle que renvoyée à l'admin (agrégée depuis le Sheet). */
+export interface AdminOrder {
+  orderId: string;
+  date: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  team: string;
+  note: string;
+  status: OrderStatus;
+  items: { name: string; size: string; initials: string }[];
+}
+
 /* ------------------------------------------------------------------ */
 /* Modèles prévus pour la PHASE 2 (API temps réel) — non utilisés     */
 /* aujourd'hui, mais définis ici pour stabiliser le contrat de données.*/

@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       const res = await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order),
+        body: JSON.stringify({ ...order, token: process.env.ORDER_WEBHOOK_TOKEN ?? "" }),
       });
       if (!res.ok) throw new Error(`webhook ${res.status}`);
     } catch (e) {

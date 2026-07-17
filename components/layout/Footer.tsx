@@ -101,8 +101,15 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-6 text-xs md:flex-row">
-          <p>
+          <p className="flex items-center gap-2">
             © {new Date().getFullYear()} {club.fullName}. Tous droits réservés.
+            <Link
+              href="/admin"
+              className="text-bone-dim/40 transition-colors hover:text-gold"
+              aria-label="Espace admin"
+            >
+              · Admin
+            </Link>
           </p>
           <p className="font-heading font-extrabold uppercase tracking-[0.08em] text-gold">
             {club.slogan} · {club.subSlogan}
