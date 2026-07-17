@@ -42,9 +42,20 @@ export async function POST(req: Request) {
       const res = await fetch(webhook, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        redirect: "follow",
         body: JSON.stringify({ ...order, token: process.env.ORDER_WEBHOOK_TOKEN ?? "" }),
       });
       if (!res.ok) throw new Error(`webhook ${res.status}`);
+      // Le script Apps Script répond toujours HTTP 200 : on doit vérifier le
+      // corps pour distinguer un vrai succès d'un refus (ex. token invalide).
+      const text = await res.text();
+      let data: { ok?: boolean; error?: string };
+      try {
+        data = JSON.parse(text) as { ok?: boolean; error?: string };
+      } catch {
+        throw new Error("réponse inattendue du webhook (pas du JSON)");
+      }
+      if (!data.ok) throw new Error(`webhook refusé: ${data.error ?? "inconnu"}`);
     } catch (e) {
       console.error("[commande boutique] échec du webhook:", e);
       return NextResponse.json(
