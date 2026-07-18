@@ -134,14 +134,19 @@ export function Header() {
           >
             Nous rejoindre
           </Link>
+        </nav>
+
+        {/* Boutique — isolée, tout à droite de la barre */}
+        <div className="hidden items-center gap-4 lg:flex">
+          <span className="h-7 w-px bg-white/15" aria-hidden />
           <Link
             href="/boutique"
-            className="inline-flex items-center gap-2 rounded-lg bg-forest px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-bone transition-colors hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-lg bg-forest px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-bone shadow-sm transition-colors hover:brightness-110"
           >
             <ShoppingBag className="h-4 w-4 text-gold" />
             Boutique
           </Link>
-        </nav>
+        </div>
 
         {/* Bouton menu mobile */}
         <button
