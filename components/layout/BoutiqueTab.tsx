@@ -18,12 +18,10 @@ export function BoutiqueTab() {
     <Link
       href="/boutique"
       aria-label="Accéder à la boutique du club"
-      className="group fixed right-0 top-1/2 z-40 flex -translate-y-1/2 flex-col items-center gap-2.5 rounded-l-2xl border border-r-0 border-gold/40 bg-forest py-4 pl-3 pr-2.5 text-bone shadow-xl shadow-black/40 transition-[padding,filter] duration-200 hover:pr-4 hover:brightness-110 focus-visible:pr-4"
+      className="group fixed right-0 top-1/2 z-40 flex -translate-y-1/2 items-center gap-2 rounded-l-xl bg-gold py-3 pl-4 pr-4 font-heading text-sm font-extrabold uppercase tracking-wide text-ink shadow-xl shadow-black/40 transition-[padding,background-color] duration-200 hover:bg-gold-bright hover:pl-6 focus-visible:pl-6"
     >
-      <ShoppingBag className="h-5 w-5 shrink-0 text-gold transition-transform duration-200 group-hover:scale-110" />
-      <span className="font-heading text-xs font-extrabold uppercase tracking-[0.25em] [writing-mode:vertical-rl] rotate-180">
-        Boutique
-      </span>
+      <ShoppingBag className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:scale-110" />
+      Boutique
     </Link>
   );
 }
