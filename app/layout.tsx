@@ -5,6 +5,7 @@ import "./globals.css";
 import { club } from "@/data/club";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { BoutiqueTab } from "@/components/layout/BoutiqueTab";
 
 const display = Anton({
   subsets: ["latin"],
@@ -76,6 +77,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <BoutiqueTab />
       </body>
     </html>
   );
