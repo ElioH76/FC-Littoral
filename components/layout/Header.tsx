@@ -134,6 +134,13 @@ export function Header() {
           >
             Nous rejoindre
           </Link>
+          <Link
+            href="/boutique"
+            className="inline-flex items-center gap-2 rounded-lg bg-forest px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-bone transition-colors hover:brightness-110"
+          >
+            <ShoppingBag className="h-4 w-4 text-gold" />
+            Boutique
+          </Link>
         </nav>
 
         {/* Bouton menu mobile */}
