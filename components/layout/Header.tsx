@@ -130,7 +130,7 @@ export function Header() {
           )}
           <Link
             href="/#rejoindre"
-            className="ml-2 rounded-lg bg-gold px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-ink transition-colors hover:bg-gold-bright"
+            className="ml-2 rounded-lg bg-forest px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-bone transition-colors hover:brightness-110"
           >
             Nous rejoindre
           </Link>
@@ -141,9 +141,9 @@ export function Header() {
           <span className="h-7 w-px bg-white/15" aria-hidden />
           <Link
             href="/boutique"
-            className="inline-flex items-center gap-2 rounded-lg bg-forest px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-bone shadow-sm transition-colors hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-lg bg-gold px-4 py-2.5 font-heading text-[0.82rem] font-extrabold uppercase tracking-wide text-ink shadow-sm transition-colors hover:bg-gold-bright"
           >
-            <ShoppingBag className="h-4 w-4 text-gold" />
+            <ShoppingBag className="h-4 w-4" />
             Boutique
           </Link>
         </div>
@@ -200,15 +200,15 @@ export function Header() {
             <Link
               href="/boutique"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-forest px-4 py-3 text-center font-heading text-base font-extrabold uppercase tracking-wide text-bone"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-4 py-3 text-center font-heading text-base font-extrabold uppercase tracking-wide text-ink"
             >
-              <ShoppingBag className="h-5 w-5 text-gold" />
+              <ShoppingBag className="h-5 w-5" />
               Boutique
             </Link>
             <Link
               href="/#rejoindre"
               onClick={() => setOpen(false)}
-              className="rounded-lg bg-gold px-4 py-3 text-center font-heading text-base font-extrabold uppercase tracking-wide text-ink"
+              className="rounded-lg bg-forest px-4 py-3 text-center font-heading text-base font-extrabold uppercase tracking-wide text-bone"
             >
               Nous rejoindre
             </Link>
