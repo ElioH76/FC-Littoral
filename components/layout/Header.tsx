@@ -65,7 +65,7 @@ export function Header() {
         scrolled && "shadow-lg shadow-black/40",
       )}
     >
-      <div className="container flex h-[68px] items-center gap-8 md:h-[74px]">
+      <div className="flex h-[68px] items-center gap-6 px-4 sm:px-6 lg:px-8 md:h-[74px]">
         {/* Marque */}
         <Link
           href="/"
