@@ -86,25 +86,43 @@ export function ProductsAdmin() {
     setIsNew(false);
   }
 
+  const SAVE_ERROR =
+    "Enregistrement impossible. Vérifie que Vercel Blob est activé (avec le token read-write) et que le site a été redéployé.";
+
   async function toggleActive(p: Product) {
+    const previous = products;
     const updated = { ...p, active: p.active === false };
     setProducts((prev) => prev.map((x) => (x.slug === p.slug ? updated : x)));
-    await fetch("/api/admin/products", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ product: updated }),
-    }).catch(() => load());
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/products", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ product: updated }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setProducts(previous); // annule le changement optimiste
+      setError(SAVE_ERROR);
+    }
   }
 
   async function remove(p: Product) {
     if (!confirm(`Supprimer « ${p.name} » ? Cette action est définitive.`)) return;
+    const previous = products;
     setProducts((prev) => prev.filter((x) => x.slug !== p.slug));
-    const res = await fetch("/api/admin/products", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug: p.slug }),
-    });
-    if (!res.ok) load();
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/products", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: p.slug }),
+      });
+      if (!res.ok) throw new Error();
+    } catch {
+      setProducts(previous);
+      setError(SAVE_ERROR);
+    }
   }
 
   async function onSaved(saved: Product[]) {
