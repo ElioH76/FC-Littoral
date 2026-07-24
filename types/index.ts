@@ -97,6 +97,10 @@ export interface Product {
   flocage: boolean;
   /** Mis en avant en tête de boutique. */
   featured?: boolean;
+  /** Produit visible en boutique. `undefined` = actif (compat ancien format). */
+  active?: boolean;
+  /** Ordre d'affichage (croissant). */
+  order?: number;
 }
 
 /** Une ligne de commande = un exemplaire configuré (taille + initiales). */

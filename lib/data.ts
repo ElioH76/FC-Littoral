@@ -20,7 +20,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { news } from "@/data/news";
-import { products } from "@/data/products";
+import { getActiveProducts, getAllProducts } from "@/lib/products-store";
 import { sponsors } from "@/data/sponsors";
 import { teams } from "@/data/teams";
 import { resolveFixtures, resolveStandings } from "@/lib/sources";
@@ -162,11 +162,11 @@ export async function getMainSponsors(): Promise<Sponsor[]> {
 /* ----------------------------- BOUTIQUE ---------------------------- */
 
 export async function getProducts(): Promise<Product[]> {
-  return products;
+  return getActiveProducts();
 }
 
 export async function getProduct(slug: string): Promise<Product | undefined> {
-  return products.find((p) => p.slug === slug);
+  return (await getAllProducts()).find((p) => p.slug === slug);
 }
 
 /* ----------------------------- PHASE 2 ----------------------------- */

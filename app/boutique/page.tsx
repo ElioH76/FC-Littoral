@@ -11,6 +11,10 @@ export const metadata: Metadata = {
     "La boutique officielle du F.C. Littoral : maillots, textile et accessoires aux couleurs du club. Commande en ligne, règlement au club.",
 };
 
+// Le catalogue peut être modifié à chaud depuis l'admin (stockage Blob) :
+// on rend la page à la demande pour toujours refléter l'état courant.
+export const dynamic = "force-dynamic";
+
 export default async function BoutiquePage() {
   const products = await getProducts();
 

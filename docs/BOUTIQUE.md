@@ -165,8 +165,26 @@ En local : copie `.env.example` en `.env.local` et renseigne les 3 valeurs.
 
 ---
 
-## 5. Remplir le catalogue
+## 5. Gérer les produits (admin)
 
-Dans **`data/products.ts`** : `price` (€, `null` = « à confirmer »), `sizes`
-(`[]` = taille unique), `flocage` (`true` = personnalisation initiales). Pour
-changer une photo : remplace le fichier dans `public/boutique/` (même nom).
+Onglet **« Produits »** dans l'admin (`/admin/produits`) : ajouter, modifier,
+**activer/désactiver**, supprimer, mettre en avant, changer prix/tailles/photo.
+
+**Stockage :** le catalogue vit dans un fichier `products.json` sur **Vercel Blob**
+(et les photos uploadées y sont hébergées aussi). Tant que Blob n'est pas activé,
+la boutique utilise le catalogue statique `data/products.ts` (repli) — le site
+fonctionne donc quand même, mais l'admin ne peut pas **enregistrer**.
+
+### Activer Vercel Blob (une seule fois)
+
+1. Vercel → ton projet → onglet **Storage** → **Create Database** → **Blob** →
+   nomme-le → **Create**. Vercel ajoute automatiquement la variable
+   `BLOB_READ_WRITE_TOKEN` au projet.
+2. **Redeploy** le site (pour qu'il prenne la variable).
+3. (Optionnel, dev local) récupère la variable : `vercel env pull .env.local`,
+   ou copie `BLOB_READ_WRITE_TOKEN` dans ton `.env.local`.
+
+Ensuite, dans **/admin → Produits**, le premier enregistrement recopie les 9
+produits actuels dans Blob ; à partir de là, tout se gère depuis l'admin.
+
+> `data/products.ts` reste le **catalogue de secours** (si Blob est vide/indispo).
