@@ -92,7 +92,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, products: all });
   } catch (e) {
     console.error("[admin] échec écriture produits:", e);
-    return NextResponse.json({ ok: false, error: "write_failed" }, { status: 502 });
+    return NextResponse.json(
+      { ok: false, error: "write_failed", detail: e instanceof Error ? e.message : String(e) },
+      { status: 502 },
+    );
   }
 }
 
@@ -115,6 +118,9 @@ export async function DELETE(req: Request) {
     return NextResponse.json({ ok: true, products: next });
   } catch (e) {
     console.error("[admin] échec suppression produit:", e);
-    return NextResponse.json({ ok: false, error: "delete_failed" }, { status: 502 });
+    return NextResponse.json(
+      { ok: false, error: "delete_failed", detail: e instanceof Error ? e.message : String(e) },
+      { status: 502 },
+    );
   }
 }

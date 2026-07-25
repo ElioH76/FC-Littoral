@@ -100,10 +100,13 @@ export function ProductsAdmin() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ product: updated }),
       });
-      if (!res.ok) throw new Error();
-    } catch {
+      if (!res.ok) {
+        const d = (await res.json().catch(() => ({}))) as { detail?: string };
+        throw new Error(d.detail || "");
+      }
+    } catch (e) {
       setProducts(previous); // annule le changement optimiste
-      setError(SAVE_ERROR);
+      setError(SAVE_ERROR + (e instanceof Error && e.message ? ` — ${e.message}` : ""));
     }
   }
 
@@ -118,10 +121,13 @@ export function ProductsAdmin() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ slug: p.slug }),
       });
-      if (!res.ok) throw new Error();
-    } catch {
+      if (!res.ok) {
+        const d = (await res.json().catch(() => ({}))) as { detail?: string };
+        throw new Error(d.detail || "");
+      }
+    } catch (e) {
       setProducts(previous);
-      setError(SAVE_ERROR);
+      setError(SAVE_ERROR + (e instanceof Error && e.message ? ` — ${e.message}` : ""));
     }
   }
 
@@ -272,12 +278,17 @@ function ProductEditor({
       const form = new FormData();
       form.append("file", file);
       const res = await fetch("/api/admin/upload", { method: "POST", body: form });
-      const data = (await res.json()) as { ok: boolean; url?: string; error?: string };
+      const data = (await res.json()) as {
+        ok: boolean;
+        url?: string;
+        error?: string;
+        detail?: string;
+      };
       if (!res.ok || !data.ok || !data.url) {
         setErr(
-          data.error === "blob_not_configured"
+          (data.error === "blob_not_configured"
             ? "Stockage d'images non activé (Vercel Blob). Voir la doc."
-            : "Échec de l'upload de l'image.",
+            : "Échec de l'upload de l'image.") + (data.detail ? ` — ${data.detail}` : ""),
         );
         return;
       }
@@ -316,12 +327,17 @@ function ProductEditor({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ product: payload }),
       });
-      const data = (await res.json()) as { ok: boolean; products?: Product[]; error?: string };
+      const data = (await res.json()) as {
+        ok: boolean;
+        products?: Product[];
+        error?: string;
+        detail?: string;
+      };
       if (!res.ok || !data.ok) {
         setErr(
-          data.error === "write_failed"
+          (data.error === "write_failed"
             ? "Enregistrement impossible (Vercel Blob non activé ?)."
-            : "Enregistrement impossible.",
+            : "Enregistrement impossible.") + (data.detail ? ` — ${data.detail}` : ""),
         );
         return;
       }
