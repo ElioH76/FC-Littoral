@@ -1,35 +1,53 @@
-import { list, put } from "@vercel/blob";
+import { del, list, put } from "@vercel/blob";
 
 import { products as seed } from "@/data/products";
 import type { Product } from "@/types";
 
 /**
- * Stockage des produits de la boutique.
+ * Stockage des produits de la boutique sur Vercel Blob.
  *
- * - Source de vérité : un fichier `products.json` sur Vercel Blob (modifiable
- *   à chaud depuis l'admin).
- * - Repli : le catalogue statique `data/products.ts` tant que Blob n'est pas
- *   configuré (variable `BLOB_READ_WRITE_TOKEN` absente) ou vide.
- *   → le site fonctionne donc AVANT même l'activation de Blob.
+ * ⚠️ Cache CDN : un blob écrit à un chemin FIXE (overwrite) peut être renvoyé
+ * périmé par le CDN après modification. Pour l'éviter, chaque enregistrement
+ * écrit un fichier **versionné** (`catalog/<timestamp>.json`, URL neuve donc
+ * jamais en cache) et la lecture prend systématiquement le plus récent ; les
+ * anciennes versions sont supprimées.
+ *
+ * Repli : le catalogue statique `data/products.ts` tant que Blob n'est pas
+ * configuré (`BLOB_READ_WRITE_TOKEN` absent) ou vide.
  */
 
-const BLOB_PATH = "products.json";
+const DIR = "catalog/";
+const LEGACY_PATH = "products.json"; // ancien emplacement (chemin fixe) — migration
 
 function blobConfigured(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
-/** Lit le catalogue depuis Blob, ou `null` si indisponible. */
+async function fetchJson(url: string): Promise<Product[] | null> {
+  // paramètre unique = anti-cache supplémentaire.
+  const res = await fetch(`${url}?ts=${Date.now()}`, { cache: "no-store" });
+  if (!res.ok) return null;
+  const data = (await res.json()) as unknown;
+  return Array.isArray(data) ? (data as Product[]) : null;
+}
+
+/** Lit le catalogue depuis Blob (version la plus récente), ou `null`. */
 async function readStore(): Promise<Product[] | null> {
   if (!blobConfigured()) return null;
   try {
-    const { blobs } = await list({ prefix: BLOB_PATH, limit: 1 });
-    const found = blobs.find((b) => b.pathname === BLOB_PATH);
-    if (!found) return null;
-    const res = await fetch(found.url, { cache: "no-store" });
-    if (!res.ok) return null;
-    const data = (await res.json()) as Product[];
-    return Array.isArray(data) ? data : null;
+    // 1) fichiers versionnés — on prend le plus récent
+    const { blobs } = await list({ prefix: DIR });
+    if (blobs.length > 0) {
+      const latest = blobs.reduce((a, b) =>
+        new Date(a.uploadedAt).getTime() >= new Date(b.uploadedAt).getTime() ? a : b,
+      );
+      return await fetchJson(latest.url);
+    }
+    // 2) migration : ancien fichier à chemin fixe
+    const legacy = await list({ prefix: LEGACY_PATH, limit: 1 });
+    const found = legacy.blobs.find((b) => b.pathname === LEGACY_PATH);
+    if (found) return await fetchJson(found.url);
+    return null;
   } catch {
     return null;
   }
@@ -55,18 +73,30 @@ export async function isStoreInitialized(): Promise<boolean> {
   return (await readStore()) !== null;
 }
 
-/** Écrit l'intégralité du catalogue sur Blob. */
+/** Écrit une nouvelle version du catalogue et purge les anciennes. */
 export async function saveProducts(all: Product[]): Promise<void> {
   if (!blobConfigured()) {
     throw new Error("BLOB_READ_WRITE_TOKEN manquant");
   }
-  await put(BLOB_PATH, JSON.stringify(all, null, 2), {
+  const { url } = await put(`${DIR}${Date.now()}.json`, JSON.stringify(all, null, 2), {
     access: "public",
     contentType: "application/json",
-    addRandomSuffix: false,
-    allowOverwrite: true,
+    addRandomSuffix: true,
     cacheControlMaxAge: 0,
   });
+
+  // Purge : anciennes versions + éventuel ancien fichier legacy.
+  try {
+    const { blobs } = await list({ prefix: DIR });
+    const toDelete = blobs.filter((b) => b.url !== url).map((b) => b.url);
+    const legacy = await list({ prefix: LEGACY_PATH, limit: 1 });
+    for (const b of legacy.blobs) {
+      if (b.pathname === LEGACY_PATH) toDelete.push(b.url);
+    }
+    if (toDelete.length > 0) await del(toDelete);
+  } catch {
+    // purge best-effort : sans conséquence sur l'écriture réussie.
+  }
 }
 
 /** Le seed statique (pour initialiser le store la première fois). */
