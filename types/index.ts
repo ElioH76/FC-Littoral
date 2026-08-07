@@ -4,7 +4,7 @@
  * Garder ces structures stables facilite le branchement d'une API plus tard.
  */
 
-export type TeamSlug = "u13" | "seniors" | "veterans";
+export type TeamSlug = "u13" | "seniors";
 
 export interface Player {
   name: string;

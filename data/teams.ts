@@ -1,7 +1,7 @@
 import type { Team } from "@/types";
 
 /**
- * Les 3 équipes du club.
+ * Les équipes du club (U13 + Seniors Après-Midi).
  * 👉 Pour modifier une équipe : éditer l'objet correspondant.
  * Les photos pointent vers des images de démonstration (à remplacer par les vraies).
  */
@@ -85,40 +85,6 @@ export const teams: Team[] = [
       { name: "Valentin Joly", number: 16, position: "Milieu", goals: 7, photo: "/players/val-joly.png" },
       { name: "William Tassel", number: 17, position: "Défenseur central", goals: 2, photo: "/players/william-tassel.png" },
       { name: "Mathis Hardouin", number: 18, position: "Milieu offensif", goals: 15, photo: "/players/mathis-hardouin.png" },
-    ],
-  },
-  {
-    slug: "veterans",
-    name: "Vétérans",
-    shortName: "Vétérans",
-    category: "Loisir • Vétérans",
-    description:
-      "Le plaisir avant tout ! Nos Vétérans se retrouvent chaque semaine pour entretenir la forme, partager de bons moments et prolonger la passion du ballon rond dans une ambiance détendue.",
-    highlight:
-      "Football plaisir, troisième mi-temps garantie : l'esprit club dans toute sa convivialité.",
-    objectives: [
-      "Garder la forme et le plaisir de jouer",
-      "Cultiver la convivialité et l'amitié",
-      "Représenter le club dans les tournois loisir",
-    ],
-    image: "/images/team-veterans.jpg",
-    imageAlt: "Joueurs vétérans réunis sur le terrain",
-    trainings: [
-      { day: "Vendredi", time: "20h00 – 21h30", location: "Stade François Maillot" },
-      { day: "Dimanche", time: "10h00 (matchs)", location: "Terrain annexe" },
-    ],
-    staff: [
-      { name: "Patrick Lemoine", role: "Référent équipe" },
-      { name: "Gérard Faure", role: "Capitaine" },
-    ],
-    players: [
-      { name: "Christophe Garnier", position: "Gardien" },
-      { name: "Olivier Roussel", position: "Défenseur" },
-      { name: "Pascal Moreau", position: "Défenseur" },
-      { name: "Stéphane Dubreuil", position: "Milieu" },
-      { name: "Franck Vidal", position: "Milieu" },
-      { name: "Laurent Chevalier", position: "Attaquant" },
-      { name: "Didier Aubert", position: "Attaquant" },
     ],
   },
 ];

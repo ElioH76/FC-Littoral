@@ -4,8 +4,6 @@ import type { Standing, TeamSlug } from "@/types";
  * Classements de DÉMONSTRATION (données fictives), par équipe.
  * 👉 PHASE 2 : seront remplacés par les données temps réel d'une API foot
  *    via `getStandings(team)` dans `lib/data.ts` (aucun composant à modifier).
- *
- * Les Vétérans (loisir) n'ont pas de classement officiel → pas d'entrée ici.
  */
 export const standingsByTeam: Partial<Record<TeamSlug, Standing[]>> = {
   seniors: [

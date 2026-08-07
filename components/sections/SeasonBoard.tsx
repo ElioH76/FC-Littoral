@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { TeamCrest } from "@/components/match/TeamCrest";
 
 /**
- * Tableau de saison multi-équipes (onglets U13 / Seniors / Vétérans).
+ * Tableau de saison multi-équipes (onglets U13 / Seniors).
  * - `compact` : version réduite pour l'accueil (top 5 + quelques matchs).
  * - sinon : version complète pour la page /saison (avec ancres #classement / #calendrier).
  */

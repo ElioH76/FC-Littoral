@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     "club de football",
     "U13",
     "seniors",
-    "vétérans",
   ],
   openGraph: {
     title: `${club.name} — ${club.slogan}`,

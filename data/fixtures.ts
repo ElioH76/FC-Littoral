@@ -18,9 +18,4 @@ export const fixturesByTeam: Record<TeamSlug, Fixture[]> = {
     { id: "u-3", date: "2024-06-01", home: "F.C. Littoral", away: "Olympique Vallée", competition: "Championnat U13 • J13", venue: "Stade François Maillot" },
     { id: "u-4", date: "2024-06-08", home: "US Marais", away: "F.C. Littoral", competition: "Championnat U13 • J14", venue: "Stade du Marais" },
   ],
-  veterans: [
-    { id: "v-1", date: "2024-05-24", home: "F.C. Littoral", away: "Anciens du Port", competition: "Match amical", homeScore: 3, awayScore: 3, venue: "Terrain annexe" },
-    { id: "v-2", date: "2024-06-07", home: "Vétérans Vallée", away: "F.C. Littoral", competition: "Match amical", venue: "Stade de la Vallée" },
-    { id: "v-3", date: "2024-06-21", home: "F.C. Littoral", away: "AS Bord de Mer Vét.", competition: "Tournoi loisir", venue: "Stade François Maillot" },
-  ],
 };

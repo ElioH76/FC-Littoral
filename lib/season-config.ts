@@ -19,13 +19,11 @@ export const ACTIVE_SOURCE: "mock" | "fff-dofa" = "fff-dofa";
  *   teamNumber = numéro de l'équipe dans la catégorie.
  *
  * F.C. du Littoral (affiliation 549990, cl_no DOFA 100405) :
- *   - U13 n°3       → « U13 DEPARTEMENTAL 4 »          (données réelles)
- *   - Vétérans = SEM n°1 → « SENIORS VÉTÉRANS D1 CRITÉRIUM » (données réelles)
- *   - Seniors Après-Midi : création de la saison prochaine, pas encore à la FFF
- *     → pas de config → repli sur les données de démo.
+ *   - U13 n°3            → « U13 DEPARTEMENTAL 4 »   (données réelles)
+ *   - Seniors Après-Midi = SEM n°2 → équipe fanion    (données réelles)
+ *     cf. epreuves.fff.fr → 2026_100405_SEM_2
  */
 export const teamSourceConfig: Record<TeamSlug, TeamSourceConfig> = {
   u13: { clubId: 100405, category: "U13", teamNumber: 3 },
-  seniors: {},
-  veterans: { clubId: 100405, category: "SEM", teamNumber: 1 },
+  seniors: { clubId: 100405, category: "SEM", teamNumber: 2 },
 };

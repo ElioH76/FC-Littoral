@@ -65,21 +65,6 @@ export const news: Article[] = [
     ],
   },
   {
-    slug: "troisieme-mi-temps-veterans",
-    title: "Les Vétérans clôturent la saison en toute convivialité",
-    excerpt:
-      "Football plaisir et troisième mi-temps mémorable : retour sur la belle saison de nos Vétérans.",
-    date: "2024-04-28",
-    category: "Vie du club",
-    cover: "/images/photos/banc-de-touche.jpeg",
-    coverAlt: "Les bancs de touche du F.C. Littoral au coucher du soleil",
-    content: [
-      "Nos Vétérans ont bouclé leur saison comme ils l'aiment : avec le sourire, l'esprit d'équipe et une troisième mi-temps à la hauteur.",
-      "Au F.C. Littoral, le football loisir est une institution. Merci à tous nos vétérans pour leur fidélité et leur bonne humeur.",
-      "Rendez-vous la saison prochaine pour de nouvelles aventures et toujours plus de convivialité.",
-    ],
-  },
-  {
     slug: "appel-benevoles-saison",
     title: "Le club recherche des bénévoles pour la nouvelle saison",
     excerpt:

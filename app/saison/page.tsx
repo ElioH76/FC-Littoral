@@ -9,7 +9,7 @@ import { SeasonBoard } from "@/components/sections/SeasonBoard";
 export const metadata: Metadata = {
   title: "Saison — Classements & calendriers",
   description:
-    "Classements, calendriers et résultats de toutes les équipes du F.C. Littoral : U13, Seniors Après-Midi et Vétérans.",
+    "Classements, calendriers et résultats des équipes du F.C. Littoral : U13 et Seniors Après-Midi.",
 };
 
 export default async function SaisonPage() {

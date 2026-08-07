@@ -40,7 +40,7 @@ Tout le contenu est centralisé dans le dossier **`data/`** :
 | Fichier            | Contenu                                   |
 | ------------------ | ----------------------------------------- |
 | `data/club.ts`     | Nom, slogans, contact, réseaux, stats     |
-| `data/teams.ts`    | Les 3 équipes (U13, Seniors, Vétérans)    |
+| `data/teams.ts`    | Les équipes du club (U13, Seniors)        |
 | `data/sponsors.ts` | Les partenaires                           |
 | `data/news.ts`     | Les actualités                            |
 | `data/standings.ts`| Classement (démo, futur temps réel)       |

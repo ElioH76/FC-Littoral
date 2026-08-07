@@ -60,7 +60,6 @@ function withResolvedPhotos(team: Team): Team {
  */
 const CATEGORY_RANK: Record<TeamSlug, number> = {
   seniors: 3,
-  veterans: 2,
   u13: 1,
 };
 
