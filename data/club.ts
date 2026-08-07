@@ -58,7 +58,7 @@ export const club = {
   },
   socials: {
     facebook: "https://www.facebook.com/fclittoral",
-    instagram: "https://www.instagram.com/fclittoral",
+    instagram: "https://www.instagram.com/fc_littoral/",
     youtube: "https://youtube.com",
   },
 } as const;

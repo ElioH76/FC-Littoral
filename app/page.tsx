@@ -10,6 +10,7 @@ import { KitStripe } from "@/components/sections/KitStripe";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { NewsCard } from "@/components/cards/NewsCard";
 import { SeasonPreview } from "@/components/sections/SeasonPreview";
+import { InstagramFeed } from "@/components/sections/InstagramFeed";
 
 export default async function HomePage() {
   const [flagship, recentNews, sponsors] = await Promise.all([
@@ -248,39 +249,11 @@ export default async function HomePage() {
               className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
             >
               <Instagram className="h-4 w-4" />
-              @fclittoral
+              @fc_littoral
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-6">
-            {[
-              { src: "/images/social/match-day.png", alt: "Affiche du match FC Littoral contre AS Cauville, journée 12" },
-              { src: "/images/social/joueurs-convoques.png", alt: "Le groupe convoqué pour le match contre AS Cauville" },
-              { src: "/images/social/resultat.png", alt: "Résultat : victoire du FC Littoral 3-1 contre AS Cauville" },
-              { src: "/images/social/homme-du-match.png", alt: "Homme du match : Elio Hardouin" },
-              { src: "/images/social/calendrier.png", alt: "Calendrier du FC Littoral pour le mois d'octobre" },
-              { src: "/images/social/sponsors.png", alt: "Un club, une famille — merci à nos partenaires" },
-            ].map((post) => (
-              <a
-                key={post.src}
-                href={club.socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-square overflow-hidden rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-gold"
-              >
-                <Image
-                  src={post.src}
-                  alt={post.alt}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute inset-0 flex items-center justify-center bg-ink/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <Instagram className="h-7 w-7 text-bone" />
-                </span>
-              </a>
-            ))}
-          </div>
+          <InstagramFeed feedId="JCJZtqsD8uGke2G1apgI" />
         </div>
       </section>
 
