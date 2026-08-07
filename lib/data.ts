@@ -234,7 +234,7 @@ export async function getSeasonBoards(): Promise<TeamSeason[]> {
         upcoming,
         noStandingsNote:
           standings.length === 0
-            ? "Équipe loisir : pas de classement officiel. On joue avant tout pour le plaisir et la convivialité !"
+            ? "Le classement officiel n'est pas encore disponible : il apparaîtra dès les premières journées de championnat jouées."
             : undefined,
       };
     }),

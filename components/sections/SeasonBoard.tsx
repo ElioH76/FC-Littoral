@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { CalendarDays, MapPin, PartyPopper, Trophy } from "lucide-react";
+import { CalendarClock, CalendarDays, MapPin, Trophy } from "lucide-react";
 
 import type { Fixture, Standing, TeamSeason, TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
@@ -226,12 +226,12 @@ function NoStandings({ note }: { note?: string }) {
   return (
     <div className="flex h-full flex-col items-start gap-4 rounded-2xl border border-dashed border-forest/40 bg-forest-50/50 p-8">
       <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest text-white">
-        <PartyPopper className="h-6 w-6" />
+        <CalendarClock className="h-6 w-6" />
       </span>
-      <h3 className="text-2xl text-ink">Football plaisir</h3>
+      <h3 className="text-2xl text-ink">Classement à venir</h3>
       <p className="max-w-sm text-muted-foreground">
         {note ??
-          "Pas de classement officiel pour cette équipe — on joue avant tout pour le plaisir et la convivialité !"}
+          "Le classement officiel n'est pas encore disponible : il apparaîtra dès les premières journées de championnat jouées."}
       </p>
     </div>
   );
