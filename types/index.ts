@@ -12,9 +12,9 @@ export interface Player {
   position: string;
   /**
    * Buts marqués sur la saison (sert au "meilleur buteur").
-   * ⚠️ Cette valeur est désormais CALCULÉE depuis les feuilles de match
-   * (cf. `match-stats`) et injectée par la couche de données. Les valeurs
-   * présentes dans `data/teams.ts` ne servent plus que de repli.
+   * ⚠️ Cette valeur est CALCULÉE depuis les feuilles de match (cf. `match-stats`)
+   * et injectée par la couche de données (`getTeamStatsBundle`). Les valeurs
+   * éventuellement présentes dans `data/teams.ts` sont ignorées à l'affichage.
    */
   goals?: number;
   /** Passes décisives sur la saison (calculé depuis les feuilles de match). */

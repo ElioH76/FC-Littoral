@@ -362,10 +362,9 @@ function StatsPanel({
 }) {
   const [filter, setFilter] = useState<"tous" | MatchType>("tous");
 
-  // Repli : tant qu'aucune feuille de match n'est saisie, on garde l'ancien
-  // affichage (buteurs basés sur les buts « statiques » de l'effectif).
+  // Aucune feuille de match saisie → aucune stat (état vide honnête).
   if (!hasMatchData) {
-    return <LegacyScorers players={players} />;
+    return <NoStats />;
   }
 
   const pick = (s: PlayerSeasonStats) =>
@@ -512,53 +511,18 @@ function ScorerList({
   );
 }
 
-/** Affichage de repli (aucune feuille de match saisie) — buts « statiques ». */
-function LegacyScorers({ players }: { players: Player[] }) {
-  const totalGoals = players.reduce((s, p) => s + (p.goals ?? 0), 0);
-  const scorers = players
-    .filter((p) => (p.goals ?? 0) > 0)
-    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0));
-  const topGoals = scorers[0]?.goals ?? 0;
-
-  const cards = [
-    { value: String(players.length), label: "Joueurs" },
-    { value: String(totalGoals), label: "Buts marqués" },
-    { value: scorers.length ? String(scorers.length) : "—", label: "Buteurs" },
-  ];
-
+/** État vide de l'onglet Stats : aucune feuille de match saisie. */
+function NoStats() {
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-3 gap-4">
-        {cards.map((c) => (
-          <div key={c.label} className="rounded-xl border bg-card p-5 text-center shadow-sm">
-            <div className="font-display text-3xl text-forest">{c.value}</div>
-            <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{c.label}</div>
-          </div>
-        ))}
-      </div>
-      <div className="rounded-2xl border bg-card p-6 shadow-sm">
-        <h3 className="flex items-center gap-2 text-lg text-ink">
-          <Target className="h-5 w-5 text-forest" /> Meilleurs buteurs
-        </h3>
-        {scorers.length > 0 ? (
-          <ul className="mt-5 space-y-3">
-            {scorers.slice(0, 6).map((p, i) => (
-              <li key={p.name} className="flex items-center gap-3">
-                <span className="w-5 text-center font-display text-sm text-muted-foreground">{i + 1}</span>
-                <span className="w-40 shrink-0 truncate text-sm font-medium text-ink">{p.name}</span>
-                <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full rounded-full bg-gold" style={{ width: `${topGoals ? ((p.goals ?? 0) / topGoals) * 100 : 0}%` }} />
-                </div>
-                <span className="w-14 text-right font-display text-sm text-forest">
-                  {p.goals} {p.goals === 1 ? "but" : "buts"}
-                </span>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-4 text-sm text-muted-foreground">Pas encore de buteur enregistré cette saison.</p>
-        )}
-      </div>
+    <div className="flex flex-col items-start gap-4 rounded-2xl border border-dashed border-forest/40 bg-forest-50/50 p-8">
+      <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest text-white">
+        <Target className="h-6 w-6" />
+      </span>
+      <h3 className="text-2xl text-ink">Statistiques à venir</h3>
+      <p className="max-w-md text-muted-foreground">
+        Les buts, passes décisives et matchs joués s&apos;afficheront ici dès que
+        les premières feuilles de match seront saisies.
+      </p>
     </div>
   );
 }

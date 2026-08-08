@@ -101,9 +101,9 @@ export async function getFlagshipTeam(): Promise<Team | undefined> {
  * Agrège les stats d'une équipe (buts/passes/matchs joués) depuis les feuilles
  * de match (`match-stats`), ventilées par type de compétition + total.
  *
- * `hasData` = au moins une feuille de match saisie pour cette équipe. Tant que
- * c'est faux, l'affichage retombe sur les buts « statiques » de `data/teams.ts`
- * (repli), pour ne pas afficher un effectif à 0 avant toute saisie.
+ * `hasData` = au moins une feuille de match saisie pour cette équipe. Les stats
+ * ne viennent QUE des feuilles de match : tant qu'aucun match n'est saisi, tout
+ * est à 0 (pas de repli sur des buts « de démo »), pour rester honnête.
  */
 async function computeSeasonStats(
   slug: TeamSlug,
@@ -163,17 +163,14 @@ export async function getTeamStatsBundle(slug: TeamSlug): Promise<{
   const roster = team?.players ?? [];
   const { stats, hasData } = await computeSeasonStats(slug);
 
-  if (!hasData) {
-    // Repli : on garde les buts statiques de data/teams.ts.
-    return { team, players: roster, seasonStats: stats, hasMatchData: false };
-  }
-
+  // Les stats viennent uniquement des feuilles de match : 0 partout tant
+  // qu'aucun match n'est saisi (pas de repli sur les buts statiques).
   const byName = new Map(stats.map((s) => [s.name, s.total]));
   const players = roster.map((p) => {
     const t = byName.get(p.name);
     return { ...p, goals: t?.goals ?? 0, assists: t?.assists ?? 0, matches: t?.matches ?? 0 };
   });
-  return { team, players, seasonStats: stats, hasMatchData: true };
+  return { team, players, seasonStats: stats, hasMatchData: hasData };
 }
 
 /** Statistiques rapides d'une équipe (effectif, total de buts). */
