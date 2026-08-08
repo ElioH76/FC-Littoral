@@ -56,6 +56,8 @@ function sanitizeFixture(input: unknown): ManualFixture | null {
   const id = String(f.id ?? "").trim() || genId();
   const time = String(f.time ?? "").trim() || undefined;
   const venue = String(f.venue ?? "").trim() || undefined;
+  const logoRaw = String(f.opponentLogo ?? "").trim();
+  const opponentLogo = /^https?:\/\//.test(logoRaw) ? logoRaw : undefined;
   const competition =
     String(f.competition ?? "").trim() ||
     (type === "amical" ? "Match amical" : type === "coupe" ? "Coupe" : "Championnat");
@@ -68,6 +70,7 @@ function sanitizeFixture(input: unknown): ManualFixture | null {
     time,
     home,
     away,
+    opponentLogo,
     venue,
     competition,
     homeScore: toScore(f.homeScore),

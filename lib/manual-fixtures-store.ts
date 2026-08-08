@@ -15,29 +15,21 @@ import type { ManualFixture } from "@/types";
 
 const DIR = "manual-fixtures/";
 
-/** Revalidation ISR pour les lectures côté pages publiques (secondes). */
-const PUBLIC_REVALIDATE = 60;
-
 function blobConfigured(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
-async function fetchJson(
-  url: string,
-  fresh: boolean,
-): Promise<ManualFixture[] | null> {
-  const res = await fetch(`${url}?ts=${Date.now()}`, {
-    ...(fresh
-      ? { cache: "no-store" as const }
-      : { next: { revalidate: PUBLIC_REVALIDATE } }),
-  });
+async function fetchJson(url: string): Promise<ManualFixture[] | null> {
+  // Toujours frais : les pages publiques doivent refléter immédiatement les
+  // ajouts faits en admin (comme la boutique). Ces pages deviennent dynamiques.
+  const res = await fetch(`${url}?ts=${Date.now()}`, { cache: "no-store" });
   if (!res.ok) return null;
   const data = (await res.json()) as unknown;
   return Array.isArray(data) ? (data as ManualFixture[]) : null;
 }
 
 /** Lit tous les matchs manuels (version la plus récente). */
-export async function getManualFixtures(fresh = false): Promise<ManualFixture[]> {
+export async function getManualFixtures(_fresh = false): Promise<ManualFixture[]> {
   if (!blobConfigured()) return [];
   try {
     const { blobs } = await list({ prefix: DIR });
@@ -45,7 +37,7 @@ export async function getManualFixtures(fresh = false): Promise<ManualFixture[]>
     const latest = blobs.reduce((a, b) =>
       new Date(a.uploadedAt).getTime() >= new Date(b.uploadedAt).getTime() ? a : b,
     );
-    return (await fetchJson(latest.url, fresh)) ?? [];
+    return (await fetchJson(latest.url)) ?? [];
   } catch {
     return [];
   }

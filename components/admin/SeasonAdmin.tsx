@@ -9,6 +9,7 @@ import {
   Plus,
   RefreshCw,
   Trash2,
+  Upload,
   X,
 } from "lucide-react";
 
@@ -376,6 +377,10 @@ function FixtureForm({
   );
   const [venue, setVenue] = useState(fixture?.venue ?? "");
   const [competition, setCompetition] = useState(fixture?.competition ?? "Match amical");
+  const [opponentLogo, setOpponentLogo] = useState(
+    (fixture ? (editingHomeIsUs ? fixture.awayLogo : fixture.homeLogo) : "") ?? "",
+  );
+  const [uploading, setUploading] = useState(false);
   const [ourScore, setOurScore] = useState<string>(
     fixture
       ? String((editingHomeIsUs ? fixture.homeScore : fixture.awayScore) ?? "")
@@ -388,6 +393,22 @@ function FixtureForm({
   );
 
   const canSave = date.trim() !== "" && opponent.trim() !== "";
+
+  async function uploadLogo(file: File) {
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const data = (await res.json()) as { ok: boolean; url?: string };
+      if (data.ok && data.url) setOpponentLogo(data.url);
+      else alert("Échec de l'upload du logo (formats acceptés : JPG, PNG, WebP, ≤ 5 Mo).");
+    } catch {
+      alert("Échec de l'upload du logo.");
+    } finally {
+      setUploading(false);
+    }
+  }
 
   function submit() {
     if (!canSave) return;
@@ -402,6 +423,7 @@ function FixtureForm({
       time: time.trim() || undefined,
       home: atHome ? club.name : opponent.trim(),
       away: atHome ? opponent.trim() : club.name,
+      opponentLogo: opponentLogo.trim() || undefined,
       venue: venue.trim() || undefined,
       competition: competition.trim() || "Match amical",
       homeScore: atHome ? our : their,
@@ -455,6 +477,45 @@ function FixtureForm({
             className={fieldClass}
           />
         </label>
+
+        <div>
+          <span className={labelClass}>Logo de l&apos;adversaire (optionnel)</span>
+          <div className="flex items-center gap-3">
+            <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/15 bg-ink">
+              {opponentLogo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={opponentLogo} alt="" className="h-full w-full object-contain" />
+              ) : (
+                <span className="font-display text-xs text-bone-dim">?</span>
+              )}
+            </span>
+            <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-white/15 px-3 py-2 text-sm text-bone-dim transition-colors hover:border-gold hover:text-gold">
+              {uploading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
+              {uploading ? "Envoi…" : opponentLogo ? "Changer" : "Téléverser"}
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                className="hidden"
+                disabled={uploading}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) uploadLogo(file);
+                  e.target.value = "";
+                }}
+              />
+            </label>
+            {opponentLogo && (
+              <button
+                type="button"
+                onClick={() => setOpponentLogo("")}
+                className="rounded-lg border border-white/15 p-2 text-bone-dim transition-colors hover:border-red-500 hover:text-red-400"
+                aria-label="Retirer le logo"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+        </div>
 
         <div className="grid grid-cols-2 gap-3">
           <label>

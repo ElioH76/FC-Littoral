@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Clock, Goal, Handshake, MapPin, Trophy, Users } from "lucide-react";
 
 import { club } from "@/data/club";
-import { getAllFixtureRefs, getFixture, getTeam } from "@/lib/data";
+import { getFixture, getTeam } from "@/lib/data";
 import { getMatchStat } from "@/lib/match-stats-store";
 import type { TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
@@ -12,10 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TeamCrest } from "@/components/match/TeamCrest";
 
-export async function generateStaticParams() {
-  const refs = await getAllFixtureRefs();
-  return refs.map(({ slug, id }) => ({ slug, id }));
-}
+// Rendu à chaque requête : reflète immédiatement les matchs manuels ajoutés
+// en admin et les feuilles de match (buteurs) saisies. Params inconnus → notFound().
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

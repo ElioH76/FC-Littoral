@@ -5,24 +5,16 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarClock, MapPin, Star, Target, Users } from "lucide-react";
 
 import { club } from "@/data/club";
-import {
-  getSeasonBoard,
-  getTeam,
-  getTeams,
-  getTeamStatsBundle,
-} from "@/lib/data";
+import { getSeasonBoard, getTeam, getTeamStatsBundle } from "@/lib/data";
 import type { TeamSeason, TeamSlug } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/ui/reveal";
 import { TeamTabs } from "@/components/sections/TeamTabs";
 import { JoinCTA } from "@/components/sections/JoinCTA";
 
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const teams = await getTeams();
-  return teams.map((t) => ({ slug: t.slug }));
-}
+// Rendu à chaque requête : reflète immédiatement les matchs/stats saisis en
+// admin (matchs manuels, feuilles de match). Les slugs inconnus → notFound().
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,

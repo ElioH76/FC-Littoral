@@ -220,6 +220,8 @@ export interface ManualFixture {
   time?: string;
   home: string;
   away: string;
+  /** Logo de l'adversaire (URL Blob) — le nôtre est /logo.png automatiquement. */
+  opponentLogo?: string;
   venue?: string;
   /** Libellé affiché (ex. "Match amical"). */
   competition: string;

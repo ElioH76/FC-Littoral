@@ -15,28 +15,22 @@ import type { MatchStat, MatchStatsStore } from "@/types";
  */
 
 const DIR = "match-stats/";
-const PUBLIC_REVALIDATE = 60;
 
 function blobConfigured(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 }
 
-async function fetchJson(
-  url: string,
-  fresh: boolean,
-): Promise<MatchStatsStore | null> {
-  const res = await fetch(`${url}?ts=${Date.now()}`, {
-    ...(fresh
-      ? { cache: "no-store" as const }
-      : { next: { revalidate: PUBLIC_REVALIDATE } }),
-  });
+async function fetchJson(url: string): Promise<MatchStatsStore | null> {
+  // Toujours frais (cf. manual-fixtures-store) : les feuilles de match saisies
+  // en admin doivent apparaître immédiatement sur le site.
+  const res = await fetch(`${url}?ts=${Date.now()}`, { cache: "no-store" });
   if (!res.ok) return null;
   const data = (await res.json()) as unknown;
   return data && typeof data === "object" ? (data as MatchStatsStore) : null;
 }
 
 /** Lit toutes les feuilles de match (version la plus récente). */
-export async function getMatchStats(fresh = false): Promise<MatchStatsStore> {
+export async function getMatchStats(_fresh = false): Promise<MatchStatsStore> {
   if (!blobConfigured()) return {};
   try {
     const { blobs } = await list({ prefix: DIR });
@@ -44,7 +38,7 @@ export async function getMatchStats(fresh = false): Promise<MatchStatsStore> {
     const latest = blobs.reduce((a, b) =>
       new Date(a.uploadedAt).getTime() >= new Date(b.uploadedAt).getTime() ? a : b,
     );
-    return (await fetchJson(latest.url, fresh)) ?? {};
+    return (await fetchJson(latest.url)) ?? {};
   } catch {
     return {};
   }

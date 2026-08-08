@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     "Classements, calendriers et résultats des équipes du F.C. Littoral : U13 et Seniors Après-Midi.",
 };
 
+// Lecture des matchs manuels / feuilles de match (Blob) à chaque requête :
+// les ajouts faits en admin apparaissent immédiatement.
+export const dynamic = "force-dynamic";
+
 export default async function SaisonPage() {
   const boards = await getSeasonBoards();
 

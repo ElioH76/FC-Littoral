@@ -12,6 +12,10 @@ import { NewsCard } from "@/components/cards/NewsCard";
 import { SeasonPreview } from "@/components/sections/SeasonPreview";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
 
+// Le meilleur buteur (Hero) et l'aperçu saison lisent les stats/matchs (Blob) :
+// rendu à chaque requête pour refléter immédiatement les saisies admin.
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [flagship, recentNews, sponsors] = await Promise.all([
     getFlagshipTeam(),
