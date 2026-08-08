@@ -53,6 +53,15 @@ export default async function TeamPage({
     .filter((p) => (p.goals ?? 0) > 0)
     .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
 
+  // Meilleur buteur / passeur du CHAMPIONNAT uniquement (pour le bandeau).
+  const topChampionnat = (kind: "goals" | "assists"): string | undefined =>
+    bundle.seasonStats
+      .map((s) => ({ name: s.name, v: s.byType.championnat[kind] }))
+      .filter((x) => x.v > 0)
+      .sort((a, b) => b.v - a.v)[0]?.name;
+  const topScorerChamp = topChampionnat("goals");
+  const topAssisterChamp = topChampionnat("assists");
+
   const safeBoard: TeamSeason = board ?? {
     slug,
     name: team.name,
@@ -65,9 +74,14 @@ export default async function TeamPage({
     { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
     { value: String(totalGoals), label: "Buts marqués" },
-    scorer
-      ? { value: scorer.name.split(" ")[0], label: "Meilleur buteur" }
-      : { value: "—", label: "Meilleur buteur" },
+    {
+      value: topScorerChamp ? topScorerChamp.split(" ")[0] : "—",
+      label: "Meilleur buteur",
+    },
+    {
+      value: topAssisterChamp ? topAssisterChamp.split(" ")[0] : "—",
+      label: "Meilleur passeur",
+    },
   ];
 
   return (
@@ -110,9 +124,9 @@ export default async function TeamPage({
             {team.description}
           </p>
 
-          <div className="mt-10 grid max-w-2xl grid-cols-2 gap-px sm:grid-cols-4">
+          <div className="mt-10 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
             {keyStats.map((s) => (
-              <div key={s.label} className="px-2">
+              <div key={s.label} className="min-w-0">
                 <div className="truncate font-display text-2xl text-gold md:text-3xl">
                   {s.value}
                 </div>
