@@ -43,11 +43,11 @@ export function TeamTabs({
   seasonStats: PlayerSeasonStats[];
   hasMatchData: boolean;
 }) {
-  const [tab, setTab] = useState<TabKey>("classement");
+  const [tab, setTab] = useState<TabKey>("calendrier");
 
   const tabs: { key: TabKey; label: string; icon: React.ReactNode }[] = [
-    { key: "classement", label: "Classement", icon: <ListOrdered className="h-4 w-4" /> },
     { key: "calendrier", label: "Calendrier", icon: <CalendarDays className="h-4 w-4" /> },
+    { key: "classement", label: "Classement", icon: <ListOrdered className="h-4 w-4" /> },
     { key: "stats", label: "Stats", icon: <Target className="h-4 w-4" /> },
     { key: "effectif", label: "Effectif", icon: <Users className="h-4 w-4" /> },
   ];
@@ -270,32 +270,32 @@ function FixtureRow({
     <li>
       <Link
         href={`/match/${slug}/${fixture.id}`}
-        className="block px-5 py-4 transition-colors hover:bg-muted/50"
+        className="block px-6 py-5 transition-colors hover:bg-muted/50"
       >
-        <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+        <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
           <span>{fixture.competition}</span>
           <span>{formatDate(fixture.date)}</span>
         </div>
-        <div className="mt-2 flex items-center justify-between gap-3">
-          <span className={cn("flex min-w-0 flex-1 items-center gap-2 text-sm", isClubHome && "font-semibold text-ink")}>
-            <TeamCrest src={fixture.homeLogo} name={fixture.home} size={22} className="shrink-0" />
+        <div className="mt-3.5 flex items-center justify-between gap-3 md:gap-4">
+          <span className={cn("flex min-w-0 flex-1 items-center gap-3 text-base md:text-lg", isClubHome && "font-semibold text-ink")}>
+            <TeamCrest src={fixture.homeLogo} name={fixture.home} size={40} className="shrink-0" />
             <span className="truncate">{fixture.home}</span>
           </span>
           {showScore ? (
-            <span className="shrink-0 rounded-md bg-ink px-2.5 py-1 font-display text-sm text-white">
+            <span className="shrink-0 rounded-lg bg-ink px-4 py-1.5 font-display text-xl text-white md:text-2xl">
               {fixture.homeScore} – {fixture.awayScore}
             </span>
           ) : (
-            <span className="shrink-0 rounded-md border px-2.5 py-1 font-display text-xs text-muted-foreground">VS</span>
+            <span className="shrink-0 rounded-lg border px-3.5 py-1.5 font-display text-sm text-muted-foreground md:text-base">VS</span>
           )}
-          <span className={cn("flex min-w-0 flex-1 items-center justify-end gap-2 text-right text-sm", !isClubHome && "font-semibold text-ink")}>
+          <span className={cn("flex min-w-0 flex-1 items-center justify-end gap-3 text-right text-base md:text-lg", !isClubHome && "font-semibold text-ink")}>
             <span className="truncate">{fixture.away}</span>
-            <TeamCrest src={fixture.awayLogo} name={fixture.away} size={22} className="shrink-0" />
+            <TeamCrest src={fixture.awayLogo} name={fixture.away} size={40} className="shrink-0" />
           </span>
         </div>
         {fixture.venue && (
-          <div className="mt-1.5 flex items-center gap-1 text-[11px] text-muted-foreground">
-            <MapPin className="h-3 w-3" /> {fixture.venue}
+          <div className="mt-2.5 flex items-center gap-1.5 text-xs text-muted-foreground md:text-sm">
+            <MapPin className="h-4 w-4" /> {fixture.venue}
           </div>
         )}
       </Link>
