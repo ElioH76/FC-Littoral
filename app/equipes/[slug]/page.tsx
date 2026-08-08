@@ -49,7 +49,6 @@ export default async function TeamPage({
   if (!team) notFound();
 
   const players = bundle.players;
-  const totalGoals = players.reduce((sum, p) => sum + (p.goals ?? 0), 0);
   const scorer = players
     .filter((p) => (p.goals ?? 0) > 0)
     .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
@@ -79,7 +78,6 @@ export default async function TeamPage({
   const keyStats = [
     { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
-    { value: String(totalGoals), label: "Buts marqués" },
   ];
 
   return (
@@ -105,55 +103,58 @@ export default async function TeamPage({
             <ArrowLeft className="h-4 w-4" /> Toutes les équipes
           </Link>
 
-          <div className="mt-6">
-            {team.flagship ? (
-              <Badge className="gap-1">
-                <Star className="h-3 w-3" /> Équipe fanion
-              </Badge>
-            ) : (
-              <span className="font-display text-xs uppercase tracking-widest text-gold">
-                {team.category}
-              </span>
-            )}
-          </div>
-
-          <h1 className="mt-3 text-4xl leading-[1.02] md:text-6xl">{team.name}</h1>
-          <p className="mt-4 max-w-2xl text-white/80 md:text-lg">
-            {team.description}
-          </p>
-
-          <div className="mt-10 grid max-w-md grid-cols-3 gap-x-6">
-            {keyStats.map((s) => (
-              <div key={s.label} className="min-w-0">
-                <div className="truncate font-display text-2xl text-gold md:text-3xl">
-                  {s.value}
-                </div>
-                <div className="mt-1 text-xs uppercase tracking-wider text-white/60">
-                  {s.label}
-                </div>
+          <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-end">
+            {/* Colonne texte */}
+            <div>
+              <div>
+                {team.flagship ? (
+                  <Badge className="gap-1">
+                    <Star className="h-3 w-3" /> Équipe fanion
+                  </Badge>
+                ) : (
+                  <span className="font-display text-xs uppercase tracking-widest text-gold">
+                    {team.category}
+                  </span>
+                )}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Meilleur buteur & meilleur passeur (championnat) */}
-      <section className="border-b border-white/10 bg-ink py-10">
-        <div className="container grid gap-6 sm:grid-cols-2">
-          <PlayerStatCard
-            label="Meilleur buteur"
-            unit={(topScorerChamp?.value ?? 0) > 1 ? "buts" : "but"}
-            value={topScorerChamp?.value ?? 0}
-            player={topScorerChamp?.player}
-            emptyText="Aucun buteur en championnat pour le moment."
-          />
-          <PlayerStatCard
-            label="Meilleur passeur"
-            unit={(topAssisterChamp?.value ?? 0) > 1 ? "passes" : "passe"}
-            value={topAssisterChamp?.value ?? 0}
-            player={topAssisterChamp?.player}
-            emptyText="Aucun passeur en championnat pour le moment."
-          />
+              <h1 className="mt-3 text-4xl leading-[1.02] md:text-6xl">{team.name}</h1>
+              <p className="mt-4 max-w-xl text-white/80 md:text-lg">
+                {team.description}
+              </p>
+
+              <div className="mt-10 grid max-w-xs grid-cols-2 gap-x-6">
+                {keyStats.map((s) => (
+                  <div key={s.label} className="min-w-0">
+                    <div className="truncate font-display text-2xl text-gold md:text-3xl">
+                      {s.value}
+                    </div>
+                    <div className="mt-1 text-xs uppercase tracking-wider text-white/60">
+                      {s.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Colonne cartes : meilleur buteur & passeur (championnat) */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <PlayerStatCard
+                label="Meilleur buteur"
+                unit={(topScorerChamp?.value ?? 0) > 1 ? "buts" : "but"}
+                value={topScorerChamp?.value ?? 0}
+                player={topScorerChamp?.player}
+                emptyText="Aucun buteur en championnat pour le moment."
+              />
+              <PlayerStatCard
+                label="Meilleur passeur"
+                unit={(topAssisterChamp?.value ?? 0) > 1 ? "passes" : "passe"}
+                value={topAssisterChamp?.value ?? 0}
+                player={topAssisterChamp?.player}
+                emptyText="Aucun passeur en championnat pour le moment."
+              />
+            </div>
+          </div>
         </div>
       </section>
 
