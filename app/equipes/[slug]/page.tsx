@@ -49,6 +49,7 @@ export default async function TeamPage({
   if (!team) notFound();
 
   const players = bundle.players;
+  const totalGoals = players.reduce((sum, p) => sum + (p.goals ?? 0), 0);
   const scorer = players
     .filter((p) => (p.goals ?? 0) > 0)
     .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
@@ -78,6 +79,7 @@ export default async function TeamPage({
   const keyStats = [
     { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
+    { value: String(totalGoals), label: "Buts marqués" },
   ];
 
   return (
@@ -123,7 +125,7 @@ export default async function TeamPage({
                 {team.description}
               </p>
 
-              <div className="mt-10 grid max-w-xs grid-cols-2 gap-x-6">
+              <div className="mt-10 grid max-w-sm grid-cols-3 gap-x-6">
                 {keyStats.map((s) => (
                   <div key={s.label} className="min-w-0">
                     <div className="truncate font-display text-2xl text-gold md:text-3xl">
