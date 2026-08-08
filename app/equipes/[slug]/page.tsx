@@ -8,6 +8,7 @@ import { club } from "@/data/club";
 import { getSeasonBoard, getTeam, getTeamStatsBundle } from "@/lib/data";
 import type { TeamSeason, TeamSlug } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import { PlayerStatCard } from "@/components/cards/PlayerStatCard";
 import { Reveal } from "@/components/ui/reveal";
 import { TeamTabs } from "@/components/sections/TeamTabs";
 import { JoinCTA } from "@/components/sections/JoinCTA";
@@ -53,12 +54,17 @@ export default async function TeamPage({
     .filter((p) => (p.goals ?? 0) > 0)
     .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
 
-  // Meilleur buteur / passeur du CHAMPIONNAT uniquement (pour le bandeau).
-  const topChampionnat = (kind: "goals" | "assists"): string | undefined =>
-    bundle.seasonStats
+  // Meilleur buteur / passeur du CHAMPIONNAT uniquement (cartes joueur).
+  const playerByName = new Map(players.map((p) => [p.name, p]));
+  const topChampionnat = (kind: "goals" | "assists") => {
+    const best = bundle.seasonStats
       .map((s) => ({ name: s.name, v: s.byType.championnat[kind] }))
       .filter((x) => x.v > 0)
-      .sort((a, b) => b.v - a.v)[0]?.name;
+      .sort((a, b) => b.v - a.v)[0];
+    if (!best) return undefined;
+    const player = playerByName.get(best.name);
+    return player ? { player, value: best.v } : undefined;
+  };
   const topScorerChamp = topChampionnat("goals");
   const topAssisterChamp = topChampionnat("assists");
 
@@ -74,14 +80,6 @@ export default async function TeamPage({
     { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
     { value: String(totalGoals), label: "Buts marqués" },
-    {
-      value: topScorerChamp ? topScorerChamp.split(" ")[0] : "—",
-      label: "Meilleur buteur",
-    },
-    {
-      value: topAssisterChamp ? topAssisterChamp.split(" ")[0] : "—",
-      label: "Meilleur passeur",
-    },
   ];
 
   return (
@@ -124,7 +122,7 @@ export default async function TeamPage({
             {team.description}
           </p>
 
-          <div className="mt-10 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="mt-10 grid max-w-md grid-cols-3 gap-x-6">
             {keyStats.map((s) => (
               <div key={s.label} className="min-w-0">
                 <div className="truncate font-display text-2xl text-gold md:text-3xl">
@@ -136,6 +134,26 @@ export default async function TeamPage({
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Meilleur buteur & meilleur passeur (championnat) */}
+      <section className="border-b border-white/10 bg-ink py-10">
+        <div className="container grid gap-6 sm:grid-cols-2">
+          <PlayerStatCard
+            label="Meilleur buteur"
+            unit={(topScorerChamp?.value ?? 0) > 1 ? "buts" : "but"}
+            value={topScorerChamp?.value ?? 0}
+            player={topScorerChamp?.player}
+            emptyText="Aucun buteur en championnat pour le moment."
+          />
+          <PlayerStatCard
+            label="Meilleur passeur"
+            unit={(topAssisterChamp?.value ?? 0) > 1 ? "passes" : "passe"}
+            value={topAssisterChamp?.value ?? 0}
+            player={topAssisterChamp?.player}
+            emptyText="Aucun passeur en championnat pour le moment."
+          />
         </div>
       </section>
 
