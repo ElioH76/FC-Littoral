@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CalendarDays, Clock, MapPin, Trophy } from "lucide-react";
+import { ArrowLeft, CalendarDays, Clock, Goal, Handshake, MapPin, Trophy, Users } from "lucide-react";
 
 import { club } from "@/data/club";
 import { getAllFixtureRefs, getFixture, getTeam } from "@/lib/data";
+import { getMatchStat } from "@/lib/match-stats-store";
 import type { TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -35,11 +36,21 @@ export default async function MatchPage({
   params: { slug: string; id: string };
 }) {
   const slug = params.slug as TeamSlug;
-  const [team, fixture] = await Promise.all([
+  const [team, fixture, sheet] = await Promise.all([
     getTeam(slug),
     getFixture(slug, params.id),
+    getMatchStat(params.id),
   ]);
   if (!fixture) notFound();
+
+  const scorers = (sheet?.players ?? [])
+    .filter((p) => p.goals > 0)
+    .sort((a, b) => b.goals - a.goals);
+  const assisters = (sheet?.players ?? [])
+    .filter((p) => p.assists > 0)
+    .sort((a, b) => b.assists - a.assists);
+  const lineup = sheet?.players ?? [];
+  const hasSheet = lineup.length > 0;
 
   const played = fixture.homeScore != null && fixture.awayScore != null;
   const homeUs = fixture.home === club.name;
@@ -144,10 +155,50 @@ export default async function MatchPage({
             ))}
           </div>
 
-          <p className="mt-6 text-center text-xs text-muted-foreground">
-            Compositions, buteurs et cartons ne sont pas diffusés publiquement
-            par la FFF pour le football amateur.
-          </p>
+          {hasSheet ? (
+            <div className="mt-8">
+              <h2 className="mb-5 flex items-center gap-2 font-display text-lg uppercase tracking-wide text-ink">
+                <Goal className="h-5 w-5 text-forest" /> Feuille de match
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <StatColumn
+                  icon={<Goal className="h-4 w-4" />}
+                  title="Buteurs"
+                  rows={scorers.map((p) => ({ name: p.name, count: p.goals }))}
+                  empty="Aucun buteur enregistré."
+                />
+                <StatColumn
+                  icon={<Handshake className="h-4 w-4" />}
+                  title="Passes décisives"
+                  rows={assisters.map((p) => ({ name: p.name, count: p.assists }))}
+                  empty="Aucune passe décisive enregistrée."
+                />
+              </div>
+
+              {lineup.length > 0 && (
+                <div className="mt-4 rounded-xl border bg-card p-5">
+                  <h3 className="mb-3 flex items-center gap-2 font-display text-xs uppercase tracking-widest text-muted-foreground">
+                    <Users className="h-4 w-4 text-forest" /> Ont joué ({lineup.length})
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {lineup.map((p) => (
+                      <span
+                        key={p.name}
+                        className="rounded-full border bg-muted/40 px-3 py-1 text-xs text-ink"
+                      >
+                        {p.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p className="mt-6 text-center text-xs text-muted-foreground">
+              Buteurs et passeurs seront ajoutés prochainement (la FFF ne les
+              diffuse pas pour le football amateur).
+            </p>
+          )}
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild variant="outline">
@@ -163,6 +214,42 @@ export default async function MatchPage({
       </section>
       </div>
     </>
+  );
+}
+
+function StatColumn({
+  icon,
+  title,
+  rows,
+  empty,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  rows: { name: string; count: number }[];
+  empty: string;
+}) {
+  return (
+    <div className="rounded-xl border bg-card p-5">
+      <h3 className="flex items-center gap-2 font-display text-xs uppercase tracking-widest text-muted-foreground">
+        <span className="text-forest">{icon}</span> {title}
+      </h3>
+      {rows.length > 0 ? (
+        <ul className="mt-3 space-y-2">
+          {rows.map((r) => (
+            <li key={r.name} className="flex items-center justify-between gap-2 text-sm">
+              <span className="text-ink">{r.name}</span>
+              {r.count > 1 && (
+                <span className="rounded-md bg-forest/10 px-2 py-0.5 font-display text-xs text-forest">
+                  ×{r.count}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="mt-3 text-sm text-muted-foreground">{empty}</p>
+      )}
+    </div>
   );
 }
 

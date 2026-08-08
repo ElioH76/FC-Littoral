@@ -10,8 +10,17 @@ export interface Player {
   name: string;
   number?: number;
   position: string;
-  /** Buts marqués sur la saison (sert au "meilleur buteur"). */
+  /**
+   * Buts marqués sur la saison (sert au "meilleur buteur").
+   * ⚠️ Cette valeur est désormais CALCULÉE depuis les feuilles de match
+   * (cf. `match-stats`) et injectée par la couche de données. Les valeurs
+   * présentes dans `data/teams.ts` ne servent plus que de repli.
+   */
   goals?: number;
+  /** Passes décisives sur la saison (calculé depuis les feuilles de match). */
+  assists?: number;
+  /** Nombre de matchs joués sur la saison (calculé depuis les feuilles de match). */
+  matches?: number;
   /** Photo détourée du joueur, ex. "/players/elio-hardouin.png". */
   photo?: string;
   /** Capitaine de l'équipe. */
@@ -173,6 +182,9 @@ export interface Standing {
   points: number;
 }
 
+/** Type de compétition d'un match (sert au filtre des stats). */
+export type MatchType = "championnat" | "coupe" | "amical";
+
 export interface Fixture {
   id: string;
   date: string;
@@ -187,6 +199,62 @@ export interface Fixture {
   homeScore?: number;
   awayScore?: number;
   venue?: string;
+  /** Type de compétition. Défaut "championnat" (matchs FFF). */
+  type?: MatchType;
+  /** Vrai si le match a été ajouté à la main (amical, coupe hors FFF…). */
+  manual?: boolean;
+}
+
+/* ------------------------------------------------------------------ */
+/* MATCHS MANUELS & FEUILLES DE MATCH (saisie admin)                  */
+/* ------------------------------------------------------------------ */
+
+/** Un match ajouté à la main depuis l'admin (ex. amical). */
+export interface ManualFixture {
+  id: string;
+  slug: TeamSlug;
+  type: MatchType;
+  /** Date ISO yyyy-mm-dd. */
+  date: string;
+  /** Heure du coup d'envoi, ex. "15:00". */
+  time?: string;
+  home: string;
+  away: string;
+  venue?: string;
+  /** Libellé affiché (ex. "Match amical"). */
+  competition: string;
+  /** Scores : `null`/absent = match pas encore joué. */
+  homeScore?: number | null;
+  awayScore?: number | null;
+}
+
+/** Contribution d'un joueur sur un match (présence dans la liste = a joué). */
+export interface MatchPlayerStat {
+  name: string;
+  goals: number;
+  assists: number;
+}
+
+/** Feuille de match : les joueurs ayant participé + leurs buts/passes. */
+export interface MatchStat {
+  players: MatchPlayerStat[];
+}
+
+/** Feuilles de match indexées par identifiant de match (FFF ou manuel). */
+export type MatchStatsStore = Record<string, MatchStat>;
+
+/** Totaux agrégés d'un joueur (sur un type de match ou au global). */
+export interface PlayerStatTotals {
+  goals: number;
+  assists: number;
+  matches: number;
+}
+
+/** Stats d'un joueur ventilées par type de match, + total. */
+export interface PlayerSeasonStats {
+  name: string;
+  byType: Record<MatchType, PlayerStatTotals>;
+  total: PlayerStatTotals;
 }
 
 /** Données de saison agrégées pour une équipe (classement + matchs). */

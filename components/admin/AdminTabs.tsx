@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 const tabs = [
   { href: "/admin", label: "Commandes" },
   { href: "/admin/produits", label: "Produits" },
+  { href: "/admin/saison", label: "Matchs & Stats" },
 ];
 
 /** Onglets de navigation entre les sections de l'admin. */

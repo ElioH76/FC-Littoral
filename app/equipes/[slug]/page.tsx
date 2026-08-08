@@ -8,9 +8,8 @@ import { club } from "@/data/club";
 import {
   getSeasonBoard,
   getTeam,
-  getTeamStats,
   getTeams,
-  getTopScorer,
+  getTeamStatsBundle,
 } from "@/lib/data";
 import type { TeamSeason, TeamSlug } from "@/types";
 import { Badge } from "@/components/ui/badge";
@@ -49,14 +48,18 @@ export default async function TeamPage({
   params: { slug: string };
 }) {
   const slug = params.slug as TeamSlug;
-  const team = await getTeam(slug);
-  if (!team) notFound();
-
-  const [stats, scorer, board] = await Promise.all([
-    getTeamStats(slug),
-    getTopScorer(slug),
+  const [bundle, board] = await Promise.all([
+    getTeamStatsBundle(slug),
     getSeasonBoard(slug),
   ]);
+  const team = bundle.team;
+  if (!team) notFound();
+
+  const players = bundle.players;
+  const totalGoals = players.reduce((sum, p) => sum + (p.goals ?? 0), 0);
+  const scorer = players
+    .filter((p) => (p.goals ?? 0) > 0)
+    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
 
   const safeBoard: TeamSeason = board ?? {
     slug,
@@ -67,9 +70,9 @@ export default async function TeamPage({
   };
 
   const keyStats = [
-    { value: String(stats?.squad ?? 0), label: "Joueurs" },
+    { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
-    { value: String(stats?.goals ?? 0), label: "Buts marqués" },
+    { value: String(totalGoals), label: "Buts marqués" },
     scorer
       ? { value: scorer.name.split(" ")[0], label: "Meilleur buteur" }
       : { value: "—", label: "Meilleur buteur" },
@@ -135,10 +138,12 @@ export default async function TeamPage({
       <section className="section">
         <div className="container">
           <TeamTabs
-            players={team.players ?? []}
+            players={players}
             board={safeBoard}
             clubName={club.name}
             topScorerName={scorer?.name}
+            seasonStats={bundle.seasonStats}
+            hasMatchData={bundle.hasMatchData}
           />
         </div>
       </section>

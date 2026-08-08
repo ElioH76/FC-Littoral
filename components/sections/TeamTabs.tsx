@@ -3,16 +3,24 @@
 import { useState } from "react";
 import Link from "next/link";
 import {
+  CalendarClock,
   CalendarDays,
   ListOrdered,
   MapPin,
-  PartyPopper,
   Target,
   Trophy,
   Users,
 } from "lucide-react";
 
-import type { Fixture, Player, Standing, TeamSeason, TeamSlug } from "@/types";
+import type {
+  Fixture,
+  MatchType,
+  Player,
+  PlayerSeasonStats,
+  Standing,
+  TeamSeason,
+  TeamSlug,
+} from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Squad } from "@/components/sections/Squad";
@@ -25,11 +33,15 @@ export function TeamTabs({
   board,
   clubName,
   topScorerName,
+  seasonStats,
+  hasMatchData,
 }: {
   players: Player[];
   board: TeamSeason;
   clubName: string;
   topScorerName?: string;
+  seasonStats: PlayerSeasonStats[];
+  hasMatchData: boolean;
 }) {
   const [tab, setTab] = useState<TabKey>("classement");
 
@@ -86,7 +98,13 @@ export function TeamTabs({
           />
         )}
         {tab === "stats" && (
-          <StatsPanel players={players} board={board} clubName={clubName} />
+          <StatsPanel
+            players={players}
+            board={board}
+            clubName={clubName}
+            seasonStats={seasonStats}
+            hasMatchData={hasMatchData}
+          />
         )}
       </div>
     </div>
@@ -309,11 +327,12 @@ function LoisirNote({ note }: { note?: string }) {
   return (
     <div className="flex flex-col items-start gap-4 rounded-2xl border border-dashed border-forest/40 bg-forest-50/50 p-8">
       <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-forest text-white">
-        <PartyPopper className="h-6 w-6" />
+        <CalendarClock className="h-6 w-6" />
       </span>
-      <h3 className="text-2xl text-ink">Football plaisir</h3>
+      <h3 className="text-2xl text-ink">Classement à venir</h3>
       <p className="max-w-md text-muted-foreground">
-        {note ?? "Pas de classement officiel pour cette équipe — on joue avant tout pour le plaisir et la convivialité !"}
+        {note ??
+          "Le classement officiel n'est pas encore disponible : il apparaîtra dès les premières journées de championnat jouées."}
       </p>
     </div>
   );
@@ -321,33 +340,77 @@ function LoisirNote({ note }: { note?: string }) {
 
 /* ------------------------------- Stats -------------------------------- */
 
+const STAT_FILTERS: { key: "tous" | MatchType; label: string }[] = [
+  { key: "tous", label: "Tous" },
+  { key: "championnat", label: "Championnat" },
+  { key: "coupe", label: "Coupe" },
+  { key: "amical", label: "Amical" },
+];
+
 function StatsPanel({
   players,
   board,
   clubName,
+  seasonStats,
+  hasMatchData,
 }: {
   players: Player[];
   board: TeamSeason;
   clubName: string;
+  seasonStats: PlayerSeasonStats[];
+  hasMatchData: boolean;
 }) {
-  const totalGoals = players.reduce((s, p) => s + (p.goals ?? 0), 0);
-  const scorers = players
-    .filter((p) => (p.goals ?? 0) > 0)
-    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0));
-  const topGoals = scorers[0]?.goals ?? 0;
+  const [filter, setFilter] = useState<"tous" | MatchType>("tous");
+
+  // Repli : tant qu'aucune feuille de match n'est saisie, on garde l'ancien
+  // affichage (buteurs basés sur les buts « statiques » de l'effectif).
+  if (!hasMatchData) {
+    return <LegacyScorers players={players} />;
+  }
+
+  const pick = (s: PlayerSeasonStats) =>
+    filter === "tous" ? s.total : s.byType[filter];
+  const lines = seasonStats.map((s) => ({ name: s.name, ...pick(s) }));
+
+  const totalGoals = lines.reduce((a, b) => a + b.goals, 0);
+  const totalAssists = lines.reduce((a, b) => a + b.assists, 0);
+  const scorers = lines.filter((p) => p.goals > 0).sort((a, b) => b.goals - a.goals);
+  const assisters = lines.filter((p) => p.assists > 0).sort((a, b) => b.assists - a.assists);
+  const played = lines
+    .filter((p) => p.matches > 0)
+    .sort((a, b) => b.goals - a.goals || b.assists - a.assists || b.matches - a.matches);
   const me = board.standings.find((r) => r.team === clubName);
 
   const cards = [
-    { value: String(players.length), label: "Joueurs" },
-    { value: String(totalGoals), label: "Buts marqués" },
+    { value: String(totalGoals), label: "Buts" },
+    { value: String(totalAssists), label: "Passes déc." },
     { value: scorers.length ? String(scorers.length) : "—", label: "Buteurs" },
-    me
+    filter === "championnat" && me
       ? { value: `${me.rank}ᵉ`, label: "Au classement" }
-      : { value: "—", label: "Au classement" },
+      : { value: String(players.length), label: "Joueurs" },
   ];
 
   return (
     <div className="space-y-8">
+      {/* Filtre par type de match */}
+      <div className="flex flex-wrap gap-2">
+        {STAT_FILTERS.map((f) => (
+          <button
+            key={f.key}
+            type="button"
+            onClick={() => setFilter(f.key)}
+            className={cn(
+              "rounded-full border px-4 py-2 font-display text-xs uppercase tracking-wide transition-all",
+              filter === f.key
+                ? "border-transparent bg-forest text-white shadow-sm"
+                : "border-border bg-card text-ink/70 hover:border-gold hover:text-forest",
+            )}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
       {/* Cartes chiffres */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         {cards.map((c) => (
@@ -360,7 +423,119 @@ function StatsPanel({
         ))}
       </div>
 
-      {/* Top buteurs */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <ScorerList title="Meilleurs buteurs" rows={scorers} kind="goals" />
+        <ScorerList title="Meilleurs passeurs" rows={assisters} kind="assists" />
+      </div>
+
+      {/* Tableau détaillé (buts / passes / matchs joués) */}
+      <div className="overflow-hidden rounded-2xl border bg-card shadow-sm">
+        <div className="flex items-center gap-2 border-b bg-ink px-5 py-4 text-white">
+          <Target className="h-5 w-5 text-gold" />
+          <h3 className="text-lg">Détail par joueur</h3>
+        </div>
+        {played.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[360px] text-sm">
+              <thead>
+                <tr className="border-b text-left text-xs uppercase tracking-wider text-muted-foreground">
+                  <th className="px-4 py-3 font-medium">Joueur</th>
+                  <th className="px-2 py-3 text-center font-medium">MJ</th>
+                  <th className="px-2 py-3 text-center font-medium">Buts</th>
+                  <th className="px-3 py-3 text-center font-medium">Passes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {played.map((p) => (
+                  <tr key={p.name} className="border-b last:border-0 hover:bg-muted/50">
+                    <td className="px-4 py-3 font-medium text-ink">{p.name}</td>
+                    <td className="px-2 py-3 text-center text-muted-foreground">{p.matches}</td>
+                    <td className="px-2 py-3 text-center font-display text-base text-forest">{p.goals}</td>
+                    <td className="px-3 py-3 text-center font-display text-base text-forest">{p.assists}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <p className="p-6 text-center text-sm text-muted-foreground">
+            Aucune feuille de match saisie pour ce type de compétition.
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** Liste à barres (buteurs ou passeurs). */
+function ScorerList({
+  title,
+  rows,
+  kind,
+}: {
+  title: string;
+  rows: { name: string; goals: number; assists: number }[];
+  kind: "goals" | "assists";
+}) {
+  const value = (r: { goals: number; assists: number }) => (kind === "goals" ? r.goals : r.assists);
+  const top = rows[0] ? value(rows[0]) : 0;
+  const unit = kind === "goals" ? "but" : "passe";
+  return (
+    <div className="rounded-2xl border bg-card p-6 shadow-sm">
+      <h3 className="flex items-center gap-2 text-lg text-ink">
+        <Target className="h-5 w-5 text-forest" /> {title}
+      </h3>
+      {rows.length > 0 ? (
+        <ul className="mt-5 space-y-3">
+          {rows.slice(0, 6).map((p, i) => {
+            const v = value(p);
+            return (
+              <li key={p.name} className="flex items-center gap-3">
+                <span className="w-5 text-center font-display text-sm text-muted-foreground">{i + 1}</span>
+                <span className="w-32 shrink-0 truncate text-sm font-medium text-ink">{p.name}</span>
+                <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-muted">
+                  <div className="h-full rounded-full bg-gold" style={{ width: `${top ? (v / top) * 100 : 0}%` }} />
+                </div>
+                <span className="w-16 text-right font-display text-sm text-forest">
+                  {v} {v === 1 ? unit : `${unit}s`}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className="mt-4 text-sm text-muted-foreground">
+          Rien à afficher pour ce filtre.
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** Affichage de repli (aucune feuille de match saisie) — buts « statiques ». */
+function LegacyScorers({ players }: { players: Player[] }) {
+  const totalGoals = players.reduce((s, p) => s + (p.goals ?? 0), 0);
+  const scorers = players
+    .filter((p) => (p.goals ?? 0) > 0)
+    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0));
+  const topGoals = scorers[0]?.goals ?? 0;
+
+  const cards = [
+    { value: String(players.length), label: "Joueurs" },
+    { value: String(totalGoals), label: "Buts marqués" },
+    { value: scorers.length ? String(scorers.length) : "—", label: "Buteurs" },
+  ];
+
+  return (
+    <div className="space-y-8">
+      <div className="grid grid-cols-3 gap-4">
+        {cards.map((c) => (
+          <div key={c.label} className="rounded-xl border bg-card p-5 text-center shadow-sm">
+            <div className="font-display text-3xl text-forest">{c.value}</div>
+            <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{c.label}</div>
+          </div>
+        ))}
+      </div>
       <div className="rounded-2xl border bg-card p-6 shadow-sm">
         <h3 className="flex items-center gap-2 text-lg text-ink">
           <Target className="h-5 w-5 text-forest" /> Meilleurs buteurs
@@ -369,17 +544,10 @@ function StatsPanel({
           <ul className="mt-5 space-y-3">
             {scorers.slice(0, 6).map((p, i) => (
               <li key={p.name} className="flex items-center gap-3">
-                <span className="w-5 text-center font-display text-sm text-muted-foreground">
-                  {i + 1}
-                </span>
-                <span className="w-40 shrink-0 truncate text-sm font-medium text-ink">
-                  {p.name}
-                </span>
+                <span className="w-5 text-center font-display text-sm text-muted-foreground">{i + 1}</span>
+                <span className="w-40 shrink-0 truncate text-sm font-medium text-ink">{p.name}</span>
                 <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="h-full rounded-full bg-gold"
-                    style={{ width: `${topGoals ? ((p.goals ?? 0) / topGoals) * 100 : 0}%` }}
-                  />
+                  <div className="h-full rounded-full bg-gold" style={{ width: `${topGoals ? ((p.goals ?? 0) / topGoals) * 100 : 0}%` }} />
                 </div>
                 <span className="w-14 text-right font-display text-sm text-forest">
                   {p.goals} {p.goals === 1 ? "but" : "buts"}
@@ -388,9 +556,7 @@ function StatsPanel({
             ))}
           </ul>
         ) : (
-          <p className="mt-4 text-sm text-muted-foreground">
-            Pas encore de buteur enregistré cette saison.
-          </p>
+          <p className="mt-4 text-sm text-muted-foreground">Pas encore de buteur enregistré cette saison.</p>
         )}
       </div>
     </div>

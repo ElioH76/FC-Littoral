@@ -176,6 +176,7 @@ export const fffDofaSource: SeasonSource = {
           venue: m.terrain?.name
             ? `${m.terrain.name}${m.terrain.city ? `, ${m.terrain.city}` : ""}`
             : undefined,
+          type: "championnat" as const,
         };
       });
   },
