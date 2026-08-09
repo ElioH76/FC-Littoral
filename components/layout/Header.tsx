@@ -34,7 +34,6 @@ const links: NavItem[] = [
       { href: "/saison#calendrier", label: "Calendrier & résultats" },
     ],
   },
-  { href: "/actualites", label: "Actualités" },
   { href: "/sponsors", label: "Partenaires" },
 ];
 
