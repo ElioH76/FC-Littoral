@@ -81,12 +81,12 @@ export default async function HomePage() {
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
               {
-                src: "/mockup-maillot-joueur.jpeg",
+                src: "/images/Maillots/mockup-sublime-finale.jpeg",
                 alt: "Maillot domicile joueur 2026/2027, or et vert",
                 cap: "Joueur · Or & Vert",
               },
               {
-                src: "/mockup-maillot-gardien.jpeg",
+                src: "/images/Maillots/mockup-gardien-sublime-finale.jpeg",
                 alt: "Maillot gardien 2026/2027, violet camouflage",
                 cap: "Gardien · Violet camo",
               },
