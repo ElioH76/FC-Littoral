@@ -3,12 +3,11 @@ import Link from "next/link";
 import { ArrowRight, Instagram, Users } from "lucide-react";
 
 import { club } from "@/data/club";
-import { getFlagshipTeam, getLatestNews, getSponsors } from "@/lib/data";
+import { getFlagshipTeam, getSponsors } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/Hero";
 import { KitStripe } from "@/components/sections/KitStripe";
 import { SectionHeading } from "@/components/sections/SectionHeading";
-import { NewsCard } from "@/components/cards/NewsCard";
 import { SeasonPreview } from "@/components/sections/SeasonPreview";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
 
@@ -17,13 +16,10 @@ import { InstagramFeed } from "@/components/sections/InstagramFeed";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [flagship, recentNews, sponsors] = await Promise.all([
+  const [flagship, sponsors] = await Promise.all([
     getFlagshipTeam(),
-    getLatestNews(6),
     getSponsors(),
   ]);
-
-  const latestNews = recentNews.filter((a) => !a.featured).slice(0, 3);
 
   return (
     <>
@@ -112,24 +108,23 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ===== NEWS (sombre) ===== */}
-      <section className="section">
+      {/* ===== SUIVEZ-NOUS (feed Instagram, sombre) — tient lieu d'actualités ===== */}
+      <section className="section border-t border-white/10 bg-ink">
         <div className="container">
-          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading eyebrow="Actualités" title="Les dernières news" />
-            <Link
-              href="/actualites"
+          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading eyebrow="Sur les réseaux" title="Suivez-nous" />
+            <a
+              href={club.socials.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
             >
-              Toutes les actus
+              <Instagram className="h-4 w-4" />
+              @fc_littoral
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+            </a>
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {latestNews.map((article) => (
-              <NewsCard key={article.slug} article={article} />
-            ))}
-          </div>
+          <InstagramFeed feedId="JCJZtqsD8uGke2G1apgI" />
         </div>
       </section>
 
@@ -237,29 +232,6 @@ export default async function HomePage() {
 
       {/* ===== SAISON (clair, données réelles) ===== */}
       <SeasonPreview />
-
-      {/* ===== SUIVEZ-NOUS (feed Instagram, sombre) ===== */}
-      <section className="section border-t border-white/10 bg-ink">
-        <div className="container">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Sur les réseaux"
-              title="Suivez-nous"
-            />
-            <a
-              href={club.socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
-            >
-              <Instagram className="h-4 w-4" />
-              @fc_littoral
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-          </div>
-          <InstagramFeed feedId="JCJZtqsD8uGke2G1apgI" />
-        </div>
-      </section>
 
       {/* ===== PARTENAIRES (sombre) ===== */}
       <section className="section border-t border-white/10 bg-ink-800">
