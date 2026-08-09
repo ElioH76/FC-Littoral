@@ -52,13 +52,13 @@ export default async function HomePage() {
 
       {/* ===== FEATURE : MAILLOTS (clair) ===== */}
       <section className="section section-light">
-        <div className="container grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
+        <div className="container">
+          <div className="max-w-2xl">
             <span className="eyebrow mb-5">À ne pas rater</span>
             <h2 className="font-heading text-[clamp(1.9rem,4.4vw,3.1rem)] font-black uppercase leading-[1.05]">
               Les nouveaux maillots 2026 / 2027
             </h2>
-            <p className="mt-5 max-w-lg text-base text-muted-foreground md:text-lg">
+            <p className="mt-5 text-base text-muted-foreground md:text-lg">
               L&apos;équipe Seniors Après-Midi dévoile ses nouvelles tuniques,
               joueur et gardien, signées MAKI9SPORT. Or et vert pour le terrain,
               violet camo pour les cages.
@@ -78,29 +78,29 @@ export default async function HomePage() {
             </Button>
             */}
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
               {
                 src: "/mockup-maillot-joueur.jpeg",
-                alt: "Maillot joueur 2026/2027",
+                alt: "Maillot domicile joueur 2026/2027, or et vert",
                 cap: "Joueur · Or & Vert",
               },
               {
                 src: "/mockup-maillot-gardien.jpeg",
-                alt: "Maillot gardien 2026/2027",
+                alt: "Maillot gardien 2026/2027, violet camouflage",
                 cap: "Gardien · Violet camo",
               },
             ].map((kit) => (
               <figure
                 key={kit.src}
-                className="overflow-hidden rounded-2xl border border-border bg-paper-card transition-transform duration-300 hover:-translate-y-1.5 hover:border-gold"
+                className="overflow-hidden rounded-2xl border border-border bg-ink transition-transform duration-300 hover:-translate-y-1.5 hover:border-gold"
               >
-                <div className="relative aspect-[3/4]">
+                <div className="relative aspect-[16/10]">
                   <Image
                     src={kit.src}
                     alt={kit.alt}
                     fill
-                    sizes="(max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 92vw, 46vw"
                     className="object-cover"
                   />
                 </div>
