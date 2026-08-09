@@ -56,33 +56,38 @@ export default async function HomePage() {
           <div>
             <span className="eyebrow mb-5">À ne pas rater</span>
             <h2 className="font-heading text-[clamp(1.9rem,4.4vw,3.1rem)] font-black uppercase leading-[1.05]">
-              Les nouveaux maillots 2024 / 2025
+              Les nouveaux maillots 2026 / 2027
             </h2>
             <p className="mt-5 max-w-lg text-base text-muted-foreground md:text-lg">
               L&apos;équipe Seniors Après-Midi dévoile ses nouvelles tuniques,
               joueur et gardien, signées MAKI9SPORT. Or et vert pour le terrain,
               violet camo pour les cages.
             </p>
+            {/* TODO maillots : à la réception des maillots, décommenter et
+                remplacer l'URL par la publication Instagram dédiée au maillot.
             <Button asChild className="mt-7">
-              <Link
-                href="/actualites/nouveaux-maillots-2024-2025"
+              <a
+                href="https://www.instagram.com/p/XXXXXXXX/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group"
               >
-                Découvrir le maillot
+                Voir sur Instagram
                 <ArrowRight className="transition-transform group-hover:translate-x-1" />
-              </Link>
+              </a>
             </Button>
+            */}
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
               {
                 src: "/mockup-maillot-joueur.jpeg",
-                alt: "Maillot joueur 2024/2025",
+                alt: "Maillot joueur 2026/2027",
                 cap: "Joueur · Or & Vert",
               },
               {
                 src: "/mockup-maillot-gardien.jpeg",
-                alt: "Maillot gardien 2024/2025",
+                alt: "Maillot gardien 2026/2027",
                 cap: "Gardien · Violet camo",
               },
             ].map((kit) => (
