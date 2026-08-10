@@ -1,65 +1,32 @@
 import type { Fixture, Standing, TeamSlug } from "@/types";
-import { ACTIVE_SOURCE, teamSourceConfig } from "@/lib/season-config";
-import { fffDofaSource } from "./fff-dofa-source";
+import { teamSourceConfig } from "@/lib/season-config";
+import { snapshotFixtures, snapshotStandings } from "@/lib/season-snapshot";
 import { mockSource } from "./mock-source";
-import type { SeasonSource } from "./types";
 
 /**
- * Orchestrateur des sources de données « saison ».
- * - Choisit la source active (cf. season-config).
- * - Filet de sécurité : si la source externe est EN PANNE (exception), on
- *   retombe sur les données de démonstration (mock).
+ * Orchestrateur des sources « saison » (classements / calendriers).
  *
- * ⚠️ Une réponse VIDE de la vraie source n'est PAS une panne : en pré-saison,
- * le classement officiel n'existe pas encore. Dans ce cas on renvoie une liste
- * vide (la page affiche « classement à venir ») plutôt que de masquer ce vide
- * derrière un faux classement de démo.
+ * ⚠️ L'API FFF (DOFA) bloque les IP cloud (Vercel, GitHub Actions…) → la prod
+ * ne peut PAS l'appeler. On lit donc un SNAPSHOT figé dans le repo
+ * (`data/season-snapshot.json`), rafraîchi depuis une IP résidentielle via
+ * `npm run sync:fff` (cf. `scripts/sync-fff.mjs`).
  *
- * Une équipe sans config réelle (pas de `clubId`) utilise directement le mock.
+ * - Équipe avec config réelle (clubId) → snapshot FFF (vide tant que pas
+ *   synchronisé → le site affiche « à venir »).
+ * - Équipe sans config → données de démonstration (mock).
  *
- * Les fonctions de `lib/data.ts` passent par ici, donc les composants ne
- * voient jamais d'où vient la donnée.
+ * Les fonctions de `lib/data.ts` passent par ici, donc les composants ne voient
+ * jamais d'où vient la donnée.
  */
-const registry: Record<string, SeasonSource> = {
-  mock: mockSource,
-  "fff-dofa": fffDofaSource,
-};
-
-function activeSource(): SeasonSource {
-  return registry[ACTIVE_SOURCE] ?? mockSource;
-}
 
 export async function resolveStandings(team: TeamSlug): Promise<Standing[]> {
-  const src = activeSource();
   const config = teamSourceConfig[team];
-  if (src.name !== "mock" && config.clubId) {
-    try {
-      // La vraie source fait autorité, même si elle renvoie un classement vide
-      // (pré-saison : pas encore de journées jouées).
-      return await src.getStandings(team, config);
-    } catch (error) {
-      console.error(
-        `[saison] classement "${team}" via ${src.name} en panne → repli démo`,
-        error,
-      );
-    }
-  }
+  if (config.clubId) return snapshotStandings(team);
   return mockSource.getStandings(team, config);
 }
 
 export async function resolveFixtures(team: TeamSlug): Promise<Fixture[]> {
-  const src = activeSource();
   const config = teamSourceConfig[team];
-  if (src.name !== "mock" && config.clubId) {
-    try {
-      // La vraie source fait autorité, même si le calendrier est vide.
-      return await src.getFixtures(team, config);
-    } catch (error) {
-      console.error(
-        `[saison] calendrier "${team}" via ${src.name} en panne → repli démo`,
-        error,
-      );
-    }
-  }
+  if (config.clubId) return snapshotFixtures(team);
   return mockSource.getFixtures(team, config);
 }
