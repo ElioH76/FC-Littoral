@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-08-10T22:28:30.912Z",
+  "syncedAt": "2026-08-10T22:31:24.385Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -26,6 +26,18 @@
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
           "awayLogo": "/logo.png",
           "venue": "Stade Mamie Bréant 1, GODERVILLE"
+        },
+        {
+          "id": "56354174",
+          "date": "2026-09-27",
+          "home": "OH TREFILERIE NEIGES",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J11",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582220.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE PELÉ 2 , LE HAVRE"
         },
         {
           "id": "56354131",
@@ -74,6 +86,132 @@
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC500252.jpg",
           "awayLogo": "/logo.png",
           "venue": "Stade Bernard Hauchard, FECAMP"
+        },
+        {
+          "id": "56354163",
+          "date": "2026-11-22",
+          "home": "F.C. Littoral",
+          "away": "GAINNEVILLE AC",
+          "competition": "SENIORS APRÈS-MIDI D4 • J9",
+          "type": "championnat",
+          "time": "14H30",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC520631.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354173",
+          "date": "2026-11-29",
+          "home": "F.C. Littoral",
+          "away": "—",
+          "competition": "SENIORS APRÈS-MIDI D4 • J10",
+          "type": "championnat",
+          "homeLogo": "/logo.png"
+        },
+        {
+          "id": "56354181",
+          "date": "2027-01-31",
+          "home": "F.C. Littoral",
+          "away": "US GODERVILLAISE",
+          "competition": "SENIORS APRÈS-MIDI D4 • J12",
+          "type": "championnat",
+          "time": "14H30",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354191",
+          "date": "2027-02-07",
+          "home": "ES DU MONT GAILLARD",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J13",
+          "type": "championnat",
+          "time": "14H30",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC529155.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE DU MONT GAILLARD 2, LE HAVRE"
+        },
+        {
+          "id": "56354194",
+          "date": "2027-02-14",
+          "home": "F.C. Littoral",
+          "away": "HFC",
+          "competition": "SENIORS APRÈS-MIDI D4 • J14",
+          "type": "championnat",
+          "time": "14H30",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC565177.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354202",
+          "date": "2027-03-14",
+          "home": "US EPOUVILLE",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J15",
+          "type": "championnat",
+          "time": "14H30",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501473.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "COMPLEXE SPORTIF DE COUPEAUVILLE 1, EPOUVILLE"
+        },
+        {
+          "id": "56354207",
+          "date": "2027-03-21",
+          "home": "F.C. Littoral",
+          "away": "USF FECAMP",
+          "competition": "SENIORS APRÈS-MIDI D4 • J16",
+          "type": "championnat",
+          "time": "14H30",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC500252.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354223",
+          "date": "2027-04-18",
+          "home": "GAINNEVILLE AC",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J19",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC520631.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "Complexe Sportif, ST LAURENT DE BREVEDENT"
+        },
+        {
+          "id": "56354233",
+          "date": "2027-04-25",
+          "home": "—",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J20",
+          "type": "championnat",
+          "awayLogo": "/logo.png"
+        },
+        {
+          "id": "56354234",
+          "date": "2027-05-09",
+          "home": "F.C. Littoral",
+          "away": "OH TREFILERIE NEIGES",
+          "competition": "SENIORS APRÈS-MIDI D4 • J21",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582220.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354244",
+          "date": "2027-05-23",
+          "home": "AS LANQUETOT",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J22",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC518805.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE MUNICIPAL, LANQUETOT"
         }
       ],
       "standings": []
