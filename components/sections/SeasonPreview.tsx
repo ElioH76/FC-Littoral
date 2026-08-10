@@ -9,7 +9,7 @@ import { SeasonBoard } from "@/components/sections/SeasonBoard";
 
 /**
  * Aperçu de la saison sur l'accueil : classement + calendrier, TOUTES les équipes
- * (onglets). Données de démonstration aujourd'hui ; PHASE 2 = API temps réel.
+ * (onglets). Calendrier/résultats en direct de la FFF (cf. lib/sources).
  */
 export async function SeasonPreview() {
   const boards = await getSeasonBoards();
@@ -25,7 +25,7 @@ export async function SeasonPreview() {
           />
           <Badge variant="forest" className="mb-2 gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            Bientôt en direct
+            En direct · FFF
           </Badge>
         </div>
 
@@ -38,7 +38,7 @@ export async function SeasonPreview() {
             <Link href="/saison">Voir la saison complète</Link>
           </Button>
           <p className="mt-4 text-xs text-muted-foreground">
-            Données de démonstration · bientôt mises à jour automatiquement.
+            Calendrier et résultats en direct de la FFF.
           </p>
         </div>
       </div>

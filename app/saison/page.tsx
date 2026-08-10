@@ -27,16 +27,16 @@ export default async function SaisonPage() {
         description="Toutes nos équipes réunies : sélectionne une équipe pour voir son classement, ses prochains matchs et ses derniers résultats."
       />
 
-      {/* Bandeau d'information phase 2 */}
+      {/* Bandeau d'information : données FFF en direct */}
       <div className="border-b border-white/10 bg-ink-800">
         <div className="container flex flex-wrap items-center justify-center gap-3 py-3 text-center text-sm text-bone-dim">
           <Badge variant="forest" className="gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            Bientôt en direct
+            En direct · FFF
           </Badge>
           <span>
-            Données de démonstration — les classements et résultats seront
-            prochainement synchronisés automatiquement.
+            Calendrier et résultats en direct de la FFF. Le classement
+            s&apos;affichera dès les premières journées jouées.
           </span>
         </div>
       </div>
