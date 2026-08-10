@@ -24,7 +24,7 @@ const HEADERS = {
   Accept: "application/json",
   Referer: "https://www.fff.fr/",
 };
-const REVALIDATE = 86400; // 24 h
+const REVALIDATE = 3600; // 1 h (données FFF mutualisées, rafraîchies en arrière-plan)
 
 async function dofa<T>(path: string): Promise<T | null> {
   try {

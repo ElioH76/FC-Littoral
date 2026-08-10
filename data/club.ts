@@ -39,11 +39,10 @@ export const club = {
   ],
   // Bureau / dirigeants — page "Le club"
   bureau: [
-    { name: "Jean-Marc Lemoine", role: "Président" },
-    { name: "Sophie Renaud", role: "Vice-présidente" },
-    { name: "Antoine Faure", role: "Secrétaire" },
-    { name: "Karine Dubois", role: "Trésorière" },
-    { name: "David Mercier", role: "Responsable sportif" },
+    { name: "Joseph Aracil", role: "Président · Responsable école de foot" },
+    { name: "André Tauvel", role: "Trésorier" },
+    { name: "Fabrice Chaif", role: "Dirigeant" },
+    { name: "Vincent Routel", role: "Dirigeant" },
   ],
   // Infos pratiques — page "Le club"
   pratique: [
