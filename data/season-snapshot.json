@@ -1,8 +1,81 @@
 {
-  "syncedAt": "2026-08-10T22:26:46.161Z",
+  "syncedAt": "2026-08-10T22:28:30.912Z",
   "teams": {
     "seniors": {
-      "fixtures": [],
+      "fixtures": [
+        {
+          "id": "56354118",
+          "date": "2026-09-06",
+          "home": "F.C. Littoral",
+          "away": "AS LANQUETOT",
+          "competition": "SENIORS APRÈS-MIDI D4 • J1",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC518805.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354121",
+          "date": "2026-09-20",
+          "home": "US GODERVILLAISE",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J2",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "Stade Mamie Bréant 1, GODERVILLE"
+        },
+        {
+          "id": "56354131",
+          "date": "2026-10-04",
+          "home": "F.C. Littoral",
+          "away": "ES DU MONT GAILLARD",
+          "competition": "SENIORS APRÈS-MIDI D4 • J3",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC529155.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354134",
+          "date": "2026-10-11",
+          "home": "HFC",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J4",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC565177.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE MUNICIPAL, ANGERVILLE L ORCHER"
+        },
+        {
+          "id": "56354142",
+          "date": "2026-10-18",
+          "home": "F.C. Littoral",
+          "away": "US EPOUVILLE",
+          "competition": "SENIORS APRÈS-MIDI D4 • J5",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501473.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "56354147",
+          "date": "2026-10-25",
+          "home": "USF FECAMP",
+          "away": "F.C. Littoral",
+          "competition": "SENIORS APRÈS-MIDI D4 • J6",
+          "type": "championnat",
+          "time": "15H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC500252.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "Stade Bernard Hauchard, FECAMP"
+        }
+      ],
       "standings": []
     },
     "u13": {
