@@ -34,7 +34,7 @@ export const products: Product[] = [
     name: "Maillot domicile",
     category: "Maillots",
     description:
-      "Le maillot officiel or et vert, floqué MAKI9SPORT. Short et chaussettes assortis. Personnalisable au dos.",
+      "Le maillot officiel or et vert, floqué LEMNOS. Short et chaussettes assortis. Personnalisable au dos.",
     image: "/boutique/maillot-domicile.webp",
     imageAlt: "Maillot domicile F.C. Littoral or et vert, face et dos",
     price: 45,

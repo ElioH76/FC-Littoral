@@ -11,7 +11,7 @@ export const news: Article[] = [
     slug: "nouveaux-maillots-2024-2025",
     title: "À ne pas louper : découvrez les nouveaux maillots 2024/2025 !",
     excerpt:
-      "L'équipe Seniors Après-Midi dévoile ses nouvelles tuniques, joueur et gardien, signées MAKI9SPORT. Or et vert pour le terrain, violet camo pour les cages.",
+      "L'équipe Seniors Après-Midi dévoile ses nouvelles tuniques, joueur et gardien, signées LEMNOS. Or et vert pour le terrain, violet camo pour les cages.",
     date: "2024-06-04",
     category: "Boutique",
     featured: true,
@@ -19,8 +19,8 @@ export const news: Article[] = [
     coverAlt: "Maillot joueur F.C. Littoral 2024/2025",
     content: [
       "Ça y est, les nouveaux maillots de l'équipe Seniors Après-Midi sont là ! Fidèles à l'identité du club, ils mettent à l'honneur l'or et le vert sur un design moderne aux motifs dynamiques.",
-      "Le maillot joueur arbore les couleurs historiques du F.C. Littoral, avec l'écusson sur le cœur et le flocage MAKI9SPORT, notre équipementier. Le maillot gardien, lui, se distingue par un audacieux camouflage violet pour faire briller nos derniers remparts.",
-      "Un grand merci à MAKI9SPORT pour ce travail et à nos partenaires qui rendent tout cela possible. Rendez-vous bientôt pour les modalités de commande !",
+      "Le maillot joueur arbore les couleurs historiques du F.C. Littoral, avec l'écusson sur le cœur et le flocage LEMNOS, notre équipementier. Le maillot gardien, lui, se distingue par un audacieux camouflage violet pour faire briller nos derniers remparts.",
+      "Un grand merci à LEMNOS pour ce travail et à nos partenaires qui rendent tout cela possible. Rendez-vous bientôt pour les modalités de commande !",
     ],
     gallery: [
       {

@@ -60,7 +60,7 @@ export default async function HomePage() {
             </h2>
             <p className="mt-5 text-base text-muted-foreground md:text-lg">
               L&apos;équipe Seniors Après-Midi dévoile ses nouvelles tuniques,
-              joueur et gardien, signées MAKI9SPORT. Or et vert pour le terrain,
+              joueur et gardien, signées LEMNOS. Or et vert pour le terrain,
               violet camo pour les cages.
             </p>
             {/* TODO maillots : à la réception des maillots, décommenter et

@@ -53,12 +53,12 @@ export const sponsors: Sponsor[] = [
     tier: "partenaire",
   },
   {
-    id: "maki9sport",
-    name: "MAKI9SPORT",
+    id: "lemnos",
+    name: "LEMNOS",
     description:
       "Équipementier officiel du F.C. Littoral. Maillots joueur et gardien, shorts et matériel sur-mesure aux couleurs du club.",
     website: "https://example.com",
-    logo: "/sponsors/maki9sport.svg",
+    logo: "/sponsors/lemnos.svg",
     tier: "officiel",
   },
 ];
