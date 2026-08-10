@@ -37,7 +37,7 @@ const TEAMS = [
   { slug: "u13", category: "U13", teamNumber: 3 },
 ];
 
-async function dofa(path) {
+async function dofaRaw(path) {
   const res = await fetch(`${BASE}${path}`, { headers: HEADERS });
   if (!res.ok) {
     throw new Error(
@@ -47,15 +47,28 @@ async function dofa(path) {
           : ""),
     );
   }
-  const json = await res.json();
-  // Filet de sécurité si l'API renvoie du JSON-LD (Hydra).
-  return json && typeof json === "object" && Array.isArray(json["hydra:member"])
-    ? json["hydra:member"]
-    : json;
+  return res.json();
+}
+
+/**
+ * Récupère TOUS les éléments d'une collection DOFA.
+ * L'API (API Platform) pagine à 30/page → on suit les pages jusqu'à une page
+ * incomplète. Gère le format tableau brut ET JSON-LD (hydra:member).
+ */
+async function dofaList(path) {
+  const items = [];
+  for (let page = 1; page <= 50; page++) {
+    const sep = path.includes("?") ? "&" : "?";
+    const json = await dofaRaw(`${path}${sep}page=${page}`);
+    const arr = Array.isArray(json) ? json : json?.["hydra:member"] ?? [];
+    items.push(...arr);
+    if (arr.length < 30) break; // dernière page atteinte
+  }
+  return items;
 }
 
 async function resolvePoule(category, teamNumber) {
-  const equipes = await dofa(`/clubs/${CLUB_ID}/equipes`);
+  const equipes = await dofaList(`/clubs/${CLUB_ID}/equipes`);
   if (!Array.isArray(equipes) || equipes.length === 0) return null;
   const eq =
     equipes.find((e) => e.category_code === category && e.number === teamNumber) ??
@@ -126,10 +139,10 @@ async function syncTeam(t) {
     return { fixtures: [], standings: [] };
   }
   const [matchs, classement] = await Promise.all([
-    dofa(`/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/matchs`),
-    dofa(`/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/classement_journees`).catch(
-      () => [],
-    ),
+    dofaList(`/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/matchs`),
+    dofaList(
+      `/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/classement_journees`,
+    ).catch(() => []),
   ]);
   const fixtures = (matchs ?? [])
     .filter(
