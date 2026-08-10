@@ -22,7 +22,9 @@ const BASE = "https://api-dofa.fff.fr/api";
 const HEADERS = {
   "User-Agent":
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-  Accept: "application/json, text/plain, */*",
+  // ⚠️ Accept STRICT "application/json" : avec un Accept plus large, DOFA
+  // répond en JSON-LD/Hydra ({ "hydra:member": [...] }) au lieu d'un tableau.
+  Accept: "application/json",
   "Accept-Language": "fr-FR,fr;q=0.9",
   Referer: "https://www.fff.fr/",
 };
@@ -45,7 +47,11 @@ async function dofa(path) {
           : ""),
     );
   }
-  return res.json();
+  const json = await res.json();
+  // Filet de sécurité si l'API renvoie du JSON-LD (Hydra).
+  return json && typeof json === "object" && Array.isArray(json["hydra:member"])
+    ? json["hydra:member"]
+    : json;
 }
 
 async function resolvePoule(category, teamNumber) {
