@@ -1,4 +1,13 @@
 {
-  "syncedAt": null,
-  "teams": {}
+  "syncedAt": "2026-08-10T22:26:46.161Z",
+  "teams": {
+    "seniors": {
+      "fixtures": [],
+      "standings": []
+    },
+    "u13": {
+      "fixtures": [],
+      "standings": []
+    }
+  }
 }
