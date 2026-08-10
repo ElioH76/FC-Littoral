@@ -30,7 +30,7 @@ async function probe(path: string, headers: Record<string, string>) {
       len: text.length,
       kind,
       contentType: res.headers.get("content-type"),
-      preview: text.slice(0, 220),
+      preview: text.slice(0, 1200),
     };
   } catch (e) {
     return { error: e instanceof Error ? e.message : String(e), ms: Date.now() - started };
