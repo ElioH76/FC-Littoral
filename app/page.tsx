@@ -254,7 +254,7 @@ export default async function HomePage() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="flex flex-wrap justify-center gap-4">
             {sponsors.map((sponsor) => (
               <a
                 key={sponsor.id}
@@ -262,7 +262,7 @@ export default async function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={sponsor.name}
-                className="flex aspect-[3/2] items-center justify-center rounded-2xl border border-white/10 bg-ink p-5 transition-all duration-200 hover:-translate-y-1 hover:border-gold"
+                className="flex aspect-[3/2] w-44 items-center justify-center rounded-2xl border border-white/10 bg-ink p-5 transition-all duration-200 hover:-translate-y-1 hover:border-gold sm:w-52"
               >
                 <Image
                   src={sponsor.logo}

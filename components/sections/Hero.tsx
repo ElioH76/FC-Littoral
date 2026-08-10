@@ -30,9 +30,9 @@ export function Hero() {
             <span className="block text-gold">{club.subSlogan}</span>
           </h1>
           <p className="mt-6 max-w-lg text-base text-bone-dim md:text-lg">
-            Club de football amateur fondé en {club.founded}. Des U13 aux
-            Seniors, nous faisons vivre la passion du ballon rond au cœur de
-            notre territoire.
+            Club de football amateur fondé en {club.founded}. De l&apos;école de
+            foot aux Seniors, nous faisons vivre la passion du ballon rond au
+            cœur de notre territoire.
           </p>
           <div className="mt-8 flex flex-wrap gap-3.5">
             <Button asChild size="lg">
