@@ -10,7 +10,7 @@
  * Usage : `npm run sync:fff`  (à lancer après chaque journée de championnat).
  */
 
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { execSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -161,18 +161,28 @@ function git(args) {
 
 async function main() {
   console.log("⏳ Récupération des données FFF (DOFA)…");
+
+  let existingTeams = {};
+  try {
+    existingTeams = JSON.parse(readFileSync(SNAPSHOT, "utf8")).teams ?? {};
+  } catch {
+    /* fichier absent/illisible → on repart de zéro */
+  }
+
   const teams = {};
   for (const t of TEAMS) teams[t.slug] = await syncTeam(t);
 
-  const snapshot = { syncedAt: new Date().toISOString(), teams };
-  writeFileSync(SNAPSHOT, JSON.stringify(snapshot, null, 2) + "\n");
-  console.log(`📝 Snapshot écrit : data/season-snapshot.json`);
-
-  const changed = git("status --porcelain data/season-snapshot.json").trim();
-  if (!changed) {
-    console.log("✅ Aucun changement (déjà à jour). Rien à pousser.");
+  // On ne réécrit / ne pousse QUE si les vraies données ont changé (on ignore
+  // `syncedAt` : sinon chaque run créerait un commit + déploiement inutile).
+  if (JSON.stringify(teams) === JSON.stringify(existingTeams)) {
+    console.log("✅ Données FFF inchangées — rien à faire.");
     return;
   }
+
+  const snapshot = { syncedAt: new Date().toISOString(), teams };
+  writeFileSync(SNAPSHOT, JSON.stringify(snapshot, null, 2) + "\n");
+  console.log("📝 Snapshot mis à jour : data/season-snapshot.json");
+
   git("add data/season-snapshot.json");
   const stamp = new Date().toISOString().slice(0, 16).replace("T", " ");
   execSync(`git commit -m "data(saison): sync FFF ${stamp}"`, { cwd: ROOT, stdio: "inherit" });
