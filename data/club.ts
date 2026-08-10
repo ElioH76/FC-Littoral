@@ -33,7 +33,7 @@ export const club = {
   ],
   // Histoire du club (paragraphes) — page "Le club"
   history: [
-    "Né en 2002 de la passion de quelques bénévoles, le F.C. Littoral est le fruit de la fusion des clubs de Saint-Jouin, Heuqueville et Cauville, réunis pour faire vivre le football sur notre littoral.",
+    "Né en 2002 de la passion de quelques bénévoles, le F.C. Littoral est le fruit de la fusion des clubs de Saint-Jouin-Bruneval, Heuqueville et Cauville-sur-Mer, réunis pour faire vivre le football sur notre littoral.",
     "Le club a grandi saison après saison autour d'un noyau de joueurs et de familles fidèles. Aujourd'hui, il accueille tous les âges : de l'école de foot, dès 6 ans, jusqu'à l'équipe fanion des Seniors Après-Midi, en passant par les U13.",
     "Plus de vingt ans plus tard, l'esprit reste le même : un club familial, ancré dans son territoire, où l'on vient autant pour le foot que pour les liens qui s'y créent.",
   ],
