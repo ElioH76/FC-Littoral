@@ -12,7 +12,7 @@ export const sponsors: Sponsor[] = [
     name: "LEMNOS",
     description:
       "Équipementier officiel du F.C. Littoral. Maillots joueur et gardien, shorts et matériel sur-mesure aux couleurs du club.",
-    website: "https://example.com",
+    website: "https://lemnos-sportswear.fr/",
     logo: "/sponsors/LEMNOS/LEMNOS.svg",
     tier: "officiel",
   },
