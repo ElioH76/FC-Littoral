@@ -6,6 +6,7 @@ import { ArrowLeft, CalendarDays, Clock, Goal, Handshake, MapPin, Trophy, Users 
 import { club } from "@/data/club";
 import { getFixture, getTeam } from "@/lib/data";
 import { getMatchStat } from "@/lib/match-stats-store";
+import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
 import type { TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -54,6 +55,11 @@ export default async function MatchPage({
   const played = fixture.homeScore != null && fixture.awayScore != null;
   const homeUs = fixture.home === club.name;
   const awayUs = fixture.away === club.name;
+
+  const matchType = resolveMatchType(fixture);
+  const typeVariant = (
+    { championnat: "forest", coupe: "default", amical: "muted" } as const
+  )[matchType];
 
   let result: { label: string; variant: "default" | "forest" | "dark" } | null =
     null;
@@ -122,7 +128,8 @@ export default async function MatchPage({
           </div>
 
           {/* Statut / résultat */}
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+            <Badge variant={typeVariant}>{MATCH_TYPE_META[matchType].label}</Badge>
             <Badge variant={played ? "muted" : "forest"}>
               {played ? "Terminé" : "À venir"}
             </Badge>

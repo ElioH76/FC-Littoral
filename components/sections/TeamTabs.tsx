@@ -25,6 +25,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Squad } from "@/components/sections/Squad";
 import { TeamCrest } from "@/components/match/TeamCrest";
+import { MatchTypeBadge } from "@/components/match/MatchTypeBadge";
 
 type TabKey = "effectif" | "classement" | "calendrier" | "stats";
 
@@ -273,8 +274,11 @@ function FixtureRow({
         className="block px-6 py-5 transition-colors hover:bg-muted/50"
       >
         <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
-          <span>{fixture.competition}</span>
-          <span>{formatDate(fixture.date)}</span>
+          <span className="flex min-w-0 items-center gap-2">
+            <MatchTypeBadge fixture={fixture} />
+            <span className="truncate">{fixture.competition}</span>
+          </span>
+          <span className="shrink-0">{formatDate(fixture.date)}</span>
         </div>
         <div className="mt-3.5 flex items-center justify-between gap-3 md:gap-4">
           <span className={cn("flex min-w-0 flex-1 items-center gap-3 text-base md:text-lg", isClubHome && "font-semibold text-ink")}>

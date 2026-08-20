@@ -18,6 +18,14 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SNAPSHOT = join(ROOT, "data", "season-snapshot.json");
 
+/** Déduit le type de match depuis le libellé (cf. lib/match-type.ts). */
+function matchTypeFromCompetition(competition) {
+  const c = competition.toLowerCase();
+  if (/coupe|challenge|troph[ée]e/.test(c)) return "coupe";
+  if (/pr[ée]paration|amic|tournoi|gala/.test(c)) return "amical";
+  return "championnat";
+}
+
 const BASE = "https://api-dofa.fff.fr/api";
 const HEADERS = {
   "User-Agent":
@@ -89,13 +97,14 @@ function mapFixture(m) {
   const journee = m.poule_journee?.number;
   const homeUs = m.home?.club?.cl_no === CLUB_ID;
   const awayUs = m.away?.club?.cl_no === CLUB_ID;
+  const competition = `${m.competition?.name ?? "Championnat"}${journee ? ` • J${journee}` : ""}`;
   const f = {
     id: String(m.ma_no),
     date: (m.date ?? "").slice(0, 10),
     home: homeUs ? CLUB_NAME : m.home?.short_name ?? "—",
     away: awayUs ? CLUB_NAME : m.away?.short_name ?? "—",
-    competition: `${m.competition?.name ?? "Championnat"}${journee ? ` • J${journee}` : ""}`,
-    type: "championnat",
+    competition,
+    type: matchTypeFromCompetition(competition),
   };
   if (m.time) f.time = m.time;
   const homeLogo = homeUs ? "/logo.png" : m.home?.club?.logo;

@@ -8,6 +8,7 @@ import type { Fixture, Standing, TeamSeason, TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { TeamCrest } from "@/components/match/TeamCrest";
+import { MatchTypeBadge } from "@/components/match/MatchTypeBadge";
 
 /**
  * Tableau de saison multi-équipes (onglets U13 / Seniors).
@@ -302,8 +303,11 @@ function FixtureRow({
             compact ? "text-xs" : "text-sm",
           )}
         >
-          <span>{fixture.competition}</span>
-          <span>{formatDate(fixture.date)}</span>
+          <span className="flex min-w-0 items-center gap-2">
+            <MatchTypeBadge fixture={fixture} size={compact ? "sm" : "md"} />
+            <span className="truncate">{fixture.competition}</span>
+          </span>
+          <span className="shrink-0">{formatDate(fixture.date)}</span>
         </div>
         <div
           className={cn(

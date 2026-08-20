@@ -1,5 +1,6 @@
 import { club } from "@/data/club";
 import type { Fixture, Standing } from "@/types";
+import { matchTypeFromCompetition } from "@/lib/match-type";
 import type { SeasonSource, TeamSourceConfig } from "./types";
 
 /**
@@ -160,6 +161,9 @@ export const fffDofaSource: SeasonSource = {
       .map((m) => {
         const played = m.home_score != null && m.away_score != null;
         const journee = m.poule_journee?.number;
+        const competition = `${m.competition?.name ?? "Championnat"}${
+          journee ? ` • J${journee}` : ""
+        }`;
         return {
           id: String(m.ma_no),
           date: (m.date ?? "").slice(0, 10),
@@ -168,15 +172,13 @@ export const fffDofaSource: SeasonSource = {
           away: displayName(m.away?.club?.cl_no, config, m.away?.short_name ?? "—"),
           homeLogo: logoFor(m.home?.club?.cl_no, config, m.home?.club?.logo),
           awayLogo: logoFor(m.away?.club?.cl_no, config, m.away?.club?.logo),
-          competition: `${m.competition?.name ?? "Championnat"}${
-            journee ? ` • J${journee}` : ""
-          }`,
+          competition,
           homeScore: played ? (m.home_score as number) : undefined,
           awayScore: played ? (m.away_score as number) : undefined,
           venue: m.terrain?.name
             ? `${m.terrain.name}${m.terrain.city ? `, ${m.terrain.city}` : ""}`
             : undefined,
-          type: "championnat" as const,
+          type: matchTypeFromCompetition(competition),
         };
       });
   },
