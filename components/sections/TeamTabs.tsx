@@ -26,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { Squad } from "@/components/sections/Squad";
 import { TeamCrest } from "@/components/match/TeamCrest";
 import { MatchTypeBadge } from "@/components/match/MatchTypeBadge";
+import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
 
 type TabKey = "effectif" | "classement" | "calendrier" | "stats";
 
@@ -267,11 +268,12 @@ function FixtureRow({
   showScore?: boolean;
 }) {
   const isClubHome = fixture.home === clubName;
+  const rowTone = MATCH_TYPE_META[resolveMatchType(fixture)].row;
   return (
     <li>
       <Link
         href={`/match/${slug}/${fixture.id}`}
-        className="block px-6 py-5 transition-colors hover:bg-muted/50"
+        className={cn("block px-6 py-5 transition-colors", rowTone)}
       >
         <div className="flex items-center justify-between gap-2 text-sm text-muted-foreground">
           <span className="flex min-w-0 items-center gap-2">

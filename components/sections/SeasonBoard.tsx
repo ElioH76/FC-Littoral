@@ -9,6 +9,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { TeamCrest } from "@/components/match/TeamCrest";
 import { MatchTypeBadge } from "@/components/match/MatchTypeBadge";
+import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
 
 /**
  * Tableau de saison multi-équipes (onglets U13 / Seniors).
@@ -288,12 +289,14 @@ function FixtureRow({
 }) {
   const isClubHome = fixture.home === clubName;
   const logoSize = compact ? 22 : 40;
+  const rowTone = MATCH_TYPE_META[resolveMatchType(fixture)].row;
   return (
     <li>
       <Link
         href={`/match/${slug}/${fixture.id}`}
         className={cn(
-          "block transition-colors hover:bg-muted/50",
+          "block transition-colors",
+          rowTone,
           compact ? "px-5 py-4" : "px-6 py-5",
         )}
       >

@@ -24,24 +24,31 @@ export function resolveMatchType(
   return matchTypeFromCompetition(fixture.competition);
 }
 
-/** Libellé court + habillage couleur (DA or / vert / neutre) par type. */
+/**
+ * Libellé court + habillage couleur (DA or / vert / neutre) par type.
+ * - `badge` : la pastille (point + libellé).
+ * - `row`   : fond léger de la ligne de match + accent au survol.
+ */
 export const MATCH_TYPE_META: Record<
   MatchType,
-  { label: string; badge: string; dot: string }
+  { label: string; badge: string; dot: string; row: string }
 > = {
   championnat: {
     label: "Championnat",
     badge: "border-forest/30 bg-forest/10 text-forest-600",
     dot: "bg-forest",
+    row: "bg-forest/10 hover:bg-forest/20",
   },
   coupe: {
     label: "Coupe",
     badge: "border-gold/40 bg-gold-50 text-gold-700",
     dot: "bg-gold",
+    row: "bg-gold/10 hover:bg-gold/20",
   },
   amical: {
     label: "Amical",
-    badge: "border-border bg-muted text-muted-foreground",
-    dot: "bg-muted-foreground/60",
+    badge: "border-sky-300 bg-sky-100 text-sky-700",
+    dot: "bg-sky-500",
+    row: "bg-sky-500/10 hover:bg-sky-500/20",
   },
 };
