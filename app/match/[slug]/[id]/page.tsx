@@ -6,7 +6,9 @@ import { ArrowLeft, CalendarDays, Clock, Goal, Handshake, MapPin, Trophy, Users 
 import { club } from "@/data/club";
 import { getFixture, getTeam } from "@/lib/data";
 import { getMatchStat } from "@/lib/match-stats-store";
+import { getMatchGallery } from "@/data/match-galleries";
 import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
+import { MatchGallery } from "@/components/match/MatchGallery";
 import type { TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -55,6 +57,7 @@ export default async function MatchPage({
   const played = fixture.homeScore != null && fixture.awayScore != null;
   const homeUs = fixture.home === club.name;
   const awayUs = fixture.away === club.name;
+  const gallery = getMatchGallery(fixture.id);
 
   const matchType = resolveMatchType(fixture);
   const typeVariant = (
@@ -204,6 +207,14 @@ export default async function MatchPage({
               Buteurs et passeurs seront ajoutés prochainement (la FFF ne les
               diffuse pas pour le football amateur).
             </p>
+          )}
+
+          {gallery && (
+            <MatchGallery
+              photos={gallery.photos}
+              caption={gallery.caption}
+              title={`${fixture.home} – ${fixture.away}`}
+            />
           )}
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">

@@ -9,3 +9,13 @@ npm-debug.log*
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Photos sources brutes (shoot maillots + reportage match) : trop lourdes
+# (~700 Mo de fichiers 6240x4160). On ne versionne que les versions web
+# optimisées, réintégrées sous des noms propres. Les originaux restent en local.
+/public/images/Matchs/
+/public/images/Maillots/Shooting/
+/public/images/Maillots/WhatsApp Image*
+
+# Windows Explorer junk
+desktop.ini

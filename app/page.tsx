@@ -81,27 +81,27 @@ export default async function HomePage() {
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {[
               {
-                src: "/images/Maillots/mockup-sublime-finale.jpeg",
-                alt: "Maillot domicile joueur 2026/2027, or et vert",
+                src: "/images/Maillots/maillot-joueur-2026.jpeg",
+                alt: "Maillot domicile joueur 2026/2027, or et vert, signé LEMNOS",
                 cap: "Joueur · Or & Vert",
               },
               {
-                src: "/images/Maillots/mockup-gardien-sublime-finale.jpeg",
-                alt: "Maillot gardien 2026/2027, violet camouflage",
+                src: "/images/Maillots/maillot-gardien-2026.jpeg",
+                alt: "Maillot gardien 2026/2027, violet camouflage, signé LEMNOS",
                 cap: "Gardien · Violet camo",
               },
             ].map((kit) => (
               <figure
                 key={kit.src}
-                className="overflow-hidden rounded-2xl border border-border bg-ink transition-transform duration-300 hover:-translate-y-1.5 hover:border-gold"
+                className="group overflow-hidden rounded-2xl border border-border bg-ink transition-transform duration-300 hover:-translate-y-1.5 hover:border-gold"
               >
-                <div className="relative aspect-[16/10]">
+                <div className="relative aspect-[4/5]">
                   <Image
                     src={kit.src}
                     alt={kit.alt}
                     fill
                     sizes="(max-width: 768px) 92vw, 46vw"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 </div>
                 <figcaption className="px-4 py-3 font-heading text-[0.72rem] font-extrabold uppercase tracking-[0.12em] text-muted-foreground">

@@ -49,7 +49,11 @@ export default async function TeamPage({
   if (!team) notFound();
 
   const players = bundle.players;
-  const totalGoals = players.reduce((sum, p) => sum + (p.goals ?? 0), 0);
+  // Buts en matchs officiels uniquement (championnat + coupe), hors amicaux.
+  const officialGoals = bundle.seasonStats.reduce(
+    (sum, s) => sum + s.byType.championnat.goals + s.byType.coupe.goals,
+    0,
+  );
   const scorer = players
     .filter((p) => (p.goals ?? 0) > 0)
     .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
@@ -79,7 +83,7 @@ export default async function TeamPage({
   const keyStats = [
     { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
-    { value: String(totalGoals), label: "Buts marqués" },
+    { value: String(officialGoals), label: "Buts en matchs officiels" },
   ];
 
   return (
