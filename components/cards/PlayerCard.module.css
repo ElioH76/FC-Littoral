@@ -1,0 +1,68 @@
+/*
+ * Effet "zoom cinéma" au survol.
+ * Au repos : 1ʳᵉ pose détourée dans la carte.
+ * Au survol : la carte se soulève, on bascule en fondu vers la 2ᵉ pose
+ * avec un léger zoom (un peu plus marqué sur la 2ᵉ photo).
+ */
+
+.card {
+  position: relative;
+}
+
+/* Le cadre se soulève doucement au survol. */
+.frame {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+  will-change: transform;
+}
+.card:hover .frame {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px -14px rgba(0, 0, 0, 0.4);
+}
+
+/* Les deux poses se superposent et se relaient en fondu. */
+.cover,
+.alt {
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s ease;
+}
+.alt {
+  opacity: 0;
+}
+.card:hover .cover {
+  opacity: 0;
+  transform: scale(1.06);
+}
+.card:hover .alt {
+  opacity: 1;
+  transform: scale(1.12); /* petit upscale sur la 2ᵉ pose */
+}
+
+/* Voile bas discret, un peu plus dense au survol (profondeur). */
+.veil {
+  opacity: 0.45;
+  transition: opacity 0.4s ease;
+}
+.card:hover .veil {
+  opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover,
+  .alt,
+  .frame,
+  .veil {
+    transition: opacity 0.3s ease;
+  }
+  .card:hover .frame {
+    transform: none;
+  }
+  .card:hover .cover {
+    transform: none;
+  }
+  .card:hover .alt {
+    transform: none;
+  }
+}

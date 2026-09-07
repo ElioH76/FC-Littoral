@@ -23,6 +23,11 @@ export interface Player {
   matches?: number;
   /** Photo détourée du joueur, ex. "/players/elio-hardouin.png". */
   photo?: string;
+  /**
+   * Seconde photo détourée (autre pose), révélée au survol de la carte :
+   * elle "sort" du cadre. Ex. "/players/elio-hardouin-hover.png".
+   */
+  hoverPhoto?: string;
   /** Capitaine de l'équipe. */
   captain?: boolean;
 }
