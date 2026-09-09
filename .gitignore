@@ -16,6 +16,10 @@ next-env.d.ts
 /public/images/Matchs/
 /public/images/Maillots/Shooting/
 /public/images/Maillots/WhatsApp Image*
+# Photos joueurs : sources brutes (avant détourage). Seules les .png détourées
+# sont versionnées et déployées ; les .jpeg d'origine restent en local.
+/public/players/*.jpeg
+/public/players/*.jpg
 
 # Windows Explorer junk
 desktop.ini

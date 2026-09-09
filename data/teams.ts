@@ -73,12 +73,12 @@ export const teams: Team[] = [
     // par match dans l'admin. `photo` : fichier dans /public/players (sinon
     // repli auto sur les initiales).
     players: [
-      { name: "Adrien Debris", position: "Milieu défensif", photo: "/players/adrien-debris.png" },
+      { name: "Adrien Debris", position: "Milieu défensif" },
       { name: "Alban Pusset", position: "Ailier", photo: "/players/alban-pusset.png" },
       { name: "Alexandre Ferreira Moreira", position: "Buteur", photo: "/players/alex-ferreira-moreira.png", hoverPhoto: "/players/alex-ferreira-moreira-hover.png" },
       { name: "Anthony Salmon", position: "Attaquant", photo: "/players/anthony-salmon.png" },
       { name: "Axel Hauchecorne", position: "Ailier", photo: "/players/axel-hauchecorne.png" },
-      { name: "Benjamin Friboulet", position: "Ailier", photo: "/players/ben-friboulet.png" },
+      { name: "Benjamin Friboulet", position: "Ailier" },
       { name: "Corentin Savalle", position: "Défenseur central", photo: "/players/corentin-savalle.png", hoverPhoto: "/players/corentin-savalle-hover.png" },
       { name: "Elio Hardouin", position: "Défenseur central", photo: "/players/elio-hardouin.png", hoverPhoto: "/players/elio-hardouin-hover.png", captain: true },
       { name: "Erwan Ligney", position: "Milieu", photo: "/players/erwan-ligney.png", hoverPhoto: "/players/erwan-ligney-hover.png" },
