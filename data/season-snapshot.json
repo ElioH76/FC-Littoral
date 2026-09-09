@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-06T18:23:12.352Z",
+  "syncedAt": "2026-09-09T14:56:16.094Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -16,6 +16,18 @@
           "homeScore": 5,
           "awayScore": 2,
           "venue": "Stade Bernard Hauchard, FECAMP"
+        },
+        {
+          "id": "79334175",
+          "date": "2026-09-13",
+          "home": "F.C. Littoral",
+          "away": "ST RIQUIER GASEG",
+          "competition": "COUPE DE NORMANDIE SENIORS • J1",
+          "type": "coupe",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC539285.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
           "id": "56447710",
@@ -389,7 +401,92 @@
       ]
     },
     "u13": {
-      "fixtures": [],
+      "fixtures": [
+        {
+          "id": "79499783",
+          "date": "2026-10-03",
+          "home": "A. S. Côte d'albâtre",
+          "away": "F.C. Littoral",
+          "competition": "U13 DEPARTEMENTAL 4 • J1",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC564471.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE MUNICIPAL, ANGERVILLE-LA-MARTEL"
+        },
+        {
+          "id": "79499790",
+          "date": "2026-10-10",
+          "home": "F.C. Littoral",
+          "away": "ES INTERC ST ANTOINE",
+          "competition": "U13 DEPARTEMENTAL 4 • J2",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC525165.jpg",
+          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+        },
+        {
+          "id": "79499793",
+          "date": "2026-10-31",
+          "home": "ENT.ASL.ASBZ.FCH",
+          "away": "F.C. Littoral",
+          "competition": "U13 DEPARTEMENTAL 4 • J3",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC518805.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE MUNICIPAL, BEUZEVILLETTE"
+        },
+        {
+          "id": "79499796",
+          "date": "2026-11-07",
+          "home": "F.C. Littoral",
+          "away": "FC BREAUTE BRETTEVIL",
+          "competition": "U13 DEPARTEMENTAL 4 • J4",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582668.jpg",
+          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+        },
+        {
+          "id": "79499801",
+          "date": "2026-11-14",
+          "home": "ASP / ASFR",
+          "away": "F.C. Littoral",
+          "competition": "U13 DEPARTEMENTAL 4 • J5",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501739.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE CAMILLE FLAMANT 1, PETIVILLE"
+        },
+        {
+          "id": "79499803",
+          "date": "2026-11-21",
+          "home": "F.C. Littoral",
+          "away": "US GODERVILLAISE",
+          "competition": "U13 DEPARTEMENTAL 4 • J6",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
+          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+        },
+        {
+          "id": "79499810",
+          "date": "2026-11-28",
+          "home": "F.C. Littoral",
+          "away": "USF FECAMP",
+          "competition": "U13 DEPARTEMENTAL 4 • J7",
+          "type": "championnat",
+          "time": "14H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC500252.jpg",
+          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+        }
+      ],
       "standings": []
     }
   }

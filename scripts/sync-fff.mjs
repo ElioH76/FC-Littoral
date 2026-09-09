@@ -75,21 +75,29 @@ async function dofaList(path) {
   return items;
 }
 
-async function resolvePoule(category, teamNumber) {
+/**
+ * Résout TOUTES les poules engagées par l'équipe (championnat ET coupes).
+ * Une équipe peut avoir plusieurs engagements : D4 (type "CH"), Coupe de
+ * Normandie (type "CP")… Chacun a sa propre poule de matchs. On les renvoie
+ * toutes pour ne manquer aucun match ; `type` distingue le championnat (seul
+ * porteur d'un classement).
+ */
+async function resolvePoules(category, teamNumber) {
   const equipes = await dofaList(`/clubs/${CLUB_ID}/equipes`);
-  if (!Array.isArray(equipes) || equipes.length === 0) return null;
+  if (!Array.isArray(equipes) || equipes.length === 0) return [];
   const eq =
     equipes.find((e) => e.category_code === category && e.number === teamNumber) ??
     equipes.find((e) => e.category_code === category) ??
     equipes[0];
-  const champ =
-    (eq.engagements ?? []).find((en) => en.competition?.type === "CH") ??
-    eq.engagements?.[0];
-  const cp = champ?.competition?.cp_no;
-  const phase = champ?.phase?.number;
-  const poule = champ?.poule?.stage_number;
-  if (cp == null || phase == null || poule == null) return null;
-  return { cp, phase, poule };
+  const poules = [];
+  for (const en of eq.engagements ?? []) {
+    const cp = en.competition?.cp_no;
+    const phase = en.phase?.number;
+    const poule = en.poule?.stage_number;
+    if (cp == null || phase == null || poule == null) continue;
+    poules.push({ cp, phase, poule, type: en.competition?.type ?? "CH" });
+  }
+  return poules;
 }
 
 function mapFixture(m) {
@@ -142,25 +150,45 @@ function mapStandings(rows) {
 }
 
 async function syncTeam(t) {
-  const p = await resolvePoule(t.category, t.teamNumber);
-  if (!p) {
-    console.warn(`  ⚠️  [${t.slug}] engagement championnat introuvable → vide`);
+  const poules = await resolvePoules(t.category, t.teamNumber);
+  if (poules.length === 0) {
+    console.warn(`  ⚠️  [${t.slug}] aucun engagement trouvé → vide`);
     return { fixtures: [], standings: [] };
   }
-  const [matchs, classement] = await Promise.all([
-    dofaList(`/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/matchs`),
-    dofaList(
-      `/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/classement_journees`,
-    ).catch(() => []),
-  ]);
-  const fixtures = (matchs ?? [])
+
+  // Matchs : on agrège TOUTES les poules (championnat + coupes).
+  const rawMatchs = [];
+  for (const p of poules) {
+    const ms = await dofaList(
+      `/compets/${p.cp}/phases/${p.phase}/poules/${p.poule}/matchs`,
+    ).catch(() => []);
+    rawMatchs.push(...(ms ?? []));
+  }
+  const seen = new Set();
+  const fixtures = rawMatchs
     .filter(
       (m) => m.home?.club?.cl_no === CLUB_ID || m.away?.club?.cl_no === CLUB_ID,
     )
+    .filter((m) => {
+      const id = String(m.ma_no);
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    })
     .map(mapFixture)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  // Classement : uniquement depuis la poule de CHAMPIONNAT (une coupe n'en a pas).
+  const champ = poules.find((p) => p.type === "CH") ?? poules[0];
+  const classement = await dofaList(
+    `/compets/${champ.cp}/phases/${champ.phase}/poules/${champ.poule}/classement_journees`,
+  ).catch(() => []);
   const standings = mapStandings(classement);
-  console.log(`  ✓ [${t.slug}] ${fixtures.length} matchs · ${standings.length} lignes de classement`);
+
+  const nbCoupe = fixtures.filter((f) => f.type === "coupe").length;
+  console.log(
+    `  ✓ [${t.slug}] ${fixtures.length} matchs (dont ${nbCoupe} coupe) · ${standings.length} lignes de classement`,
+  );
   return { fixtures, standings };
 }
 
@@ -191,6 +219,13 @@ async function main() {
   const snapshot = { syncedAt: new Date().toISOString(), teams };
   writeFileSync(SNAPSHOT, JSON.stringify(snapshot, null, 2) + "\n");
   console.log("📝 Snapshot mis à jour : data/season-snapshot.json");
+
+  // `--no-git` (ou SYNC_NO_GIT=1) : régénère le fichier sans commit ni push,
+  // pour relire/valider les changements avant de les pousser soi-même.
+  if (process.argv.includes("--no-git") || process.env.SYNC_NO_GIT === "1") {
+    console.log("⏸️  --no-git : snapshot écrit, aucun commit/push effectué.");
+    return;
+  }
 
   git("add data/season-snapshot.json");
   const stamp = new Date().toISOString().slice(0, 16).replace("T", " ");
