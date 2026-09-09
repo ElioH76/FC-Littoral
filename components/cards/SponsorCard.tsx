@@ -5,6 +5,7 @@ import type { Sponsor } from "@/types";
 import { Badge } from "@/components/ui/badge";
 
 const tierLabel: Record<Sponsor["tier"], string> = {
+  equipementier: "Équipementier officiel",
   principal: "Partenaire principal",
   officiel: "Partenaire officiel",
   partenaire: "Partenaire",
@@ -22,7 +23,11 @@ export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           className="max-h-full w-auto object-contain"
         />
         <Badge
-          variant={sponsor.tier === "principal" ? "default" : "muted"}
+          variant={
+            sponsor.tier === "principal" || sponsor.tier === "equipementier"
+              ? "default"
+              : "muted"
+          }
           className="absolute left-3 top-3"
         >
           {tierLabel[sponsor.tier]}

@@ -69,8 +69,8 @@ export interface Sponsor {
   description: string;
   website: string;
   logo: string;
-  /** "principal" = sponsor majeur affiché en avant */
-  tier: "principal" | "officiel" | "partenaire";
+  /** "equipementier" = fournisseur officiel des maillots, affiché en avant */
+  tier: "equipementier" | "principal" | "officiel" | "partenaire";
 }
 
 export interface Article {
