@@ -26,14 +26,6 @@ const links: NavItem[] = [
       { href: "/equipes", label: "Toutes les équipes" },
     ],
   },
-  {
-    href: "/saison",
-    label: "Saison",
-    children: [
-      { href: "/saison#classement", label: "Classement" },
-      { href: "/saison#calendrier", label: "Calendrier & résultats" },
-    ],
-  },
   { href: "/sponsors", label: "Partenaires" },
 ];
 
