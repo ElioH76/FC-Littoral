@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-09T14:56:16.094Z",
+  "syncedAt": "2026-09-14T17:35:37.388Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -27,6 +27,8 @@
           "time": "15H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC539285.jpg",
+          "homeScore": 8,
+          "awayScore": 0,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
