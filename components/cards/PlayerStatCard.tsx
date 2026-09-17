@@ -46,13 +46,13 @@ export function PlayerStatCard({
       {player ? (
         <>
           {player.photo && (
-            <div className="-mx-3 -mb-1 mt-1 flex h-[400px] items-end justify-center">
+            <div className="-mx-6 -mb-2 mt-2 overflow-hidden">
               <Image
                 src={player.photo}
                 alt={`${player.name}, ${player.position}`}
-                width={420}
-                height={560}
-                className="h-full w-auto object-contain object-bottom drop-shadow-[0_20px_34px_rgba(0,0,0,0.55)] [mask-image:linear-gradient(to_bottom,#000_74%,transparent_99%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_74%,transparent_99%)]"
+                width={480}
+                height={640}
+                className="mx-auto h-auto w-full max-w-[420px] object-contain object-bottom drop-shadow-[0_20px_34px_rgba(0,0,0,0.55)] [mask-image:linear-gradient(to_bottom,#000_76%,transparent_99%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_76%,transparent_99%)]"
               />
             </div>
           )}
