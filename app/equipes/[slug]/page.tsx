@@ -58,19 +58,22 @@ export default async function TeamPage({
     .filter((p) => (p.goals ?? 0) > 0)
     .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
 
-  // Meilleur buteur / passeur du CHAMPIONNAT uniquement (cartes joueur).
+  // Meilleur buteur / passeur en matchs OFFICIELS (championnat + coupe), hors amicaux.
   const playerByName = new Map(players.map((p) => [p.name, p]));
-  const topChampionnat = (kind: "goals" | "assists") => {
+  const topOfficial = (kind: "goals" | "assists") => {
     const best = bundle.seasonStats
-      .map((s) => ({ name: s.name, v: s.byType.championnat[kind] }))
+      .map((s) => ({
+        name: s.name,
+        v: s.byType.championnat[kind] + s.byType.coupe[kind],
+      }))
       .filter((x) => x.v > 0)
       .sort((a, b) => b.v - a.v)[0];
     if (!best) return undefined;
     const player = playerByName.get(best.name);
     return player ? { player, value: best.v } : undefined;
   };
-  const topScorerChamp = topChampionnat("goals");
-  const topAssisterChamp = topChampionnat("assists");
+  const topScorerChamp = topOfficial("goals");
+  const topAssisterChamp = topOfficial("assists");
 
   const safeBoard: TeamSeason = board ?? {
     slug,
@@ -143,21 +146,21 @@ export default async function TeamPage({
               </div>
             </div>
 
-            {/* Colonne cartes : meilleur buteur & passeur (championnat) */}
+            {/* Colonne cartes : meilleur buteur & passeur (matchs officiels) */}
             <div className="grid gap-4 sm:grid-cols-2">
               <PlayerStatCard
                 label="Meilleur buteur"
                 unit={(topScorerChamp?.value ?? 0) > 1 ? "buts" : "but"}
                 value={topScorerChamp?.value ?? 0}
                 player={topScorerChamp?.player}
-                emptyText="Aucun buteur en championnat pour le moment."
+                emptyText="Aucun buteur en match officiel pour le moment."
               />
               <PlayerStatCard
                 label="Meilleur passeur"
                 unit={(topAssisterChamp?.value ?? 0) > 1 ? "passes" : "passe"}
                 value={topAssisterChamp?.value ?? 0}
                 player={topAssisterChamp?.player}
-                emptyText="Aucun passeur en championnat pour le moment."
+                emptyText="Aucun passeur en match officiel pour le moment."
               />
             </div>
           </div>

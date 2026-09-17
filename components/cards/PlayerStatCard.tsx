@@ -52,7 +52,7 @@ export function PlayerStatCard({
                 alt={`${player.name}, ${player.position}`}
                 width={300}
                 height={360}
-                className="h-full w-auto object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.5)]"
+                className="h-full w-auto object-contain object-bottom drop-shadow-[0_18px_30px_rgba(0,0,0,0.5)] [mask-image:linear-gradient(to_bottom,#000_72%,transparent_98%)] [-webkit-mask-image:linear-gradient(to_bottom,#000_72%,transparent_98%)]"
               />
             </div>
           )}
