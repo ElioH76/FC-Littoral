@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-14T17:35:37.388Z",
+  "syncedAt": "2026-09-18T17:30:07.369Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -18,20 +18,6 @@
           "venue": "Stade Bernard Hauchard, FECAMP"
         },
         {
-          "id": "79334175",
-          "date": "2026-09-13",
-          "home": "F.C. Littoral",
-          "away": "ST RIQUIER GASEG",
-          "competition": "COUPE DE NORMANDIE SENIORS • J1",
-          "type": "coupe",
-          "time": "15H00",
-          "homeLogo": "/logo.png",
-          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC539285.jpg",
-          "homeScore": 8,
-          "awayScore": 0,
-          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
-        },
-        {
           "id": "56447710",
           "date": "2026-09-20",
           "home": "F.C. Littoral",
@@ -41,6 +27,18 @@
           "time": "15H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501418.jpg",
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "79632864",
+          "date": "2026-09-27",
+          "home": "F.C. Littoral",
+          "away": "STADE VALERIQUAIS",
+          "competition": "COUPE DE NORMANDIE SENIORS • J2",
+          "type": "coupe",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501407.jpg",
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -405,19 +403,19 @@
     "u13": {
       "fixtures": [
         {
-          "id": "79499783",
+          "id": "79648788",
           "date": "2026-10-03",
-          "home": "A. S. Côte d'albâtre",
+          "home": "ES YPREVILLAISE",
           "away": "F.C. Littoral",
           "competition": "U13 DEPARTEMENTAL 4 • J1",
           "type": "championnat",
           "time": "14H00",
-          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC564471.jpg",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC518804.jpg",
           "awayLogo": "/logo.png",
-          "venue": "STADE MUNICIPAL, ANGERVILLE-LA-MARTEL"
+          "venue": "STADE MUNICIPAL, YPREVILLE BIVILLE"
         },
         {
-          "id": "79499790",
+          "id": "79648795",
           "date": "2026-10-10",
           "home": "F.C. Littoral",
           "away": "ES INTERC ST ANTOINE",
@@ -429,7 +427,7 @@
           "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
         },
         {
-          "id": "79499793",
+          "id": "79648798",
           "date": "2026-10-31",
           "home": "ENT.ASL.ASBZ.FCH",
           "away": "F.C. Littoral",
@@ -441,7 +439,7 @@
           "venue": "STADE MUNICIPAL, BEUZEVILLETTE"
         },
         {
-          "id": "79499796",
+          "id": "79648801",
           "date": "2026-11-07",
           "home": "F.C. Littoral",
           "away": "FC BREAUTE BRETTEVIL",
@@ -453,7 +451,7 @@
           "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
         },
         {
-          "id": "79499801",
+          "id": "79648806",
           "date": "2026-11-14",
           "home": "ASP / ASFR",
           "away": "F.C. Littoral",
@@ -465,7 +463,7 @@
           "venue": "STADE CAMILLE FLAMANT 1, PETIVILLE"
         },
         {
-          "id": "79499803",
+          "id": "79648808",
           "date": "2026-11-21",
           "home": "F.C. Littoral",
           "away": "US GODERVILLAISE",
@@ -477,7 +475,7 @@
           "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
         },
         {
-          "id": "79499810",
+          "id": "79648815",
           "date": "2026-11-28",
           "home": "F.C. Littoral",
           "away": "USF FECAMP",
