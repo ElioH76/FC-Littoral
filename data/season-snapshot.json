@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-20T17:52:55.827Z",
+  "syncedAt": "2026-09-22T03:39:56.886Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -27,6 +27,8 @@
           "time": "15H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501418.jpg",
+          "homeScore": 6,
+          "awayScore": 2,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -301,6 +303,17 @@
         },
         {
           "rank": 3,
+          "team": "F.C. Littoral",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 8,
+          "goalsAgainst": 7,
+          "points": 5
+        },
+        {
+          "rank": 4,
           "team": "ES DU MONT GAILLARD",
           "played": 2,
           "won": 1,
@@ -311,7 +324,7 @@
           "points": 5
         },
         {
-          "rank": 4,
+          "rank": 5,
           "team": "US GODERVILLAISE",
           "played": 2,
           "won": 1,
@@ -322,7 +335,7 @@
           "points": 5
         },
         {
-          "rank": 5,
+          "rank": 6,
           "team": "USF FECAMP",
           "played": 1,
           "won": 1,
@@ -333,7 +346,7 @@
           "points": 4
         },
         {
-          "rank": 6,
+          "rank": 7,
           "team": "GAINNEVILLE AC",
           "played": 2,
           "won": 0,
@@ -344,7 +357,7 @@
           "points": 2
         },
         {
-          "rank": 7,
+          "rank": 8,
           "team": "HFC",
           "played": 1,
           "won": 0,
@@ -355,18 +368,18 @@
           "points": 1
         },
         {
-          "rank": 8,
-          "team": "F.C. Littoral",
+          "rank": 9,
+          "team": "U. FONTAINAISE",
           "played": 1,
           "won": 0,
           "drawn": 0,
           "lost": 1,
           "goalsFor": 2,
-          "goalsAgainst": 5,
+          "goalsAgainst": 6,
           "points": 1
         },
         {
-          "rank": 9,
+          "rank": 10,
           "team": "AS LANQUETOT",
           "played": 1,
           "won": 0,
@@ -377,19 +390,8 @@
           "points": 1
         },
         {
-          "rank": 10,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 0,
-          "won": 0,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "points": 0
-        },
-        {
           "rank": 11,
-          "team": "U. FONTAINAISE",
+          "team": "OH TREFILERIE NEIGES",
           "played": 0,
           "won": 0,
           "drawn": 0,
