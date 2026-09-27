@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-22T03:39:56.886Z",
+  "syncedAt": "2026-09-27T18:51:47.117Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -41,6 +41,8 @@
           "time": "15H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501407.jpg",
+          "homeScore": 1,
+          "awayScore": 0,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -281,6 +283,28 @@
       "standings": [
         {
           "rank": 1,
+          "team": "TANCARVILLE AC",
+          "played": 3,
+          "won": 2,
+          "drawn": 1,
+          "lost": 0,
+          "goalsFor": 4,
+          "goalsAgainst": 1,
+          "points": 10
+        },
+        {
+          "rank": 2,
+          "team": "USF FECAMP",
+          "played": 2,
+          "won": 2,
+          "drawn": 0,
+          "lost": 0,
+          "goalsFor": 10,
+          "goalsAgainst": 3,
+          "points": 8
+        },
+        {
+          "rank": 3,
           "team": "US EPOUVILLE",
           "played": 2,
           "won": 2,
@@ -291,18 +315,29 @@
           "points": 8
         },
         {
-          "rank": 2,
-          "team": "TANCARVILLE AC",
-          "played": 2,
-          "won": 2,
-          "drawn": 0,
-          "lost": 0,
+          "rank": 4,
+          "team": "ES DU MONT GAILLARD",
+          "played": 3,
+          "won": 1,
+          "drawn": 1,
+          "lost": 1,
           "goalsFor": 4,
-          "goalsAgainst": 1,
-          "points": 8
+          "goalsAgainst": 4,
+          "points": 7
         },
         {
-          "rank": 3,
+          "rank": 5,
+          "team": "US GODERVILLAISE",
+          "played": 3,
+          "won": 1,
+          "drawn": 1,
+          "lost": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "points": 7
+        },
+        {
+          "rank": 6,
           "team": "F.C. Littoral",
           "played": 2,
           "won": 1,
@@ -313,81 +348,48 @@
           "points": 5
         },
         {
-          "rank": 4,
-          "team": "ES DU MONT GAILLARD",
-          "played": 2,
-          "won": 1,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 3,
-          "goalsAgainst": 3,
-          "points": 5
-        },
-        {
-          "rank": 5,
-          "team": "US GODERVILLAISE",
-          "played": 2,
-          "won": 1,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 2,
-          "goalsAgainst": 2,
-          "points": 5
-        },
-        {
-          "rank": 6,
-          "team": "USF FECAMP",
-          "played": 1,
-          "won": 1,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 5,
-          "goalsAgainst": 2,
-          "points": 4
-        },
-        {
           "rank": 7,
-          "team": "GAINNEVILLE AC",
+          "team": "AS LANQUETOT",
           "played": 2,
-          "won": 0,
+          "won": 1,
           "drawn": 0,
-          "lost": 2,
-          "goalsFor": 2,
-          "goalsAgainst": 4,
-          "points": 2
+          "lost": 1,
+          "goalsFor": 6,
+          "goalsAgainst": 8,
+          "points": 5
         },
         {
           "rank": 8,
-          "team": "HFC",
-          "played": 1,
+          "team": "GAINNEVILLE AC",
+          "played": 3,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 2,
-          "points": 1
+          "lost": 3,
+          "goalsFor": 5,
+          "goalsAgainst": 9,
+          "points": 3
         },
         {
           "rank": 9,
           "team": "U. FONTAINAISE",
-          "played": 1,
+          "played": 2,
           "won": 0,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 1,
-          "goalsFor": 2,
-          "goalsAgainst": 6,
-          "points": 1
+          "goalsFor": 3,
+          "goalsAgainst": 7,
+          "points": 3
         },
         {
           "rank": 10,
-          "team": "AS LANQUETOT",
-          "played": 1,
+          "team": "HFC",
+          "played": 2,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
+          "lost": 2,
           "goalsFor": 1,
-          "goalsAgainst": 5,
-          "points": 1
+          "goalsAgainst": 7,
+          "points": 2
         },
         {
           "rank": 11,
