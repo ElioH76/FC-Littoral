@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-27T18:51:47.117Z",
+  "syncedAt": "2026-09-29T08:17:08.852Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -294,6 +294,17 @@
         },
         {
           "rank": 2,
+          "team": "US EPOUVILLE",
+          "played": 3,
+          "won": 2,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 5,
+          "points": 9
+        },
+        {
+          "rank": 3,
           "team": "USF FECAMP",
           "played": 2,
           "won": 2,
@@ -301,17 +312,6 @@
           "lost": 0,
           "goalsFor": 10,
           "goalsAgainst": 3,
-          "points": 8
-        },
-        {
-          "rank": 3,
-          "team": "US EPOUVILLE",
-          "played": 2,
-          "won": 2,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 6,
-          "goalsAgainst": 1,
           "points": 8
         },
         {
@@ -360,6 +360,17 @@
         },
         {
           "rank": 8,
+          "team": "OH TREFILERIE NEIGES",
+          "played": 1,
+          "won": 1,
+          "drawn": 0,
+          "lost": 0,
+          "goalsFor": 4,
+          "goalsAgainst": 3,
+          "points": 4
+        },
+        {
+          "rank": 9,
           "team": "GAINNEVILLE AC",
           "played": 3,
           "won": 0,
@@ -370,7 +381,7 @@
           "points": 3
         },
         {
-          "rank": 9,
+          "rank": 10,
           "team": "U. FONTAINAISE",
           "played": 2,
           "won": 0,
@@ -381,7 +392,7 @@
           "points": 3
         },
         {
-          "rank": 10,
+          "rank": 11,
           "team": "HFC",
           "played": 2,
           "won": 0,
@@ -390,17 +401,6 @@
           "goalsFor": 1,
           "goalsAgainst": 7,
           "points": 2
-        },
-        {
-          "rank": 11,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 0,
-          "won": 0,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "points": 0
         }
       ]
     },
