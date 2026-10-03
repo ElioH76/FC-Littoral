@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-09-29T18:00:46.004Z",
+  "syncedAt": "2026-10-03T04:01:00.459Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -29,20 +29,6 @@
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501418.jpg",
           "homeScore": 6,
           "awayScore": 2,
-          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
-        },
-        {
-          "id": "79632864",
-          "date": "2026-09-27",
-          "home": "F.C. Littoral",
-          "away": "STADE VALERIQUAIS",
-          "competition": "COUPE DE NORMANDIE SENIORS • J2",
-          "type": "coupe",
-          "time": "15H00",
-          "homeLogo": "/logo.png",
-          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501407.jpg",
-          "homeScore": 1,
-          "awayScore": 0,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -125,6 +111,18 @@
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "79825179",
+          "date": "2026-11-15",
+          "home": "CAUDEBEC ST PIERRE F",
+          "away": "F.C. Littoral",
+          "competition": "COUPE DE NORMANDIE SENIORS • J3",
+          "type": "coupe",
+          "time": "14H30",
+          "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501482.jpg",
+          "awayLogo": "/logo.png",
+          "venue": "STADE FERNAND SASTRE, CAUDEBEC LES ELBEUF"
         },
         {
           "id": "56447752",
