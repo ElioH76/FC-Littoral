@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-03T21:38:48.102Z",
+  "syncedAt": "2026-10-04T18:29:19.519Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -50,6 +50,8 @@
           "time": "15H00",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC519284.jpg",
           "awayLogo": "/logo.png",
+          "homeScore": 2,
+          "awayScore": 1,
           "venue": "Stade René Deshayes, TANCARVILLE"
         },
         {
@@ -282,82 +284,104 @@
         {
           "rank": 1,
           "team": "TANCARVILLE AC",
-          "played": 3,
-          "won": 2,
+          "played": 4,
+          "won": 3,
           "drawn": 1,
           "lost": 0,
-          "goalsFor": 4,
-          "goalsAgainst": 1,
-          "points": 10
+          "goalsFor": 6,
+          "goalsAgainst": 2,
+          "points": 14
         },
         {
           "rank": 2,
           "team": "US EPOUVILLE",
+          "played": 4,
+          "won": 3,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 17,
+          "goalsAgainst": 6,
+          "points": 13
+        },
+        {
+          "rank": 3,
+          "team": "HFC",
+          "played": 4,
+          "won": 2,
+          "drawn": 0,
+          "lost": 2,
+          "goalsFor": 6,
+          "goalsAgainst": 8,
+          "points": 10
+        },
+        {
+          "rank": 4,
+          "team": "USF FECAMP",
           "played": 3,
           "won": 2,
           "drawn": 0,
           "lost": 1,
-          "goalsFor": 9,
+          "goalsFor": 11,
           "goalsAgainst": 5,
           "points": 9
         },
         {
-          "rank": 3,
-          "team": "USF FECAMP",
+          "rank": 5,
+          "team": "OH TREFILERIE NEIGES",
           "played": 2,
           "won": 2,
           "drawn": 0,
           "lost": 0,
           "goalsFor": 10,
-          "goalsAgainst": 3,
+          "goalsAgainst": 8,
           "points": 8
         },
         {
-          "rank": 4,
-          "team": "ES DU MONT GAILLARD",
-          "played": 3,
-          "won": 1,
-          "drawn": 1,
-          "lost": 1,
-          "goalsFor": 4,
-          "goalsAgainst": 4,
-          "points": 7
-        },
-        {
-          "rank": 5,
-          "team": "US GODERVILLAISE",
-          "played": 3,
-          "won": 1,
-          "drawn": 1,
-          "lost": 1,
-          "goalsFor": 2,
-          "goalsAgainst": 2,
-          "points": 7
-        },
-        {
           "rank": 6,
-          "team": "HFC",
+          "team": "US GODERVILLAISE",
+          "played": 4,
+          "won": 1,
+          "drawn": 1,
+          "lost": 2,
+          "goalsFor": 7,
+          "goalsAgainst": 8,
+          "points": 8
+        },
+        {
+          "rank": 7,
+          "team": "ES DU MONT GAILLARD",
+          "played": 4,
+          "won": 1,
+          "drawn": 1,
+          "lost": 2,
+          "goalsFor": 5,
+          "goalsAgainst": 12,
+          "points": 8
+        },
+        {
+          "rank": 8,
+          "team": "U. FONTAINAISE",
+          "played": 4,
+          "won": 1,
+          "drawn": 1,
+          "lost": 1,
+          "goalsFor": 5,
+          "goalsAgainst": 11,
+          "points": 7
+        },
+        {
+          "rank": 9,
+          "team": "F.C. Littoral",
           "played": 3,
           "won": 1,
           "drawn": 0,
           "lost": 2,
-          "goalsFor": 4,
-          "goalsAgainst": 7,
+          "goalsFor": 9,
+          "goalsAgainst": 9,
           "points": 6
         },
         {
-          "rank": 7,
-          "team": "F.C. Littoral",
-          "played": 2,
-          "won": 1,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 8,
-          "goalsAgainst": 7,
-          "points": 5
-        },
-        {
-          "rank": 8,
+          "rank": 10,
           "team": "AS LANQUETOT",
           "played": 2,
           "won": 1,
@@ -368,37 +392,15 @@
           "points": 5
         },
         {
-          "rank": 9,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 1,
-          "won": 1,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 4,
-          "goalsAgainst": 3,
-          "points": 4
-        },
-        {
-          "rank": 10,
-          "team": "GAINNEVILLE AC",
-          "played": 3,
-          "won": 0,
-          "drawn": 0,
-          "lost": 3,
-          "goalsFor": 5,
-          "goalsAgainst": 9,
-          "points": 3
-        },
-        {
           "rank": 11,
-          "team": "U. FONTAINAISE",
-          "played": 3,
+          "team": "GAINNEVILLE AC",
+          "played": 4,
           "won": 0,
-          "drawn": 1,
-          "lost": 1,
-          "goalsFor": 3,
-          "goalsAgainst": 10,
-          "points": 3
+          "drawn": 0,
+          "lost": 4,
+          "goalsFor": 6,
+          "goalsAgainst": 11,
+          "points": 4
         }
       ]
     },
