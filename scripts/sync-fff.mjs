@@ -164,6 +164,20 @@ async function syncTeam(t) {
     ).catch(() => []);
     rawMatchs.push(...(ms ?? []));
   }
+  // ⚠️ Une poule de COUPE n'expose que le tour EN COURS (les tours passés en
+  // disparaissent). L'historique complet du club (`/clubs/:id/matchs`) les
+  // garde : on y reprend les matchs de nos compétitions joués par CETTE équipe.
+  const cps = new Set(poules.map((p) => p.cp));
+  const isUs = (side) =>
+    side?.club?.cl_no === CLUB_ID &&
+    side?.category_code === t.category &&
+    side?.number === t.teamNumber;
+  const clubMatchs = await dofaList(`/clubs/${CLUB_ID}/matchs`).catch(() => []);
+  rawMatchs.push(
+    ...clubMatchs.filter(
+      (m) => cps.has(m.competition?.cp_no) && (isUs(m.home) || isUs(m.away)),
+    ),
+  );
   const seen = new Set();
   const fixtures = rawMatchs
     .filter(

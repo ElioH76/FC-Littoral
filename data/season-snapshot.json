@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-04T18:29:19.519Z",
+  "syncedAt": "2026-10-05T15:31:53.780Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -16,6 +16,20 @@
           "homeScore": 5,
           "awayScore": 2,
           "venue": "Stade Bernard Hauchard, FECAMP"
+        },
+        {
+          "id": "79334175",
+          "date": "2026-09-13",
+          "home": "F.C. Littoral",
+          "away": "ST RIQUIER GASEG",
+          "competition": "COUPE DE NORMANDIE SENIORS • J1",
+          "type": "coupe",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC539285.jpg",
+          "homeScore": 8,
+          "awayScore": 0,
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
           "id": "56447710",
@@ -39,6 +53,20 @@
           "competition": "SENIORS APRÈS-MIDI D4 • J11",
           "type": "championnat",
           "homeLogo": "/logo.png"
+        },
+        {
+          "id": "79632864",
+          "date": "2026-09-27",
+          "home": "F.C. Littoral",
+          "away": "STADE VALERIQUAIS",
+          "competition": "COUPE DE NORMANDIE SENIORS • J2",
+          "type": "coupe",
+          "time": "15H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501407.jpg",
+          "homeScore": 1,
+          "awayScore": 0,
+          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
           "id": "56447712",
