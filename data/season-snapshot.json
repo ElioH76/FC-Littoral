@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-05T15:31:53.780Z",
+  "syncedAt": "2026-10-07T19:21:04.676Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -170,7 +170,7 @@
           "id": "56447754",
           "date": "2026-11-29",
           "home": "F.C. Littoral",
-          "away": "HFC",
+          "away": "HELLANDES FC",
           "competition": "SENIORS APRÈS-MIDI D4 • J10",
           "type": "championnat",
           "time": "14H30",
@@ -277,7 +277,7 @@
         {
           "id": "56447814",
           "date": "2027-04-25",
-          "home": "HFC",
+          "home": "HELLANDES FC",
           "away": "F.C. Littoral",
           "competition": "SENIORS APRÈS-MIDI D4 • J20",
           "type": "championnat",
@@ -333,7 +333,7 @@
         },
         {
           "rank": 3,
-          "team": "HFC",
+          "team": "HELLANDES FC",
           "played": 4,
           "won": 2,
           "drawn": 0,
