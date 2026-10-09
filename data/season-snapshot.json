@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-07T19:21:04.676Z",
+  "syncedAt": "2026-10-09T17:30:09.525Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -355,28 +355,6 @@
         },
         {
           "rank": 5,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 2,
-          "won": 2,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 10,
-          "goalsAgainst": 8,
-          "points": 8
-        },
-        {
-          "rank": 6,
-          "team": "US GODERVILLAISE",
-          "played": 4,
-          "won": 1,
-          "drawn": 1,
-          "lost": 2,
-          "goalsFor": 7,
-          "goalsAgainst": 8,
-          "points": 8
-        },
-        {
-          "rank": 7,
           "team": "ES DU MONT GAILLARD",
           "played": 4,
           "won": 1,
@@ -387,7 +365,18 @@
           "points": 8
         },
         {
-          "rank": 8,
+          "rank": 6,
+          "team": "US GODERVILLAISE",
+          "played": 3,
+          "won": 1,
+          "drawn": 1,
+          "lost": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "points": 7
+        },
+        {
+          "rank": 7,
           "team": "U. FONTAINAISE",
           "played": 4,
           "won": 1,
@@ -398,7 +387,7 @@
           "points": 7
         },
         {
-          "rank": 9,
+          "rank": 8,
           "team": "F.C. Littoral",
           "played": 3,
           "won": 1,
@@ -409,7 +398,7 @@
           "points": 6
         },
         {
-          "rank": 10,
+          "rank": 9,
           "team": "AS LANQUETOT",
           "played": 2,
           "won": 1,
@@ -418,6 +407,17 @@
           "goalsFor": 6,
           "goalsAgainst": 8,
           "points": 5
+        },
+        {
+          "rank": 10,
+          "team": "OH TREFILERIE NEIGES",
+          "played": 1,
+          "won": 1,
+          "drawn": 0,
+          "lost": 0,
+          "goalsFor": 4,
+          "goalsAgainst": 3,
+          "points": 4
         },
         {
           "rank": 11,
