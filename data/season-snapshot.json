@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-11T08:13:42.542Z",
+  "syncedAt": "2026-10-11T17:30:10.423Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -92,6 +92,8 @@
           "time": "15H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC520631.jpg",
+          "homeScore": 8,
+          "awayScore": 0,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -311,61 +313,83 @@
       "standings": [
         {
           "rank": 1,
-          "team": "TANCARVILLE AC",
-          "played": 4,
-          "won": 3,
-          "drawn": 1,
-          "lost": 0,
-          "goalsFor": 6,
-          "goalsAgainst": 2,
-          "points": 14
+          "team": "US EPOUVILLE",
+          "played": 5,
+          "won": 4,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 25,
+          "goalsAgainst": 7,
+          "points": 17
         },
         {
           "rank": 2,
-          "team": "US EPOUVILLE",
+          "team": "TANCARVILLE AC",
+          "played": 5,
+          "won": 3,
+          "drawn": 1,
+          "lost": 1,
+          "goalsFor": 6,
+          "goalsAgainst": 6,
+          "points": 15
+        },
+        {
+          "rank": 3,
+          "team": "USF FECAMP",
           "played": 4,
           "won": 3,
           "drawn": 0,
           "lost": 1,
-          "goalsFor": 17,
-          "goalsAgainst": 6,
+          "goalsFor": 15,
+          "goalsAgainst": 5,
           "points": 13
         },
         {
-          "rank": 3,
-          "team": "HELLANDES FC",
-          "played": 4,
-          "won": 2,
-          "drawn": 0,
-          "lost": 2,
-          "goalsFor": 6,
-          "goalsAgainst": 8,
-          "points": 10
-        },
-        {
           "rank": 4,
-          "team": "USF FECAMP",
-          "played": 3,
+          "team": "HELLANDES FC",
+          "played": 5,
           "won": 2,
           "drawn": 0,
-          "lost": 1,
-          "goalsFor": 11,
-          "goalsAgainst": 5,
-          "points": 9
+          "lost": 3,
+          "goalsFor": 7,
+          "goalsAgainst": 16,
+          "points": 11
         },
         {
           "rank": 5,
-          "team": "ES DU MONT GAILLARD",
+          "team": "F.C. Littoral",
           "played": 4,
-          "won": 1,
-          "drawn": 1,
+          "won": 2,
+          "drawn": 0,
           "lost": 2,
-          "goalsFor": 5,
-          "goalsAgainst": 12,
-          "points": 8
+          "goalsFor": 17,
+          "goalsAgainst": 9,
+          "points": 10
         },
         {
           "rank": 6,
+          "team": "ES DU MONT GAILLARD",
+          "played": 5,
+          "won": 1,
+          "drawn": 1,
+          "lost": 3,
+          "goalsFor": 7,
+          "goalsAgainst": 15,
+          "points": 9
+        },
+        {
+          "rank": 7,
+          "team": "OH TREFILERIE NEIGES",
+          "played": 2,
+          "won": 2,
+          "drawn": 0,
+          "lost": 0,
+          "goalsFor": 7,
+          "goalsAgainst": 5,
+          "points": 8
+        },
+        {
+          "rank": 8,
           "team": "US GODERVILLAISE",
           "played": 3,
           "won": 1,
@@ -376,7 +400,7 @@
           "points": 7
         },
         {
-          "rank": 7,
+          "rank": 9,
           "team": "U. FONTAINAISE",
           "played": 4,
           "won": 1,
@@ -387,18 +411,7 @@
           "points": 7
         },
         {
-          "rank": 8,
-          "team": "F.C. Littoral",
-          "played": 3,
-          "won": 1,
-          "drawn": 0,
-          "lost": 2,
-          "goalsFor": 9,
-          "goalsAgainst": 9,
-          "points": 6
-        },
-        {
-          "rank": 9,
+          "rank": 10,
           "team": "AS LANQUETOT",
           "played": 2,
           "won": 1,
@@ -409,26 +422,15 @@
           "points": 5
         },
         {
-          "rank": 10,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 1,
-          "won": 1,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 4,
-          "goalsAgainst": 3,
-          "points": 4
-        },
-        {
           "rank": 11,
           "team": "GAINNEVILLE AC",
-          "played": 4,
+          "played": 5,
           "won": 0,
           "drawn": 0,
-          "lost": 4,
+          "lost": 5,
           "goalsFor": 6,
-          "goalsAgainst": 11,
-          "points": 4
+          "goalsAgainst": 19,
+          "points": 5
         }
       ]
     },
@@ -537,14 +539,14 @@
         },
         {
           "rank": 2,
-          "team": "ES INTERC ST ANTOINE",
+          "team": "ES YPREVILLAISE",
           "played": 2,
           "won": 1,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 9,
-          "goalsAgainst": 9,
-          "points": 5
+          "drawn": 1,
+          "lost": 0,
+          "goalsFor": 6,
+          "goalsAgainst": 3,
+          "points": 6
         },
         {
           "rank": 3,
@@ -559,6 +561,28 @@
         },
         {
           "rank": 4,
+          "team": "ES INTERC ST ANTOINE",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 9,
+          "points": 5
+        },
+        {
+          "rank": 5,
+          "team": "USF FECAMP",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 7,
+          "goalsAgainst": 9,
+          "points": 5
+        },
+        {
+          "rank": 6,
           "team": "ASP / ASFR",
           "played": 2,
           "won": 1,
@@ -569,7 +593,7 @@
           "points": 5
         },
         {
-          "rank": 5,
+          "rank": 7,
           "team": "US GODERVILLAISE",
           "played": 2,
           "won": 1,
@@ -578,28 +602,6 @@
           "goalsFor": 7,
           "goalsAgainst": 6,
           "points": 5
-        },
-        {
-          "rank": 6,
-          "team": "USF FECAMP",
-          "played": 1,
-          "won": 1,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 5,
-          "goalsAgainst": 4,
-          "points": 4
-        },
-        {
-          "rank": 7,
-          "team": "ES YPREVILLAISE",
-          "played": 1,
-          "won": 0,
-          "drawn": 1,
-          "lost": 0,
-          "goalsFor": 1,
-          "goalsAgainst": 1,
-          "points": 2
         },
         {
           "rank": 8,
