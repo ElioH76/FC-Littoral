@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-09T17:30:09.525Z",
+  "syncedAt": "2026-10-11T08:13:42.542Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -458,6 +458,8 @@
           "time": "14H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC525165.jpg",
+          "homeScore": 7,
+          "awayScore": 3,
           "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
         },
         {
@@ -524,28 +526,61 @@
       "standings": [
         {
           "rank": 1,
-          "team": "ES INTERC ST ANTOINE",
-          "played": 1,
+          "team": "F.C. Littoral",
+          "played": 2,
           "won": 1,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 0,
-          "goalsFor": 6,
-          "goalsAgainst": 2,
-          "points": 4
+          "goalsFor": 8,
+          "goalsAgainst": 4,
+          "points": 6
         },
         {
           "rank": 2,
-          "team": "ASP / ASFR",
-          "played": 1,
+          "team": "ES INTERC ST ANTOINE",
+          "played": 2,
           "won": 1,
           "drawn": 0,
-          "lost": 0,
-          "goalsFor": 6,
-          "goalsAgainst": 5,
-          "points": 4
+          "lost": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 9,
+          "points": 5
         },
         {
           "rank": 3,
+          "team": "FC BREAUTE BRETTEVIL",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 9,
+          "goalsAgainst": 9,
+          "points": 5
+        },
+        {
+          "rank": 4,
+          "team": "ASP / ASFR",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 10,
+          "goalsAgainst": 10,
+          "points": 5
+        },
+        {
+          "rank": 5,
+          "team": "US GODERVILLAISE",
+          "played": 2,
+          "won": 1,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 7,
+          "goalsAgainst": 6,
+          "points": 5
+        },
+        {
+          "rank": 6,
           "team": "USF FECAMP",
           "played": 1,
           "won": 1,
@@ -556,7 +591,7 @@
           "points": 4
         },
         {
-          "rank": 4,
+          "rank": 7,
           "team": "ES YPREVILLAISE",
           "played": 1,
           "won": 0,
@@ -567,48 +602,15 @@
           "points": 2
         },
         {
-          "rank": 5,
-          "team": "F.C. Littoral",
-          "played": 1,
-          "won": 0,
-          "drawn": 1,
-          "lost": 0,
-          "goalsFor": 1,
-          "goalsAgainst": 1,
-          "points": 2
-        },
-        {
-          "rank": 6,
-          "team": "ENT.ASL.ASBZ.FCH",
-          "played": 1,
-          "won": 0,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 5,
-          "goalsAgainst": 6,
-          "points": 1
-        },
-        {
-          "rank": 7,
-          "team": "FC BREAUTE BRETTEVIL",
-          "played": 1,
-          "won": 0,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 4,
-          "goalsAgainst": 5,
-          "points": 1
-        },
-        {
           "rank": 8,
-          "team": "US GODERVILLAISE",
-          "played": 1,
+          "team": "ENT.ASL.ASBZ.FCH",
+          "played": 2,
           "won": 0,
           "drawn": 0,
-          "lost": 1,
-          "goalsFor": 2,
-          "goalsAgainst": 6,
-          "points": 1
+          "lost": 2,
+          "goalsFor": 5,
+          "goalsAgainst": 11,
+          "points": 2
         }
       ]
     }
