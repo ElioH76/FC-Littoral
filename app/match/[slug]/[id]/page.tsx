@@ -53,6 +53,8 @@ export default async function MatchPage({
     .sort((a, b) => b.assists - a.assists);
   const lineup = sheet?.players ?? [];
   const hasSheet = lineup.length > 0;
+  // Buteurs / passeurs : uniquement pour les équipes suivies (Seniors).
+  const showStats = team?.matchStats === true;
 
   const played = fixture.homeScore != null && fixture.awayScore != null;
   const homeUs = fixture.home === club.name;
@@ -164,7 +166,7 @@ export default async function MatchPage({
             ))}
           </div>
 
-          {hasSheet ? (
+          {!showStats ? null : hasSheet ? (
             <div className="mt-8">
               <h2 className="mb-5 flex items-center gap-2 font-display text-lg uppercase tracking-wide text-ink">
                 <Goal className="h-5 w-5 text-forest" /> Feuille de match

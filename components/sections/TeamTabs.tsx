@@ -37,6 +37,7 @@ export function TeamTabs({
   topScorerName,
   seasonStats,
   hasMatchData,
+  showStats,
 }: {
   players: Player[];
   board: TeamSeason;
@@ -44,15 +45,18 @@ export function TeamTabs({
   topScorerName?: string;
   seasonStats: PlayerSeasonStats[];
   hasMatchData: boolean;
+  /** Onglet Stats (buteurs / passeurs) : Seniors uniquement. */
+  showStats: boolean;
 }) {
   const [tab, setTab] = useState<TabKey>("calendrier");
 
-  const tabs: { key: TabKey; label: string; icon: React.ReactNode }[] = [
+  const allTabs: { key: TabKey; label: string; icon: React.ReactNode }[] = [
     { key: "calendrier", label: "Calendrier", icon: <CalendarDays className="h-4 w-4" /> },
     { key: "classement", label: "Classement", icon: <ListOrdered className="h-4 w-4" /> },
     { key: "stats", label: "Stats", icon: <Target className="h-4 w-4" /> },
     { key: "effectif", label: "Effectif", icon: <Users className="h-4 w-4" /> },
   ];
+  const tabs = allTabs.filter((t) => showStats || t.key !== "stats");
 
   return (
     <div>
@@ -99,7 +103,7 @@ export function TeamTabs({
             slug={board.slug}
           />
         )}
-        {tab === "stats" && (
+        {showStats && tab === "stats" && (
           <StatsPanel
             players={players}
             board={board}

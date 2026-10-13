@@ -49,14 +49,18 @@ export default async function TeamPage({
   if (!team) notFound();
 
   const players = bundle.players;
+  // Buteurs / passeurs : uniquement pour les équipes suivies (Seniors).
+  const showStats = team.matchStats === true;
   // Buts en matchs officiels uniquement (championnat + coupe), hors amicaux.
   const officialGoals = bundle.seasonStats.reduce(
     (sum, s) => sum + s.byType.championnat.goals + s.byType.coupe.goals,
     0,
   );
-  const scorer = players
-    .filter((p) => (p.goals ?? 0) > 0)
-    .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0];
+  const scorer = showStats
+    ? players
+        .filter((p) => (p.goals ?? 0) > 0)
+        .sort((a, b) => (b.goals ?? 0) - (a.goals ?? 0))[0]
+    : undefined;
 
   // Meilleur buteur / passeur en matchs OFFICIELS (championnat + coupe), hors amicaux.
   const playerByName = new Map(players.map((p) => [p.name, p]));
@@ -86,7 +90,9 @@ export default async function TeamPage({
   const keyStats = [
     { value: String(players.length), label: "Joueurs" },
     { value: String(team.staff.length), label: "Encadrants" },
-    { value: String(officialGoals), label: "Buts en matchs officiels" },
+    showStats
+      ? { value: String(officialGoals), label: "Buts en matchs officiels" }
+      : { value: String(team.trainings.length), label: "Séances / sem." },
   ];
 
   return (
@@ -112,7 +118,7 @@ export default async function TeamPage({
             <ArrowLeft className="h-4 w-4" /> Toutes les équipes
           </Link>
 
-          <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-end">
+          <div className={showStats ? "mt-6 grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-end" : "mt-6"}>
             {/* Colonne texte */}
             <div>
               <div>
@@ -147,6 +153,7 @@ export default async function TeamPage({
             </div>
 
             {/* Colonne cartes : meilleur buteur & passeur (matchs officiels) */}
+            {showStats && (
             <div className="grid gap-4 sm:grid-cols-2">
               <PlayerStatCard
                 label="Meilleur buteur"
@@ -163,6 +170,7 @@ export default async function TeamPage({
                 emptyText="Aucun passeur en match officiel pour le moment."
               />
             </div>
+            )}
           </div>
         </div>
       </section>
@@ -176,6 +184,7 @@ export default async function TeamPage({
             board={safeBoard}
             clubName={club.name}
             topScorerName={scorer?.name}
+            showStats={showStats}
             seasonStats={bundle.seasonStats}
             hasMatchData={bundle.hasMatchData}
           />

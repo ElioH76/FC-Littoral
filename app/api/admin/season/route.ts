@@ -19,7 +19,9 @@ import type {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const TEAM_SLUGS = teams.map((t) => t.slug) as TeamSlug[];
+// Seules les équipes avec suivi des stats (Seniors) sont gérées en admin.
+const adminTeams = teams.filter((t) => t.matchStats);
+const TEAM_SLUGS = adminTeams.map((t) => t.slug) as TeamSlug[];
 const MATCH_TYPES: MatchType[] = ["championnat", "coupe", "amical"];
 
 function isTeam(v: unknown): v is TeamSlug {
@@ -106,7 +108,7 @@ export async function GET() {
     const fixtures: Record<string, Fixture[]> = {};
 
     await Promise.all(
-      teams.map(async (t) => {
+      adminTeams.map(async (t) => {
         rosters[t.slug] = (t.players ?? []).map((p) => ({
           name: p.name,
           number: p.number,
@@ -119,7 +121,7 @@ export async function GET() {
 
     return NextResponse.json({
       ok: true,
-      teams: teams.map((t) => ({ slug: t.slug, name: t.name })),
+      teams: adminTeams.map((t) => ({ slug: t.slug, name: t.name })),
       rosters,
       fixtures,
       matchStats,

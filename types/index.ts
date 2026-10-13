@@ -49,6 +49,11 @@ export interface Team {
   shortName: string;
   /** Marque l'équipe fanion (mise en avant) */
   flagship?: boolean;
+  /**
+   * Suivi des buteurs / passeurs (feuilles de match, onglet Stats, meilleur
+   * buteur…). Seule l'équipe Seniors en bénéficie pour l'instant.
+   */
+  matchStats?: boolean;
   category: string;
   description: string;
   /** Court paragraphe d'ambiance/objectifs */

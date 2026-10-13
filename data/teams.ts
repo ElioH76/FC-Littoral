@@ -47,6 +47,7 @@ export const teams: Team[] = [
     name: "Seniors Après-Midi",
     shortName: "Seniors",
     flagship: true,
+    matchStats: true,
     category: "Équipe fanion • Seniors",
     description:
       "Vitrine sportive du F.C. Littoral, l'équipe Seniors Après-Midi porte haut les couleurs or et vert chaque dimanche. Compétitive et soudée, elle incarne l'ambition du club.",
