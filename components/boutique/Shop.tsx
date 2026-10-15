@@ -5,7 +5,9 @@ import Image from "next/image";
 import {
   Check,
   Info,
+  Instagram,
   Loader2,
+  Mail,
   Minus,
   Plus,
   ShoppingBag,
@@ -14,6 +16,7 @@ import {
 
 import type { OrderLine, Product, ProductCategory } from "@/types";
 import { Button } from "@/components/ui/button";
+import { club } from "@/data/club";
 
 const CATEGORY_ORDER: ProductCategory[] = ["Maillots", "Textile", "Accessoires"];
 
@@ -155,6 +158,42 @@ export function Shop({ products }: { products: Product[] }) {
             <Button className="mt-8" onClick={() => setStatus("idle")}>
               Passer une nouvelle commande
             </Button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <section className="section">
+        <div className="container">
+          <div className="mx-auto max-w-xl rounded-3xl border border-gold/30 bg-ink-800 p-8 text-center md:p-12">
+            <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold/10 text-gold">
+              <ShoppingBag className="h-8 w-8" />
+            </span>
+            <h2 className="mt-6 font-heading text-2xl font-black uppercase text-bone md:text-3xl">
+              Boutique bientôt ouverte
+            </h2>
+            <p className="mt-4 text-bone-dim">
+              Aucun article n&apos;est disponible à la commande pour le moment. La
+              collection du club arrive bientôt : suis-nous sur Instagram pour être
+              prévenu de son ouverture.
+            </p>
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <Button asChild>
+                <a href={club.socials.instagram} target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-4 w-4" />
+                  Suivre le club
+                </a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={`mailto:${club.contact.email}`}>
+                  <Mail className="h-4 w-4" />
+                  Nous contacter
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
