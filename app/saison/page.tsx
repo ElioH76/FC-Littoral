@@ -22,21 +22,21 @@ export default async function SaisonPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Saison 2024 / 2025"
+        eyebrow="Saison 2026 / 2027"
         title="Classements & calendriers"
         description="Toutes nos équipes réunies : sélectionne une équipe pour voir son classement, ses prochains matchs et ses derniers résultats."
       />
 
-      {/* Bandeau d'information : données FFF en direct */}
+      {/* Bandeau d'information : données FFF (snapshot synchronisé chaque jour) */}
       <div className="border-b border-white/10 bg-ink-800">
         <div className="container flex flex-wrap items-center justify-center gap-3 py-3 text-center text-sm text-bone-dim">
           <Badge variant="forest" className="gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            En direct · FFF
+            Source · FFF
           </Badge>
           <span>
-            Calendrier et résultats en direct de la FFF. Le classement
-            s&apos;affichera dès les premières journées jouées.
+            Classements, calendriers et résultats officiels de la FFF, mis à
+            jour chaque jour.
           </span>
         </div>
       </div>

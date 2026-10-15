@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin } from "lucide-react";
 
 import { club } from "@/data/club";
 import { Logo } from "@/components/brand/Logo";
@@ -42,9 +42,6 @@ export function Footer() {
               <SocialLink href={club.socials.instagram} label="Instagram">
                 <Instagram className="h-5 w-5" />
               </SocialLink>
-              <SocialLink href={club.socials.youtube} label="YouTube">
-                <Youtube className="h-5 w-5" />
-              </SocialLink>
             </div>
           </div>
 
@@ -84,15 +81,6 @@ export function Footer() {
                   className="transition-colors hover:text-gold-bright"
                 >
                   {club.contact.email}
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 shrink-0 text-gold" />
-                <a
-                  href={`tel:${club.contact.phone.replace(/\s/g, "")}`}
-                  className="transition-colors hover:text-gold-bright"
-                >
-                  {club.contact.phone}
                 </a>
               </li>
             </ul>

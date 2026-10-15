@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Mail, MapPin } from "lucide-react";
 
 import { club } from "@/data/club";
 import { Button } from "@/components/ui/button";
@@ -31,8 +31,9 @@ export function JoinCTA() {
                   variant="outline"
                   className="border-white text-white hover:bg-white hover:text-ink"
                 >
-                  <a href={`tel:${club.contact.phone.replace(/\s/g, "")}`}>
-                    Nous appeler
+                  <a href={club.socials.instagram} target="_blank" rel="noopener noreferrer">
+                    <Instagram className="h-4 w-4" />
+                    @fc_littoral
                   </a>
                 </Button>
               </div>
@@ -45,14 +46,6 @@ export function JoinCTA() {
               <ContactRow icon={<Mail className="h-5 w-5" />} label="Email">
                 <a className="hover:text-gold" href={`mailto:${club.contact.email}`}>
                   {club.contact.email}
-                </a>
-              </ContactRow>
-              <ContactRow icon={<Phone className="h-5 w-5" />} label="Téléphone">
-                <a
-                  className="hover:text-gold"
-                  href={`tel:${club.contact.phone.replace(/\s/g, "")}`}
-                >
-                  {club.contact.phone}
                 </a>
               </ContactRow>
             </ul>

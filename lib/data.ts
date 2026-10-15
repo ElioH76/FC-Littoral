@@ -20,7 +20,6 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { club } from "@/data/club";
-import { news } from "@/data/news";
 import { getActiveProducts, getAllProducts } from "@/lib/products-store";
 import { getManualFixtures } from "@/lib/manual-fixtures-store";
 import { getMatchStats } from "@/lib/match-stats-store";
@@ -28,7 +27,6 @@ import { sponsors } from "@/data/sponsors";
 import { teams } from "@/data/teams";
 import { resolveFixtures, resolveStandings } from "@/lib/sources";
 import type {
-  Article,
   Fixture,
   MatchType,
   Player,
@@ -206,31 +204,6 @@ export async function getSeasonBoard(
   slug: TeamSlug,
 ): Promise<TeamSeason | undefined> {
   return (await getSeasonBoards()).find((b) => b.slug === slug);
-}
-
-/* ---------------------------- ACTUALITÉS --------------------------- */
-
-export async function getNews(): Promise<Article[]> {
-  return [...news].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
-}
-
-export async function getLatestNews(limit = 3): Promise<Article[]> {
-  return (await getNews()).slice(0, limit);
-}
-
-export async function getArticle(slug: string): Promise<Article | undefined> {
-  return news.find((a) => a.slug === slug);
-}
-
-/** Articles mis en avant ("à ne pas rater"), triés du plus récent au plus ancien. */
-export async function getFeaturedArticles(): Promise<Article[]> {
-  return (await getNews()).filter((a) => a.featured);
-}
-
-export async function getArticleSlugs(): Promise<string[]> {
-  return news.map((a) => a.slug);
 }
 
 /* ----------------------------- SPONSORS ---------------------------- */

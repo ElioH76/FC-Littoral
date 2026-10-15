@@ -78,23 +78,6 @@ export interface Sponsor {
   tier: "equipementier" | "principal" | "officiel" | "partenaire";
 }
 
-export interface Article {
-  slug: string;
-  title: string;
-  excerpt: string;
-  /** Date ISO yyyy-mm-dd */
-  date: string;
-  category: string;
-  cover: string;
-  coverAlt: string;
-  /** Met l'article en avant ("à ne pas louper") */
-  featured?: boolean;
-  /** Contenu en paragraphes (simple pour l'instant, Markdown/CMS plus tard) */
-  content: string[];
-  /** Galerie d'images optionnelle affichée sous le contenu */
-  gallery?: { src: string; alt: string }[];
-}
-
 /* ------------------------------------------------------------------ */
 /* BOUTIQUE                                                           */
 /* ------------------------------------------------------------------ */

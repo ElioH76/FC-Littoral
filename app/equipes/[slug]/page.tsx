@@ -88,11 +88,14 @@ export default async function TeamPage({
   };
 
   const keyStats = [
-    { value: String(players.length), label: "Joueurs" },
-    { value: String(team.staff.length), label: "Encadrants" },
+    { value: players.length > 0 ? String(players.length) : "—", label: "Joueurs" },
+    { value: team.staff.length > 0 ? String(team.staff.length) : "—", label: "Encadrants" },
     showStats
       ? { value: String(officialGoals), label: "Buts en matchs officiels" }
-      : { value: String(team.trainings.length), label: "Séances / sem." },
+      : {
+          value: team.trainings.length > 0 ? String(team.trainings.length) : "—",
+          label: "Séances / sem.",
+        },
   ];
 
   return (
@@ -214,6 +217,9 @@ export default async function TeamPage({
             <h3 className="flex items-center gap-2 text-lg text-ink">
               <CalendarClock className="h-5 w-5 text-forest" /> Entraînements
             </h3>
+            {team.trainings.length === 0 && (
+              <p className="mt-4 text-sm italic text-muted-foreground">Bientôt communiqué.</p>
+            )}
             <ul className="mt-4 space-y-3">
               {team.trainings.map((t, i) => (
                 <li key={i} className="text-sm">
@@ -232,6 +238,9 @@ export default async function TeamPage({
             <h3 className="flex items-center gap-2 text-lg text-ink">
               <Users className="h-5 w-5 text-forest" /> Le staff
             </h3>
+            {team.staff.length === 0 && (
+              <p className="mt-4 text-sm italic text-muted-foreground">Bientôt communiqué.</p>
+            )}
             <ul className="mt-4 space-y-3">
               {team.staff.map((s) => (
                 <li key={s.name} className="flex items-center gap-3">

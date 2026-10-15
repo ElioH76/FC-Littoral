@@ -107,6 +107,7 @@ export function TeamDetail({
             {/* Entraînements + encadrement */}
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               <InfoBlock title="Entraînements" light={flagship}>
+                {team.trainings.length === 0 && <SoonNote light={flagship} />}
                 <ul className="space-y-2">
                   {team.trainings.map((t, i) => (
                     <li key={i} className="text-sm">
@@ -133,6 +134,7 @@ export function TeamDetail({
               </InfoBlock>
 
               <InfoBlock title="Encadrement" light={flagship}>
+                {team.staff.length === 0 && <SoonNote light={flagship} />}
                 <ul className="space-y-2">
                   {team.staff.map((s) => (
                     <li key={s.name} className="text-sm">
@@ -240,5 +242,19 @@ function InfoBlock({
       </h3>
       {children}
     </div>
+  );
+}
+
+/** Info d'équipe pas encore renseignée (horaires, encadrement…). */
+function SoonNote({ light }: { light?: boolean }) {
+  return (
+    <p
+      className={cn(
+        "text-sm italic",
+        light ? "text-white/60" : "text-muted-foreground",
+      )}
+    >
+      Bientôt communiqué.
+    </p>
   );
 }

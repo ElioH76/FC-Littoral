@@ -303,8 +303,9 @@ export default async function HomePage() {
                 </a>
               </Button>
               <Button asChild variant="outline">
-                <a href={`tel:${club.contact.phone.replace(/\s/g, "")}`}>
-                  Nous appeler
+                <a href={club.socials.instagram} target="_blank" rel="noopener noreferrer">
+                  <Instagram className="h-4 w-4" />
+                  @fc_littoral
                 </a>
               </Button>
             </div>
@@ -313,7 +314,6 @@ export default async function HomePage() {
             {[
               { k: "Adresse", v: club.contact.address },
               { k: "Email", v: club.contact.email },
-              { k: "Téléphone", v: club.contact.phone },
             ].map((row) => (
               <div
                 key={row.k}

@@ -20,7 +20,7 @@ export default async function TeamsPage() {
       <PageHeader
         eyebrow="Le club sur le terrain"
         title="Nos équipes"
-        description="Du plus jeune au plus expérimenté, trois équipes font vivre les couleurs or et vert du F.C. Littoral."
+        description="Des U13 aux Seniors Après-Midi, deux équipes font vivre les couleurs or et vert du F.C. Littoral."
       />
 
       <div className="section-light">

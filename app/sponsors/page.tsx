@@ -15,7 +15,7 @@ import { SponsorCard } from "@/components/cards/SponsorCard";
 export const metadata: Metadata = {
   title: "Sponsors & partenaires",
   description:
-    "Les partenaires qui soutiennent le F.C. Littoral. Découvrez les entreprises locales engagées aux côtés du club.",
+    "Les partenaires qui soutiennent le F.C. Littoral, dont LEMNOS, équipementier officiel du club.",
 };
 
 export default async function SponsorsPage() {
@@ -30,7 +30,7 @@ export default async function SponsorsPage() {
       <PageHeader
         eyebrow="Ils nous soutiennent"
         title="Sponsors & partenaires"
-        description="Sans nos partenaires, rien ne serait possible. Merci aux entreprises qui font vivre le club et le football amateur sur notre territoire."
+        description="Sans nos partenaires, rien ne serait possible. Merci à ceux qui font vivre le club et le football amateur sur notre territoire."
       />
 
       <div className="section-light">

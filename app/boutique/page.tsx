@@ -23,7 +23,11 @@ export default async function BoutiquePage() {
       <PageHeader
         eyebrow="Les couleurs du club"
         title="Boutique"
-        description="Maillots, textile et accessoires officiels du F.C. Littoral. Commande en quelques clics : tu choisis, tu personnalises, et le règlement se fait au club."
+        description={
+          products.length > 0
+            ? "Maillots, textile et accessoires officiels du F.C. Littoral. Commande en quelques clics : tu choisis, tu personnalises, et le règlement se fait au club."
+            : "Maillots, textile et accessoires aux couleurs du F.C. Littoral : la boutique du club ouvre bientôt."
+        }
       />
       <KitStripe />
       <Shop products={products} />

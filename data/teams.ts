@@ -10,7 +10,7 @@ export const teams: Team[] = [
     slug: "u13",
     name: "U13",
     shortName: "U13",
-    category: "Jeunes • Catégorie U13",
+    category: "Jeunes • U13 Départemental 4",
     description:
       "Notre équipe U13 rassemble les jeunes pousses du club. L'objectif : apprendre, progresser et prendre du plaisir, tout en développant les fondamentaux techniques et l'esprit collectif.",
     highlight:
@@ -22,25 +22,11 @@ export const teams: Team[] = [
     ],
     image: "/images/team-u13.jpg",
     imageAlt: "Jeunes joueurs U13 à l'entraînement",
-    trainings: [
-      { day: "Mardi", time: "18h00 – 19h30", location: "Stade François Maillot" },
-      { day: "Jeudi", time: "18h00 – 19h30", location: "Stade François Maillot" },
-    ],
-    staff: [
-      { name: "Karim Benali", role: "Éducateur principal" },
-      { name: "Lucas Petit", role: "Éducateur adjoint" },
-    ],
-    // ⚠️ Effectif U13 encore fictif (pas de feuille U13 dans joueurs.xlsx).
-    players: [
-      { name: "Nathan Roux", position: "Gardien" },
-      { name: "Téo Marchand", position: "Défenseur" },
-      { name: "Noé Lambert", position: "Défenseur" },
-      { name: "Hugo Lefèvre", position: "Milieu" },
-      { name: "Sacha Morel", position: "Milieu offensif" },
-      { name: "Léo Fontaine", position: "Ailier" },
-      { name: "Eliott Girard", position: "Attaquant" },
-      { name: "Adam Bonnet", position: "Attaquant" },
-    ],
+    // ⚠️ Horaires, encadrement et effectif U13 à venir (vrais noms
+    // communiqués plus tard) : la fiche affiche « bientôt communiqué ».
+    trainings: [],
+    staff: [],
+    players: [],
   },
   {
     slug: "seniors",
@@ -48,7 +34,7 @@ export const teams: Team[] = [
     shortName: "Seniors",
     flagship: true,
     matchStats: true,
-    category: "Équipe fanion • Seniors",
+    category: "Équipe fanion • Seniors Après-Midi D4",
     description:
       "Vitrine sportive du F.C. Littoral, l'équipe Seniors Après-Midi porte haut les couleurs or et vert chaque dimanche. Compétitive et soudée, elle incarne l'ambition du club.",
     highlight:
@@ -66,8 +52,8 @@ export const teams: Team[] = [
       { day: "Jeudi", time: "19h00 – 21h00", location: "Stade François Maillot" },
     ],
     staff: [
-      { name: "Fabrice", role: "Coach" },
-      { name: "Vincent", role: "Coach" },
+      { name: "Fabrice Chaif", role: "Coach" },
+      { name: "Vincent Routel", role: "Coach" },
     ],
     // Effectif synchronisé depuis joueurs.xlsx (feuille « Joueurs »).
     // Plus de numéros (amateur) ni de buts ici : les buts/passes sont saisis
