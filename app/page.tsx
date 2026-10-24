@@ -1,27 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Facebook, Instagram, Users } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Users } from "lucide-react";
 
 import { club } from "@/data/club";
-import { cn } from "@/lib/utils";
-import { getFlagshipTeam, getSponsors } from "@/lib/data";
+import { getFlagshipTeam } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/Hero";
 import { KitStripe } from "@/components/sections/KitStripe";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { SeasonPreview } from "@/components/sections/SeasonPreview";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
-import { sponsorTierLabel } from "@/components/cards/SponsorCard";
 
 // Le meilleur buteur (Hero) et l'aperçu saison lisent les stats/matchs (Blob) :
 // rendu à chaque requête pour refléter immédiatement les saisies admin.
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [flagship, sponsors] = await Promise.all([
-    getFlagshipTeam(),
-    getSponsors(),
-  ]);
+  const flagship = await getFlagshipTeam();
 
   return (
     <>
@@ -266,80 +261,6 @@ export default async function HomePage() {
 
       {/* ===== SAISON (clair, données réelles) ===== */}
       <SeasonPreview />
-
-      {/* ===== PARTENAIRES (sombre) ===== */}
-      <section className="section border-t border-white/10 bg-ink-800">
-        <div className="container">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Ils nous soutiennent"
-              title="Nos partenaires"
-            />
-            <Link
-              href="/sponsors"
-              className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
-            >
-              Tous nos partenaires
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {sponsors.map((sponsor) => {
-              const content = (
-                <>
-                  {/* Logo en grand, en couleurs, sur fond clair */}
-                  <div className="flex aspect-[16/10] items-center justify-center p-8">
-                    <Image
-                      src={sponsor.logo}
-                      alt={`Logo ${sponsor.name}`}
-                      width={320}
-                      height={200}
-                      className={cn(
-                        "h-full max-h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-105",
-                        // Logo vectoriel blanc/noir → passé en noir sur fond clair.
-                        !sponsor.rawLogo && "max-h-28 brightness-0",
-                      )}
-                    />
-                  </div>
-                  <div className="flex items-center justify-between gap-3 border-t border-ink/10 px-6 py-4">
-                    <div className="min-w-0">
-                      <div className="truncate font-heading text-base font-black uppercase tracking-wide text-ink">
-                        {sponsor.name}
-                      </div>
-                      <div className="mt-0.5 font-heading text-[0.65rem] font-extrabold uppercase tracking-[0.16em] text-forest-600">
-                        {sponsorTierLabel[sponsor.tier]}
-                      </div>
-                    </div>
-                    {sponsor.website && (
-                      <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/40 transition-colors group-hover:text-gold-600" />
-                    )}
-                  </div>
-                </>
-              );
-              const card = cn(
-                "group flex flex-col overflow-hidden rounded-2xl bg-bone shadow-lg ring-1 ring-white/10 transition-all duration-300",
-                sponsor.tier === "equipementier" && "ring-2 ring-gold",
-                sponsor.website && "hover:-translate-y-1 hover:shadow-gold",
-              );
-              return sponsor.website ? (
-                <a
-                  key={sponsor.id}
-                  href={sponsor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={card}
-                >
-                  {content}
-                </a>
-              ) : (
-                <div key={sponsor.id} className={card}>
-                  {content}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       <KitStripe />
 

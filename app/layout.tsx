@@ -5,6 +5,8 @@ import "./globals.css";
 import { club } from "@/data/club";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { HideOnPaths } from "@/components/layout/HideOnPaths";
+import { PartnersSection } from "@/components/sections/PartnersSection";
 
 const display = Anton({
   subsets: ["latin"],
@@ -74,6 +76,10 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">{children}</main>
+        {/* Partenaires sur toutes les pages (sauf la page dédiée et l'admin) */}
+        <HideOnPaths paths={["/sponsors", "/admin"]}>
+          <PartnersSection />
+        </HideOnPaths>
         <Footer />
       </body>
     </html>
