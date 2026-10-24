@@ -3,7 +3,6 @@ import type { Team } from "@/types";
 /**
  * Les équipes du club (U13 + Seniors Après-Midi).
  * 👉 Pour modifier une équipe : éditer l'objet correspondant.
- * Les photos pointent vers des images de démonstration (à remplacer par les vraies).
  */
 export const teams: Team[] = [
   {
@@ -20,8 +19,8 @@ export const teams: Team[] = [
       "Développer l'intelligence de jeu",
       "Prendre du plaisir et progresser ensemble",
     ],
-    image: "/images/team-u13.jpg",
-    imageAlt: "Jeunes joueurs U13 à l'entraînement",
+    image: "/teams/U13/equipe-U13.jpeg",
+    imageAlt: "L'équipe U13 du F.C. Littoral au complet, saison 2026/2027",
     trainings: [
       { day: "Lundi", time: "18h00 – 19h30", location: "Stade François Maillot" },
       { day: "Mercredi", time: "15h00 – 16h30", location: "Stade François Maillot" },
