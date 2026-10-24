@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-18T17:30:13.268Z",
+  "syncedAt": "2026-10-24T20:03:53.111Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -52,6 +52,7 @@
           "away": "—",
           "competition": "SENIORS APRÈS-MIDI D4 • J11",
           "type": "championnat",
+          "time": "15H00",
           "homeLogo": "/logo.png"
         },
         {
@@ -117,7 +118,7 @@
           "away": "OH TREFILERIE NEIGES",
           "competition": "SENIORS APRÈS-MIDI D4 • J6",
           "type": "championnat",
-          "time": "15H00",
+          "time": "14H30",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582220.jpg",
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
@@ -297,6 +298,7 @@
           "away": "F.C. Littoral",
           "competition": "SENIORS APRÈS-MIDI D4 • J21",
           "type": "championnat",
+          "time": "15H00",
           "awayLogo": "/logo.png"
         },
         {
