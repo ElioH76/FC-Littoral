@@ -35,9 +35,11 @@ export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-lg">{sponsor.name}</h3>
-        <p className="mt-2 flex-1 text-sm text-muted-foreground">
-          {sponsor.description}
-        </p>
+        {sponsor.description && (
+          <p className="mt-2 flex-1 text-sm text-muted-foreground">
+            {sponsor.description}
+          </p>
+        )}
         {sponsor.website && (
           <a
             href={sponsor.website}

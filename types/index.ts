@@ -71,7 +71,8 @@ export interface Team {
 export interface Sponsor {
   id: string;
   name: string;
-  description: string;
+  /** Courte présentation. Absente = carte avec logo + nom seulement. */
+  description?: string;
   /** Site du partenaire. Absent = pas de lien « Visiter le site ». */
   website?: string;
   logo: string;

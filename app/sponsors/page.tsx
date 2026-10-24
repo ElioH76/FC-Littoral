@@ -167,7 +167,9 @@ function FeaturedSponsor({
           <Star className="h-3 w-3" /> {label}
         </Badge>
         <h3 className="mt-4 text-2xl md:text-3xl">{sponsor.name}</h3>
-        <p className="mt-3 text-muted-foreground">{sponsor.description}</p>
+        {sponsor.description && (
+          <p className="mt-3 text-muted-foreground">{sponsor.description}</p>
+        )}
         {sponsor.website && (
           <Button asChild variant="forest" className="mt-6 w-fit">
             <a href={sponsor.website} target="_blank" rel="noopener noreferrer">

@@ -20,8 +20,7 @@ export const sponsors: Sponsor[] = [
   {
     id: "ets-francois-materiaux",
     name: "Ets François Matériaux",
-    description:
-      "Négoce de matériaux de construction, partenaire du F.C. Littoral.",
+    // TODO site web (à fournir)
     logo: "/sponsors/ETS Materiaux/logo-ETS.png",
     rawLogo: true,
     tier: "partenaire",
@@ -29,7 +28,7 @@ export const sponsors: Sponsor[] = [
   {
     id: "lmo",
     name: "LMO Expertise & Conseil",
-    description: "Cabinet d'expertise et de conseil, partenaire du F.C. Littoral.",
+    // TODO site web (à fournir)
     logo: "/sponsors/LMO/logo-LMO.jpeg",
     rawLogo: true,
     tier: "partenaire",
