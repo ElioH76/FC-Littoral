@@ -76,7 +76,7 @@ export const teams: Team[] = [
     ],
     staff: [
       { name: "Fabrice Chaif", role: "Coach" },
-      { name: "Vincent Routel", role: "Coach" },
+      { name: "Vincent Routel", role: "Coach adjoint" },
     ],
     // Effectif synchronisé depuis joueurs.xlsx (feuille « Joueurs »).
     // Plus de numéros (amateur) ni de buts ici : les buts/passes sont saisis
