@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Instagram, Users } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Users } from "lucide-react";
 
 import { club } from "@/data/club";
 import { getFlagshipTeam, getSponsors } from "@/lib/data";
@@ -118,16 +118,28 @@ export default async function HomePage() {
         <div className="container">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <SectionHeading eyebrow="Sur les réseaux" title="Suivez-nous" />
-            <a
-              href={club.socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
-            >
-              <Instagram className="h-4 w-4" />
-              @fc_littoral
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <div className="flex flex-wrap gap-x-6 gap-y-2">
+              <a
+                href={club.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
+              >
+                <Instagram className="h-4 w-4" />
+                @fc_littoral
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <a
+                href={club.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 font-heading text-sm font-extrabold uppercase tracking-wide text-gold hover:text-gold-bright"
+              >
+                <Facebook className="h-4 w-4" />
+                FC Littoral
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
           </div>
           <InstagramFeed feedId="JCJZtqsD8uGke2G1apgI" />
         </div>

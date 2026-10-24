@@ -56,7 +56,7 @@ export const club = {
     address: "Stade François Maillot, 76280 Heuqueville",
   },
   socials: {
-    facebook: "https://www.facebook.com/fclittoral",
+    facebook: "https://www.facebook.com/p/FC-Littoral-61580888008482/",
     instagram: "https://www.instagram.com/fc_littoral/",
   },
 } as const;
