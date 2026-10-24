@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 import type { Sponsor } from "@/types";
 import { Badge } from "@/components/ui/badge";
 
-const tierLabel: Record<Sponsor["tier"], string> = {
+export const sponsorTierLabel: Record<Sponsor["tier"], string> = {
   equipementier: "Équipementier officiel",
   principal: "Partenaire principal",
   officiel: "Partenaire officiel",
@@ -30,7 +30,7 @@ export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           }
           className="absolute left-3 top-3"
         >
-          {tierLabel[sponsor.tier]}
+          {sponsorTierLabel[sponsor.tier]}
         </Badge>
       </div>
       <div className="flex flex-1 flex-col p-5">

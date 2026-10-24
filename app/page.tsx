@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Facebook, Instagram, Users } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Facebook, Instagram, Users } from "lucide-react";
 
 import { club } from "@/data/club";
+import { cn } from "@/lib/utils";
 import { getFlagshipTeam, getSponsors } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/Hero";
@@ -10,6 +11,7 @@ import { KitStripe } from "@/components/sections/KitStripe";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { SeasonPreview } from "@/components/sections/SeasonPreview";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
+import { sponsorTierLabel } from "@/components/cards/SponsorCard";
 
 // Le meilleur buteur (Hero) et l'aperçu saison lisent les stats/matchs (Blob) :
 // rendu à chaque requête pour refléter immédiatement les saisies admin.
@@ -281,23 +283,43 @@ export default async function HomePage() {
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {sponsors.map((sponsor) => {
-              const tile =
-                "flex aspect-[3/2] w-44 items-center justify-center rounded-2xl border border-white/10 bg-ink p-5 transition-all duration-200 hover:-translate-y-1 hover:border-gold sm:w-52";
-              // Logo vectoriel → silhouette blanche ; logo à fond plein → tel quel.
-              const logo = (
-                <Image
-                  src={sponsor.logo}
-                  alt={`Logo ${sponsor.name}`}
-                  width={160}
-                  height={80}
-                  className={
-                    sponsor.rawLogo
-                      ? "max-h-20 w-auto rounded-md object-contain"
-                      : "max-h-10 w-auto object-contain opacity-80 brightness-0 invert transition-opacity hover:opacity-100"
-                  }
-                />
+              const content = (
+                <>
+                  {/* Logo en grand, en couleurs, sur fond clair */}
+                  <div className="flex aspect-[16/10] items-center justify-center p-8">
+                    <Image
+                      src={sponsor.logo}
+                      alt={`Logo ${sponsor.name}`}
+                      width={320}
+                      height={200}
+                      className={cn(
+                        "h-full max-h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-105",
+                        // Logo vectoriel blanc/noir → passé en noir sur fond clair.
+                        !sponsor.rawLogo && "max-h-28 brightness-0",
+                      )}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between gap-3 border-t border-ink/10 px-6 py-4">
+                    <div className="min-w-0">
+                      <div className="truncate font-heading text-base font-black uppercase tracking-wide text-ink">
+                        {sponsor.name}
+                      </div>
+                      <div className="mt-0.5 font-heading text-[0.65rem] font-extrabold uppercase tracking-[0.16em] text-forest-600">
+                        {sponsorTierLabel[sponsor.tier]}
+                      </div>
+                    </div>
+                    {sponsor.website && (
+                      <ArrowUpRight className="h-5 w-5 shrink-0 text-ink/40 transition-colors group-hover:text-gold-600" />
+                    )}
+                  </div>
+                </>
+              );
+              const card = cn(
+                "group flex flex-col overflow-hidden rounded-2xl bg-bone shadow-lg ring-1 ring-white/10 transition-all duration-300",
+                sponsor.tier === "equipementier" && "ring-2 ring-gold",
+                sponsor.website && "hover:-translate-y-1 hover:shadow-gold",
               );
               return sponsor.website ? (
                 <a
@@ -305,14 +327,13 @@ export default async function HomePage() {
                   href={sponsor.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={sponsor.name}
-                  className={tile}
+                  className={card}
                 >
-                  {logo}
+                  {content}
                 </a>
               ) : (
-                <div key={sponsor.id} aria-label={sponsor.name} className={tile}>
-                  {logo}
+                <div key={sponsor.id} className={card}>
+                  {content}
                 </div>
               );
             })}
