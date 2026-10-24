@@ -54,11 +54,11 @@ export default function ClubPage() {
             <Reveal direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src="/teams/equipe-2026-2027.jpg"
-                  alt="L'équipe Seniors du F.C. Littoral au complet, saison 2026/2027"
+                  src="/images/photos/vestiaire-3.jpeg"
+                  alt="Les vestiaires du Stade François Maillot, repeints en vert et jaune"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-[center_75%]"
+                  className="object-cover"
                 />
               </div>
             </Reveal>
