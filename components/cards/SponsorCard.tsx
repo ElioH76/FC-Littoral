@@ -38,15 +38,17 @@ export function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
         <p className="mt-2 flex-1 text-sm text-muted-foreground">
           {sponsor.description}
         </p>
-        <a
-          href={sponsor.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-1.5 font-display text-sm uppercase tracking-wide text-forest transition-colors hover:text-gold-600"
-        >
-          Visiter le site
-          <ExternalLink className="h-4 w-4" />
-        </a>
+        {sponsor.website && (
+          <a
+            href={sponsor.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center gap-1.5 font-display text-sm uppercase tracking-wide text-forest transition-colors hover:text-gold-600"
+          >
+            Visiter le site
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        )}
       </div>
     </div>
   );

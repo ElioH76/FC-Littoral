@@ -168,12 +168,14 @@ function FeaturedSponsor({
         </Badge>
         <h3 className="mt-4 text-2xl md:text-3xl">{sponsor.name}</h3>
         <p className="mt-3 text-muted-foreground">{sponsor.description}</p>
-        <Button asChild variant="forest" className="mt-6 w-fit">
-          <a href={sponsor.website} target="_blank" rel="noopener noreferrer">
-            Visiter le site
-            <ExternalLink className="h-4 w-4" />
-          </a>
-        </Button>
+        {sponsor.website && (
+          <Button asChild variant="forest" className="mt-6 w-fit">
+            <a href={sponsor.website} target="_blank" rel="noopener noreferrer">
+              Visiter le site
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   );

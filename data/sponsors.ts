@@ -17,4 +17,21 @@ export const sponsors: Sponsor[] = [
     logo: "/sponsors/LEMNOS/LEMNOS.svg",
     tier: "equipementier",
   },
+  {
+    id: "ets-francois-materiaux",
+    name: "Ets François Matériaux",
+    description:
+      "Négoce de matériaux de construction, partenaire du F.C. Littoral.",
+    logo: "/sponsors/ETS Materiaux/logo-ETS.png",
+    rawLogo: true,
+    tier: "partenaire",
+  },
+  {
+    id: "lmo",
+    name: "LMO Expertise & Conseil",
+    description: "Cabinet d'expertise et de conseil, partenaire du F.C. Littoral.",
+    logo: "/sponsors/LMO/logo-LMO.jpeg",
+    rawLogo: true,
+    tier: "partenaire",
+  },
 ];

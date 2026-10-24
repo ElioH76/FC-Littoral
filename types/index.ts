@@ -72,8 +72,14 @@ export interface Sponsor {
   id: string;
   name: string;
   description: string;
-  website: string;
+  /** Site du partenaire. Absent = pas de lien « Visiter le site ». */
+  website?: string;
   logo: string;
+  /**
+   * Logo raster avec son propre fond (JPEG/PNG en couleurs) : affiché tel quel,
+   * sans le filtre « silhouette blanche » des tuiles sombres de l'accueil.
+   */
+  rawLogo?: boolean;
   /** "equipementier" = fournisseur officiel des maillots, affiché en avant */
   tier: "equipementier" | "principal" | "officiel" | "partenaire";
 }

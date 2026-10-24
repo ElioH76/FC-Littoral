@@ -282,24 +282,40 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            {sponsors.map((sponsor) => (
-              <a
-                key={sponsor.id}
-                href={sponsor.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={sponsor.name}
-                className="flex aspect-[3/2] w-44 items-center justify-center rounded-2xl border border-white/10 bg-ink p-5 transition-all duration-200 hover:-translate-y-1 hover:border-gold sm:w-52"
-              >
+            {sponsors.map((sponsor) => {
+              const tile =
+                "flex aspect-[3/2] w-44 items-center justify-center rounded-2xl border border-white/10 bg-ink p-5 transition-all duration-200 hover:-translate-y-1 hover:border-gold sm:w-52";
+              // Logo vectoriel → silhouette blanche ; logo à fond plein → tel quel.
+              const logo = (
                 <Image
                   src={sponsor.logo}
                   alt={`Logo ${sponsor.name}`}
                   width={160}
                   height={80}
-                  className="max-h-10 w-auto object-contain opacity-80 brightness-0 invert transition-opacity hover:opacity-100"
+                  className={
+                    sponsor.rawLogo
+                      ? "max-h-20 w-auto rounded-md object-contain"
+                      : "max-h-10 w-auto object-contain opacity-80 brightness-0 invert transition-opacity hover:opacity-100"
+                  }
                 />
-              </a>
-            ))}
+              );
+              return sponsor.website ? (
+                <a
+                  key={sponsor.id}
+                  href={sponsor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={sponsor.name}
+                  className={tile}
+                >
+                  {logo}
+                </a>
+              ) : (
+                <div key={sponsor.id} aria-label={sponsor.name} className={tile}>
+                  {logo}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
