@@ -22,11 +22,34 @@ export const teams: Team[] = [
     ],
     image: "/images/team-u13.jpg",
     imageAlt: "Jeunes joueurs U13 à l'entraînement",
-    // ⚠️ Horaires, encadrement et effectif U13 à venir (vrais noms
-    // communiqués plus tard) : la fiche affiche « bientôt communiqué ».
-    trainings: [],
-    staff: [],
-    players: [],
+    trainings: [
+      { day: "Lundi", time: "18h00 – 19h30", location: "Stade François Maillot" },
+      { day: "Mercredi", time: "15h00 – 16h30", location: "Stade François Maillot" },
+    ],
+    // ⚠️ Coach principal U13 à ajouter (nom complet à confirmer).
+    staff: [
+      { name: "José", role: "Dirigeant" },
+      { name: "Nathanaël", role: "Dirigeant" },
+      { name: "Pascal", role: "Dirigeant" },
+      { name: "Emeric", role: "Dirigeant" },
+    ],
+    // Effectif U12/U13 (liste Footclubs). Joueurs mineurs : PAS de photo pour
+    // l'instant (cartes en initiales), ni poste, ni date de naissance.
+    // Hugo Letellier : U11 surclassé en U12 cette saison.
+    players: [
+      { name: "Mathis Allais", position: "" },
+      { name: "Lenny Bolaingue", position: "" },
+      { name: "Clément Cahard", position: "" },
+      { name: "Tim Fontaine", position: "" },
+      { name: "Mahé Fontana Franchet", position: "" },
+      { name: "Cassien Gueroult", position: "" },
+      { name: "Antoine Henry", position: "" },
+      { name: "Aurélien Keromnes", position: "" },
+      { name: "Nahil Khiar", position: "" },
+      { name: "Charli Lemaire", position: "" },
+      { name: "Hugo Letellier", position: "" },
+      { name: "Anthon Pingue", position: "" },
+    ],
   },
   {
     slug: "seniors",

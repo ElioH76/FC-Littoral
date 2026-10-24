@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarClock, MapPin, Star, Target, Users } from "lucide-react";
+import { ArrowRight, CalendarClock, MapPin, Star, Target } from "lucide-react";
 
 import type { Team } from "@/types";
 import { cn } from "@/lib/utils";
@@ -152,52 +152,6 @@ export function TeamDetail({
                 </ul>
               </InfoBlock>
             </div>
-
-            {/* Effectif (aperçu) */}
-            {team.players && team.players.length > 0 && (
-              <div className="mt-6">
-                <div
-                  className={cn(
-                    "flex items-center gap-2 font-display text-sm uppercase tracking-widest",
-                    flagship ? "text-gold" : "text-forest",
-                  )}
-                >
-                  <Users className="h-4 w-4" /> Effectif
-                </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {team.players.map((p) => (
-                    <span
-                      key={p.name}
-                      className={cn(
-                        "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs",
-                        flagship
-                          ? "border-white/20 text-white/85"
-                          : "border-border text-ink/80",
-                      )}
-                    >
-                      {p.number != null && (
-                        <span
-                          className={cn(
-                            "font-display",
-                            flagship ? "text-gold" : "text-forest",
-                          )}
-                        >
-                          {p.number}
-                        </span>
-                      )}
-                      {p.name}
-                      <span
-                        className={
-                          flagship ? "text-white/50" : "text-muted-foreground"
-                        }
-                      >
-                        · {p.position}
-                      </span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
 
             <Button
               asChild

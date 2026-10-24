@@ -122,7 +122,9 @@ export function PlayerCard({
           <div className="truncate font-display text-base uppercase leading-tight text-ink">
             {player.name}
           </div>
-          <div className="text-xs text-muted-foreground">{player.position}</div>
+          {player.position && (
+            <div className="text-xs text-muted-foreground">{player.position}</div>
+          )}
         </div>
       </div>
     </div>

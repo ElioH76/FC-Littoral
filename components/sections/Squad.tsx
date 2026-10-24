@@ -42,7 +42,8 @@ export function Squad({
   }).filter((g) => g.list.length > 0);
 
   const rest = players.filter((p) => !used.has(p.name)).sort(byNumber);
-  if (rest.length) groups.push({ label: "Autres", list: rest });
+  // Sans poste renseigné (ex. U13) : un seul groupe « Joueurs ».
+  if (rest.length) groups.push({ label: groups.length ? "Autres" : "Joueurs", list: rest });
 
   const [active, setActive] = useState(0);
   if (groups.length === 0) return null;
