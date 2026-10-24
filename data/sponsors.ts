@@ -20,7 +20,7 @@ export const sponsors: Sponsor[] = [
   {
     id: "ets-francois-materiaux",
     name: "Ets François Matériaux",
-    // TODO site web (à fournir)
+    website: "https://francoismateriaux.fr/",
     logo: "/sponsors/ETS Materiaux/logo-ETS.png",
     rawLogo: true,
     tier: "partenaire",
@@ -28,7 +28,8 @@ export const sponsors: Sponsor[] = [
   {
     id: "lmo",
     name: "LMO Expertise & Conseil",
-    // TODO site web (à fournir)
+    website:
+      "https://www.ixi-groupe.com/nos-expertises/ixi-france/annuaire-ixi-france/les-experts-rc/528-cabinet-lmo-expertise",
     logo: "/sponsors/LMO/logo-LMO.jpeg",
     rawLogo: true,
     tier: "partenaire",
