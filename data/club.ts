@@ -47,7 +47,7 @@ export const club = {
   // Infos pratiques — page "Le club"
   pratique: [
     { label: "Entraînements Seniors", value: "Mardi & jeudi, 19h – 21h" },
-    { label: "Entraînements U13", value: "Lundi 18h – 19h30 & mercredi 15h – 16h30" },
+    { label: "Entraînements U13", value: "Lundi 18h – 19h30 · mercredi 15h – 16h30 (stade Maurice Avenel, Saint-Jouin-Bruneval)" },
     { label: "Stade", value: "Stade François Maillot, Heuqueville" },
     { label: "Saison", value: "Septembre à juin" },
   ],

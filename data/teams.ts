@@ -23,7 +23,7 @@ export const teams: Team[] = [
     imageAlt: "L'équipe U13 du F.C. Littoral au complet, saison 2026/2027",
     trainings: [
       { day: "Lundi", time: "18h00 – 19h30", location: "Stade François Maillot" },
-      { day: "Mercredi", time: "15h00 – 16h30", location: "Stade François Maillot" },
+      { day: "Mercredi", time: "15h00 – 16h30", location: "Stade Maurice Avenel, Saint-Jouin-Bruneval" },
     ],
     staff: [
       { name: "Vincent Routel", role: "Coach" },
