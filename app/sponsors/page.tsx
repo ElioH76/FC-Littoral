@@ -1,29 +1,21 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { ExternalLink, Handshake, Star } from "lucide-react";
+import { Handshake } from "lucide-react";
 
 import { club } from "@/data/club";
 import { getSponsors } from "@/lib/data";
-import type { Sponsor } from "@/types";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/ui/reveal";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { SectionHeading } from "@/components/sections/SectionHeading";
-import { SponsorCard } from "@/components/cards/SponsorCard";
+import { PartnersGrid } from "@/components/sections/PartnersSection";
 
 export const metadata: Metadata = {
   title: "Sponsors & partenaires",
   description:
-    "Les partenaires qui soutiennent le F.C. Littoral, dont LEMNOS, équipementier officiel du club.",
+    "Les partenaires qui soutiennent le F.C. Littoral.",
 };
 
 export default async function SponsorsPage() {
   const sponsors = await getSponsors();
-  const equipementier = sponsors.filter((s) => s.tier === "equipementier");
-  const principal = sponsors.filter((s) => s.tier === "principal");
-  const officiel = sponsors.filter((s) => s.tier === "officiel");
-  const partenaire = sponsors.filter((s) => s.tier === "partenaire");
 
   return (
     <>
@@ -33,87 +25,18 @@ export default async function SponsorsPage() {
         description="Sans nos partenaires, rien ne serait possible. Merci à ceux qui font vivre le club et le football amateur sur notre territoire."
       />
 
-      <div className="section-light">
-      {/* Équipementier officiel — bloc vedette */}
-      {equipementier.length > 0 && (
-        <section className="section">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Équipementier officiel"
-              title="Il habille le club"
-            />
-            <div className="mt-10 space-y-6">
-              {equipementier.map((sponsor) => (
-                <Reveal key={sponsor.id}>
-                  <FeaturedSponsor
-                    sponsor={sponsor}
-                    label="Équipementier officiel"
-                  />
-                </Reveal>
-              ))}
-            </div>
+      {/* Tous les partenaires, à égalité (pas de hiérarchie) */}
+      <section className="section section-light">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Nos partenaires"
+            title="Ils font vivre le club"
+          />
+          <div className="mt-10">
+            <PartnersGrid sponsors={sponsors} />
           </div>
-        </section>
-      )}
-
-      {/* Partenaire principal — bloc vedette */}
-      {principal.length > 0 && (
-        <section className="section bg-muted/40">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Partenaire principal"
-              title="Notre soutien majeur"
-            />
-            <div className="mt-10 space-y-6">
-              {principal.map((sponsor) => (
-                <Reveal key={sponsor.id}>
-                  <FeaturedSponsor sponsor={sponsor} label="Partenaire principal" />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Partenaires officiels */}
-      {officiel.length > 0 && (
-        <section className="section bg-muted/40">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Partenaires officiels"
-              title="Engagés durablement à nos côtés"
-            />
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {officiel.map((sponsor, i) => (
-                <Reveal key={sponsor.id} delay={i * 100}>
-                  <SponsorCard sponsor={sponsor} />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Partenaires */}
-      {partenaire.length > 0 && (
-        <section className="section">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Nos partenaires"
-              title="Ils contribuent à faire vivre le club"
-            />
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              {partenaire.map((sponsor, i) => (
-                <Reveal key={sponsor.id} delay={i * 100}>
-                  <SponsorCard sponsor={sponsor} />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      </div>
+        </div>
+      </section>
 
       {/* Devenir partenaire */}
       <section className="bg-ink text-white">
@@ -140,45 +63,5 @@ export default async function SponsorsPage() {
         </div>
       </section>
     </>
-  );
-}
-
-/** Bloc vedette pleine largeur (équipementier ou partenaire principal). */
-function FeaturedSponsor({
-  sponsor,
-  label,
-}: {
-  sponsor: Sponsor;
-  label: string;
-}) {
-  return (
-    <div className="grid overflow-hidden rounded-2xl border bg-card shadow-sm md:grid-cols-2">
-      <div className="flex items-center justify-center border-b bg-muted/40 p-10 md:border-b-0 md:border-r">
-        <Image
-          src={sponsor.logo}
-          alt={`Logo ${sponsor.name}`}
-          width={320}
-          height={160}
-          className="max-h-40 w-auto object-contain"
-        />
-      </div>
-      <div className="flex flex-col justify-center p-8 md:p-10">
-        <Badge className="w-fit gap-1">
-          <Star className="h-3 w-3" /> {label}
-        </Badge>
-        <h3 className="mt-4 text-2xl md:text-3xl">{sponsor.name}</h3>
-        {sponsor.description && (
-          <p className="mt-3 text-muted-foreground">{sponsor.description}</p>
-        )}
-        {sponsor.website && (
-          <Button asChild variant="forest" className="mt-6 w-fit">
-            <a href={sponsor.website} target="_blank" rel="noopener noreferrer">
-              Visiter le site
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
-        )}
-      </div>
-    </div>
   );
 }

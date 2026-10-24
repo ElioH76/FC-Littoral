@@ -3,8 +3,8 @@ import type { Sponsor } from "@/types";
 /**
  * Partenaires du club.
  * 👉 Pour ajouter un sponsor : copier un bloc et changer les valeurs.
- * `tier` : "equipementier" (fournisseur des maillots, mis en avant),
- *          "principal", "officiel", ou "partenaire".
+ * Tous les partenaires sont affichés à l'identique, dans l'ordre de cette
+ * liste (pas de hiérarchie). `tier` est conservé à titre informatif.
  * `logo` : chemin vers une image dans /public/sponsors ou une URL.
  */
 export const sponsors: Sponsor[] = [
