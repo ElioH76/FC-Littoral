@@ -54,11 +54,11 @@ export default function ClubPage() {
             <Reveal direction="left">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
                 <Image
-                  src="/teams/groupe-02-06-26.jpeg"
-                  alt="L'équipe du F.C. Littoral au grand complet"
+                  src="/teams/equipe-2026-2027.jpg"
+                  alt="L'équipe Seniors du F.C. Littoral au complet, saison 2026/2027"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover object-[center_75%]"
                 />
               </div>
             </Reveal>
