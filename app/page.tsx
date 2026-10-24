@@ -167,24 +167,39 @@ export default async function HomePage() {
               ))}
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-border">
-            <div className="relative aspect-[4/5]">
+          {/* Vestiaires du Stade François Maillot, repeints aux couleurs du club */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-3xl border border-border">
               <Image
                 src="/images/photos/vestaire.jpeg"
-                alt="Le club-house du F.C. Littoral, « depuis 2002 », aux couleurs or et vert"
+                alt="Les vestiaires du Stade François Maillot, repeints en vert et jaune"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
-            </div>
-            <div className="absolute bottom-5 left-5 rounded-2xl bg-gold px-5 py-3.5 text-ink">
-              <div className="font-display text-3xl leading-none">
-                {club.founded}
+              <div className="absolute bottom-5 left-5 rounded-2xl bg-gold px-5 py-3.5 text-ink">
+                <div className="font-display text-3xl leading-none">
+                  {club.founded}
+                </div>
+                <div className="mt-1 font-heading text-[0.62rem] font-extrabold uppercase tracking-[0.16em]">
+                  Année de création
+                </div>
               </div>
-              <div className="mt-1 font-heading text-[0.62rem] font-extrabold uppercase tracking-[0.16em]">
-                Année de création
-              </div>
             </div>
+            {["/images/photos/vestiaire-2.jpeg", "/images/photos/vestiaire-3.jpeg"].map((src) => (
+              <div
+                key={src}
+                className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border"
+              >
+                <Image
+                  src={src}
+                  alt="Les vestiaires du Stade François Maillot, vue de côté"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
