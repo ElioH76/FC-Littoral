@@ -26,8 +26,8 @@ export const teams: Team[] = [
       { day: "Lundi", time: "18h00 – 19h30", location: "Stade François Maillot" },
       { day: "Mercredi", time: "15h00 – 16h30", location: "Stade François Maillot" },
     ],
-    // ⚠️ Coach principal U13 à ajouter (nom complet à confirmer).
     staff: [
+      { name: "Vincent Routel", role: "Coach" },
       { name: "José", role: "Dirigeant" },
       { name: "Nathanaël", role: "Dirigeant" },
       { name: "Pascal", role: "Dirigeant" },
