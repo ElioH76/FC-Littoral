@@ -1,4 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "regions": ["cdg1"]
+  "regions": ["cdg1"],
+  "redirects": [
+    {
+      "source": "/:path(.*)",
+      "has": [{ "type": "host", "value": "fc-littoral.vercel.app" }],
+      "destination": "https://www.fc-littoral.fr/:path",
+      "permanent": true
+    }
+  ]
 }
