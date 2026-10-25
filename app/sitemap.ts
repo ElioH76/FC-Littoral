@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { getTeams } from "@/lib/data";
 
-const BASE_URL = "https://fclittoral.fr";
+const BASE_URL = "https://fc-littoral.fr";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const teams = await getTeams();

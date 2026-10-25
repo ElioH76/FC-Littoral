@@ -36,7 +36,7 @@ const script = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fclittoral.fr"),
+  metadataBase: new URL("https://fc-littoral.fr"),
   title: {
     default: `${club.name} — ${club.slogan}`,
     template: `%s | ${club.name}`,
