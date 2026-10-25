@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, Lock } from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
 /** Formulaire de connexion à l'espace admin (mot de passe unique). */
 export function Login({ onSuccess }: { onSuccess: () => void }) {
   const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,13 +53,24 @@ export function Login({ onSuccess }: { onSuccess: () => void }) {
           <span className="mb-1.5 block font-heading text-[0.7rem] font-bold uppercase tracking-wider text-bone-dim">
             Mot de passe
           </span>
-          <input
-            type="password"
-            value={password}
-            autoFocus
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-lg border border-white/15 bg-ink px-3.5 py-2.5 text-bone focus:border-gold focus:outline-none"
-          />
+          <div className="relative">
+            <input
+              type={visible ? "text" : "password"}
+              value={password}
+              autoFocus
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-lg border border-white/15 bg-ink py-2.5 pl-3.5 pr-11 text-bone focus:border-gold focus:outline-none"
+            />
+            <button
+              type="button"
+              onClick={() => setVisible((v) => !v)}
+              aria-label={visible ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+              aria-pressed={visible}
+              className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-bone-dim transition-colors hover:text-gold"
+            >
+              {visible ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
         </label>
         {error && <p className="mt-3 text-sm text-red-400">{error}</p>}
         <Button type="submit" className="mt-6 w-full" disabled={busy || !password}>
