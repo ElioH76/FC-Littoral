@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-24T20:03:53.111Z",
+  "syncedAt": "2026-10-25T19:58:11.646Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -121,6 +121,8 @@
           "time": "14H30",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582220.jpg",
+          "homeScore": 2,
+          "awayScore": 4,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -350,17 +352,28 @@
         },
         {
           "rank": 4,
-          "team": "F.C. Littoral",
-          "played": 5,
-          "won": 3,
+          "team": "OH TREFILERIE NEIGES",
+          "played": 4,
+          "won": 4,
           "drawn": 0,
-          "lost": 2,
-          "goalsFor": 19,
-          "goalsAgainst": 10,
-          "points": 14
+          "lost": 0,
+          "goalsFor": 16,
+          "goalsAgainst": 8,
+          "points": 16
         },
         {
           "rank": 5,
+          "team": "F.C. Littoral",
+          "played": 6,
+          "won": 3,
+          "drawn": 0,
+          "lost": 3,
+          "goalsFor": 21,
+          "goalsAgainst": 14,
+          "points": 15
+        },
+        {
+          "rank": 6,
           "team": "AS LANQUETOT",
           "played": 4,
           "won": 3,
@@ -369,17 +382,6 @@
           "goalsFor": 12,
           "goalsAgainst": 10,
           "points": 13
-        },
-        {
-          "rank": 6,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 3,
-          "won": 3,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 12,
-          "goalsAgainst": 6,
-          "points": 12
         },
         {
           "rank": 7,
@@ -394,47 +396,47 @@
         },
         {
           "rank": 8,
-          "team": "ES DU MONT GAILLARD",
-          "played": 6,
-          "won": 1,
+          "team": "US GODERVILLAISE",
+          "played": 5,
+          "won": 2,
           "drawn": 1,
-          "lost": 4,
-          "goalsFor": 9,
-          "goalsAgainst": 20,
-          "points": 10
+          "lost": 2,
+          "goalsFor": 7,
+          "goalsAgainst": 5,
+          "points": 12
         },
         {
           "rank": 9,
-          "team": "US GODERVILLAISE",
-          "played": 4,
-          "won": 1,
+          "team": "U. FONTAINAISE",
+          "played": 6,
+          "won": 2,
           "drawn": 1,
           "lost": 2,
-          "goalsFor": 2,
-          "goalsAgainst": 3,
-          "points": 8
+          "goalsFor": 9,
+          "goalsAgainst": 17,
+          "points": 12
         },
         {
           "rank": 10,
-          "team": "U. FONTAINAISE",
-          "played": 5,
+          "team": "ES DU MONT GAILLARD",
+          "played": 7,
           "won": 1,
           "drawn": 1,
-          "lost": 2,
-          "goalsFor": 6,
-          "goalsAgainst": 15,
-          "points": 8
+          "lost": 5,
+          "goalsFor": 11,
+          "goalsAgainst": 25,
+          "points": 11
         },
         {
           "rank": 11,
           "team": "GAINNEVILLE AC",
-          "played": 6,
+          "played": 7,
           "won": 0,
           "drawn": 0,
-          "lost": 6,
-          "goalsFor": 6,
-          "goalsAgainst": 23,
-          "points": 6
+          "lost": 7,
+          "goalsFor": 8,
+          "goalsAgainst": 26,
+          "points": 7
         }
       ]
     },
