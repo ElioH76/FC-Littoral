@@ -1,5 +1,4 @@
-import { del, list, put } from "@vercel/blob";
-
+import { versionedJsonStore } from "@/lib/blob-json-store";
 import type { MatchStat, MatchStatsStore } from "@/types";
 
 /**
@@ -10,38 +9,24 @@ import type { MatchStat, MatchStatsStore } from "@/types";
  * saisir à la main, aussi bien pour les matchs de championnat que pour les
  * matchs amicaux ajoutés manuellement.
  *
- * Même approche versionnée que `products-store` (fichier neuf à chaque save,
- * purge des anciens). Store vide / Blob non configuré → objet vide.
+ * Fichier JSON versionné + cache serveur invalidé à chaque enregistrement
+ * (cf. `blob-json-store`). Store vide / Blob non configuré → objet vide.
  */
 
-const DIR = "match-stats/";
+const store = versionedJsonStore<MatchStatsStore>({
+  dir: "match-stats/",
+  parse: (data) =>
+    data && typeof data === "object" && !Array.isArray(data)
+      ? (data as MatchStatsStore)
+      : null,
+});
 
-function blobConfigured(): boolean {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
-}
-
-async function fetchJson(url: string): Promise<MatchStatsStore | null> {
-  // Toujours frais (cf. manual-fixtures-store) : les feuilles de match saisies
-  // en admin doivent apparaître immédiatement sur le site.
-  const res = await fetch(`${url}?ts=${Date.now()}`, { cache: "no-store" });
-  if (!res.ok) return null;
-  const data = (await res.json()) as unknown;
-  return data && typeof data === "object" ? (data as MatchStatsStore) : null;
-}
-
-/** Lit toutes les feuilles de match (version la plus récente). */
-export async function getMatchStats(_fresh = false): Promise<MatchStatsStore> {
-  if (!blobConfigured()) return {};
-  try {
-    const { blobs } = await list({ prefix: DIR });
-    if (blobs.length === 0) return {};
-    const latest = blobs.reduce((a, b) =>
-      new Date(a.uploadedAt).getTime() >= new Date(b.uploadedAt).getTime() ? a : b,
-    );
-    return (await fetchJson(latest.url)) ?? {};
-  } catch {
-    return {};
-  }
+/**
+ * Lit toutes les feuilles de match (version la plus récente).
+ * `fresh` : relit Blob sans cache (avant une modification en admin).
+ */
+export async function getMatchStats(fresh = false): Promise<MatchStatsStore> {
+  return (await store.read(fresh)) ?? {};
 }
 
 /** Feuille d'un match précis (ou undefined). */
@@ -53,25 +38,6 @@ export async function getMatchStat(
 }
 
 /** Écrit une nouvelle version de l'ensemble des feuilles et purge les anciennes. */
-export async function saveMatchStats(store: MatchStatsStore): Promise<void> {
-  if (!blobConfigured()) {
-    throw new Error("BLOB_READ_WRITE_TOKEN manquant");
-  }
-  const { url } = await put(
-    `${DIR}${Date.now()}.json`,
-    JSON.stringify(store, null, 2),
-    {
-      access: "public",
-      contentType: "application/json",
-      addRandomSuffix: true,
-      cacheControlMaxAge: 0,
-    },
-  );
-  try {
-    const { blobs } = await list({ prefix: DIR });
-    const toDelete = blobs.filter((b) => b.url !== url).map((b) => b.url);
-    if (toDelete.length > 0) await del(toDelete);
-  } catch {
-    // purge best-effort
-  }
+export async function saveMatchStats(stats: MatchStatsStore): Promise<void> {
+  await store.write(stats);
 }

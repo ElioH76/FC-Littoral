@@ -98,7 +98,11 @@ function sanitizeMatchPlayers(input: unknown): MatchPlayerStat[] {
   return out;
 }
 
-/** GET → tout ce dont l'admin a besoin : effectifs, matchs (FFF+manuels), feuilles. */
+/**
+ * GET → tout ce dont l'admin a besoin : effectifs, matchs (FFF+manuels), feuilles.
+ * Lecture en cache (invalidé à chaque enregistrement) : pas d'opération Blob
+ * à chaque ouverture de l'admin. Les écritures ci-dessous relisent Blob à frais.
+ */
 export async function GET() {
   if (!isAuthenticated()) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
@@ -113,11 +117,11 @@ export async function GET() {
           name: p.name,
           number: p.number,
         }));
-        fixtures[t.slug] = await getFixtures(t.slug, { fresh: true });
+        fixtures[t.slug] = await getFixtures(t.slug);
       }),
     );
 
-    const matchStats = await getMatchStats(true);
+    const matchStats = await getMatchStats();
 
     return NextResponse.json({
       ok: true,

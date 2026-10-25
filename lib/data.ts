@@ -16,9 +16,6 @@
  *   }
  */
 
-import { existsSync } from "node:fs";
-import { join } from "node:path";
-
 import { club } from "@/data/club";
 import { getActiveProducts, getAllProducts } from "@/lib/products-store";
 import { getManualFixtures } from "@/lib/manual-fixtures-store";
@@ -42,11 +39,16 @@ import type {
 
 /* ----------------------------- ÉQUIPES ----------------------------- */
 
-/** Ne garde la photo que si le fichier existe vraiment dans /public (sinon undefined). */
+/**
+ * Photos présentes dans /public/players, listées AU BUILD (cf. next.config.mjs).
+ * ⚠️ Pas de `existsSync(process.cwd()/public/…)` ici : Next embarquerait alors
+ * tout /public dans chaque fonction serveur (≈ 88 Mo × chaque déploiement).
+ */
+const PLAYER_PHOTOS = new Set<string>(JSON.parse(process.env.PLAYER_PHOTOS ?? "[]"));
+
+/** Ne garde la photo que si le fichier existe vraiment dans /public/players (sinon undefined). */
 function resolvePhoto(photo?: string): string | undefined {
-  return photo && existsSync(join(process.cwd(), "public", photo))
-    ? photo
-    : undefined;
+  return photo && PLAYER_PHOTOS.has(photo) ? photo : undefined;
 }
 
 /** Renvoie une copie de l'équipe avec les photos joueurs résolues. */

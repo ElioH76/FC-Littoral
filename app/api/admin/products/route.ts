@@ -80,7 +80,7 @@ export async function POST(req: Request) {
     if (!product) {
       return NextResponse.json({ ok: false, error: "invalid_product" }, { status: 422 });
     }
-    const all = await getAllProducts();
+    const all = await getAllProducts(true);
     const idx = all.findIndex((p) => p.slug === product.slug);
     if (idx >= 0) {
       all[idx] = product;
@@ -112,7 +112,7 @@ export async function DELETE(req: Request) {
   if (!slug) return NextResponse.json({ ok: false }, { status: 422 });
 
   try {
-    const all = await getAllProducts();
+    const all = await getAllProducts(true);
     const next = all.filter((p) => p.slug !== slug);
     await saveProducts(next);
     return NextResponse.json({ ok: true, products: next });
