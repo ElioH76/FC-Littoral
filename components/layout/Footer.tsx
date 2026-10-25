@@ -74,15 +74,17 @@ export function Footer() {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 <span>{club.contact.address}</span>
               </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 shrink-0 text-gold" />
-                <a
-                  href={`mailto:${club.contact.email}`}
-                  className="transition-colors hover:text-gold-bright"
-                >
-                  {club.contact.email}
-                </a>
-              </li>
+              {club.contact.email && (
+                <li className="flex items-center gap-2.5">
+                  <Mail className="h-4 w-4 shrink-0 text-gold" />
+                  <a
+                    href={`mailto:${club.contact.email}`}
+                    className="transition-colors hover:text-gold-bright"
+                  >
+                    {club.contact.email}
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

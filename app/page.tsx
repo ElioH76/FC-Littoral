@@ -281,12 +281,14 @@ export default async function HomePage() {
               accueillir.
             </p>
             <div className="mt-8 flex flex-wrap gap-3.5">
-              <Button asChild>
-                <a href={`mailto:${club.contact.email}`} className="group">
-                  Nous écrire
-                  <ArrowRight className="transition-transform group-hover:translate-x-1" />
-                </a>
-              </Button>
+              {club.contact.email && (
+                <Button asChild>
+                  <a href={`mailto:${club.contact.email}`} className="group">
+                    Nous écrire
+                    <ArrowRight className="transition-transform group-hover:translate-x-1" />
+                  </a>
+                </Button>
+              )}
               <Button asChild variant="outline">
                 <a href={club.socials.instagram} target="_blank" rel="noopener noreferrer">
                   <Instagram className="h-4 w-4" />
@@ -299,17 +301,19 @@ export default async function HomePage() {
             {[
               { k: "Adresse", v: club.contact.address },
               { k: "Email", v: club.contact.email },
-            ].map((row) => (
-              <div
-                key={row.k}
-                className="flex flex-col gap-1 border-b border-white/10 p-5 last:border-0 sm:flex-row sm:gap-4"
-              >
-                <span className="min-w-[96px] font-heading text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-gold">
-                  {row.k}
-                </span>
-                <span className="font-medium text-bone">{row.v}</span>
-              </div>
-            ))}
+            ]
+              .filter((row) => row.v)
+              .map((row) => (
+                <div
+                  key={row.k}
+                  className="flex flex-col gap-1 border-b border-white/10 p-5 last:border-0 sm:flex-row sm:gap-4"
+                >
+                  <span className="min-w-[96px] font-heading text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-gold">
+                    {row.k}
+                  </span>
+                  <span className="font-medium text-bone">{row.v}</span>
+                </div>
+              ))}
           </div>
         </div>
       </section>

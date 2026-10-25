@@ -56,7 +56,13 @@ export default async function SponsorsPage() {
                 réseaux : construisons ensemble un partenariat à votre mesure.
               </p>
               <Button asChild size="lg" className="mt-8">
-                <a href={`mailto:${club.contact.email}`}>Nous contacter</a>
+                {club.contact.email ? (
+                  <a href={`mailto:${club.contact.email}`}>Nous contacter</a>
+                ) : (
+                  <a href={club.socials.instagram} target="_blank" rel="noopener noreferrer">
+                    Nous contacter sur Instagram
+                  </a>
+                )}
               </Button>
             </div>
           </div>

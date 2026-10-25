@@ -52,7 +52,8 @@ export const club = {
     { label: "Saison", value: "Septembre à juin" },
   ],
   contact: {
-    email: "contact@fclittoral.fr",
+    // Adresse officielle à renseigner : tant que c'est vide, l'email n'apparaît pas sur le site.
+    email: "" as string,
     address: "Stade François Maillot, 76280 Heuqueville",
   },
   socials: {

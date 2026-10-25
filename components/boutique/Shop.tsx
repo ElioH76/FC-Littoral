@@ -187,12 +187,14 @@ export function Shop({ products }: { products: Product[] }) {
                   Suivre le club
                 </a>
               </Button>
-              <Button asChild variant="outline">
-                <a href={`mailto:${club.contact.email}`}>
-                  <Mail className="h-4 w-4" />
-                  Nous contacter
-                </a>
-              </Button>
+              {club.contact.email && (
+                <Button asChild variant="outline">
+                  <a href={`mailto:${club.contact.email}`}>
+                    <Mail className="h-4 w-4" />
+                    Nous contacter
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </div>

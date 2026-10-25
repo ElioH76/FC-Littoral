@@ -22,9 +22,11 @@ export function JoinCTA() {
                 vous accueillir.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg">
-                  <a href={`mailto:${club.contact.email}`}>Nous écrire</a>
-                </Button>
+                {club.contact.email && (
+                  <Button asChild size="lg">
+                    <a href={`mailto:${club.contact.email}`}>Nous écrire</a>
+                  </Button>
+                )}
                 <Button
                   asChild
                   size="lg"
@@ -43,11 +45,13 @@ export function JoinCTA() {
               <ContactRow icon={<MapPin className="h-5 w-5" />} label="Adresse">
                 {club.contact.address}
               </ContactRow>
-              <ContactRow icon={<Mail className="h-5 w-5" />} label="Email">
-                <a className="hover:text-gold" href={`mailto:${club.contact.email}`}>
-                  {club.contact.email}
-                </a>
-              </ContactRow>
+              {club.contact.email && (
+                <ContactRow icon={<Mail className="h-5 w-5" />} label="Email">
+                  <a className="hover:text-gold" href={`mailto:${club.contact.email}`}>
+                    {club.contact.email}
+                  </a>
+                </ContactRow>
+              )}
             </ul>
           </div>
         </div>
