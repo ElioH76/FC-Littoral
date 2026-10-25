@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://fc-littoral.fr/sitemap.xml",
+    sitemap: "https://www.fc-littoral.fr/sitemap.xml",
   };
 }
