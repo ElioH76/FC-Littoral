@@ -245,11 +245,16 @@ export async function getFixtures(
     getManualFixtures(opts.fresh),
   ]);
 
-  // Matchs FFF : type "championnat" par défaut.
-  const officialFixtures: Fixture[] = official.map((f) => ({
-    ...f,
-    type: f.type ?? "championnat",
-  }));
+  // Matchs FFF : type "championnat" par défaut. Les journées "exempt"
+  // (adversaire forfait / absent, la FFF ne renvoie pas d'équipe) ne se
+  // joueront jamais : on les écarte.
+  const isExempt = (f: Fixture) => [f.home, f.away].some((n) => !n?.trim() || n === "—");
+  const officialFixtures: Fixture[] = official
+    .filter((f) => !isExempt(f))
+    .map((f) => ({
+      ...f,
+      type: f.type ?? "championnat",
+    }));
 
   // Matchs ajoutés à la main (amicaux, coupes hors FFF…) pour cette équipe.
   const manualFixtures: Fixture[] = manual
