@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-25T19:58:11.646Z",
+  "syncedAt": "2026-10-30T18:25:31.306Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -16,20 +16,6 @@
           "homeScore": 5,
           "awayScore": 2,
           "venue": "Stade Bernard Hauchard, FECAMP"
-        },
-        {
-          "id": "79334175",
-          "date": "2026-09-13",
-          "home": "F.C. Littoral",
-          "away": "ST RIQUIER GASEG",
-          "competition": "COUPE DE NORMANDIE SENIORS • J1",
-          "type": "coupe",
-          "time": "15H00",
-          "homeLogo": "/logo.png",
-          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC539285.jpg",
-          "homeScore": 8,
-          "awayScore": 0,
-          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
           "id": "56447710",
@@ -54,20 +40,6 @@
           "type": "championnat",
           "time": "15H00",
           "homeLogo": "/logo.png"
-        },
-        {
-          "id": "79632864",
-          "date": "2026-09-27",
-          "home": "F.C. Littoral",
-          "away": "STADE VALERIQUAIS",
-          "competition": "COUPE DE NORMANDIE SENIORS • J2",
-          "type": "coupe",
-          "time": "15H00",
-          "homeLogo": "/logo.png",
-          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501407.jpg",
-          "homeScore": 1,
-          "awayScore": 0,
-          "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
           "id": "56447712",
@@ -352,17 +324,28 @@
         },
         {
           "rank": 4,
+          "team": "AS LANQUETOT",
+          "played": 5,
+          "won": 4,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 15,
+          "goalsAgainst": 10,
+          "points": 17
+        },
+        {
+          "rank": 5,
           "team": "OH TREFILERIE NEIGES",
-          "played": 4,
+          "played": 5,
           "won": 4,
           "drawn": 0,
           "lost": 0,
           "goalsFor": 16,
-          "goalsAgainst": 8,
+          "goalsAgainst": 11,
           "points": 16
         },
         {
-          "rank": 5,
+          "rank": 6,
           "team": "F.C. Littoral",
           "played": 6,
           "won": 3,
@@ -371,17 +354,6 @@
           "goalsFor": 21,
           "goalsAgainst": 14,
           "points": 15
-        },
-        {
-          "rank": 6,
-          "team": "AS LANQUETOT",
-          "played": 4,
-          "won": 3,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 12,
-          "goalsAgainst": 10,
-          "points": 13
         },
         {
           "rank": 7,
