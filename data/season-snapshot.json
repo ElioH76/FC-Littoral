@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-10-31T19:40:52.368Z",
+  "syncedAt": "2026-11-01T17:30:12.108Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -135,6 +135,8 @@
           "time": "14H30",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC518805.jpg",
           "awayLogo": "/logo.png",
+          "homeScore": 3,
+          "awayScore": 5,
           "venue": "STADE MUNICIPAL, LANQUETOT"
         },
         {
@@ -320,27 +322,49 @@
         {
           "rank": 1,
           "team": "TANCARVILLE AC",
-          "played": 6,
-          "won": 4,
+          "played": 7,
+          "won": 5,
           "drawn": 1,
           "lost": 1,
-          "goalsFor": 10,
-          "goalsAgainst": 7,
-          "points": 19
+          "goalsFor": 17,
+          "goalsAgainst": 9,
+          "points": 23
         },
         {
           "rank": 2,
           "team": "US EPOUVILLE",
+          "played": 7,
+          "won": 5,
+          "drawn": 0,
+          "lost": 2,
+          "goalsFor": 27,
+          "goalsAgainst": 9,
+          "points": 22
+        },
+        {
+          "rank": 3,
+          "team": "F.C. Littoral",
+          "played": 7,
+          "won": 4,
+          "drawn": 0,
+          "lost": 3,
+          "goalsFor": 26,
+          "goalsAgainst": 17,
+          "points": 19
+        },
+        {
+          "rank": 4,
+          "team": "AS LANQUETOT",
           "played": 6,
           "won": 4,
           "drawn": 0,
           "lost": 2,
-          "goalsFor": 26,
-          "goalsAgainst": 9,
+          "goalsFor": 18,
+          "goalsAgainst": 15,
           "points": 18
         },
         {
-          "rank": 3,
+          "rank": 5,
           "team": "USF FECAMP",
           "played": 5,
           "won": 4,
@@ -351,18 +375,7 @@
           "points": 17
         },
         {
-          "rank": 4,
-          "team": "AS LANQUETOT",
-          "played": 5,
-          "won": 4,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 15,
-          "goalsAgainst": 10,
-          "points": 17
-        },
-        {
-          "rank": 5,
+          "rank": 6,
           "team": "OH TREFILERIE NEIGES",
           "played": 5,
           "won": 4,
@@ -373,48 +386,37 @@
           "points": 16
         },
         {
-          "rank": 6,
-          "team": "F.C. Littoral",
+          "rank": 7,
+          "team": "US GODERVILLAISE",
           "played": 6,
           "won": 3,
-          "drawn": 0,
-          "lost": 3,
-          "goalsFor": 21,
-          "goalsAgainst": 14,
-          "points": 15
-        },
-        {
-          "rank": 7,
-          "team": "HELLANDES FC",
-          "played": 6,
-          "won": 2,
-          "drawn": 0,
-          "lost": 4,
-          "goalsFor": 8,
-          "goalsAgainst": 21,
-          "points": 12
+          "drawn": 1,
+          "lost": 2,
+          "goalsFor": 9,
+          "goalsAgainst": 5,
+          "points": 16
         },
         {
           "rank": 8,
-          "team": "US GODERVILLAISE",
-          "played": 5,
+          "team": "HELLANDES FC",
+          "played": 7,
           "won": 2,
-          "drawn": 1,
-          "lost": 2,
-          "goalsFor": 7,
-          "goalsAgainst": 5,
-          "points": 12
+          "drawn": 0,
+          "lost": 5,
+          "goalsFor": 8,
+          "goalsAgainst": 23,
+          "points": 13
         },
         {
           "rank": 9,
           "team": "U. FONTAINAISE",
-          "played": 6,
+          "played": 7,
           "won": 2,
           "drawn": 1,
-          "lost": 2,
+          "lost": 3,
           "goalsFor": 9,
-          "goalsAgainst": 17,
-          "points": 12
+          "goalsAgainst": 18,
+          "points": 13
         },
         {
           "rank": 10,
@@ -430,13 +432,13 @@
         {
           "rank": 11,
           "team": "GAINNEVILLE AC",
-          "played": 7,
+          "played": 8,
           "won": 0,
           "drawn": 0,
-          "lost": 7,
-          "goalsFor": 8,
-          "goalsAgainst": 26,
-          "points": 7
+          "lost": 8,
+          "goalsFor": 10,
+          "goalsAgainst": 33,
+          "points": 8
         }
       ]
     },
