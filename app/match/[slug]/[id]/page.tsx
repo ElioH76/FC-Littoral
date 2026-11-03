@@ -11,6 +11,7 @@ import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
 import { MatchGallery } from "@/components/match/MatchGallery";
 import type { TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TeamCrest } from "@/components/match/TeamCrest";
@@ -26,10 +27,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const fixture = await getFixture(params.slug as TeamSlug, params.id);
   if (!fixture) return { title: "Match" };
-  return {
+  const played = fixture.homeScore != null && fixture.awayScore != null;
+  const score = played ? ` (${fixture.homeScore}-${fixture.awayScore})` : "";
+  return pageMetadata({
     title: `${fixture.home} – ${fixture.away}`,
-    description: `${fixture.competition} · ${formatDate(fixture.date)}`,
-  };
+    description: `${fixture.home} – ${fixture.away}${score} · ${fixture.competition} · ${formatDate(fixture.date)}. Score, buteurs et infos du match du ${club.name}.`,
+    path: `/match/${params.slug}/${fixture.id}`,
+  });
 }
 
 export default async function MatchPage({
@@ -103,6 +107,9 @@ export default async function MatchPage({
             <ArrowLeft className="h-4 w-4" /> {team?.name ?? "Retour à l'équipe"}
           </Link>
 
+          <h1 className="sr-only">
+            {fixture.home} – {fixture.away}, {fixture.competition}
+          </h1>
           <p className="mt-6 text-center font-display text-xs uppercase tracking-widest text-gold">
             {fixture.competition}
           </p>

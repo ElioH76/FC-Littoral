@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
 
-import { getTeams } from "@/lib/data";
-
-const BASE_URL = "https://www.fc-littoral.fr";
+import { getAllFixtureRefs, getTeams } from "@/lib/data";
+import { SITE_URL as BASE_URL } from "@/lib/seo";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const teams = await getTeams();
+  const [teams, fixtures] = await Promise.all([getTeams(), getAllFixtureRefs()]);
 
   const staticRoutes = [
     "",
@@ -30,5 +29,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...teamRoutes];
+  const matchRoutes = fixtures.map((f) => ({
+    url: `${BASE_URL}/match/${f.slug}/${encodeURIComponent(f.id)}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
+
+  return [...staticRoutes, ...teamRoutes, ...matchRoutes];
 }

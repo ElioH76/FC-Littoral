@@ -8,12 +8,14 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { KitStripe } from "@/components/sections/KitStripe";
 import { JoinCTA } from "@/components/sections/JoinCTA";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Le club",
   description:
-    "Histoire, valeurs, bureau et infos pratiques du F.C. Littoral, club de football amateur fondé en 2002.",
-};
+    "Histoire, valeurs, bureau et infos pratiques du F.C. Littoral, club de football amateur fondé en 2002 à Heuqueville, Saint-Jouin-Bruneval et Cauville-sur-Mer.",
+  path: "/club",
+});
 
 export default function ClubPage() {
   return (

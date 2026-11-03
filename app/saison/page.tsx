@@ -5,12 +5,14 @@ import { getSeasonBoards } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { SeasonBoard } from "@/components/sections/SeasonBoard";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Saison — Classements & calendriers",
   description:
     "Classements, calendriers et résultats des équipes du F.C. Littoral : U13 et Seniors Après-Midi.",
-};
+  path: "/saison",
+});
 
 // Lecture des matchs manuels / feuilles de match (Blob) à chaque requête :
 // les ajouts faits en admin apparaissent immédiatement.

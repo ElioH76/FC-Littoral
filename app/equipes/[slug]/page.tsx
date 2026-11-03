@@ -12,6 +12,7 @@ import { PlayerStatCard } from "@/components/cards/PlayerStatCard";
 import { Reveal } from "@/components/ui/reveal";
 import { TeamTabs } from "@/components/sections/TeamTabs";
 import { JoinCTA } from "@/components/sections/JoinCTA";
+import { pageMetadata } from "@/lib/seo";
 
 // Rendu à chaque requête : reflète immédiatement les matchs/stats saisis en
 // admin (matchs manuels, feuilles de match). Les slugs inconnus → notFound().
@@ -24,15 +25,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const team = await getTeam(params.slug as TeamSlug);
   if (!team) return { title: "Équipe" };
-  return {
+  return pageMetadata({
     title: team.name,
     description: team.description,
-    openGraph: {
-      title: `${team.name} — ${club.name}`,
-      description: team.description,
-      images: [{ url: team.banner ?? team.image, alt: team.imageAlt }],
-    },
-  };
+    path: `/equipes/${team.slug}`,
+    images: [{ url: team.banner ?? team.image, alt: team.imageAlt }],
+  });
 }
 
 export default async function TeamPage({

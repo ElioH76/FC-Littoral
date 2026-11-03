@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Facebook, Instagram, Users } from "lucide-react";
@@ -10,6 +11,11 @@ import { KitStripe } from "@/components/sections/KitStripe";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { SeasonPreview } from "@/components/sections/SeasonPreview";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
 
 // Le meilleur buteur (Hero) et l'aperçu saison lisent les stats/matchs (Blob) :
 // rendu à chaque requête pour refléter immédiatement les saisies admin.

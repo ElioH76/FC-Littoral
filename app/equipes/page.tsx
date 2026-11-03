@@ -5,12 +5,14 @@ import { getTeams } from "@/lib/data";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { TeamDetail } from "@/components/sections/TeamDetail";
 import { JoinCTA } from "@/components/sections/JoinCTA";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Nos équipes",
   description:
     "Découvrez les équipes du F.C. Littoral : U13 et Seniors Après-Midi (équipe fanion). Présentation, entraînements et encadrement.",
-};
+  path: "/equipes",
+});
 
 export default async function TeamsPage() {
   const teams = await getTeams();

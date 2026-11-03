@@ -4,12 +4,14 @@ import { getProducts } from "@/lib/data";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { KitStripe } from "@/components/sections/KitStripe";
 import { Shop } from "@/components/boutique/Shop";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Boutique",
   description:
     "La boutique officielle du F.C. Littoral : maillots, textile et accessoires aux couleurs du club. Commande en ligne, règlement au club.",
-};
+  path: "/boutique",
+});
 
 // Le catalogue peut être modifié à chaud depuis l'admin (stockage Blob) :
 // on rend la page à la demande pour toujours refléter l'état courant.

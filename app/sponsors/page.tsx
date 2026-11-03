@@ -7,12 +7,14 @@ import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { PartnersGrid } from "@/components/sections/PartnersSection";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Sponsors & partenaires",
   description:
-    "Les partenaires qui soutiennent le F.C. Littoral.",
-};
+    "Les entreprises et partenaires locaux qui soutiennent le F.C. Littoral, club de football amateur de Heuqueville. Devenez partenaire du club.",
+  path: "/sponsors",
+});
 
 export default async function SponsorsPage() {
   const sponsors = await getSponsors();
