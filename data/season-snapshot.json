@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-01T17:30:12.108Z",
+  "syncedAt": "2026-11-08T17:02:26.709Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -149,6 +149,8 @@
           "time": "14H30",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
+          "homeScore": 4,
+          "awayScore": 2,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
         },
         {
@@ -322,112 +324,112 @@
         {
           "rank": 1,
           "team": "TANCARVILLE AC",
-          "played": 7,
-          "won": 5,
+          "played": 8,
+          "won": 6,
           "drawn": 1,
           "lost": 1,
-          "goalsFor": 17,
-          "goalsAgainst": 9,
-          "points": 23
+          "goalsFor": 19,
+          "goalsAgainst": 10,
+          "points": 27
         },
         {
           "rank": 2,
-          "team": "US EPOUVILLE",
-          "played": 7,
+          "team": "F.C. Littoral",
+          "played": 8,
           "won": 5,
           "drawn": 0,
-          "lost": 2,
-          "goalsFor": 27,
-          "goalsAgainst": 9,
-          "points": 22
+          "lost": 3,
+          "goalsFor": 30,
+          "goalsAgainst": 19,
+          "points": 23
         },
         {
           "rank": 3,
-          "team": "F.C. Littoral",
+          "team": "US EPOUVILLE",
+          "played": 8,
+          "won": 5,
+          "drawn": 0,
+          "lost": 3,
+          "goalsFor": 28,
+          "goalsAgainst": 11,
+          "points": 23
+        },
+        {
+          "rank": 4,
+          "team": "USF FECAMP",
+          "played": 6,
+          "won": 5,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 27,
+          "goalsAgainst": 5,
+          "points": 21
+        },
+        {
+          "rank": 5,
+          "team": "AS LANQUETOT",
           "played": 7,
           "won": 4,
           "drawn": 0,
           "lost": 3,
-          "goalsFor": 26,
-          "goalsAgainst": 17,
+          "goalsFor": 18,
+          "goalsAgainst": 23,
           "points": 19
         },
         {
-          "rank": 4,
-          "team": "AS LANQUETOT",
-          "played": 6,
-          "won": 4,
-          "drawn": 0,
-          "lost": 2,
-          "goalsFor": 18,
-          "goalsAgainst": 15,
-          "points": 18
+          "rank": 6,
+          "team": "U. FONTAINAISE",
+          "played": 8,
+          "won": 3,
+          "drawn": 1,
+          "lost": 3,
+          "goalsFor": 14,
+          "goalsAgainst": 21,
+          "points": 17
         },
         {
-          "rank": 5,
-          "team": "USF FECAMP",
-          "played": 5,
+          "rank": 7,
+          "team": "OH TREFILERIE NEIGES",
+          "played": 6,
           "won": 4,
           "drawn": 0,
           "lost": 1,
           "goalsFor": 19,
-          "goalsAgainst": 5,
+          "goalsAgainst": 16,
           "points": 17
         },
         {
-          "rank": 6,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 5,
-          "won": 4,
-          "drawn": 0,
-          "lost": 0,
-          "goalsFor": 16,
-          "goalsAgainst": 11,
-          "points": 16
-        },
-        {
-          "rank": 7,
+          "rank": 8,
           "team": "US GODERVILLAISE",
-          "played": 6,
+          "played": 7,
           "won": 3,
           "drawn": 1,
-          "lost": 2,
-          "goalsFor": 9,
-          "goalsAgainst": 5,
-          "points": 16
-        },
-        {
-          "rank": 8,
-          "team": "HELLANDES FC",
-          "played": 7,
-          "won": 2,
-          "drawn": 0,
-          "lost": 5,
-          "goalsFor": 8,
-          "goalsAgainst": 23,
-          "points": 13
+          "lost": 3,
+          "goalsFor": 11,
+          "goalsAgainst": 9,
+          "points": 17
         },
         {
           "rank": 9,
-          "team": "U. FONTAINAISE",
-          "played": 7,
+          "team": "ES DU MONT GAILLARD",
+          "played": 8,
           "won": 2,
           "drawn": 1,
-          "lost": 3,
-          "goalsFor": 9,
-          "goalsAgainst": 18,
-          "points": 13
+          "lost": 5,
+          "goalsFor": 13,
+          "goalsAgainst": 26,
+          "points": 15
         },
         {
           "rank": 10,
-          "team": "ES DU MONT GAILLARD",
-          "played": 7,
-          "won": 1,
-          "drawn": 1,
-          "lost": 5,
-          "goalsFor": 11,
+          "team": "HELLANDES FC",
+          "played": 8,
+          "won": 2,
+          "drawn": 0,
+          "lost": 6,
+          "goalsFor": 9,
           "goalsAgainst": 25,
-          "points": 11
+          "points": 14
         },
         {
           "rank": 11,
@@ -496,6 +498,8 @@
           "time": "14H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582668.jpg",
+          "homeScore": 8,
+          "awayScore": 1,
           "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
         },
         {
@@ -539,90 +543,90 @@
         {
           "rank": 1,
           "team": "F.C. Littoral",
-          "played": 3,
-          "won": 2,
+          "played": 4,
+          "won": 3,
           "drawn": 1,
           "lost": 0,
-          "goalsFor": 35,
-          "goalsAgainst": 6,
-          "points": 10
+          "goalsFor": 43,
+          "goalsAgainst": 7,
+          "points": 14
         },
         {
           "rank": 2,
           "team": "ES INTERC ST ANTOINE",
-          "played": 3,
-          "won": 2,
+          "played": 4,
+          "won": 3,
           "drawn": 0,
           "lost": 1,
-          "goalsFor": 13,
+          "goalsFor": 22,
           "goalsAgainst": 9,
-          "points": 9
+          "points": 13
         },
         {
           "rank": 3,
           "team": "US GODERVILLAISE",
-          "played": 3,
-          "won": 2,
+          "played": 4,
+          "won": 3,
           "drawn": 0,
           "lost": 1,
-          "goalsFor": 14,
-          "goalsAgainst": 8,
-          "points": 9
+          "goalsFor": 21,
+          "goalsAgainst": 13,
+          "points": 13
         },
         {
           "rank": 4,
-          "team": "USF FECAMP",
-          "played": 3,
+          "team": "ES YPREVILLAISE",
+          "played": 4,
           "won": 2,
-          "drawn": 0,
+          "drawn": 1,
           "lost": 1,
-          "goalsFor": 15,
-          "goalsAgainst": 12,
-          "points": 9
+          "goalsFor": 13,
+          "goalsAgainst": 8,
+          "points": 11
         },
         {
           "rank": 5,
-          "team": "ES YPREVILLAISE",
-          "played": 3,
-          "won": 1,
-          "drawn": 1,
-          "lost": 1,
-          "goalsFor": 6,
-          "goalsAgainst": 7,
-          "points": 7
+          "team": "USF FECAMP",
+          "played": 4,
+          "won": 2,
+          "drawn": 0,
+          "lost": 2,
+          "goalsFor": 15,
+          "goalsAgainst": 21,
+          "points": 10
         },
         {
           "rank": 6,
           "team": "FC BREAUTE BRETTEVIL",
-          "played": 3,
+          "played": 4,
           "won": 1,
           "drawn": 0,
-          "lost": 2,
-          "goalsFor": 11,
-          "goalsAgainst": 16,
-          "points": 6
+          "lost": 3,
+          "goalsFor": 12,
+          "goalsAgainst": 24,
+          "points": 7
         },
         {
           "rank": 7,
           "team": "ASP / ASFR",
-          "played": 3,
+          "played": 4,
           "won": 1,
           "drawn": 0,
-          "lost": 2,
-          "goalsFor": 13,
-          "goalsAgainst": 18,
-          "points": 6
+          "lost": 3,
+          "goalsFor": 18,
+          "goalsAgainst": 25,
+          "points": 7
         },
         {
           "rank": 8,
           "team": "ENT.ASL.ASBZ.FCH",
-          "played": 3,
+          "played": 4,
           "won": 0,
           "drawn": 0,
-          "lost": 3,
-          "goalsFor": 7,
-          "goalsAgainst": 38,
-          "points": 3
+          "lost": 4,
+          "goalsFor": 8,
+          "goalsAgainst": 45,
+          "points": 4
         }
       ]
     }
