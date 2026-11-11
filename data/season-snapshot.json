@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-10T08:22:06.444Z",
+  "syncedAt": "2026-11-11T04:50:40.034Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -542,28 +542,6 @@
       "standings": [
         {
           "rank": 1,
-          "team": "F.C. Littoral",
-          "played": 4,
-          "won": 3,
-          "drawn": 1,
-          "lost": 0,
-          "goalsFor": 43,
-          "goalsAgainst": 7,
-          "points": 14
-        },
-        {
-          "rank": 2,
-          "team": "ES INTERC ST ANTOINE",
-          "played": 4,
-          "won": 3,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 22,
-          "goalsAgainst": 9,
-          "points": 13
-        },
-        {
-          "rank": 3,
           "team": "US GODERVILLAISE",
           "played": 4,
           "won": 3,
@@ -574,18 +552,7 @@
           "points": 13
         },
         {
-          "rank": 4,
-          "team": "ES YPREVILLAISE",
-          "played": 4,
-          "won": 2,
-          "drawn": 1,
-          "lost": 1,
-          "goalsFor": 13,
-          "goalsAgainst": 8,
-          "points": 11
-        },
-        {
-          "rank": 5,
+          "rank": 2,
           "team": "USF FECAMP",
           "played": 4,
           "won": 2,
@@ -596,18 +563,18 @@
           "points": 10
         },
         {
-          "rank": 6,
-          "team": "FC BREAUTE BRETTEVIL",
-          "played": 4,
-          "won": 1,
+          "rank": 3,
+          "team": "ES INTERC ST ANTOINE",
+          "played": 3,
+          "won": 2,
           "drawn": 0,
-          "lost": 3,
-          "goalsFor": 12,
-          "goalsAgainst": 24,
-          "points": 7
+          "lost": 1,
+          "goalsFor": 18,
+          "goalsAgainst": 9,
+          "points": 9
         },
         {
-          "rank": 7,
+          "rank": 4,
           "team": "ASP / ASFR",
           "played": 4,
           "won": 1,
@@ -618,15 +585,48 @@
           "points": 7
         },
         {
+          "rank": 5,
+          "team": "F.C. Littoral",
+          "played": 2,
+          "won": 1,
+          "drawn": 1,
+          "lost": 0,
+          "goalsFor": 8,
+          "goalsAgainst": 4,
+          "points": 6
+        },
+        {
+          "rank": 6,
+          "team": "ES YPREVILLAISE",
+          "played": 2,
+          "won": 1,
+          "drawn": 1,
+          "lost": 0,
+          "goalsFor": 6,
+          "goalsAgainst": 3,
+          "points": 6
+        },
+        {
+          "rank": 7,
+          "team": "FC BREAUTE BRETTEVIL",
+          "played": 3,
+          "won": 1,
+          "drawn": 0,
+          "lost": 2,
+          "goalsFor": 11,
+          "goalsAgainst": 16,
+          "points": 6
+        },
+        {
           "rank": 8,
           "team": "ENT.ASL.ASBZ.FCH",
-          "played": 4,
+          "played": 2,
           "won": 0,
           "drawn": 0,
-          "lost": 4,
-          "goalsFor": 8,
-          "goalsAgainst": 45,
-          "points": 4
+          "lost": 2,
+          "goalsFor": 5,
+          "goalsAgainst": 11,
+          "points": 2
         }
       ]
     }
