@@ -64,10 +64,14 @@ export function SeasonAdmin() {
   const [editingFixture, setEditingFixture] = useState<Fixture | "new" | null>(null);
   const [sheetFixture, setSheetFixture] = useState<Fixture | null>(null);
 
-  const load = useCallback(async () => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const load = useCallback(async (fresh = false) => {
     setError(null);
     try {
-      const res = await fetch("/api/admin/season", { cache: "no-store" });
+      const res = await fetch(`/api/admin/season${fresh ? "?fresh=1" : ""}`, {
+        cache: "no-store",
+      });
       if (res.status === 401) {
         setPhase("login");
         return;
@@ -85,6 +89,12 @@ export function SeasonAdmin() {
   useEffect(() => {
     load();
   }, [load]);
+
+  async function refresh() {
+    setRefreshing(true);
+    await load(true);
+    setRefreshing(false);
+  }
 
   async function logout() {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -129,7 +139,7 @@ export function SeasonAdmin() {
       </div>
     );
   }
-  if (phase === "login") return <Login onSuccess={load} />;
+  if (phase === "login") return <Login onSuccess={() => load()} />;
 
   return (
     <div className="section">
@@ -153,9 +163,9 @@ export function SeasonAdmin() {
               de chaque match (la FFF donne les scores mais pas les buteurs).
             </p>
           </div>
-          <Button variant="outline" size="sm" onClick={load}>
-            <RefreshCw className="h-4 w-4" />
-            Rafraîchir
+          <Button variant="outline" size="sm" onClick={refresh} disabled={refreshing}>
+            <RefreshCw className={`h-4 w-4 ${refreshing ? "animate-spin" : ""}`} />
+            {refreshing ? "Chargement…" : "Rafraîchir"}
           </Button>
         </div>
 

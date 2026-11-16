@@ -48,6 +48,7 @@ export function AdminApp() {
   const [orders, setOrders] = useState<AdminOrder[]>([]);
   const [filter, setFilter] = useState<OrderStatus | "Tous">("Tous");
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
 
   const loadOrders = useCallback(async () => {
     setLoadError(null);
@@ -106,6 +107,12 @@ export function AdminApp() {
     }
   }
 
+  async function refresh() {
+    setRefreshing(true);
+    await loadOrders();
+    setRefreshing(false);
+  }
+
   async function logout() {
     await fetch("/api/admin/logout", { method: "POST" });
     setPhase("login");
@@ -143,9 +150,9 @@ export function AdminApp() {
               Commandes boutique
             </h1>
           </div>
-          <Button variant="outline" size="sm" onClick={loadOrders}>
-            <RefreshCw className="h-4 w-4" />
-            Rafraîchir
+          <Button variant="outline" size="sm" onClick={refresh} disabled={refreshing}>
+            <RefreshCw className={`h-4 w-4 ${refreshing ? "animate-spin" : ""}`} />
+            {refreshing ? "Chargement…" : "Rafraîchir"}
           </Button>
         </div>
 

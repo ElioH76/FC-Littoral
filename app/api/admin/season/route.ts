@@ -103,10 +103,12 @@ function sanitizeMatchPlayers(input: unknown): MatchPlayerStat[] {
  * Lecture en cache (invalidé à chaque enregistrement) : pas d'opération Blob
  * à chaque ouverture de l'admin. Les écritures ci-dessous relisent Blob à frais.
  */
-export async function GET() {
+export async function GET(req: Request) {
   if (!isAuthenticated()) {
     return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 401 });
   }
+  // `?fresh=1` (bouton « Rafraîchir ») : relit Blob en ignorant le cache serveur.
+  const fresh = new URL(req.url).searchParams.get("fresh") === "1";
   try {
     const rosters: Record<string, { name: string; number?: number }[]> = {};
     const fixtures: Record<string, Fixture[]> = {};
@@ -117,11 +119,11 @@ export async function GET() {
           name: p.name,
           number: p.number,
         }));
-        fixtures[t.slug] = await getFixtures(t.slug);
+        fixtures[t.slug] = await getFixtures(t.slug, { fresh });
       }),
     );
 
-    const matchStats = await getMatchStats();
+    const matchStats = await getMatchStats(fresh);
 
     return NextResponse.json({
       ok: true,
