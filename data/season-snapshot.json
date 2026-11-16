@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-11T04:50:40.034Z",
+  "syncedAt": "2026-11-16T16:37:02.394Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -22,7 +22,7 @@
           "date": "2026-09-13",
           "home": "F.C. Littoral",
           "away": "ST RIQUIER GASEG",
-          "competition": "COUPE DE NORMANDIE SENIORS • J1",
+          "competition": "COUPE DE NORMANDIE SEN - 11teamsports • J1",
           "type": "coupe",
           "time": "15H00",
           "homeLogo": "/logo.png",
@@ -60,7 +60,7 @@
           "date": "2026-09-27",
           "home": "F.C. Littoral",
           "away": "STADE VALERIQUAIS",
-          "competition": "COUPE DE NORMANDIE SENIORS • J2",
+          "competition": "COUPE DE NORMANDIE SEN - 11teamsports • J2",
           "type": "coupe",
           "time": "15H00",
           "homeLogo": "/logo.png",
@@ -158,11 +158,13 @@
           "date": "2026-11-15",
           "home": "CAUDEBEC ST PIERRE F",
           "away": "F.C. Littoral",
-          "competition": "COUPE DE NORMANDIE SENIORS • J3",
+          "competition": "COUPE DE NORMANDIE SEN - 11teamsports • J3",
           "type": "coupe",
           "time": "14H30",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501482.jpg",
           "awayLogo": "/logo.png",
+          "homeScore": 2,
+          "awayScore": 0,
           "venue": "STADE MICHEL VERNON 1, CAUDEBEC LES ELBEUF"
         },
         {
@@ -172,10 +174,10 @@
           "away": "F.C. Littoral",
           "competition": "SENIORS APRÈS-MIDI D4 • J9",
           "type": "championnat",
-          "time": "14H30",
+          "time": "12H30",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC529155.jpg",
           "awayLogo": "/logo.png",
-          "venue": "STADE DU MONT GAILLARD 2, LE HAVRE"
+          "venue": "STADE DU MONT GAILLARD 1, LE HAVRE"
         },
         {
           "id": "56447754",
@@ -334,6 +336,17 @@
         },
         {
           "rank": 2,
+          "team": "USF FECAMP",
+          "played": 7,
+          "won": 6,
+          "drawn": 0,
+          "lost": 1,
+          "goalsFor": 29,
+          "goalsAgainst": 5,
+          "points": 25
+        },
+        {
+          "rank": 3,
           "team": "F.C. Littoral",
           "played": 8,
           "won": 5,
@@ -344,7 +357,7 @@
           "points": 23
         },
         {
-          "rank": 3,
+          "rank": 4,
           "team": "US EPOUVILLE",
           "played": 8,
           "won": 5,
@@ -355,48 +368,37 @@
           "points": 23
         },
         {
-          "rank": 4,
-          "team": "USF FECAMP",
-          "played": 6,
-          "won": 5,
-          "drawn": 0,
-          "lost": 1,
-          "goalsFor": 27,
-          "goalsAgainst": 5,
-          "points": 21
-        },
-        {
           "rank": 5,
           "team": "AS LANQUETOT",
-          "played": 7,
+          "played": 8,
           "won": 4,
           "drawn": 0,
-          "lost": 3,
-          "goalsFor": 18,
-          "goalsAgainst": 23,
-          "points": 19
+          "lost": 4,
+          "goalsFor": 19,
+          "goalsAgainst": 26,
+          "points": 20
         },
         {
           "rank": 6,
-          "team": "U. FONTAINAISE",
-          "played": 8,
-          "won": 3,
-          "drawn": 1,
-          "lost": 3,
-          "goalsFor": 14,
-          "goalsAgainst": 21,
-          "points": 17
+          "team": "OH TREFILERIE NEIGES",
+          "played": 7,
+          "won": 4,
+          "drawn": 0,
+          "lost": 2,
+          "goalsFor": 19,
+          "goalsAgainst": 18,
+          "points": 18
         },
         {
           "rank": 7,
-          "team": "OH TREFILERIE NEIGES",
-          "played": 6,
-          "won": 4,
+          "team": "HELLANDES FC",
+          "played": 9,
+          "won": 3,
           "drawn": 0,
-          "lost": 1,
-          "goalsFor": 19,
-          "goalsAgainst": 16,
-          "points": 17
+          "lost": 6,
+          "goalsFor": 12,
+          "goalsAgainst": 26,
+          "points": 18
         },
         {
           "rank": 8,
@@ -411,6 +413,17 @@
         },
         {
           "rank": 9,
+          "team": "U. FONTAINAISE",
+          "played": 8,
+          "won": 3,
+          "drawn": 1,
+          "lost": 3,
+          "goalsFor": 14,
+          "goalsAgainst": 21,
+          "points": 17
+        },
+        {
+          "rank": 10,
           "team": "ES DU MONT GAILLARD",
           "played": 8,
           "won": 2,
@@ -419,17 +432,6 @@
           "goalsFor": 13,
           "goalsAgainst": 26,
           "points": 15
-        },
-        {
-          "rank": 10,
-          "team": "HELLANDES FC",
-          "played": 8,
-          "won": 2,
-          "drawn": 0,
-          "lost": 6,
-          "goalsFor": 9,
-          "goalsAgainst": 25,
-          "points": 14
         },
         {
           "rank": 11,
@@ -542,39 +544,61 @@
       "standings": [
         {
           "rank": 1,
-          "team": "US GODERVILLAISE",
-          "played": 4,
+          "team": "USF FECAMP",
+          "played": 5,
           "won": 3,
           "drawn": 0,
-          "lost": 1,
-          "goalsFor": 21,
-          "goalsAgainst": 13,
-          "points": 13
+          "lost": 2,
+          "goalsFor": 22,
+          "goalsAgainst": 25,
+          "points": 14
         },
         {
           "rank": 2,
-          "team": "USF FECAMP",
-          "played": 4,
-          "won": 2,
+          "team": "US GODERVILLAISE",
+          "played": 5,
+          "won": 3,
           "drawn": 0,
           "lost": 2,
-          "goalsFor": 15,
-          "goalsAgainst": 21,
-          "points": 10
+          "goalsFor": 25,
+          "goalsAgainst": 20,
+          "points": 14
         },
         {
           "rank": 3,
           "team": "ES INTERC ST ANTOINE",
-          "played": 3,
-          "won": 2,
+          "played": 4,
+          "won": 3,
           "drawn": 0,
           "lost": 1,
-          "goalsFor": 18,
-          "goalsAgainst": 9,
-          "points": 9
+          "goalsFor": 23,
+          "goalsAgainst": 11,
+          "points": 13
         },
         {
           "rank": 4,
+          "team": "ES YPREVILLAISE",
+          "played": 3,
+          "won": 2,
+          "drawn": 1,
+          "lost": 0,
+          "goalsFor": 13,
+          "goalsAgainst": 4,
+          "points": 10
+        },
+        {
+          "rank": 5,
+          "team": "FC BREAUTE BRETTEVIL",
+          "played": 4,
+          "won": 1,
+          "drawn": 0,
+          "lost": 3,
+          "goalsFor": 12,
+          "goalsAgainst": 23,
+          "points": 7
+        },
+        {
+          "rank": 6,
           "team": "ASP / ASFR",
           "played": 4,
           "won": 1,
@@ -585,7 +609,7 @@
           "points": 7
         },
         {
-          "rank": 5,
+          "rank": 7,
           "team": "F.C. Littoral",
           "played": 2,
           "won": 1,
@@ -596,37 +620,15 @@
           "points": 6
         },
         {
-          "rank": 6,
-          "team": "ES YPREVILLAISE",
-          "played": 2,
-          "won": 1,
-          "drawn": 1,
-          "lost": 0,
-          "goalsFor": 6,
-          "goalsAgainst": 3,
-          "points": 6
-        },
-        {
-          "rank": 7,
-          "team": "FC BREAUTE BRETTEVIL",
-          "played": 3,
-          "won": 1,
-          "drawn": 0,
-          "lost": 2,
-          "goalsFor": 11,
-          "goalsAgainst": 16,
-          "points": 6
-        },
-        {
           "rank": 8,
           "team": "ENT.ASL.ASBZ.FCH",
-          "played": 2,
+          "played": 3,
           "won": 0,
           "drawn": 0,
-          "lost": 2,
-          "goalsFor": 5,
-          "goalsAgainst": 11,
-          "points": 2
+          "lost": 3,
+          "goalsFor": 7,
+          "goalsAgainst": 16,
+          "points": 3
         }
       ]
     }
