@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Manrope, Caveat } from "next/font/google";
+import { Anton, Archivo, Caveat } from "next/font/google";
+import localFont from "next/font/local";
 
 import "./globals.css";
 import { club } from "@/data/club";
@@ -23,10 +24,16 @@ const heading = Archivo({
   display: "swap",
 });
 
-const sans = Manrope({
-  subsets: ["latin"],
+// Manrope est auto-hébergée : via next/font/google, Vercel obtenait deux
+// réponses Google différentes (HTML et CSS avec des classes de police
+// différentes) → --font-sans vide et texte en Times New Roman.
+const sans = localFont({
+  src: "./fonts/Manrope-latin-variable.woff2",
+  weight: "200 800",
+  style: "normal",
   variable: "--font-sans",
   display: "swap",
+  fallback: ["system-ui", "Arial", "sans-serif"],
 });
 
 const script = Caveat({
