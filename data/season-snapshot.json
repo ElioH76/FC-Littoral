@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-19T02:40:03.473Z",
+  "syncedAt": "2026-11-20T16:49:16.829Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -169,12 +169,12 @@
         },
         {
           "id": "56447752",
-          "date": "2026-11-22",
+          "date": "",
           "home": "ES DU MONT GAILLARD",
           "away": "F.C. Littoral",
           "competition": "SENIORS APRÈS-MIDI D4 • J9",
           "type": "championnat",
-          "time": "12H30",
+          "time": "15H00",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC529155.jpg",
           "awayLogo": "/logo.png",
           "venue": "STADE DU MONT GAILLARD 1, LE HAVRE"
@@ -518,7 +518,7 @@
         },
         {
           "id": "79648808",
-          "date": "2026-11-21",
+          "date": "",
           "home": "F.C. Littoral",
           "away": "US GODERVILLAISE",
           "competition": "U13 DEPARTEMENTAL 4 • J6",
