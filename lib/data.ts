@@ -275,9 +275,13 @@ export async function getFixtures(
       manual: true,
     }));
 
-  return [...officialFixtures, ...manualFixtures].sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-  );
+  // Une date absente/invalide (ne devrait plus arriver : un match reporté garde
+  // sa date initiale) part en fin de liste au lieu de casser le tri.
+  const time = (f: Fixture) => {
+    const t = new Date(f.date).getTime();
+    return Number.isNaN(t) ? Number.MAX_SAFE_INTEGER : t;
+  };
+  return [...officialFixtures, ...manualFixtures].sort((a, b) => time(a) - time(b));
 }
 
 /** Un match précis d'une équipe (par identifiant). */

@@ -25,6 +25,7 @@ import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Squad } from "@/components/sections/Squad";
 import { TeamCrest } from "@/components/match/TeamCrest";
+import { PostponedPill } from "@/components/match/PostponedPill";
 import { MatchTypeBadge } from "@/components/match/MatchTypeBadge";
 import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
 
@@ -273,6 +274,7 @@ function FixtureRow({
 }) {
   const isClubHome = fixture.home === clubName;
   const rowTone = MATCH_TYPE_META[resolveMatchType(fixture)].row;
+  const postponed = fixture.status === "postponed";
   return (
     <li>
       <Link
@@ -284,14 +286,21 @@ function FixtureRow({
             <MatchTypeBadge fixture={fixture} />
             <span className="truncate">{fixture.competition}</span>
           </span>
-          <span className="shrink-0">{formatDate(fixture.date)}</span>
+          <span
+            className={cn("shrink-0", postponed && "line-through decoration-red-600/70")}
+            title={postponed ? "Match reporté — nouvelle date à définir" : undefined}
+          >
+            {formatDate(fixture.date)}
+          </span>
         </div>
         <div className="mt-3.5 flex items-center justify-between gap-3 md:gap-4">
           <span className={cn("flex min-w-0 flex-1 items-center gap-3 text-base md:text-lg", isClubHome && "font-semibold text-ink")}>
             <TeamCrest src={fixture.homeLogo} name={fixture.home} size={40} className="shrink-0" />
             <span className="truncate">{fixture.home}</span>
           </span>
-          {showScore ? (
+          {postponed ? (
+            <PostponedPill />
+          ) : showScore ? (
             <span className="shrink-0 rounded-lg bg-ink px-4 py-1.5 font-display text-xl text-white md:text-2xl">
               {fixture.homeScore} – {fixture.awayScore}
             </span>

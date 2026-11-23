@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-20T16:49:16.829Z",
+  "syncedAt": "2026-11-23T15:00:41.817Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -169,7 +169,7 @@
         },
         {
           "id": "56447752",
-          "date": "",
+          "date": "2026-11-22",
           "home": "ES DU MONT GAILLARD",
           "away": "F.C. Littoral",
           "competition": "SENIORS APRÈS-MIDI D4 • J9",
@@ -177,7 +177,9 @@
           "time": "15H00",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC529155.jpg",
           "awayLogo": "/logo.png",
-          "venue": "STADE DU MONT GAILLARD 1, LE HAVRE"
+          "venue": "STADE DU MONT GAILLARD 1, LE HAVRE",
+          "status": "postponed",
+          "initialDate": "2026-11-22"
         },
         {
           "id": "56447754",
@@ -518,7 +520,7 @@
         },
         {
           "id": "79648808",
-          "date": "",
+          "date": "2026-11-21",
           "home": "F.C. Littoral",
           "away": "US GODERVILLAISE",
           "competition": "U13 DEPARTEMENTAL 4 • J6",
@@ -526,7 +528,9 @@
           "time": "14H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
-          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL",
+          "status": "postponed",
+          "initialDate": "2026-11-21"
         },
         {
           "id": "79648815",

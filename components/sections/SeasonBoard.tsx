@@ -8,6 +8,7 @@ import type { Fixture, Standing, TeamSeason, TeamSlug } from "@/types";
 import { cn, formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { TeamCrest } from "@/components/match/TeamCrest";
+import { PostponedPill } from "@/components/match/PostponedPill";
 import { MatchTypeBadge } from "@/components/match/MatchTypeBadge";
 import { MATCH_TYPE_META, resolveMatchType } from "@/lib/match-type";
 
@@ -290,6 +291,7 @@ function FixtureRow({
   const isClubHome = fixture.home === clubName;
   const logoSize = compact ? 22 : 40;
   const rowTone = MATCH_TYPE_META[resolveMatchType(fixture)].row;
+  const postponed = fixture.status === "postponed";
   return (
     <li>
       <Link
@@ -310,7 +312,12 @@ function FixtureRow({
             <MatchTypeBadge fixture={fixture} size={compact ? "sm" : "md"} />
             <span className="truncate">{fixture.competition}</span>
           </span>
-          <span className="shrink-0">{formatDate(fixture.date)}</span>
+          <span
+            className={cn("shrink-0", postponed && "line-through decoration-red-600/70")}
+            title={postponed ? "Match reporté — nouvelle date à définir" : undefined}
+          >
+            {formatDate(fixture.date)}
+          </span>
         </div>
         <div
           className={cn(
@@ -328,7 +335,9 @@ function FixtureRow({
             <TeamCrest src={fixture.homeLogo} name={fixture.home} size={logoSize} className="shrink-0" />
             <span className="truncate">{fixture.home}</span>
           </span>
-          {showScore ? (
+          {postponed ? (
+            <PostponedPill size={compact ? "sm" : "md"} />
+          ) : showScore ? (
             <span
               className={cn(
                 "shrink-0 bg-ink font-display text-white",

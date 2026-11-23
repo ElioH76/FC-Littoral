@@ -294,7 +294,11 @@ function MatchRow({
         </div>
       </div>
       <div className="shrink-0 font-display text-lg text-bone">
-        {played ? `${fixture.homeScore} – ${fixture.awayScore}` : "à venir"}
+        {played
+          ? `${fixture.homeScore} – ${fixture.awayScore}`
+          : fixture.status === "postponed"
+            ? "reporté"
+            : "à venir"}
       </div>
       <div className="flex shrink-0 items-center gap-2">
         <Button size="sm" variant="outline" onClick={onSheet}>

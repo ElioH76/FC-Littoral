@@ -66,7 +66,9 @@ interface DofaStandRow {
 }
 interface DofaMatch {
   ma_no: number;
-  date?: string;
+  date?: string | null;
+  initial_date?: string | null;
+  status_label?: string;
   time?: string;
   poule_journee?: { number?: number };
   competition?: { name?: string };
@@ -164,9 +166,17 @@ export const fffDofaSource: SeasonSource = {
         const competition = `${m.competition?.name ?? "Championnat"}${
           journee ? ` • J${journee}` : ""
         }`;
+        // Reporté : la FFF vide `date` et garde l'ancienne dans `initial_date`.
+        const date = (m.date ?? "").slice(0, 10);
+        const initialDate = (m.initial_date ?? "").slice(0, 10);
+        const postponed =
+          !played && (/report/i.test(m.status_label ?? "") || (!date && !!initialDate));
         return {
           id: String(m.ma_no),
-          date: (m.date ?? "").slice(0, 10),
+          date: date || initialDate,
+          status: postponed ? ("postponed" as const) : undefined,
+          initialDate:
+            initialDate && (postponed || initialDate !== date) ? initialDate : undefined,
           time: m.time ?? undefined,
           home: displayName(m.home?.club?.cl_no, config, m.home?.short_name ?? "—"),
           away: displayName(m.away?.club?.cl_no, config, m.away?.short_name ?? "—"),

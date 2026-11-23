@@ -106,9 +106,16 @@ function mapFixture(m) {
   const homeUs = m.home?.club?.cl_no === CLUB_ID;
   const awayUs = m.away?.club?.cl_no === CLUB_ID;
   const competition = `${m.competition?.name ?? "Championnat"}${journee ? ` • J${journee}` : ""}`;
+  // Match reporté : la FFF vide `date` et garde la date d'origine dans
+  // `initial_date` (status_label "Reporté"). Une fois reprogrammé, `date`
+  // reprend la nouvelle date et `initial_date` reste l'ancienne.
+  const date = (m.date ?? "").slice(0, 10);
+  const initialDate = (m.initial_date ?? "").slice(0, 10);
+  const postponed =
+    !played && (/report/i.test(m.status_label ?? "") || (!date && !!initialDate));
   const f = {
     id: String(m.ma_no),
-    date: (m.date ?? "").slice(0, 10),
+    date: date || initialDate,
     home: homeUs ? CLUB_NAME : m.home?.short_name ?? "—",
     away: awayUs ? CLUB_NAME : m.away?.short_name ?? "—",
     competition,
@@ -127,6 +134,8 @@ function mapFixture(m) {
     ? `${m.terrain.name}${m.terrain.city ? `, ${m.terrain.city}` : ""}`
     : undefined;
   if (venue) f.venue = venue;
+  if (postponed) f.status = "postponed";
+  if (initialDate && (postponed || initialDate !== date)) f.initialDate = initialDate;
   return f;
 }
 

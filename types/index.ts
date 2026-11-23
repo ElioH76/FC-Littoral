@@ -203,6 +203,16 @@ export interface Fixture {
   type?: MatchType;
   /** Vrai si le match a été ajouté à la main (amical, coupe hors FFF…). */
   manual?: boolean;
+  /**
+   * "postponed" = match reporté par la FFF, nouvelle date pas encore fixée.
+   * `date` contient alors la date INITIALE (pour garder l'ordre du calendrier).
+   */
+  status?: "postponed";
+  /**
+   * Date initialement prévue (yyyy-mm-dd), renseignée quand le match a été
+   * reporté ou reprogrammé (différente de `date` si reprogrammé).
+   */
+  initialDate?: string;
 }
 
 /* ------------------------------------------------------------------ */

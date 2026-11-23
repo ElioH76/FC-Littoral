@@ -15,6 +15,7 @@ import { pageMetadata } from "@/lib/seo";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TeamCrest } from "@/components/match/TeamCrest";
+import { PostponedPill } from "@/components/match/PostponedPill";
 
 // Rendu à chaque requête : reflète immédiatement les matchs manuels ajoutés
 // en admin et les feuilles de match (buteurs) saisies. Params inconnus → notFound().
@@ -28,7 +29,11 @@ export async function generateMetadata({
   const fixture = await getFixture(params.slug as TeamSlug, params.id);
   if (!fixture) return { title: "Match" };
   const played = fixture.homeScore != null && fixture.awayScore != null;
-  const score = played ? ` (${fixture.homeScore}-${fixture.awayScore})` : "";
+  const score = played
+    ? ` (${fixture.homeScore}-${fixture.awayScore})`
+    : fixture.status === "postponed"
+      ? " (reporté)"
+      : "";
   return pageMetadata({
     title: `${fixture.home} – ${fixture.away}`,
     description: `${fixture.home} – ${fixture.away}${score} · ${fixture.competition} · ${formatDate(fixture.date)}. Score, buteurs et infos du match du ${club.name}.`,
@@ -61,6 +66,15 @@ export default async function MatchPage({
   const showStats = team?.matchStats === true;
 
   const played = fixture.homeScore != null && fixture.awayScore != null;
+  const postponed = fixture.status === "postponed";
+  // Reprogrammé = la FFF a fixé une nouvelle date après un report.
+  const rescheduled =
+    !postponed && !!fixture.initialDate && fixture.initialDate !== fixture.date;
+  const dateLabel = postponed
+    ? `Reporté — nouvelle date à définir (initialement le ${formatDate(fixture.date)})`
+    : rescheduled
+      ? `${formatDate(fixture.date)} (reprogrammé, initialement le ${formatDate(fixture.initialDate!)})`
+      : formatDate(fixture.date);
   const homeUs = fixture.home === club.name;
   const awayUs = fixture.away === club.name;
   const gallery = getMatchGallery(fixture.id);
@@ -85,8 +99,8 @@ export default async function MatchPage({
 
   const details = [
     { icon: <Trophy className="h-5 w-5" />, label: "Compétition", value: fixture.competition },
-    { icon: <CalendarDays className="h-5 w-5" />, label: "Date", value: formatDate(fixture.date) },
-    ...(fixture.time
+    { icon: <CalendarDays className="h-5 w-5" />, label: "Date", value: dateLabel },
+    ...(fixture.time && !postponed
       ? [{ icon: <Clock className="h-5 w-5" />, label: "Coup d'envoi", value: fixture.time }]
       : []),
     ...(fixture.venue
@@ -119,7 +133,9 @@ export default async function MatchPage({
             <TeamSide name={fixture.home} logo={fixture.homeLogo} highlight={homeUs} />
 
             <div className="flex flex-col items-center pt-3">
-              {played ? (
+              {postponed ? (
+                <PostponedPill size="lg" />
+              ) : played ? (
                 <div className="rounded-xl bg-white/10 px-4 py-2 font-display text-4xl tabular-nums md:text-5xl">
                   {fixture.homeScore}
                   <span className="mx-2 text-white/40">-</span>
@@ -131,8 +147,18 @@ export default async function MatchPage({
                 </div>
               )}
               <div className="mt-3 text-center text-xs text-white/60">
-                {formatDate(fixture.date)}
-                {fixture.time ? ` · ${fixture.time}` : ""}
+                {postponed ? (
+                  <>
+                    <span className="line-through">{formatDate(fixture.date)}</span>
+                    <br />
+                    Nouvelle date à définir
+                  </>
+                ) : (
+                  <>
+                    {formatDate(fixture.date)}
+                    {fixture.time ? ` · ${fixture.time}` : ""}
+                  </>
+                )}
               </div>
             </div>
 
@@ -142,9 +168,13 @@ export default async function MatchPage({
           {/* Statut / résultat */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
             <Badge variant={typeVariant}>{MATCH_TYPE_META[matchType].label}</Badge>
-            <Badge variant={played ? "muted" : "forest"}>
-              {played ? "Terminé" : "À venir"}
-            </Badge>
+            {postponed ? (
+              <Badge className="border-transparent bg-red-600 text-white">Reporté</Badge>
+            ) : (
+              <Badge variant={played ? "muted" : "forest"}>
+                {played ? "Terminé" : rescheduled ? "Reprogrammé" : "À venir"}
+              </Badge>
+            )}
             {result && <Badge variant={result.variant}>{result.label}</Badge>}
           </div>
         </div>
