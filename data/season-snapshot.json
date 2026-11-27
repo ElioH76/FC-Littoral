@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-11-24T14:46:59.474Z",
+  "syncedAt": "2026-11-27T18:29:42.071Z",
   "teams": {
     "seniors": {
       "fixtures": [
@@ -476,7 +476,7 @@
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC525165.jpg",
           "homeScore": 7,
           "awayScore": 3,
-          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+          "venue": "Stade Municipal, ST JOUIN BRUNEVAL"
         },
         {
           "id": "79648798",
@@ -504,7 +504,7 @@
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC582668.jpg",
           "homeScore": 8,
           "awayScore": 1,
-          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL"
+          "venue": "Stade Municipal, ST JOUIN BRUNEVAL"
         },
         {
           "id": "79648806",
@@ -516,6 +516,8 @@
           "time": "14H00",
           "homeLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501739.jpg",
           "awayLogo": "/logo.png",
+          "homeScore": 0,
+          "awayScore": 4,
           "venue": "STADE CAMILLE FLAMANT 1, PETIVILLE"
         },
         {
@@ -528,7 +530,7 @@
           "time": "14H00",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC501495.jpg",
-          "venue": "STADE MUNICIPAL 1, ST JOUIN BRUNEVAL",
+          "venue": "Stade Municipal, ST JOUIN BRUNEVAL",
           "status": "postponed",
           "initialDate": "2026-11-21"
         },
@@ -542,20 +544,46 @@
           "time": "15H30",
           "homeLogo": "/logo.png",
           "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC500252.jpg",
+          "homeScore": 3,
+          "awayScore": 4,
           "venue": "STADE FRANÇOIS MAILLOT, HEUQUEVILLE"
+        },
+        {
+          "id": "81891795",
+          "date": "2026-12-05",
+          "home": "F.C. Littoral",
+          "away": "HELLANDES FC",
+          "competition": "COUPE DU DFSM U13 • J1",
+          "type": "coupe",
+          "time": "14H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC565177.jpg",
+          "venue": "Stade Municipal, ST JOUIN BRUNEVAL"
+        },
+        {
+          "id": "81891794",
+          "date": "2026-12-05",
+          "home": "F.C. Littoral",
+          "away": "FC FREVILLE BO.SIVOM",
+          "competition": "COUPE DU DFSM U13 • J1",
+          "type": "coupe",
+          "time": "14H00",
+          "homeLogo": "/logo.png",
+          "awayLogo": "https://cdn-transverse.azureedge.net/phlogos/BC590569.jpg",
+          "venue": "Stade Municipal, ST JOUIN BRUNEVAL"
         }
       ],
       "standings": [
         {
           "rank": 1,
           "team": "USF FECAMP",
-          "played": 5,
-          "won": 3,
+          "played": 6,
+          "won": 4,
           "drawn": 0,
           "lost": 2,
-          "goalsFor": 22,
-          "goalsAgainst": 25,
-          "points": 14
+          "goalsFor": 26,
+          "goalsAgainst": 28,
+          "points": 18
         },
         {
           "rank": 2,
@@ -581,6 +609,17 @@
         },
         {
           "rank": 4,
+          "team": "F.C. Littoral",
+          "played": 4,
+          "won": 2,
+          "drawn": 1,
+          "lost": 1,
+          "goalsFor": 15,
+          "goalsAgainst": 8,
+          "points": 11
+        },
+        {
+          "rank": 5,
           "team": "ES YPREVILLAISE",
           "played": 3,
           "won": 2,
@@ -591,7 +630,18 @@
           "points": 10
         },
         {
-          "rank": 5,
+          "rank": 6,
+          "team": "ASP / ASFR",
+          "played": 5,
+          "won": 1,
+          "drawn": 0,
+          "lost": 4,
+          "goalsFor": 18,
+          "goalsAgainst": 29,
+          "points": 8
+        },
+        {
+          "rank": 7,
           "team": "FC BREAUTE BRETTEVIL",
           "played": 4,
           "won": 1,
@@ -600,28 +650,6 @@
           "goalsFor": 12,
           "goalsAgainst": 23,
           "points": 7
-        },
-        {
-          "rank": 6,
-          "team": "ASP / ASFR",
-          "played": 4,
-          "won": 1,
-          "drawn": 0,
-          "lost": 3,
-          "goalsFor": 18,
-          "goalsAgainst": 25,
-          "points": 7
-        },
-        {
-          "rank": 7,
-          "team": "F.C. Littoral",
-          "played": 2,
-          "won": 1,
-          "drawn": 1,
-          "lost": 0,
-          "goalsFor": 8,
-          "goalsAgainst": 4,
-          "points": 6
         },
         {
           "rank": 8,
